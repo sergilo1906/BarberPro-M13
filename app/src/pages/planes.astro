@@ -1,0 +1,41 @@
+---
+import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
+
+const perfilesUso = ["Cliente", "Profesional", "Responsable", "Administrador"];
+const capacidades = [
+  { uso: "Reservar y mover sus propias citas", accesos: ["Si", "Si", "Si", "Si"] },
+  { uso: "Ver la agenda diaria", accesos: ["No", "Solo sus citas", "Todas", "Todas"] },
+  { uso: "Preparar horarios", accesos: ["No", "Su perfil", "Equipo", "Equipo"] },
+  { uso: "Gestionar pausas y bloqueos", accesos: ["No", "Su perfil", "Equipo", "Equipo"] },
+  { uso: "Cambiar servicios y cuentas", accesos: ["No", "No", "Servicios", "Servicios y usuarios"] },
+];
+---
+
+<DisenoPrincipal title="Perfiles de uso">
+  <section class="max-w-5xl mx-auto space-y-4">
+    <header class="bg-white border rounded-lg p-6 space-y-2">
+      <h1 class="text-2xl font-semibold">Perfiles de uso</h1>
+      <p class="text-sm text-gray-600">Resumen sencillo de lo que suele hacer cada tipo de cuenta dentro de la app.</p>
+    </header>
+    <div class="overflow-x-auto rounded-lg border border-gray-200 bg-white">
+      <table class="min-w-full text-sm">
+        <thead class="bg-gray-50 text-left text-gray-700">
+          <tr>
+            <th class="px-4 py-3 font-semibold">Uso habitual</th>
+            {perfilesUso.map((perfil) => <th class="px-4 py-3 font-semibold">{perfil}</th>)}
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200 text-gray-700">
+          {
+            capacidades.map((capacidad) => (
+              <tr>
+                <td class="px-4 py-3 font-medium text-gray-900">{capacidad.uso}</td>
+                {capacidad.accesos.map((acceso) => <td class="px-4 py-3">{acceso}</td>)}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+</DisenoPrincipal>

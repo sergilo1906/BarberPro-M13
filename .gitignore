@@ -1,0 +1,23 @@
+# Dependencias, compilación y cachés
+node_modules/
+dist/
+.astro/
+.sites-runtime/
+.openai/
+# Configuración privada; conservar la plantilla
+.env
+.env.*
+!.env.example
+**/*service-account*.json
+**/*credentials*.json
+# Resultados de herramientas y pruebas
+playwright-report/
+test-results/
+.verificacion/
+*.log
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+# Archivos del editor y del sistema
+.DS_Store
+Thumbs.db

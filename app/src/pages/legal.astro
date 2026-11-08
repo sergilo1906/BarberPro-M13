@@ -1,0 +1,48 @@
+---
+import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
+
+const apartadosLegales = [
+  {
+    titulo: "Reservas y cambios",
+    parrafos: [
+      "Las reservas se confirman con el horario y el profesional asignado en el momento de crear la cita.",
+      "Las cancelaciones y los cambios de hora se permiten solo mientras la cita siga abierta y quede margen suficiente.",
+    ],
+  },
+  {
+    titulo: "Datos de contacto",
+    parrafos: [
+      "Se guardan nombre, email y telefono para identificar la cuenta, localizar reservas y enviar avisos relacionados con la cita.",
+      "El usuario puede actualizar esos datos desde la pagina de Perfil.",
+    ],
+  },
+  {
+    titulo: "Accesos internos",
+    parrafos: [
+      "Las pantallas de agenda, bloqueos, servicios y administracion solo estan disponibles para el equipo autorizado.",
+      "Si una cuenta cambia de tipo de acceso, puede ser necesario salir y volver a entrar.",
+    ],
+  },
+];
+---
+
+<DisenoPrincipal title="Aviso legal y politica">
+  <section class="max-w-4xl mx-auto space-y-4">
+    <header class="bg-white border rounded-lg p-6 space-y-2">
+      <h1 class="text-2xl font-semibold">Aviso legal y politica de uso</h1>
+      <p class="text-sm text-gray-600">
+        Resumen practico de como funciona la reserva, que datos se guardan y cuando se pueden hacer cambios.
+      </p>
+    </header>
+    <section class="bg-white border rounded-lg p-6 space-y-4 text-sm text-gray-700">
+      {
+        apartadosLegales.map((apartado) => (
+          <div>
+            <h2 class="font-semibold text-gray-900">{apartado.titulo}</h2>
+            {apartado.parrafos.map((parrafo) => <p>{parrafo}</p>)}
+          </div>
+        ))
+      }
+    </section>
+  </section>
+</DisenoPrincipal>

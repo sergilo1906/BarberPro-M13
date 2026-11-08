@@ -1,0 +1,32 @@
+---
+import BarraNavegacion from "../components/BarraNavegacion.astro";
+import "../styles/tailwind.css";
+
+interface Props {
+  title?: string;
+  noindex?: boolean;
+}
+
+const { title: titulo = "BarberPro Studio", noindex: noIndex = false } = Astro.props;
+---
+
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>{titulo} - BarberPro Studio</title>
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="min-h-screen flex flex-col bg-gray-100 text-gray-900" style="font-family: Manrope, sans-serif;">
+    <BarraNavegacion />
+    <main class="flex-1 w-full max-w-6xl mx-auto px-4 py-6 md:py-10 space-y-6 transition-opacity duration-150">
+      <slot />
+    </main>
+    <footer class="text-center text-[11px] text-gray-500 py-8">
+      BarberPro Studio | Reservas y agenda de barberia
+    </footer>
+  </body>
+</html>

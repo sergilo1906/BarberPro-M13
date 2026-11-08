@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "demo-barberpro-m13"
+  },
+  "targets": {
+    "demo-barberpro-m13": {
+      "hosting": {
+        "studio": [
+          "demo-barberpro-m13"
+        ]
+      }
+    }
+  }
+}

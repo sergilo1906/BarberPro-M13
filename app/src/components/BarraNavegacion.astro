@@ -1,0 +1,43 @@
+---
+import type { Rol } from "../modelos/cuentas";
+
+interface EnlacePersonal {
+  id: string;
+  ruta: string;
+  texto: string;
+  roles: Rol[];
+}
+
+const enlacesPersonal: EnlacePersonal[] = [
+  { id: "link-panel", ruta: "/panel-barbero", texto: "Panel", roles: ["worker", "manager", "admin"] },
+  { id: "link-agenda", ruta: "/agenda", texto: "Agenda", roles: ["worker", "manager", "admin"] },
+  { id: "link-setup", ruta: "/setup-barber", texto: "Horarios", roles: ["worker", "manager", "admin"] },
+  { id: "link-bloqueos", ruta: "/bloqueos", texto: "Bloqueos", roles: ["worker", "manager", "admin"] },
+  { id: "link-servicios", ruta: "/servicios", texto: "Servicios", roles: ["manager", "admin"] },
+  { id: "link-admin", ruta: "/admin", texto: "Gestion", roles: ["admin"] },
+];
+---
+
+<nav class="bg-white border-b border-gray-200 text-sm text-gray-800" aria-label="Navegacion principal">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+      <a href="/" class="font-semibold text-blue-600">BarberPro Studio</a>
+      <a id="link-reservar" href="/reservar" class="text-gray-700 hover:text-black">Reservar</a>
+      <a id="link-citas" href="/mis-citas" class="text-gray-700 hover:text-black hidden">Mis citas</a>
+      {
+        enlacesPersonal.map((enlace) => (
+          <a id={enlace.id} href={enlace.ruta} data-roles={enlace.roles.join(" ")} class="text-gray-700 hover:text-black hidden">
+            {enlace.texto}
+          </a>
+        ))
+      }
+    </div>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
+      <a id="user-avatar" href="/perfil" class="hidden w-8 h-8 rounded-full bg-gray-800 text-white text-xs font-medium flex items-center justify-center select-none" aria-label="Perfil">U</a>
+      <a id="btn-login" href="/login" class="text-gray-700 hover:text-black">Entrar</a>
+      <a id="btn-register" href="/registro" class="text-gray-700 hover:text-black">Crear cuenta</a>
+      <a id="btn-profile" href="/perfil" class="text-gray-700 hover:text-black hidden">Mi cuenta</a>
+      <button id="btn-logout" type="button" disabled class="text-white bg-red-600 hover:bg-red-700 rounded px-2 py-1 text-xs font-medium hidden">Salir</button>
+    </div>
+  </div>
+</nav>

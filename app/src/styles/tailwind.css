@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mantiene la preferencia de los controles nativos del proyecto de referencia. */
+:root {
+  color-scheme: light dark;
+}

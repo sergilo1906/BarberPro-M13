@@ -1,0 +1,9 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // No se publican archivos privados ni se habilitan subidas en esta fase.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
