@@ -1,5 +1,7 @@
 # Estado de pausa — BarberPro Studio M13
 
+> Referencia actual: el usuario autorizó expresamente fase 5 el 9 de noviembre de 2026. Su resultado y pendientes están en [fase 5](fase-5-reservas-disponibilidad.md). No se ha iniciado fase 6 ni se programa una reanudación automática. Este archivo y sus anotaciones anteriores se conservan como historial de pausa; consultar control-avance para el estado del código.
+
 > Registro histórico del 8 de noviembre. El 9 de noviembre de 2026 se recibió una instrucción nueva y expresa para implementar fase 4. Se ha trabajado exclusivamente en esa fase; su estado actual y limitaciones están en [el informe](fase-4-autenticacion-usuarios-roles.md) y [control de avance](control-avance.md). No se han implementado fases 5, 6 ni 7. Las instrucciones de reanudación y estados anteriores de este registro se conservan como historial y ya no describen el código actual.
 
 ## Estado real antes del descanso

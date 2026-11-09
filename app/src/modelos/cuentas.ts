@@ -1,6 +1,8 @@
 // Estos valores son contratos de Firebase. No representan una sesión iniciada.
 export type Rol = "client" | "worker" | "manager" | "admin";
 
+export interface Profesional { uid: string; name: string; order: number; }
+
 export interface PerfilUsuario {
   name: string;
   phone: string;

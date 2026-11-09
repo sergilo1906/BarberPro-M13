@@ -25,6 +25,15 @@ beforeEach(() => {
 afterEach(() => { vi.unstubAllGlobals(); });
 
 describe("estado de sesion y recuperacion", () => {
+  it("salir elimina operaciones temporales propias y conserva las claves ajenas", async () => {
+    const quitar = vi.fn();
+    vi.stubGlobal("sessionStorage", { length: 2, key: (indice: number) => indice === 0 ? "barberpro-reserva-pendiente" : "otra-aplicacion", removeItem: quitar });
+    const sesion = await import("../../src/datos/sesion");
+    await sesion.cerrarSesion();
+    expect(quitar).toHaveBeenCalledWith("barberpro-reserva-pendiente");
+    expect(quitar).not.toHaveBeenCalledWith("otra-aplicacion");
+    expect(sesion.obtenerUsuarioActual().estado).toBe("invitado");
+  });
   it("dos consumidores comparten un listener y distinguen carga de invitado", async () => {
     const sesion = await import("../../src/datos/sesion");
     sesion.observarSesion(vi.fn());

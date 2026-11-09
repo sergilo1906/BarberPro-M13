@@ -1,4 +1,30 @@
-# Control de cobertura — fase 4
+# Control de cobertura — fase 5
+
+## Estado vigente
+
+Inventario: 117 archivos propios versionables, frente a 90 al iniciar fase 5; 27 creados y 19 modificados. De 132 destinos del plan existen físicamente 99 (incluido el `.env.local` demo ignorado), y faltan 33. Son 98 destinos versionables del plan y 19 adiciones justificadas en el conjunto del proyecto. La presencia del 75 % de destinos no implica un 75 % de funcionalidad ni termina la reconstrucción completa.
+
+Las 27 rutas permanecen. Funcionan seis páginas públicas, cuatro pantallas de cuentas y `/reservar`; las otras 16 vistas privadas siguen reservadas. Se conservan 18 guards privados. Hay nueve exports backend reales de los trece originales: los cuatro anteriores y las cinco operaciones de reservas. No se ha iniciado fase 6.
+
+| Módulo identificado | Reorganizado/implementado | Evidencia y límite |
+|---|---|---|
+| Reservar original | Página y dos controladores nuevos; SDK separado | Selección, fecha nativa, disponibilidad, confirmación, éxito y error, ICS. |
+| Servicios/profesionales/configuración | Catálogo, personas y configuración | Consultas reales; solo datos activos y orden original; fixtures aislados. |
+| Disponibilidad | Fechas, horarios y disponibilidad backend | Calendario real/DST, semana publicada, descansos, bloqueos, vacaciones, duración completa, ocupación. |
+| Creación | persistencia-reservas + callable | Transacción de datos, locks, control del día y notificación; identidad autoritativa. |
+| Conflictos/reintentos | Control diario y requestId opcional | Cinco carreras reales; respuesta abortada después del commit recuperada tras recargar. |
+| Cancelación/reprogramación/estados | Backend y servicios cliente | Permisos, margen, transiciones, historial, locks propios y cambio atómico; UI completa de Mis citas en fase 6. |
+| Listados por rol | datos/agenda y reglas existentes | Consultas reales propias, asignadas y de gestión; lectura global cliente denegada. |
+| Nombres/contratos | Mapeo en informe de fase 5 | DTO/colecciones/IDs/exports conservados; sin afirmar cobertura ejecutada de los 3.122 símbolos originales. |
+| Apariencia | Dist original sin SDK y estados ficticios equivalentes | Tres estados de reserva × dos dispositivos, además de las comparaciones anteriores. |
+| Reglas/índices | Escrituras cliente de negocio cerradas; un índice adicional de ocupación | No hay despliegue; los emuladores no demuestran índices productivos. |
+| Pendientes | Fases 6–12 y auditoría heredada | Sin paneles anticipados ni certificación de producción. |
+
+Verificación final: `npm test` con salida 0; check sin errores/warnings/hints, 25 pruebas unitarias, 33 integraciones reales y 116 pruebas de navegador (26 visuales incluidas, ninguna omitida), más build de 27 páginas. Los 94 hashes del original coinciden. Inventario individual, incidencias corregidas y límites: [informe de fase 5](fase-5-reservas-disponibilidad.md). No se presenta un porcentaje global de funcionalidad ni se dan por resueltos los avisos heredados de dependencias.
+
+## Registro histórico de fase 4
+
+Las cifras y estados siguientes corresponden a fase 4; se conservan como historial y no sustituyen el estado vigente anterior.
 
 La planificación de fase 2 permanece intacta en `../../BarberPro-M13-Planificacion/docs/control-cobertura.md`. Sus 94 archivos y 3.122 símbolos cubiertos se refieren al análisis/correspondencia, no a implementación. Este documento y el informe de fase 4 son el estado funcional vigente; la tabla histórica de fase 3 en control-avance se conserva como evidencia anterior.
 

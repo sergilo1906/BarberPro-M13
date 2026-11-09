@@ -1,4 +1,16 @@
-# Control de avance — implementación de fase 4
+# Control de avance — implementación de fase 5
+
+## Estado vigente — fase 5
+
+Núcleo de reservas, disponibilidad, catálogo/profesionales, fechas/horarios, creación/cancelación/reprogramación/estados y controles transaccionales implementados. `/reservar` conserva el diseño original y permite confirmar, gestionar una respuesta incierta y descargar ICS. Los listados compartidos y operaciones de gestión están listos para la pantalla completa de cliente en fase 6; esa pantalla no se adelanta.
+
+Nueve de trece exports originales; 27 rutas conservadas; once vistas funcionales y 16 privadas reservadas. La revisión inicial repitió las pruebas de fase 4. La verificación final `npm test` termina con salida 0: check sin diagnósticos, 25 unitarias, 33 integraciones y 116 pruebas de navegador (26 visuales incluidas, ninguna omitida); build de 27 páginas. Original: 94 hashes coincidentes. Los resultados, incidencias y límites están en [fase 5](fase-5-reservas-disponibilidad.md) y [cobertura](control-cobertura.md). Los avisos heredados de dependencias siguen pendientes antes de publicación. No se ha operado sobre producción.
+
+No se inicia fase 6; se detiene el trabajo tras entregar el informe y se esperan instrucciones nuevas.
+
+## Registro histórico de fase 4
+
+Lo que sigue refleja el cierre de implementación de fase 4, no el estado vigente de reservas.
 
 ## Estado vigente — 9 de noviembre de 2026
 

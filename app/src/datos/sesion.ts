@@ -30,6 +30,16 @@ function estadoVacio(estado: EstadoSesion["estado"], mensaje = ""): EstadoSesion
   return { estado, usuario: null, perfil: null, errorPerfil: false, mensaje };
 }
 
+function limpiarDatosTemporalesSesion(): void {
+  try {
+    // Solo se eliminan datos temporales de esta aplicación, nunca claves ajenas.
+    for (let indice = sessionStorage.length - 1; indice >= 0; indice--) {
+      const clave = sessionStorage.key(indice);
+      if (clave?.startsWith("barberpro-")) sessionStorage.removeItem(clave);
+    }
+  } catch { /* La sesión también puede cerrarse con el almacenamiento deshabilitado. */ }
+}
+
 function exigirServicios() {
   const servicios = obtenerServiciosFirebase();
   if (!servicios) throw new Error("Firebase local desactivado.");
@@ -42,6 +52,7 @@ async function cargarUsuario(usuario: User | null): Promise<void> {
   cancelarPerfil = null;
   publicarEstado(estadoVacio("cargando"));
   if (!usuario) {
+    limpiarDatosTemporalesSesion();
     publicarEstado(estadoVacio("invitado"));
     return;
   }
@@ -178,6 +189,7 @@ export async function cerrarSesion(): Promise<void> {
   // Vaciar antes de esperar la red impide conservar datos privados de la sesión anterior.
   revisionSesion++;
   cancelarPerfil?.();
+  limpiarDatosTemporalesSesion();
   publicarEstado(estadoVacio("cargando"));
   try {
     await signOut(exigirServicios().autenticacion);

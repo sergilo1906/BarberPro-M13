@@ -29,3 +29,13 @@ export function explicarErrorVerificacion(error: unknown): string {
   }
   return "No se pudo enviar el correo de verificacion. Prueba otra vez desde tu perfil.";
 }
+
+export function explicarErrorReserva(error: unknown): string {
+  const codigo = obtenerCodigoError(error);
+  if (codigo === "functions/already-exists") return "Ese horario ya no esta disponible. Selecciona otra hora.";
+  if (codigo === "functions/permission-denied" || codigo === "functions/unauthenticated") return "No tienes permiso para esta operacion. Revisa tu sesion y la verificacion del email.";
+  if (codigo === "functions/not-found") return "La reserva no existe.";
+  if (codigo === "functions/invalid-argument") return "Revisa el servicio, profesional, fecha y hora seleccionados.";
+  if (codigo === "functions/failed-precondition") return "La seleccion ya no es valida. Revisa los datos y actualiza la disponibilidad.";
+  return "No se pudo confirmar la respuesta. Comprueba la reserva antes de volver a enviarla.";
+}

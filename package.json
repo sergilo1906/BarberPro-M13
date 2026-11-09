@@ -1,8 +1,8 @@
 {
   "name": "barberpro-m13",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
-  "description": "BarberPro Studio — autenticacion local y permisos de fase 4",
+  "description": "BarberPro Studio — reservas y disponibilidad locales de fase 5",
   "engines": {
     "node": ">=20.20.2",
     "npm": ">=10"
@@ -13,6 +13,7 @@
     "build": "npm --prefix app run build",
     "test:unit": "npm --prefix app run test:unit && npm --prefix functions run test:unit",
     "emulators": "node functions/scripts/emuladores-locales.mjs",
+    "datos:local": "node functions/scripts/preparar-datos-reservas.mjs",
     "test:emuladores": "node functions/scripts/emuladores-locales.mjs --pruebas",
     "test:e2e": "npm run test:emuladores",
     "test": "npm run check && npm run test:unit && npm run test:emuladores"

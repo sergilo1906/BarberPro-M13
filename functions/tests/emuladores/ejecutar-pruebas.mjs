@@ -16,7 +16,7 @@ function ejecutar(argumentos, carpetaTrabajo = raizProyecto) {
   if (resultado.error || resultado.status !== 0) process.exit(resultado.status || 1);
 }
 
-ejecutar(["--test", "functions/tests/emuladores/permisos.test.mjs"]);
+ejecutar(["--test", "--test-concurrency=1", "functions/tests/emuladores/permisos.test.mjs", "functions/tests/emuladores/reservas-consistencia.test.mjs", "functions/tests/emuladores/reservas-concurrencia.test.mjs"]);
 const carpetaApp = fileURLToPath(new URL("../../../app/", import.meta.url));
 ejecutar(["node_modules/astro/astro.js", "build"], carpetaApp);
 ejecutar(["node_modules/@playwright/test/cli.js", "test"], carpetaApp);

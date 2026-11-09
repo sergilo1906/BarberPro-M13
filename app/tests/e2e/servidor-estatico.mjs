@@ -9,7 +9,7 @@ const esReferencia = indiceReferencia !== -1;
 const carpetaPublica = esReferencia
   ? path.resolve(process.argv[indiceReferencia + 1])
   : fileURLToPath(new URL("../../dist/", import.meta.url));
-const rutasReferencia = new Set(["/", "/index-client", "/ayuda", "/legal", "/planes", "/404", "/login", "/registro", "/verify", "/perfil"]);
+const rutasReferencia = new Set(["/", "/index-client", "/ayuda", "/legal", "/planes", "/404", "/login", "/registro", "/verify", "/perfil", "/reservar"]);
 const tiposContenido = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".svg": "image/svg+xml" };
 
 function prepararReferenciaPublica(html) {

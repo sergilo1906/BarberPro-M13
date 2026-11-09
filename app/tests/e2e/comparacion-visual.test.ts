@@ -49,7 +49,12 @@ for (const ruta of rutasPublicas) {
       }
       return medidas;
     };
-    expect(await page.evaluate(medirPresentacion)).toEqual(await referencia.evaluate(medirPresentacion));
+    await referencia.bringToFront();
+    await referencia.evaluate(() => new Promise<void>((resolver) => requestAnimationFrame(() => requestAnimationFrame(() => resolver()))));
+    const medidasReferencia = await referencia.evaluate(medirPresentacion);
+    await page.bringToFront();
+    await page.evaluate(() => new Promise<void>((resolver) => requestAnimationFrame(() => requestAnimationFrame(() => resolver()))));
+    expect(await page.evaluate(medirPresentacion)).toEqual(medidasReferencia);
 
     const archivoReferencia = informacionPrueba.snapshotPath("original.png");
     mkdirSync(path.dirname(archivoReferencia), { recursive: true });
@@ -63,7 +68,9 @@ for (const ruta of rutasPublicas) {
     // Geometría y estilos ya se exigen exactos. Este umbral evita falsos fallos
     // por pequeños cambios de rasterizado de texto entre superficies Chromium:
     // se admite como máximo el 0,01 % de píxeles con diferencia perceptible.
-    expect(imagenNueva).toMatchSnapshot("original.png", { maxDiffPixelRatio: 0.0001, threshold: 0.1 });
+    // Playwright espera a capturas consecutivas estables antes de comparar; evita
+    // tomar como cambio de diseño un frame transitorio de rasterizado de la fuente.
+    await expect(page).toHaveScreenshot("original.png", { fullPage: true, animations: "disabled", scale: "device", maxDiffPixelRatio: 0.0001, threshold: 0.1 });
     await referencia.close();
   });
 }
