@@ -24,6 +24,7 @@ for (const ruta of rutasPublicas) {
     const respuestaReferencia = await referencia.goto("http://127.0.0.1:4332" + ruta);
     expect(respuestaReferencia?.status()).toBe(200);
     await page.goto(ruta);
+    await expect(page.locator("#btn-login")).toBeVisible();
     await referencia.evaluate(() => document.fonts.ready);
     await page.evaluate(() => document.fonts.ready);
 
@@ -34,7 +35,7 @@ for (const ruta of rutasPublicas) {
     expect(await referencia.locator("script").count()).toBe(0);
 
     const medirPresentacion = () => {
-      const elementos = document.querySelectorAll("nav, main, footer, h1, h2, h3, p, th, td");
+      const elementos = document.querySelectorAll("nav, main, footer, main h1, main h2, main h3, main p, main th, main td");
       const medidas = [];
       for (const elemento of elementos) {
         const caja = elemento.getBoundingClientRect();
@@ -57,7 +58,7 @@ for (const ruta of rutasPublicas) {
     await referencia.screenshot({ path: archivoReferencia, fullPage: true, animations: "disabled" });
     await page.bringToFront();
     await page.evaluate(() => new Promise<void>((resolver) => requestAnimationFrame(() => requestAnimationFrame(() => resolver()))));
-    const imagenNueva = await page.screenshot({ fullPage: true, animations: "disabled" });
+    const imagenNueva = await page.screenshot({ path: informacionPrueba.snapshotPath("reconstruida.png"), fullPage: true, animations: "disabled" });
     await informacionPrueba.attach("pagina-reconstruida", { body: imagenNueva, contentType: "image/png" });
     // Geometría y estilos ya se exigen exactos. Este umbral evita falsos fallos
     // por pequeños cambios de rasterizado de texto entre superficies Chromium:

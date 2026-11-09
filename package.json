@@ -1,8 +1,8 @@
 {
   "name": "barberpro-m13",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "private": true,
-  "description": "Base local de BarberPro Studio — fase 3",
+  "description": "BarberPro Studio — autenticacion local y permisos de fase 4",
   "engines": {
     "node": ">=20.20.2",
     "npm": ">=10"
@@ -12,10 +12,13 @@
     "check": "npm --prefix app run check && npm --prefix functions run check",
     "build": "npm --prefix app run build",
     "test:unit": "npm --prefix app run test:unit && npm --prefix functions run test:unit",
-    "test:e2e": "npm --prefix app run test:e2e",
-    "test": "npm run check && npm run test:unit && npm run build && npm run test:e2e"
+    "emulators": "node functions/scripts/emuladores-locales.mjs",
+    "test:emuladores": "node functions/scripts/emuladores-locales.mjs --pruebas",
+    "test:e2e": "npm run test:emuladores",
+    "test": "npm run check && npm run test:unit && npm run test:emuladores"
   },
   "devDependencies": {
+    "firebase-tools": "15.35.0",
     "node": "20.20.2"
   }
 }

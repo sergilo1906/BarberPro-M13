@@ -3,13 +3,41 @@ import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
 ---
 
 <DisenoPrincipal title="Mi perfil" noindex>
-  <section class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg p-6 space-y-4" data-estado="no-disponible" data-fase-pendiente="4">
-    <h1 class="text-xl font-semibold text-gray-900">Mi perfil</h1>
-    <p role="status" class="text-sm text-gray-600">Esta seccion todavia no esta disponible.</p>
-    <p class="text-sm text-gray-600">No se han habilitado operaciones ni acceso a datos privados. Puedes volver al inicio o consultar la ayuda.</p>
-    <div class="flex flex-wrap gap-3 text-sm">
-      <a href="/" class="rounded border px-3 py-2 hover:bg-gray-50">Ir al inicio</a>
-      <a href="/ayuda" class="rounded bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">Ayuda</a>
+  <section data-perfil-root class="max-w-2xl bg-white p-5 rounded shadow space-y-5 mx-auto">
+    <header class="space-y-1">
+      <h1 class="text-xl font-semibold">Mi perfil</h1>
+      <p class="text-sm text-gray-600">Actualiza tus datos de contacto y comprueba si tu cuenta esta lista para usar.</p>
+    </header>
+
+    <div class="rounded border border-gray-200 bg-gray-50 p-3 text-sm space-y-2">
+      <p><strong>Email:</strong> <span id="perfil-email"></span></p>
+      <p>
+        <strong>Estado de email:</strong>
+        <span id="perfil-verif" class="inline-block rounded px-2 py-0.5 text-xs font-medium"></span>
+      </p>
+      <button id="perfil-send-verify" class="text-xs underline text-blue-600 hidden" type="button">Reenviar verificacion</button>
+      <p class="text-xs text-gray-500">Tipo de cuenta: <span id="perfil-role" class="font-medium"></span></p>
     </div>
+
+    <div class="grid sm:grid-cols-2 gap-4 text-sm">
+      <label class="space-y-1">
+        <span class="block text-xs text-gray-600">Nombre</span>
+        <input id="perfil-name" class="w-full border rounded px-3 py-2 text-sm" placeholder="Tu nombre" />
+      </label>
+
+      <label class="space-y-1">
+        <span class="block text-xs text-gray-600">Telefono</span>
+        <input id="perfil-phone" class="w-full border rounded px-3 py-2 text-sm" placeholder="Ej: 600123123" />
+      </label>
+    </div>
+
+    <div class="flex flex-col sm:flex-row gap-2">
+      <button id="perfil-save" class="flex-1 bg-blue-600 text-white rounded py-2 font-medium hover:bg-blue-700 text-sm" type="button">Guardar cambios</button>
+      <button id="perfil-logout" class="flex-1 bg-gray-800 text-white rounded py-2 font-medium hover:bg-black text-sm" type="button">Cerrar sesion</button>
+    </div>
+
+    <p id="perfil-msg" role="status" aria-live="polite" class="text-xs text-gray-600 min-h-[1.5rem] leading-tight"></p>
   </section>
+
+  <script>import "../modulos/cuentas/editar-perfil";</script>
 </DisenoPrincipal>

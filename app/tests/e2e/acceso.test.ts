@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 const rutasPublicas = ["/", "/index-client", "/ayuda", "/legal", "/planes", "/404"];
 const rutasPendientes = [
-  "/login", "/registro", "/verify", "/perfil", "/reservar", "/mis-citas",
+  "/perfil", "/reservar", "/mis-citas",
   "/agenda", "/panel-barbero", "/panel", "/index-admin", "/setup-barber",
   "/bloqueos", "/horarios", "/equipo", "/servicios", "/admin", "/admin/usuarios",
   "/branding", "/kpis", "/export", "/debug",
@@ -29,32 +29,29 @@ for (const ruta of rutasPublicas) {
     await expect(page.locator("footer")).toContainText("BarberPro Studio | Reservas y agenda de barberia");
     await expect(page.locator("#btn-login")).toBeVisible();
     await expect(page.locator("#link-admin")).toBeHidden();
-    expect(await page.locator("script[src]").count()).toBe(0);
     expect(errores).toEqual([]);
   });
 }
 
 for (const ruta of rutasPendientes) {
-  test("ruta reservada sin operaciones " + ruta, async ({ page }) => {
+  test("ruta privada rechaza acceso invitado " + ruta, async ({ page }) => {
     await page.addInitScript(() => {
       // Un valor local no debe convertirse en autorización.
       localStorage.setItem("role", "admin");
     });
     await page.goto(ruta);
-    await expect(page.locator('[data-estado="no-disponible"]')).toBeVisible();
-    await expect(page.getByRole("status")).toHaveText("Esta seccion todavia no esta disponible.");
-    expect(await page.locator("form, input, textarea, .slot-btn").count()).toBe(0);
+    await expect(page).toHaveURL(/\/login\/?$/);
+    await expect(page.locator("#login-form")).toBeVisible();
     await expect(page.locator("#link-admin")).toBeHidden();
-    expect(await page.locator("script[src]").count()).toBe(0);
   });
 }
 
 test("navegacion publica y destino honesto de reserva", async ({ page }) => {
   await page.goto("/");
   await page.getByRole("link", { name: "Cliente Pedir cita" }).click();
-  await expect(page).toHaveURL(/\/reservar\/?$/);
-  await expect(page.getByRole("status")).toBeVisible();
-  await page.getByRole("link", { name: "Ayuda", exact: true }).click();
+  await expect(page).toHaveURL(/\/login\/?$/);
+  await page.goto("/");
+  await page.goto("/ayuda");
   await expect(page.getByRole("heading", { name: "Ayuda", exact: true })).toBeVisible();
   const hayDesbordamiento = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth);
   expect(hayDesbordamiento).toBe(false);
@@ -84,6 +81,6 @@ test("ruta desconocida devuelve 404 con la pagina propia", async ({ page }) => {
 
 test("las rutas con barra final conservan el cierre seguro", async ({ page }) => {
   await page.goto("/admin/usuarios/");
-  await expect(page.locator('[data-estado="no-disponible"]')).toBeVisible();
-  expect(await page.locator("form").count()).toBe(0);
+  await expect(page).toHaveURL(/\/login\/?$/);
+  await expect(page.locator("#link-admin")).toBeHidden();
 });

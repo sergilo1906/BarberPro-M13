@@ -9,12 +9,15 @@ const esReferencia = indiceReferencia !== -1;
 const carpetaPublica = esReferencia
   ? path.resolve(process.argv[indiceReferencia + 1])
   : fileURLToPath(new URL("../../dist/", import.meta.url));
-const rutasReferencia = new Set(["/", "/index-client", "/ayuda", "/legal", "/planes", "/404"]);
+const rutasReferencia = new Set(["/", "/index-client", "/ayuda", "/legal", "/planes", "/404", "/login", "/registro", "/verify", "/perfil"]);
 const tiposContenido = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".svg": "image/svg+xml" };
 
 function prepararReferenciaPublica(html) {
   // Leer la compilación original no debe ejecutar su SDK ni sus scripts.
   let documento = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+  documento = documento.replace(/(<form\b[^>]*class=")([^"]*)(")/gi, (_etiqueta, inicio, clases, final) => {
+    return inicio + clases.replace(/\b(opacity-50|pointer-events-none)\b/g, "").replace(/\s+/g, " ").trim() + final;
+  });
   documento = documento.replace(/<a\b[^>]*>/gi, (etiqueta) => {
     if (/id="(?:btn-login|btn-register)"/.test(etiqueta)) {
       return etiqueta.replace(/class="([^"]*)"/, (_atributo, clases) => 'class="' + clases.replace(/\bhidden\b/g, "").trim() + '"');

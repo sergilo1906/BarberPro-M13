@@ -1,5 +1,7 @@
 # Estado de pausa — BarberPro Studio M13
 
+> Registro histórico del 8 de noviembre. El 9 de noviembre de 2026 se recibió una instrucción nueva y expresa para implementar fase 4. Se ha trabajado exclusivamente en esa fase; su estado actual y limitaciones están en [el informe](fase-4-autenticacion-usuarios-roles.md) y [control de avance](control-avance.md). No se han implementado fases 5, 6 ni 7. Las instrucciones de reanudación y estados anteriores de este registro se conservan como historial y ya no describen el código actual.
+
 ## Estado real antes del descanso
 
 Comprobación inicial: 8 de noviembre de 2026, 19:48:53 UTC. Proyecto reconstruido: BarberPro-M13. Rama local: fase-3-base. Último commit de implementación: 0882f3d (Completa la base local de la fase 3).

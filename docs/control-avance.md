@@ -1,4 +1,16 @@
-# Control de avance — cierre de fase 3
+# Control de avance — implementación de fase 4
+
+## Estado vigente — 9 de noviembre de 2026
+
+Autenticación real local, perfil, verificación/reenvío, estado compartido, cuatro roles, navegación, guards, reglas y tres callables de cuentas implementados. Las 27 URLs se conservan: seis públicas, cuatro pantallas de cuentas y 17 vistas privadas de negocio aún reservadas. Hay cuatro de los trece exports backend originales reales; los nueve restantes pertenecen a fases posteriores.
+
+Resultados funcionales: 19 pruebas unitarias; 14 pruebas de integración contra Auth/Firestore/Functions; build de 27 páginas; 98 pruebas de navegador en escritorio/móvil (20 comparaciones visuales incluidas). El informe registra la validación del lanzador con la CLI actualizada y cualquier pendiente. Original: 94 hashes iguales, cero modificaciones. Producción: ninguna operación.
+
+No se declara una entrega sin pendientes de seguridad: siguen los avisos de dependencias heredadas, incluidos críticos en app. La revisión/actualización compatible está documentada. No se avanza a fase 5.
+
+Consultar [informe de fase 4](fase-4-autenticacion-usuarios-roles.md) y [cobertura vigente](control-cobertura.md). El registro que sigue es histórico: sus cifras, estados pendientes y la pausa corresponden exclusivamente al cierre de fase 3; no sustituyen este estado vigente.
+
+## Registro histórico del cierre de fase 3
 
 ## Punto de partida y métricas
 

@@ -3,13 +3,14 @@ import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
 ---
 
 <DisenoPrincipal title="Verificar email" noindex>
-  <section class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg p-6 space-y-4" data-estado="no-disponible" data-fase-pendiente="4">
-    <h1 class="text-xl font-semibold text-gray-900">Verificar email</h1>
-    <p role="status" class="text-sm text-gray-600">Esta seccion todavia no esta disponible.</p>
-    <p class="text-sm text-gray-600">No se han habilitado operaciones ni acceso a datos privados. Puedes volver al inicio o consultar la ayuda.</p>
-    <div class="flex flex-wrap gap-3 text-sm">
-      <a href="/" class="rounded border px-3 py-2 hover:bg-gray-50">Ir al inicio</a>
-      <a href="/ayuda" class="rounded bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">Ayuda</a>
+  <section class="max-w-md bg-white p-4 rounded shadow mx-auto space-y-3 text-sm">
+    <h2 class="font-semibold text-lg">Verificar email</h2>
+    <p id="verify-msg" role="status" aria-live="polite" class="text-sm text-gray-700">Procesando enlace de verificacion...</p>
+    <div class="flex gap-2 pt-2">
+      <a href="/perfil" class="px-3 py-2 rounded border hover:bg-gray-50">Ir a perfil</a>
+      <a href="/login" class="px-3 py-2 rounded bg-blue-600 text-white hover:bg-blue-700">Iniciar sesion</a>
     </div>
   </section>
+
+  <script>import "../modulos/cuentas/verificar-correo";</script>
 </DisenoPrincipal>

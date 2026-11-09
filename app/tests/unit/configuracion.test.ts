@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 
 const sdk = vi.hoisted(() => ({
   initializeApp: vi.fn(() => ({ name: "barberpro-m13-local" })),
-  getAuth: vi.fn(() => ({})),
+  initializeAuth: vi.fn(() => ({})),
   getFirestore: vi.fn(() => ({})),
   getFunctions: vi.fn(() => ({})),
   connectAuthEmulator: vi.fn(),
@@ -11,7 +11,8 @@ const sdk = vi.hoisted(() => ({
 }));
 
 vi.mock("firebase/app", () => ({ getApps: () => [], initializeApp: sdk.initializeApp }));
-vi.mock("firebase/auth", () => ({ getAuth: sdk.getAuth, connectAuthEmulator: sdk.connectAuthEmulator }));
+vi.mock("firebase/auth", () => ({ initializeAuth: sdk.initializeAuth, connectAuthEmulator: sdk.connectAuthEmulator,
+  indexedDBLocalPersistence: {}, browserLocalPersistence: {}, inMemoryPersistence: {} }));
 vi.mock("firebase/firestore", () => ({ getFirestore: sdk.getFirestore, connectFirestoreEmulator: sdk.connectFirestoreEmulator }));
 vi.mock("firebase/functions", () => ({ getFunctions: sdk.getFunctions, connectFunctionsEmulator: sdk.connectFunctionsEmulator }));
 
@@ -37,7 +38,7 @@ describe("Configuración Firebase aislada", () => {
     const firebase = await import("../../src/datos/firebase");
     expect(sdk.initializeApp).not.toHaveBeenCalled();
     expect(firebase.obtenerServiciosFirebase("localhost")).toBeNull();
-    expect(sdk.getAuth).not.toHaveBeenCalled();
+    expect(sdk.initializeAuth).not.toHaveBeenCalled();
     expect(sdk.getFirestore).not.toHaveBeenCalled();
     expect(sdk.getFunctions).not.toHaveBeenCalled();
   });

@@ -1,5 +1,5 @@
 import { getApps, initializeApp, type FirebaseApp } from "firebase/app";
-import { connectAuthEmulator, getAuth, type Auth } from "firebase/auth";
+import { connectAuthEmulator, initializeAuth, indexedDBLocalPersistence, browserLocalPersistence, inMemoryPersistence, type Auth } from "firebase/auth";
 import { connectFirestoreEmulator, getFirestore, type Firestore } from "firebase/firestore";
 import { connectFunctionsEmulator, getFunctions, type Functions } from "firebase/functions";
 
@@ -78,7 +78,10 @@ export function obtenerServiciosFirebase(
     aplicacionFirebase = initializeApp(configuracionFirebase, "barberpro-m13-local");
   }
 
-  const autenticacion = getAuth(aplicacionFirebase);
+  // El acceso por contraseña no necesita el resolver OAuth que carga iframes externos en móvil.
+  const autenticacion = initializeAuth(aplicacionFirebase, {
+    persistence: [indexedDBLocalPersistence, browserLocalPersistence, inMemoryPersistence],
+  });
   const baseDatos = getFirestore(aplicacionFirebase);
   const funcionesRemotas = getFunctions(aplicacionFirebase, "europe-west1");
 

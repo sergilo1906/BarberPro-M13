@@ -3,13 +3,47 @@ import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
 ---
 
 <DisenoPrincipal title="Crear cuenta" noindex>
-  <section class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg p-6 space-y-4" data-estado="no-disponible" data-fase-pendiente="4">
-    <h1 class="text-xl font-semibold text-gray-900">Crear cuenta</h1>
-    <p role="status" class="text-sm text-gray-600">Esta seccion todavia no esta disponible.</p>
-    <p class="text-sm text-gray-600">No se han habilitado operaciones ni acceso a datos privados. Puedes volver al inicio o consultar la ayuda.</p>
-    <div class="flex flex-wrap gap-3 text-sm">
-      <a href="/" class="rounded border px-3 py-2 hover:bg-gray-50">Ir al inicio</a>
-      <a href="/ayuda" class="rounded bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">Ayuda</a>
-    </div>
+  <section class="max-w-sm mx-auto bg-white p-4 rounded shadow text-sm space-y-4" id="reg-wrapper">
+    <h2 class="font-semibold text-lg">Crear cuenta</h2>
+    <p class="text-sm text-gray-600">Registrate para reservar y gestionar tus citas.</p>
+
+    <form id="reg-form" class="text-sm space-y-4 opacity-50 pointer-events-none">
+      <div>
+        <label for="reg-name" class="block text-xs text-gray-600 mb-1">Nombre</label>
+        <input id="reg-name" name="name" type="text" autocomplete="name" required class="w-full border rounded px-3 py-2" placeholder="Tu nombre" />
+      </div>
+
+      <div>
+        <label for="reg-phone" class="block text-xs text-gray-600 mb-1">Telefono</label>
+        <input id="reg-phone" name="phone" type="tel" autocomplete="tel" class="w-full border rounded px-3 py-2" placeholder="Opcional" />
+      </div>
+
+      <div>
+        <label for="reg-email" class="block text-xs text-gray-600 mb-1">Email</label>
+        <input id="reg-email" name="email" type="email" autocomplete="email" required class="w-full border rounded px-3 py-2" />
+      </div>
+
+      <div>
+        <label for="reg-password" class="block text-xs text-gray-600 mb-1">Contrasena</label>
+        <input id="reg-password" name="password" type="password" autocomplete="new-password" minlength="6" required class="w-full border rounded px-3 py-2" />
+      </div>
+
+      <div>
+        <label for="reg-password2" class="block text-xs text-gray-600 mb-1">Repite contrasena</label>
+        <input id="reg-password2" name="password2" type="password" autocomplete="new-password" minlength="6" required class="w-full border rounded px-3 py-2" />
+      </div>
+
+      <button class="w-full bg-blue-600 text-white rounded py-2 font-medium hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300">
+        Crear cuenta
+      </button>
+
+      <p id="reg-msg" role="status" aria-live="polite" class="text-xs text-gray-600 min-h-[1.5rem] leading-tight"></p>
+
+      <p class="text-xs text-center text-gray-600">
+        Ya tienes cuenta? <a href="/login" class="text-blue-600 hover:underline">Iniciar sesion</a>
+      </p>
+    </form>
   </section>
+
+  <script>import "../modulos/cuentas/crear-cuenta";</script>
 </DisenoPrincipal>
