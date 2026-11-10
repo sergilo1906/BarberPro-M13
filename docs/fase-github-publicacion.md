@@ -14,6 +14,8 @@ Estas pruebas de navegador no incorporan todavía recorridos específicos ni com
 
 Gitleaks volvió a revisar el historial completo y la exportación exacta de los archivos preparados, con salida 0 y sin fugas detectadas. Los informes redactados quedan fuera de Git. Los apartados siguientes conservan la evidencia de la primera publicación y su clonación limpia, anterior a este avance; no se atribuyen a esa copia las pruebas nuevas.
 
+El avance se publicó en `86cd8bc05b72f6d8e6149e7c6ba3c7741c26919c`. Una consulta anónima a GitHub confirmó visibilidad pública, rama main y árbol completo de 177 archivos; la referencia remota coincidía con HEAD local. Después se actualizó por fast-forward la copia clonada e instalada anteriormente, sin reinstalar dependencias ni reutilizar node_modules del workspace principal: check, build de 27 páginas y las 43 unitarias finalizaron con salida 0 y Git quedó limpio. No se repitieron allí emuladores ni navegador; esos resultados pertenecen al workspace principal. Evidencia en .verificacion/github-continuacion-clon.log. Este registro se publica en un commit documental posterior, sin cambios de código.
+
 ## Repositorio comprobado
 
 - Nombre: BarberPro-M13.
