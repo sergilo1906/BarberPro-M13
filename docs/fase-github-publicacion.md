@@ -6,13 +6,27 @@ El usuario ha autorizado expresamente «Subelo todo al github» después de reci
 
 Se publica la fuente auditada `5a7de04193e67e0f3a19372bc5a3e96a116541bb`, con 200 archivos, y se conservan los registros históricos siguientes. Los commits posteriores modifican documentación de publicación y regeneran su inventario; no cambian frontend, backend, reglas, dependencias ni pruebas validadas. Se mantiene la rama principal main sin reescribir historial.
 
-La descarga se prepara en https://github.com/sergilo1906/BarberPro-M13/releases/tag/auditoria-2026-11-10 como publicación preliminar del commit auditado. Incluye únicamente el candidato final BarberPro-M13-auditoria-2026-11-10-r1.zip, su .sha256 y validacion-auditoria-2026-11-10.md. SHA256 del ZIP: `297e6bc0be1bfc1b004d7cf7df07c95db2512d014024e2099f67e6fb1b357d11`. No se reconstruye ni se altera el paquete validado. Sus informes describen el cierre de auditoría previo a esta nueva autorización; este registro y las notas de publicación recogen el estado posterior.
+La descarga está publicada en https://github.com/sergilo1906/BarberPro-M13/releases/tag/auditoria-2026-11-10 como publicación preliminar del commit auditado. Incluye únicamente el candidato final BarberPro-M13-auditoria-2026-11-10-r1.zip, su .sha256 y validacion-auditoria-2026-11-10.md. SHA256 del ZIP: `297e6bc0be1bfc1b004d7cf7df07c95db2512d014024e2099f67e6fb1b357d11`. No se reconstruye ni se altera el paquete validado. Sus informes describen el cierre de auditoría previo a esta nueva autorización; este registro y las notas de publicación recogen el estado posterior.
 
 Evidencia ya ejecutada en la auditoría: checker sin diagnósticos, build de 27 páginas, 44 unitarias, 69 integraciones y 284 navegador correctas, con 126 comparaciones visuales incluidas. El ZIP de ejecución superó instalación y pruebas aisladas; el candidato final r1 superó instalación con Node 22.23.4, checker, build, 44 unitarias y preview HTTP. Los límites y las pruebas no repetidas están distinguidos en los informes. No se vuelven a atribuir esas pruebas a los cambios exclusivamente documentales de esta publicación.
 
-La valoración académica continúa siendo OPCIÓN C — NO APTO TODAVÍA: la trazabilidad semántica individual y cierres globales siguen pendientes; npm registra 14 nodos moderados en raíz y nueve en Functions, ninguno alto/crítico, y cero alertas en app. La publicación remota resolverá AF-12 tras verificar sus referencias y descargas. La comprobación final de esta operación se registrará después de subir los archivos.
+La valoración académica continúa siendo OPCIÓN C — NO APTO TODAVÍA: la trazabilidad semántica individual y cierres globales siguen pendientes; npm registra 14 nodos moderados en raíz y nueve en Functions, ninguno alto/crítico, y cero alertas en app. AF-12 queda resuelto con la verificación pública siguiente; no cambia el estado de los demás pendientes.
 
 Se excluyen dependencias instaladas, compilaciones, cachés, logs, datos de emuladores, configuración privada, archivos del original y paquetes intermedios. Los valores de fixtures son públicos y ficticios. Se revisan secretos en el contenido exacto a publicar y el historial, sin mostrar valores privados.
+
+### Comprobación pública realizada — 21:34:34 UTC
+
+Se consultan la API pública y los enlaces de descarga sin cabecera de autorización. El repositorio es público; main contiene `9721c2486a8fa8e02d6e210c39ee4a1d3dcfcc6b` y la etiqueta auditoria-2026-11-10 apunta a `5a7de04193e67e0f3a19372bc5a3e96a116541bb`. La publicación no es borrador y se marca como preliminar. El commit de esta comprobación se añade después a main sin cambiar el código auditado ni mover la etiqueta.
+
+Los tres adjuntos se descargan desde GitHub a una carpeta local ignorada. Sus tamaños y SHA256 coinciden exactamente con los archivos locales preparados:
+
+| Adjunto | Bytes | SHA256 descargado |
+| --- | ---: | --- |
+| BarberPro-M13-auditoria-2026-11-10-r1.zip | 562203 | `297e6bc0be1bfc1b004d7cf7df07c95db2512d014024e2099f67e6fb1b357d11` |
+| BarberPro-M13-auditoria-2026-11-10-r1.zip.sha256 | 109 | `13bb7d485f1df4e2204b0333458a7ba78e5f39c02f75442c46af710bc8e411c3` |
+| validacion-auditoria-2026-11-10.md | 4330 | `551c4b95103c1c1e2ced1a5e87672dc6c24c4c5511b65af604caa7289e35b829` |
+
+Antes de subir, Gitleaks termina con salida 0 y sin fugas detectadas en la fuente exacta preparada y en todo el historial. Se conserva el historial sin force push. La aplicación validada no se modifica; esta operación no requiere repetir las pruebas funcionales de la auditoría. Tampoco implica despliegue, operaciones productivas o una pausa de tres horas.
 
 ## Registro histórico de las publicaciones anteriores
 

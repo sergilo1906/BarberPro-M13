@@ -1,6 +1,6 @@
 # Informe crítico de auditoría
 
-Actualización posterior: el usuario ha autorizado publicar el resultado en GitHub. El estado de esa operación se consulta en [publicación](../fase-github-publicacion.md). La valoración siguiente y los resultados corresponden al cierre de auditoría; resolver su diferencia remota AF-12 no certifica los requisitos de trazabilidad y cierre todavía pendientes.
+Actualización posterior: el usuario ha autorizado publicar el resultado en GitHub. La fuente y los tres adjuntos están publicados y verificados sin autenticación, con referencias y SHA256 coincidentes; AF-12 queda resuelto. La evidencia se consulta en [publicación](../fase-github-publicacion.md). La valoración siguiente y los resultados corresponden al cierre de auditoría; resolver su diferencia remota no certifica los requisitos de trazabilidad y cierre todavía pendientes.
 
 La reconstrucción funciona en los flujos locales ejercitados, pero no se puede certificar que las doce fases estuvieran cerradas ni el 100 % de correspondencia semántica de los símbolos. La auditoría no acepta aquella premisa únicamente por aparecer en la solicitud.
 

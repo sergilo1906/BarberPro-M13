@@ -45,9 +45,9 @@
     {
       "ruta": ".gitignore",
       "categoria": "configuracion",
-      "bytes": 425,
+      "bytes": 449,
       "lineas": 25,
-      "sha256": "3ad0d4da13fc5bbb9c029e6f181e4d6ff2c7121fa3ba93ae0f53e477ef9d33c0",
+      "sha256": "87bacda2ac4b6c62a99a7352315f3283868c5b19e52cc37e1df44afaec1f1cdd",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -58,9 +58,9 @@
     {
       "ruta": ".nvmrc",
       "categoria": "configuracion",
-      "bytes": 8,
+      "bytes": 9,
       "lineas": 2,
-      "sha256": "0c4bf84f9bedd485b2c4eac05f59e35addc86ce7dbf0d90435528e04384c6314",
+      "sha256": "5bdc4059b44f3c5b3f9ed0e999dfc6f776381d3b477cd5300bd6ba01cc848311",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -71,9 +71,9 @@
     {
       "ruta": "README.md",
       "categoria": "documentacion",
-      "bytes": 9139,
+      "bytes": 9291,
       "lineas": 65,
-      "sha256": "73ab84ed71de3c9821fe02c5937c212136d7189529c10c5d14269a7d0da4972c",
+      "sha256": "7046646e652468da71bee825f99dc2a6a58195dac2583841eeaf7c387d6b3c47",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -112,9 +112,9 @@
     {
       "ruta": "app/package-lock.json",
       "categoria": "configuracion",
-      "bytes": 248118,
+      "bytes": 254993,
       "lineas": 6876,
-      "sha256": "9d4dafda0f4208716b9de93ac912b105041aabee03d8c8a9f45281cd23c34703",
+      "sha256": "3a55d1d9b2b41ebd39bc9486cb6028e80a899894b964c6752501ce0ce2cb445c",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -125,9 +125,9 @@
     {
       "ruta": "app/package.json",
       "categoria": "configuracion",
-      "bytes": 863,
+      "bytes": 899,
       "lineas": 37,
-      "sha256": "4ef649d9e1fa9be8845f762f87ab26d9f1113a90b85a4dbf654f7c1404cf270c",
+      "sha256": "d8d23d05e074708a7a6515807aff1817bbf09559fcf47bc082cfbd47afd5d0b1",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -138,9 +138,9 @@
     {
       "ruta": "app/playwright.config.ts",
       "categoria": "configuracion",
-      "bytes": 1695,
+      "bytes": 1736,
       "lineas": 42,
-      "sha256": "98ff082ca283e65181e2d3346480536a2a8ec9c97fdbd4ff622d5151e98f4160",
+      "sha256": "27cfeb7ed80b8e2e2b382e7e26a65f84865710185c1a0d952bf077a089a7cd6e",
       "simbolos": [
         {
           "tipo": "constante",
@@ -3212,9 +3212,9 @@
     {
       "ruta": "app/src/exportaciones/calendario.ts",
       "categoria": "codigo",
-      "bytes": 1846,
+      "bytes": 1887,
       "lineas": 42,
-      "sha256": "81aac6ff9f627107c73aa146923ab57025c404407eb0adbfb04a6802d77852ed",
+      "sha256": "904aa0c5273a980ca5dfdef0c448483afe15977156d3b6d9b2d4710ea265ae1d",
       "simbolos": [
         {
           "tipo": "funcion",
@@ -9588,9 +9588,9 @@
     {
       "ruta": "app/src/modulos/reservas/reservar-cita.ts",
       "categoria": "codigo",
-      "bytes": 13472,
+      "bytes": 13730,
       "lineas": 259,
-      "sha256": "7e627a56c8f5715a404909af2e06143442e0a30601fd4866353fa4cbf59a7b70",
+      "sha256": "4b487e089f98fc946d8fdc12043f85b964b64c6281126f4f7e7271050b3c8a54",
       "simbolos": [
         {
           "tipo": "constante",
@@ -10422,9 +10422,9 @@
     {
       "ruta": "app/src/pages/kpis.astro",
       "categoria": "pagina",
-      "bytes": 1728,
+      "bytes": 1766,
       "lineas": 41,
-      "sha256": "07805e0c57b0bd35bed0d10db28696200a29e1cc962df2417e80d30e43ccd4cd",
+      "sha256": "658436abba9f4534a5673e5fb4e1e54ef5bcef4f9f7d8a462d852238e5b6ba5e",
       "simbolos": [],
       "imports": [
         "../layouts/DisenoPrincipal.astro",
@@ -10554,9 +10554,9 @@
     {
       "ruta": "app/src/pages/perfil.astro",
       "categoria": "pagina",
-      "bytes": 2105,
+      "bytes": 2148,
       "lineas": 44,
-      "sha256": "517cbd3a8889f31af5111ea8956709f7f72e80139fd2fd8906b780da54c71b26",
+      "sha256": "eefb15c6ab3200b6402f65faa45a7f9af1a665f5f267287c4ab9085b60bc2647",
       "simbolos": [],
       "imports": [
         "../layouts/DisenoPrincipal.astro",
@@ -11012,9 +11012,9 @@
     {
       "ruta": "app/tests/e2e/administracion-visual.test.ts",
       "categoria": "pruebas",
-      "bytes": 11111,
+      "bytes": 11207,
       "lineas": 97,
-      "sha256": "1a5e9e5049cc03c753b3bcc0f6eba2f083b8ca8468c60e96ec9ed3ab8322f558",
+      "sha256": "b0e1a01e26bd96b6279249c4ba8043284b0f5ccc170b60b738f1e2bd7f5f7dc7",
       "simbolos": [
         {
           "tipo": "constante",
@@ -12516,9 +12516,9 @@
     {
       "ruta": "app/tests/e2e/cliente-visual.test.ts",
       "categoria": "pruebas",
-      "bytes": 7740,
+      "bytes": 7832,
       "lineas": 93,
-      "sha256": "a4aecd2dd326b3a3dcfad957e84043292dfbe48ae2954967581a0fe46d5ce178",
+      "sha256": "5c3929700fa289dc1bcc6c0b189753c7dd292417249d9a9f515d8cc4bebf6423",
       "simbolos": [
         {
           "tipo": "constante",
@@ -12876,9 +12876,9 @@
     {
       "ruta": "app/tests/e2e/cliente.test.ts",
       "categoria": "pruebas",
-      "bytes": 14203,
+      "bytes": 14414,
       "lineas": 212,
-      "sha256": "7e3c84ad36a4a449fc3d2ea14122d6a35441f5b6d177902e5b3414196d6d6c8f",
+      "sha256": "7cad22e9fdb260ff2be741ec399534582c334eed7d01925475450330cbcf4a28",
       "simbolos": [
         {
           "tipo": "funcion flecha",
@@ -13677,9 +13677,9 @@
     {
       "ruta": "app/tests/e2e/datos-cliente.ts",
       "categoria": "pruebas",
-      "bytes": 3741,
+      "bytes": 3795,
       "lineas": 55,
-      "sha256": "3b24dd978ede9739357d5fe7ec5c919ea674c4ea4563d045687b7a8e295eae77",
+      "sha256": "3adb342ccf62e9df70d4afaabc437d3c68c8a93a1dcf5d5b455d01c734f655af",
       "simbolos": [
         {
           "tipo": "funcion",
@@ -14159,9 +14159,9 @@
     {
       "ruta": "app/tests/e2e/personal-visual.test.ts",
       "categoria": "pruebas",
-      "bytes": 12264,
+      "bytes": 12355,
       "lineas": 92,
-      "sha256": "185af11204951e59191ceb8858f289613d34db5faaff2b2f97b16e9690d4ee6a",
+      "sha256": "1dc6461a492a8a82a8ba681cdc6f5695a1d88150f33a95401a5881b3734a6c34",
       "simbolos": [
         {
           "tipo": "constante",
@@ -15642,9 +15642,9 @@
     {
       "ruta": "app/tests/e2e/reservas.test.ts",
       "categoria": "pruebas",
-      "bytes": 8147,
+      "bytes": 8285,
       "lineas": 139,
-      "sha256": "c8b117c7197178873372836b01cb24a91bd4c6c8cbf8e18c78425f80a8b765cd",
+      "sha256": "62a4c97d2a05fa5adeb1c9bd8045eb9d0eb1b6690718f096b20488b4755f491a",
       "simbolos": [
         {
           "tipo": "funcion flecha",
@@ -16055,9 +16055,9 @@
     {
       "ruta": "app/tests/e2e/restantes-visual.test.ts",
       "categoria": "pruebas",
-      "bytes": 11119,
+      "bytes": 11218,
       "lineas": 100,
-      "sha256": "4dfbd4d49ea8988e5c06d573c6fc319399450c295ffef62747a1ca18f141b077",
+      "sha256": "16506d7805e90a70f8deae788d302959bbbe1e4c6dcf8054c8a3de1f16a360d3",
       "simbolos": [
         {
           "tipo": "constante",
@@ -16690,9 +16690,9 @@
     {
       "ruta": "app/tests/e2e/restantes.test.ts",
       "categoria": "pruebas",
-      "bytes": 6704,
+      "bytes": 6816,
       "lineas": 113,
-      "sha256": "b00b374ca7f5b5de51014f0c61a7d5a8425d8b1ec99cecdd59c81482d0c28d73",
+      "sha256": "9e30476ae7fdb80a78b087601df843f8de5140c9b51c2fcf70a1a0d8dd755fb1",
       "simbolos": [
         {
           "tipo": "funcion flecha",
@@ -17015,9 +17015,9 @@
     {
       "ruta": "app/tests/e2e/servidor-estatico.mjs",
       "categoria": "pruebas",
-      "bytes": 4250,
+      "bytes": 4337,
       "lineas": 88,
-      "sha256": "9d201d362b3a867b6706ba3c49ae5d6177a926911b877b647870d3066e590251",
+      "sha256": "57c1c6692e839c928b5accb45c5d05f3fefd9696c4fbc223d9ef573b38baff3e",
       "simbolos": [
         {
           "tipo": "constante",
@@ -17600,9 +17600,9 @@
     {
       "ruta": "app/tests/unit/fechas.test.ts",
       "categoria": "pruebas",
-      "bytes": 1778,
+      "bytes": 1805,
       "lineas": 28,
-      "sha256": "0aadbec3858f7fb36ef9ea6192739d049483b0da866ea48fcbed5868b1c2f6de",
+      "sha256": "473921171185086844ee36439a11bcf7cf57e752ad7a7aa9531436d59e7ab0d1",
       "simbolos": [
         {
           "tipo": "funcion flecha",
@@ -18087,9 +18087,9 @@
     {
       "ruta": "docs/auditoria-final/00-estado-inicial.md",
       "categoria": "documentacion",
-      "bytes": 1815,
+      "bytes": 1828,
       "lineas": 14,
-      "sha256": "5a897dc45d1b1635ccd54bed0073d676842d9ae6fbf91bb095c7bce3eccda0ce",
+      "sha256": "2c1daddde262788ae6bf4267ea9c609941ef19f23e3aac59d5bfecd5afa9949c",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18100,9 +18100,9 @@
     {
       "ruta": "docs/auditoria-final/01-revision-fases.md",
       "categoria": "documentacion",
-      "bytes": 3949,
+      "bytes": 3969,
       "lineas": 21,
-      "sha256": "4b0e7556bb667077aea4909d76f8a73e6a4cabee75b600378b5199afde35e5d0",
+      "sha256": "645d9d6d976d34b420aed2d38616a03579b61cc4415fade10483d96b6584732e",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18113,9 +18113,9 @@
     {
       "ruta": "docs/auditoria-final/02-revision-codigo.md",
       "categoria": "documentacion",
-      "bytes": 6368,
+      "bytes": 6403,
       "lineas": 36,
-      "sha256": "806146b938f374897a868aaa5253719a11e7a685c332d349afb18e717c4882c9",
+      "sha256": "8db50af7ed52f7d34f1e8b1ffbaba0d6c67c6f555b06c9c7a347ce8aba789382",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18126,9 +18126,9 @@
     {
       "ruta": "docs/auditoria-final/03-revision-funcional.md",
       "categoria": "documentacion",
-      "bytes": 7041,
+      "bytes": 7093,
       "lineas": 53,
-      "sha256": "1910b8383cc7369bb71d12d9c1c64a9a0c42dcdcb7e9354792dcae563bcd4239",
+      "sha256": "74b5a6494b160a5463035099fd07994ccd565b8b9c7caa94005de791458264c7",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18139,9 +18139,9 @@
     {
       "ruta": "docs/auditoria-final/04-revision-visual.md",
       "categoria": "documentacion",
-      "bytes": 4609,
+      "bytes": 4660,
       "lineas": 52,
-      "sha256": "ef790607c382fdca2eab533c8b77053a7e9472484e8a293abba5d8bd049d57cd",
+      "sha256": "0d7851d95bb7b955c854e98b0a41fe893c75dd2555185d4cb5985e768fbe6784",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18152,9 +18152,9 @@
     {
       "ruta": "docs/auditoria-final/05-revision-seguridad.md",
       "categoria": "documentacion",
-      "bytes": 3926,
+      "bytes": 3952,
       "lineas": 27,
-      "sha256": "9aaf85486ceb80a0365d127722b1718bff63c07c90a0f9aea2073e6288107f68",
+      "sha256": "79aa756d1a71e5ba4d150d15187f66a1950870b5fc3412adb16d1ef3f5f3c521",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18165,9 +18165,9 @@
     {
       "ruta": "docs/auditoria-final/06-pruebas-ejecutadas.md",
       "categoria": "documentacion",
-      "bytes": 6429,
+      "bytes": 6472,
       "lineas": 44,
-      "sha256": "64aa9ab08d299ddc62db920df883271160efd0d91782ee912984fd7dd99b4610",
+      "sha256": "5218c15aef9d2b4a846b2ebb6f44c77b91df33771622291437207e1301b0cdc3",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18178,9 +18178,9 @@
     {
       "ruta": "docs/auditoria-final/07-errores-y-correcciones.md",
       "categoria": "documentacion",
-      "bytes": 6374,
-      "lineas": 25,
-      "sha256": "6f8f15e9863f94c09cc7e4c7d0fab3c2734ddded7677a8301e59f04308c3b545",
+      "bytes": 6881,
+      "lineas": 27,
+      "sha256": "3139e317f64e2727133647389472bccbc739e1f2d789cdfd7a829a3d4bbf0b3f",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18191,9 +18191,9 @@
     {
       "ruta": "docs/auditoria-final/08-entrega-github.md",
       "categoria": "documentacion",
-      "bytes": 5153,
+      "bytes": 5184,
       "lineas": 32,
-      "sha256": "2c1e643c0fb3b33d4a2b1f86e7cb024735abbd272d07ed1014d2fb93ea285a56",
+      "sha256": "a355f20205adb80a19b44eb7d7f84badfc5d10b1a60b01cb3b0adc7d74fa171b",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18204,9 +18204,9 @@
     {
       "ruta": "docs/auditoria-final/09-informe-final.md",
       "categoria": "documentacion",
-      "bytes": 4938,
+      "bytes": 5093,
       "lineas": 34,
-      "sha256": "eecad5061069a729e63bc181c219375536519811b8893b41b2acbd4677ea910c",
+      "sha256": "44cf5a4d9270cead37068173bf5a07541de35e325f5bead7a286ea9c1a107e02",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18217,9 +18217,9 @@
     {
       "ruta": "docs/auditoria-final/control-total.md",
       "categoria": "documentacion",
-      "bytes": 5981,
+      "bytes": 6011,
       "lineas": 31,
-      "sha256": "c958d5f60cd2b7d3584bea779b836c76e770352598f8e79eab5fc9c4578d6303",
+      "sha256": "80618c41f32b15c3987fd7d2ac8e05dc924fd4d3713ca8da86df75f0aec8497f",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18230,9 +18230,9 @@
     {
       "ruta": "docs/auditoria-final/correspondencias-archivos.json",
       "categoria": "documentacion",
-      "bytes": 33537,
+      "bytes": 34825,
       "lineas": 1289,
-      "sha256": "bece4dd05e2371f6a9f43d40b065d2ff76d73851956c9f1865f96165a37afc8e",
+      "sha256": "defe80e66d0152f123f0c16039fee453e70fab2dfeb5aa873d6756393c2c4213",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18243,9 +18243,9 @@
     {
       "ruta": "docs/auditoria-final/correspondencias-archivos.md",
       "categoria": "documentacion",
-      "bytes": 9446,
+      "bytes": 9546,
       "lineas": 101,
-      "sha256": "5a8ec1802dbe4a10e375bdbfb27fc46fd7979642a1574c225ae7c0affe7c6871",
+      "sha256": "9c3180eaa1245b3ee1bc09e682a98e3fc02898396eec529586631430fe5b6155",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18256,9 +18256,9 @@
     {
       "ruta": "docs/auditoria-final/dependencias-resultados.json",
       "categoria": "documentacion",
-      "bytes": 351,
+      "bytes": 377,
       "lineas": 27,
-      "sha256": "d8702fc538ab9d7c9c839e0988e3314fa35ee9436ab297222288e2d260f88f05",
+      "sha256": "b772b441b5814e4379eaf774cd8d4d7603e56fbedc9e76250e0cafc25299b0a3",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18269,9 +18269,9 @@
     {
       "ruta": "docs/auditoria-final/original-recuento-ast.json",
       "categoria": "documentacion",
-      "bytes": 554,
+      "bytes": 575,
       "lineas": 22,
-      "sha256": "ec9333d2011a9fe4f1dc2d1d9237f2c9791687d7df6d6be3d985c6d452d9fb26",
+      "sha256": "1c39fda01218a8d5589c075bb1ed541c514a4d67a6da6bd249c9a712d1f3591a",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18282,9 +18282,9 @@
     {
       "ruta": "docs/control-avance.md",
       "categoria": "documentacion",
-      "bytes": 22386,
+      "bytes": 22860,
       "lineas": 264,
-      "sha256": "8babc5f6dfd7dee8e44af05a9e9c921d9349d0530263dc03926e21245c7a4019",
+      "sha256": "b6477a1d4383747b591ac5fa72ab08db58979d41ebc662d3eaa980dd436b3d44",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18295,9 +18295,9 @@
     {
       "ruta": "docs/control-cobertura.md",
       "categoria": "documentacion",
-      "bytes": 16170,
+      "bytes": 16291,
       "lineas": 122,
-      "sha256": "ff752e0feaf0f200a9c7d04b70b4c1f6846a3f4002575e20b507d02a671c9efa",
+      "sha256": "5b9b088e70d08217b75de97d99435f5c25eaa16d1aa0efde4908f9d3a40c8121",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18321,9 +18321,9 @@
     {
       "ruta": "docs/estado-pausa.md",
       "categoria": "documentacion",
-      "bytes": 14837,
-      "lineas": 118,
-      "sha256": "795c01c0d49d1d57d0476ef765fc59d2e66c5766b2bb38ebc8aff71be0c845f6",
+      "bytes": 15707,
+      "lineas": 122,
+      "sha256": "404d9233917a99ddfc3713eb282c006fb09d15b8e9e3d0ac682ee32a3747007a",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18425,9 +18425,9 @@
     {
       "ruta": "docs/fase-github-publicacion.md",
       "categoria": "documentacion",
-      "bytes": 11539,
-      "lineas": 77,
-      "sha256": "11e28561bfa854f45c8e08e86d5d5bb25503a6835ee717864dab9f69d86e0c7d",
+      "bytes": 13002,
+      "lineas": 91,
+      "sha256": "d42b8954a07787f8542e59bc309c39189925fa16eb5d0ce9bd224ee1c74f4a9f",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18438,9 +18438,9 @@
     {
       "ruta": "docs/funcionalidades.md",
       "categoria": "documentacion",
-      "bytes": 1237,
+      "bytes": 1244,
       "lineas": 8,
-      "sha256": "268ba41fff63589512ef0a63902d72dfdef540409c6f36ddf3c54fa6d515cf2f",
+      "sha256": "19307467bb2cfa9309ec8afa8d11506596e6fcd2e00b5576fd0e754e5085c969",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18451,9 +18451,9 @@
     {
       "ruta": "docs/mapa-archivos.md",
       "categoria": "documentacion",
-      "bytes": 3739,
+      "bytes": 3768,
       "lineas": 30,
-      "sha256": "111f333737cb6929ca701bc4e2661aca073dcbbbfafff19d5bacacf901a6ace8",
+      "sha256": "06efd1563b6bca8bf5ac0002972f75cea612e863e3b15cc33bddec073242d9f5",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18464,9 +18464,9 @@
     {
       "ruta": "docs/mapa-simbolos.md",
       "categoria": "documentacion",
-      "bytes": 3855,
+      "bytes": 3883,
       "lineas": 29,
-      "sha256": "c2c5868a15f2c8f21e7eb45987c79eb82655373ebc46f76478ad5da014cf988b",
+      "sha256": "3d1e97bf3d90f1da4d4574c16cecb0094c62df1f52a9bf7a64bad20195b31f71",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18477,9 +18477,9 @@
     {
       "ruta": "docs/rutas-y-roles.md",
       "categoria": "documentacion",
-      "bytes": 1961,
+      "bytes": 1994,
       "lineas": 34,
-      "sha256": "eceff6369db7d547a1bc2983e22ac12e3940d49da77992c3eda6d7b12c4d9a0b",
+      "sha256": "8caf0cac12b20dc31318e72a37ff24adbc9e69ff13ed60a40c7ded0999b57cc7",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18490,9 +18490,9 @@
     {
       "ruta": "firebase.json",
       "categoria": "configuracion",
-      "bytes": 749,
+      "bytes": 793,
       "lineas": 45,
-      "sha256": "2fbf782eb58d3555e2a71164d19fdef065ff06608b5bb6917f8bfa777c84398d",
+      "sha256": "a010406da91efbe333b1f41f93eb8cf309b64c81cfd5d16d9e705203ba1a60d2",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18571,9 +18571,9 @@
     {
       "ruta": "functions/package-lock.json",
       "categoria": "configuracion",
-      "bytes": 128980,
+      "bytes": 132434,
       "lineas": 3455,
-      "sha256": "33d388f581a5eb9f6367df47b7d704bad2279378f52ec2ff2cb2461b0d00f4ba",
+      "sha256": "50547fa0e1e0465f933348d8b72c5bf82b8a972c4b9fe39382458bec009c0d3b",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18584,9 +18584,9 @@
     {
       "ruta": "functions/package.json",
       "categoria": "configuracion",
-      "bytes": 1436,
+      "bytes": 1464,
       "lineas": 29,
-      "sha256": "ba504b020869e93e69a00d69dcc1034652f4fc7469b7f0754f927ef554be312a",
+      "sha256": "08d4525914ff14cfcaef29838ad6dc34a8d0c786fb10a10ca57a846564e1abf9",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18639,9 +18639,9 @@
     {
       "ruta": "functions/scripts/emuladores-locales.mjs",
       "categoria": "herramienta",
-      "bytes": 1284,
+      "bytes": 1304,
       "lineas": 21,
-      "sha256": "4d625a8fc57d1854f66e325ebc751573b5dc42667d9a9e338e1feb3bbb803601",
+      "sha256": "319362c8d99bf6431516251ff9b36ea1ffec08ad308a9a36b892d696748368c4",
       "simbolos": [
         {
           "tipo": "constante",
@@ -19390,9 +19390,9 @@
     {
       "ruta": "functions/src/cuentas.js",
       "categoria": "codigo",
-      "bytes": 4668,
+      "bytes": 4752,
       "lineas": 85,
-      "sha256": "856ff6c8dca431235c912a8501b7d1cb1bf17d606e11e1e2e62ce3ccd9a15b9e",
+      "sha256": "3ffe8300674356a8188701b4edb80ccb28d981a602c3b0d97a8cd63101a2dc96",
       "simbolos": [
         {
           "tipo": "funcion",
@@ -21157,9 +21157,9 @@
     {
       "ruta": "functions/src/firebase.js",
       "categoria": "codigo",
-      "bytes": 1096,
+      "bytes": 1122,
       "lineas": 27,
-      "sha256": "991365a27dad586b3c486b99127cd765d0302ee9e5495fbc8dbf947384e2b125",
+      "sha256": "e58b3893673d79b80c3f946500a13a8d0da84bc5668905a75a1614590badf8ac",
       "simbolos": [
         {
           "tipo": "funcion",
@@ -23515,9 +23515,9 @@
     {
       "ruta": "functions/tests/emuladores/administracion.test.mjs",
       "categoria": "pruebas",
-      "bytes": 12153,
+      "bytes": 12301,
       "lineas": 149,
-      "sha256": "d597be246338db6b209b2837010e0773d73bec22b33deea00ef22ac6b30e8c4c",
+      "sha256": "247815e44166755609a3bb186603eef6e89cb3831fdeb4bafb02f6f7713d580c",
       "simbolos": [
         {
           "tipo": "constante",
@@ -24684,9 +24684,9 @@
     {
       "ruta": "functions/tests/emuladores/ejecutar-pruebas.mjs",
       "categoria": "pruebas",
-      "bytes": 2083,
+      "bytes": 2115,
       "lineas": 33,
-      "sha256": "7b8583ad93bd8f2974c1292cced46ad9be82b5a33a36fc274dd04d74a22cae66",
+      "sha256": "75377c6db069d6ea6cef44afd9acfaed5ee886135db29b9da4d756da1658b31d",
       "simbolos": [
         {
           "tipo": "constante",
@@ -27616,9 +27616,9 @@
     {
       "ruta": "package-lock.json",
       "categoria": "configuracion",
-      "bytes": 277656,
+      "bytes": 285506,
       "lineas": 7851,
-      "sha256": "8d179335fc295dfdec540bfee529940871bc098c2603fd20974676c798b60452",
+      "sha256": "f57dfb06965076543d7b754d5e78270fb7f8e941165dad3f6beb5a1642cf55d8",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -27629,9 +27629,9 @@
     {
       "ruta": "package.json",
       "categoria": "configuracion",
-      "bytes": 923,
+      "bytes": 948,
       "lineas": 26,
-      "sha256": "e769f7ef49a96edb93348818fd0eea51225ea443e1972d6ec180255eddc68965",
+      "sha256": "7f5619ef78b02d576f800dbf4d1993acec5ec501ee84c5ba192c3352a7557c4a",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -27642,9 +27642,9 @@
     {
       "ruta": "scripts/auditar-proyecto.mjs",
       "categoria": "herramienta",
-      "bytes": 8169,
+      "bytes": 8266,
       "lineas": 98,
-      "sha256": "75e63340298235628f39dcfd459f07fc1300c79dd793c4c37948f3570dd71109",
+      "sha256": "571d46a637ff8ecc34a5302d493bc3128a0a44e7aeaf8aaaf6b0e643817e4e00",
       "simbolos": [
         {
           "tipo": "constante",
@@ -28077,9 +28077,9 @@
     {
       "ruta": "scripts/preparar-entrega.ps1",
       "categoria": "herramienta",
-      "bytes": 2722,
+      "bytes": 2767,
       "lineas": 46,
-      "sha256": "daf0595aa80111afa63b7ad9610da33e16059c8742aa246748bf86f4d299f988",
+      "sha256": "45748d83fca366cb98b111f8018492882e420d069deef22c161d596ea5a951fb",
       "simbolos": [],
       "imports": [],
       "exports": [],

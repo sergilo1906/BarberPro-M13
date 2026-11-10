@@ -2,7 +2,7 @@
 
 ## Auditoría extra vigente
 
-La revisión independiente se registra en [auditoria-final](auditoria-final/00-estado-inicial.md). Corrige problemas contrastados y vuelve a ejecutar pruebas. No afirma que las doce fases anteriores estuvieran cerradas; los resultados finales y límites se consultan en 09-informe-final.md y control-total.md de esa carpeta. Las correcciones permanecen locales por instrucción del usuario.
+La revisión independiente se registra en [auditoria-final](auditoria-final/00-estado-inicial.md). Corrige problemas contrastados y vuelve a ejecutar pruebas. No afirma que las doce fases anteriores estuvieran cerradas; los resultados finales y límites se consultan en 09-informe-final.md y control-total.md de esa carpeta. Tras la autorización posterior «Subelo todo al github», las correcciones y el candidato verificado están publicados; [publicación](fase-github-publicacion.md) recoge la comprobación pública y el cierre de AF-12. La valoración C y los demás pendientes siguen vigentes.
 
 ## Estado vigente — fase 9 en curso y publicación
 

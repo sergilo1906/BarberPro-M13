@@ -1,6 +1,10 @@
 # Estado de pausa — BarberPro Studio M13
 
-## Solicitud vigente — auditoría extra integral
+## Estado vigente — auditoría publicada por autorización posterior
+
+La solicitud posterior «Subelo todo al github» autoriza publicar la fuente auditada y el candidato validado. El repositorio público y la publicación preliminar auditoria-2026-11-10 están verificados: main conserva las correcciones y documentación, la etiqueta apunta al commit auditado 5a7de04 y los tres adjuntos descargados sin autenticación coinciden por SHA256. Véase [publicación](fase-github-publicacion.md). No se modifica el original ni se despliega Firebase. La valoración C permanece; AF-12 se cierra y los pendientes académicos, de trazabilidad y dependencias moderadas siguen registrados. No se inicia otra fase ni se certifica una pausa de tres horas.
+
+## Registro anterior — auditoría extra integral
 
 Se recibe la fase extra de auditoría el 10 de noviembre de 2026, sobre 5b11204 y Git inicialmente limpio. Sus resultados y correcciones locales se registran en [auditoria-final](auditoria-final/00-estado-inicial.md). Esta solicitud prohíbe publicar automáticamente: no se hará push. No presupone que las doce fases estén terminadas ni certifica las pausas anteriores. La pausa posterior a fase 9 continúa sin iniciarse.
 
