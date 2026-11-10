@@ -1,6 +1,14 @@
 # Estado de pausa — BarberPro Studio M13
 
-## Estado vigente — ejecución del prompt maestro, fase 8
+## Estado vigente — fuente publicada, fase 9 en curso
+
+Actualización para la solicitud de subir todo a GitHub: se conservan y publican también los cambios parciales de fase 9. [Estado de fase 9](fase-9-estado-en-curso.md) distingue implementación, decisiones y validación todavía pendiente. Las cuatro vistas ya no contienen el aviso de reserva de fase; eso no acredita su validación completa. La pausa posterior a fase 9 sigue sin iniciarse. La referencia de publicación y sus comprobaciones están en [publicación GitHub](fase-github-publicacion.md).
+
+Verificación del avance conservado: npm test termina con salida 0, 43 unitarias, 67 integraciones y 212 pruebas de navegador correctas, sin omisiones; build de 27 páginas. Los servicios de pruebas se detienen al terminar. Las pruebas específicas pendientes constan en el estado de fase 9. El siguiente trabajo de desarrollo sigue siendo completar fase 9; no comenzar fase 10 ni asumir cumplida una pausa.
+
+Los apartados siguientes conservan los registros anteriores; sus cifras y estados corresponden a cada cierre histórico.
+
+## Registro del cierre de fase 8
 
 El usuario ha autorizado ejecutar consecutivamente fases 8–12 mediante el prompt maestro `78c0d929-d83f-4035-9340-a30cdff98054`, sustituyendo las paradas entre fases de las solicitudes anteriores. La pausa obligatoria de tres horas corresponde al cierre de fase 9 y todavía no se ha iniciado.
 

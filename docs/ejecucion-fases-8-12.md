@@ -7,7 +7,7 @@ Base comprobada: commit `0815d8d`, Git limpio, informe y log final de fase 7 (33
 | Fase | Estado vigente | Condición para continuar |
 |---|---|---|
 | 8 — Administración | Completada localmente: 35 unitarias, 57 integraciones, 212 navegador (68 visuales), build de 27 páginas. | Guardar cierre y continuar a fase 9. |
-| 9 — Funciones restantes | Pendiente. | Cerrar fase 8; revisar inventario completo. |
+| 9 — Funciones restantes | En implementación, tras cierre de fase 8 y publicación verificada. Se han revisado panel/KPIs/CSV, diagnóstico, recordatorios y herramientas demo originales. | Probar funciones restantes, actualizar inventario y guardar antes de la pausa. |
 | Pausa | Pendiente; no iniciada ni certificada. | Guardar fases 8–9, detener servicios y registrar hora fiable. Si no se garantiza espera y reanudación, detenerse de forma segura. |
 | 10 — Comparación | Pendiente. | Pausa completa comprobable, sin bloqueos críticos. |
 | 11 — Auditoría y limpieza | Pendiente. | Cerrar comparación y revisar avisos de dependencias, secretos, concurrencia y todos los originales. |

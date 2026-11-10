@@ -1,5 +1,11 @@
 # Control de avance — implementación
 
+## Estado vigente — fase 9 en curso y publicación
+
+La publicación solicitada incluye la implementación parcial de panel, KPIs, CSV, diagnóstico, recordatorios y demo. Se conservan los cierres anteriores; no se marca fase 9 completada. Consultar [estado de fase 9](fase-9-estado-en-curso.md) y [publicación](fase-github-publicacion.md) para evidencia y pendientes. La pausa de tres horas posterior a fase 9 todavía no se ha iniciado.
+
+## Registro histórico del cierre de fase 8
+
 ## Estado vigente — fase 8 completada en entorno local
 
 Administración implementada en siete rutas: portada, usuarios/roles, equipo, servicios, reglas de agenda, resumen semanal y entrada del personal. Son 23 vistas funcionales y cuatro reservadas para fase 9, conservando las 27 URLs y 18 guards. Se reutilizan los nueve exports originales reconstruidos y tres profesionales; se añaden tres escrituras administrativas protegidas. No se relajan reglas ni se despliega nada.

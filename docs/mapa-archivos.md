@@ -24,4 +24,4 @@ La base pública, componentes, configuración y recursos están inventariados en
 | Consultas Firebase originales | app/src/datos/personas.ts, catalogo.ts, configuracion.ts | Acceso separado de controladores y presentación. |
 | Modelos any de administración | app/src/modelos/cuentas.ts y agenda.ts | FichaEquipo, UsuarioAdministrable, ServicioAdministrable y operaciones tipadas. |
 
-Originales aún correspondientes a fase 9: panel, KPIs, exportación CSV, diagnóstico, recordatorios y herramientas demo. Sus decisiones finales y la tabla completa de 27 rutas se ampliarán al cerrar ese bloque. No se afirma cobertura global del 100 %.
+Los originales correspondientes a fase 9 (panel, KPIs, exportación CSV, diagnóstico, recordatorios y herramientas demo) tienen una implementación inicial cuyas correspondencias están en [estado de fase 9](fase-9-estado-en-curso.md). Sus decisiones finales y la tabla completa de 27 rutas se ampliarán al cerrar ese bloque. No se afirma cobertura global del 100 %.

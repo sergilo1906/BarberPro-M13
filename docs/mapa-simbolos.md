@@ -22,3 +22,5 @@ Las propuestas de fase 2 son una referencia, no una certificación de nombres im
 | adminRevision / expectedRevision / requestId | Campos adicionales de control | Comparación de versión y recuperación sin duplicados; ausencia de revisión equivale a cero. |
 
 No se crean clases artificiales. Los selectores e IDs originales siguen enlazando las mismas pantallas; los data-atributos nuevos solo sirven para asignar texto o localizar elementos, no para conceder permisos.
+
+Las correspondencias provisionales de estadísticas, exportación y herramientas backend de fase 9 están en [su registro en curso](fase-9-estado-en-curso.md). La revisión de los 3.122 registros históricos continúa pendiente y no se sustituye por esa tabla parcial.

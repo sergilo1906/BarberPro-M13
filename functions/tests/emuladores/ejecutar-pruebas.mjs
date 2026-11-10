@@ -20,6 +20,7 @@ ejecutar(["--test", "--test-concurrency=1", "functions/tests/emuladores/permisos
 ejecutar(["--test", "functions/tests/emuladores/cliente.test.mjs"]);
 ejecutar(["--test", "functions/tests/emuladores/profesional.test.mjs"]);
 ejecutar(["--test", "functions/tests/emuladores/administracion.test.mjs"]);
+ejecutar(["--test", "functions/tests/emuladores/restantes.test.mjs"]);
 const carpetaApp = fileURLToPath(new URL("../../../app/", import.meta.url));
 ejecutar(["node_modules/astro/astro.js", "build"], carpetaApp);
 ejecutar(["node_modules/@playwright/test/cli.js", "test"], carpetaApp);

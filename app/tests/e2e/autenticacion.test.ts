@@ -107,7 +107,7 @@ for (const rol of ["client", "worker", "manager", "admin"]) {
       const permitido = rol === "admin" || (rutasPersonal.includes(ruta) && rol !== "client") || (rutasGestion.includes(ruta) && rol === "manager");
       await page.goto(ruta + "/");
       if (permitido) {
-        const titulos: Record<string, string> = { "/agenda": "Agenda diaria", "/panel-barbero": "Panel del profesional", "/setup-barber": "Horarios", "/bloqueos": "Bloqueos y excepciones", "/index-admin": "Agenda de hoy", "/admin": "Administracion", "/admin/usuarios": "Usuarios y roles", "/equipo": "Equipo", "/servicios": "Servicios", "/horarios": "Resumen de horarios", "/branding": "Reglas de la agenda" };
+        const titulos: Record<string, string> = { "/agenda": "Agenda diaria", "/panel-barbero": "Panel del profesional", "/setup-barber": "Horarios", "/bloqueos": "Bloqueos y excepciones", "/index-admin": "Agenda de hoy", "/admin": "Administracion", "/admin/usuarios": "Usuarios y roles", "/equipo": "Equipo", "/servicios": "Servicios", "/horarios": "Resumen de horarios", "/branding": "Reglas de la agenda", "/panel": "Resumen del dia", "/kpis": "Resumen", "/export": "Listado de citas", "/debug": "Mantenimiento interno" };
         if (titulos[ruta]) await expect(page.getByRole("heading", { name: titulos[ruta], exact: true })).toBeVisible();
         else await expect(page.locator('[data-estado="no-disponible"]')).toBeVisible();
       } else {

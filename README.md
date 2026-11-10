@@ -2,7 +2,7 @@
 
 Aplicación reconstruida con Astro estático, Firebase Auth, perfiles, cuatro roles, reservas, área profesional y administración. Solo funciona contra emuladores locales. El original permanece intacto.
 
-**Reconstrucción en curso:** fases 3–8 implementadas y verificadas localmente; fases 9–12 pendientes. Publicar la fuente en GitHub no constituye un despliegue ni una entrega final. El desarrollo se ha realizado con asistencia de Codex; el registro académico debe completarse con las horas y revisiones reales.
+**Reconstrucción en curso:** fases 3–8 implementadas y verificadas localmente; fase 9 en curso y fases 10–12 pendientes. Se conserva también la implementación parcial de estadísticas, CSV, recordatorios y herramientas demo, con su [estado y pendientes](docs/fase-9-estado-en-curso.md). Publicar la fuente en GitHub no constituye un despliegue ni una entrega final. El desarrollo se ha realizado con asistencia de Codex; el registro académico debe completarse con las horas y revisiones reales.
 
 Fuente pública: [sergilo1906/BarberPro-M13](https://github.com/sergilo1906/BarberPro-M13). La [verificación de publicación](docs/fase-github-publicacion.md) registra el historial revisado y la instalación desde una clonación limpia.
 
@@ -31,7 +31,7 @@ npm run emulators
 npm run datos:local
 ```
 
-El servidor solo escucha en loopback. Las seis páginas públicas funcionan sin Firebase. Login, registro, verificación y perfil están implementados; `/reservar` permite consultar disponibilidad, confirmar y descargar ICS. `/mis-citas` muestra citas propias, filtros e historia y permite cancelar o cambiar. El profesional dispone de `/panel-barbero`, `/agenda`, `/setup-barber` y `/bloqueos`, con semanas, publicación, copia, estados y bloques que afectan a disponibilidad. Administración incluye `/admin`, `/admin/usuarios`, `/equipo`, `/servicios`, `/branding`, `/horarios` e `/index-admin`. Las cuatro vistas `/panel`, `/kpis`, `/export` y `/debug` conservan su aviso hasta la fase 9.
+El servidor solo escucha en loopback. Las seis páginas públicas funcionan sin Firebase. Login, registro, verificación y perfil están implementados; `/reservar` permite consultar disponibilidad, confirmar y descargar ICS. `/mis-citas` muestra citas propias, filtros e historia y permite cancelar o cambiar. El profesional dispone de `/panel-barbero`, `/agenda`, `/setup-barber` y `/bloqueos`, con semanas, publicación, copia, estados y bloques que afectan a disponibilidad. Administración incluye `/admin`, `/admin/usuarios`, `/equipo`, `/servicios`, `/branding`, `/horarios` e `/index-admin`. Las cuatro vistas `/panel`, `/kpis`, `/export` y `/debug` ya incorporan la implementación de fase 9, todavía pendiente de completar su validación funcional y visual específica. `/debug` conserva el contenido informativo original y no añade controles de mantenimiento.
 
 ## Firebase
 
@@ -42,6 +42,8 @@ En una terminal ejecutar `npm run emulators` y en otra `npm run dev`. Los emulad
 Para explorar reservas con datos ficticios, con los emuladores ya arrancados ejecutar **explícitamente** `npm run datos:local` antes de `npm run dev`. Este comando reinicia reservas, locks, bloqueos y notificaciones del proyecto demo local y prepara catálogo/profesionales/semanas de prueba; no debe usarse para conservar una sesión de pruebas anterior. Rechaza configuración productiva. La cuenta ficticia verificada `reservas-client@example.test` permite acceder a `/reservar`; sus credenciales de ejemplo están definidas en los fixtures de pruebas. No son credenciales de servicios reales. Las fechas se calculan en Europe/Madrid y cubren los próximos 30 días.
 
 `npm run test:emuladores` arranca los tres servicios, ejecuta las pruebas de reglas/Auth/Functions, compila con configuración demo, prueba navegador en escritorio/móvil y detiene los servicios. **Usar una instancia de emuladores desechable y los puertos libres**: las pruebas borran exclusivamente los datos ficticios de ese proyecto. El lanzador rechaza otro proyecto y otros hosts. La salida de una prueba fallida se conserva como fallo.
+
+En una máquina nueva, instalar antes Chromium para las pruebas con `npm --prefix app exec -- playwright install chromium`. El perfil móvil se emula en Chromium; no representa una prueba con Safari o un teléfono físico. Las comparaciones visuales con el original solo se ejecutan si existe su compilación de referencia en la ubicación local indicada por Playwright; al clonar únicamente este repositorio se omiten expresamente. El original no es necesario para instalar, compilar ni ejecutar la aplicación reconstruida. Consultar la [arquitectura](docs/arquitectura.md) para la organización de la fuente.
 
 El emulador imprime los enlaces de correo ficticios. Se pueden abrir localmente o consultar `http://127.0.0.1:9099/emulator/v1/projects/demo-barberpro-m13/oobCodes` y abrir `/verify?mode=verifyEmail&oobCode=CODIGO`. No se envían correos reales. Para las pruebas se crean cuentas públicas ficticias `fase4-{client,worker,manager,admin,pendiente}@example.test`; su contraseña de fixture consta en los tests. No representan usuarios reales. No se siembran cuentas al arrancar normalmente la aplicación.
 

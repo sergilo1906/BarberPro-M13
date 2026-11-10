@@ -1,15 +1,16 @@
 ---
 import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
 ---
+<DisenoPrincipal noindex title="Mantenimiento interno">
+  <section class="max-w-3xl mx-auto space-y-4">
+    <header class="bg-white border rounded p-5 space-y-2">
+      <h1 class="text-xl font-semibold">Mantenimiento interno</h1>
+      <p class="text-sm text-gray-600">Esta ruta se deja fuera del uso diario y no forma parte del flujo normal de la barberia.</p>
+    </header>
 
-<DisenoPrincipal title="Mantenimiento interno" noindex>
-  <section class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg p-6 space-y-4" data-estado="no-disponible" data-fase-pendiente="9">
-    <h1 class="text-xl font-semibold text-gray-900">Mantenimiento interno</h1>
-    <p role="status" class="text-sm text-gray-600">Esta seccion todavia no esta disponible.</p>
-    <p class="text-sm text-gray-600">No se han habilitado operaciones ni acceso a datos privados. Puedes volver al inicio o consultar la ayuda.</p>
-    <div class="flex flex-wrap gap-3 text-sm">
-      <a href="/" class="rounded border px-3 py-2 hover:bg-gray-50">Ir al inicio</a>
-      <a href="/ayuda" class="rounded bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">Ayuda</a>
+    <div class="bg-white border rounded p-5 text-sm text-gray-700 space-y-2">
+      <p>Si has llegado aqui por una URL directa, vuelve al panel de gestion para seguir trabajando con normalidad.</p>
+      <a href="/admin" class="inline-block text-blue-700 underline">Volver a administracion</a>
     </div>
   </section>
 </DisenoPrincipal>

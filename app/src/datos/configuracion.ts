@@ -1,7 +1,8 @@
 import { doc, getDoc } from "firebase/firestore";
 import { obtenerServiciosFirebase } from "./firebase";
+import type { ConfiguracionAgenda } from "../modelos/aplicacion";
 
-export async function obtenerConfiguracionAgenda() {
+export async function obtenerConfiguracionAgenda(): Promise<ConfiguracionAgenda> {
   const servicios = obtenerServiciosFirebase();
   if (!servicios) throw new Error("Firebase local desactivado.");
   const documento = await getDoc(doc(servicios.baseDatos, "config", "app"));

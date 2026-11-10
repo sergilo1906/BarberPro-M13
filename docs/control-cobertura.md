@@ -1,5 +1,11 @@
 # Control de cobertura
 
+## Estado vigente — fase 9 en curso
+
+Los módulos restantes ya tienen una implementación inicial, conservada en GitHub a petición del usuario. Las cuatro rutas antes reservadas contienen la nueva interfaz; falta cerrar su validación específica. No se actualiza artificialmente el porcentaje funcional ni se certifica el inventario global. Véase [estado provisional de fase 9](fase-9-estado-en-curso.md). Las cifras de fase 8 se conservan debajo como resultado histórico.
+
+## Registro histórico del cierre de fase 8
+
 ## Estado vigente — fase 8 completada en entorno local
 
 Administración: siete páginas reconstruidas y seis módulos administrativos previstos, más entrada del personal. Se conservan 27 URLs: 23 funcionales y cuatro reservadas para fase 9. Hay 162 archivos propios versionables, 17 nuevos y 29 modificados en fase 8. Existen físicamente 119/132 destinos planificados (118 versionables y .env.local demo ignorado); faltan 13 y hay 44 adiciones justificadas. El 90,15 % de presencia no es cobertura funcional ni de pruebas. Los mapas vigentes registran las correspondencias reales; la revisión completa del inventario histórico no se da por realizada todavía.

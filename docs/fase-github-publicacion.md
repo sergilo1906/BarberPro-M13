@@ -2,6 +2,18 @@
 
 Fecha: 10 de noviembre de 2026, UTC. Autorización vigente: «subelo todo al github» y «Continua», junto con la solicitud anterior que especificaba repositorio público, propietario autenticado y rama main. Esta instrucción posterior permite publicar la fuente comprobada aunque la reconstrucción de las fases 9–12 todavía esté pendiente; no se presenta como entrega final ni despliegue de la aplicación.
 
+## Actualización — conservación de todos los cambios disponibles
+
+La continuación de la subida incorpora también el avance de fase 9: panel diario, KPIs, listado/CSV, diagnóstico, recordatorios y herramientas demo, junto con tests y documentación. El README y [estado de fase 9](fase-9-estado-en-curso.md) distinguen la implementación disponible de su cierre todavía pendiente. La arquitectura actual se describe dentro de este mismo repositorio, sin exigir acceso a la planificación externa.
+
+La fuente preparada contiene 177 archivos versionados. No se incluyen artefactos, dependencias instaladas, configuración privada ni el original. Las ramas locales anteriores no contienen commits ausentes de main: se conserva todo su historial sin force push ni reescrituras. Los 94 hashes de referencia del proyecto original siguen coincidiendo.
+
+Se ejecutó de nuevo `npm test` sobre este avance, con salida 0: checker Astro/TypeScript sobre 104 archivos sin diagnósticos, sintaxis backend correcta, 43 unitarias (28 frontend y 15 backend), 67 integraciones y 212 pruebas de navegador correctas, sin omisiones. Incluye diez integraciones nuevas de recordatorios/demo y las 68 comparaciones visuales de fases anteriores. La compilación genera las 27 páginas. El lanzador terminó y detuvo emuladores y servidores de pruebas. El log completo se conserva ignorado en .verificacion/github-pendientes-verificacion.log.
+
+Estas pruebas de navegador no incorporan todavía recorridos específicos ni comparaciones visuales de los cuatro controladores nuevos de fase 9; sus accesos por rol sí entran en la matriz existente. Por eso esta publicación no declara cerrada fase 9. Siguen pendientes la pausa posterior, fases 10–12 y el ZIP final. Los avisos de seguridad de dependencias heredadas no se han corregido durante la subida.
+
+Gitleaks volvió a revisar el historial completo y la exportación exacta de los archivos preparados, con salida 0 y sin fugas detectadas. Los informes redactados quedan fuera de Git. Los apartados siguientes conservan la evidencia de la primera publicación y su clonación limpia, anterior a este avance; no se atribuyen a esa copia las pruebas nuevas.
+
 ## Repositorio comprobado
 
 - Nombre: BarberPro-M13.

@@ -3,7 +3,7 @@ import { onCall, HttpsError } from "firebase-functions/v2/https";
 import { formatInTimeZone } from "date-fns-tz";
 import { obtenerServiciosAdministrativos } from "./firebase.js";
 import { comprobarSesion, comprobarUid, comprobarIdentidadTransaccion } from "./permisos.js";
-import { obtenerConfiguracionAgenda } from "./configuracion.js";
+import { obtenerConfiguracionAgenda, validarVentanasRecordatorio } from "./configuracion.js";
 import { ESTADOS_OCUPANTES } from "./disponibilidad.js";
 import { obtenerOperacionAgenda, leerResultadoOperacion, guardarResultadoOperacion } from "./control-agenda.js";
 
@@ -28,8 +28,7 @@ export function validarReglasAgenda(datos) {
   try { new Intl.DateTimeFormat("es", { timeZone: timezone }).format(); } catch { throw new HttpsError("invalid-argument", "Zona horaria no valida."); }
   if (typeof datos.cancelWindowHours !== "number" || !Number.isFinite(datos.cancelWindowHours) || datos.cancelWindowHours <= 0
       || !Array.isArray(datos.reminderWindowsHours) || !datos.reminderWindowsHours.length || datos.reminderWindowsHours.length > 20) throw new HttpsError("invalid-argument", "Reglas de agenda no validas.");
-  for (const horas of datos.reminderWindowsHours) if (typeof horas !== "number" || !Number.isFinite(horas) || horas <= 0) throw new HttpsError("invalid-argument", "Avisos previos no validos.");
-  return { timezone, cancelWindowHours: datos.cancelWindowHours, reminderWindowsHours: [...new Set(datos.reminderWindowsHours)] };
+  return { timezone, cancelWindowHours: datos.cancelWindowHours, reminderWindowsHours: validarVentanasRecordatorio(datos.reminderWindowsHours, "invalid-argument") };
 }
 async function guardarAdministracion(identidad, tipo, entrada) {
   if (!["manager", "admin"].includes(identidad.rol) || (tipo === "reglas" && identidad.rol !== "admin")) throw new HttpsError("permission-denied", "Acceso denegado.");

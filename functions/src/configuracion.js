@@ -1,6 +1,15 @@
 import { HttpsError } from "firebase-functions/v2/https";
 import { obtenerServiciosAdministrativos } from "./firebase.js";
 
+export function validarVentanasRecordatorio(valores, codigo = "failed-precondition") {
+  if (!Array.isArray(valores) || !valores.length || valores.length > 20) throw new HttpsError(codigo, "Avisos previos no validos.");
+  for (const horas of valores) {
+    const limite = Date.now() + horas * 3600000 + 900000;
+    if (typeof horas !== "number" || !Number.isFinite(horas) || horas <= 0 || !Number.isFinite(limite) || limite > 253402300799999) throw new HttpsError(codigo, "Avisos previos no validos.");
+  }
+  return [...new Set(valores)];
+}
+
 export async function obtenerConfiguracionAgenda(transaccion = null) {
   const referencia = obtenerServiciosAdministrativos().baseDatos.doc("config/app");
   const documento = transaccion ? await transaccion.get(referencia) : await referencia.get();
