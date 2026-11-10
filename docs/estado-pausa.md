@@ -70,9 +70,9 @@ La planificación de fase 2 está disponible en ../BarberPro-M13-Planificacion/d
 
 Instrucciones completas recibidas, disponibles en estos adjuntos locales:
 
-- Fase 4: adjuntos de la conversaci?n/8d216d7a-4f62-4f98-adb9-a7d4e0791746/Pasted text.txt
-- Fase 5: adjuntos de la conversaci?n/f26e9feb-e85b-448f-a673-17bdad699c3d/Pasted text.txt
-- Fase 6: adjuntos de la conversaci?n/f81452f1-d256-43e0-bb83-ed2140a7ae35/Pasted text.txt
+- Fase 4: adjuntos de la conversación/8d216d7a-4f62-4f98-adb9-a7d4e0791746/Pasted text.txt
+- Fase 5: adjuntos de la conversación/f26e9feb-e85b-448f-a673-17bdad699c3d/Pasted text.txt
+- Fase 6: adjuntos de la conversación/f81452f1-d256-43e0-bb83-ed2140a7ae35/Pasted text.txt
 
 ## Pendientes y límites de la evidencia
 
