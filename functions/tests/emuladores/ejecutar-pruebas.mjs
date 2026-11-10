@@ -17,6 +17,7 @@ function ejecutar(argumentos, carpetaTrabajo = raizProyecto) {
 }
 
 ejecutar(["--test", "--test-concurrency=1", "functions/tests/emuladores/permisos.test.mjs", "functions/tests/emuladores/reservas-consistencia.test.mjs", "functions/tests/emuladores/reservas-concurrencia.test.mjs"]);
+ejecutar(["--test", "functions/tests/emuladores/cliente.test.mjs"]);
 const carpetaApp = fileURLToPath(new URL("../../../app/", import.meta.url));
 ejecutar(["node_modules/astro/astro.js", "build"], carpetaApp);
 ejecutar(["node_modules/@playwright/test/cli.js", "test"], carpetaApp);

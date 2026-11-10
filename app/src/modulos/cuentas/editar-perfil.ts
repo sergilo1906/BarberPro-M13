@@ -1,8 +1,9 @@
-import { cerrarSesion, enviarVerificacion, observarSesion, obtenerUsuarioActual } from "../../datos/sesion";
+import { cerrarSesion, enviarVerificacion, observarSesion, obtenerUsuarioActual, esperarEstadoSesion } from "../../datos/sesion";
 import { crearPerfilUsuario, guardarPerfilUsuario } from "../../datos/personas";
 import { obtenerEtiquetaRol } from "../../comun/permisos";
 import { comprobarContacto } from "../../comun/formularios";
 import { explicarErrorAcceso, explicarErrorVerificacion } from "../../comun/errores";
+import { mostrarAviso } from "../../comun/avisos";
 
 const correo = document.getElementById("perfil-email");
 const verificacion = document.getElementById("perfil-verif");
@@ -17,6 +18,11 @@ let guardando = false;
 let cerrando = false;
 let perfilEditado = false;
 let ultimoUid = "";
+let revisionIdentidad = 0;
+
+function mismaIdentidad(uid: string, revision: number): boolean {
+  return revision === revisionIdentidad && obtenerUsuarioActual().usuario?.uid === uid;
+}
 
 function mostrarMensaje(texto: string): void { if (mensaje) mensaje.textContent = texto; }
 
@@ -35,13 +41,25 @@ observarSesion((estado) => {
   if (estado.estado === "cargando") return;
   const usuario = estado.usuario;
   if (estado.estado !== "autenticado" || !usuario) {
+    revisionIdentidad++;
     if (correo) correo.textContent = "";
     if (rol) rol.textContent = "";
     if (nombre) nombre.value = "";
     if (telefono) telefono.value = "";
     ultimoUid = "";
     perfilEditado = false;
+    guardando = false;
+    if (guardar) guardar.disabled = false;
+    if (reenviar) reenviar.disabled = false;
+    mostrarMensaje("");
+    document.getElementById("toast-root")?.remove();
     return;
+  }
+  if (ultimoUid !== usuario.uid) {
+    revisionIdentidad++; mostrarMensaje(""); perfilEditado = false;
+    guardando = false;
+    if (guardar) guardar.disabled = false;
+    if (reenviar) reenviar.disabled = false;
   }
   if (correo) correo.textContent = usuario.correo;
   if (rol) rol.textContent = obtenerEtiquetaRol(usuario.rol);
@@ -64,25 +82,37 @@ guardar?.addEventListener("click", async () => {
   if (errorValidacion) { mostrarMensaje(errorValidacion); return; }
   guardando = true;
   guardar.disabled = true;
+  const revision = revisionIdentidad;
+  const nuevoNombre = nombre.value;
+  const nuevoTelefono = telefono.value;
   mostrarMensaje("Guardando cambios...");
   try {
-    await crearPerfilUsuario(usuario.uid, usuario.correo, nombre.value, telefono.value);
-    await guardarPerfilUsuario(usuario.uid, nombre.value, telefono.value);
-    perfilEditado = false;
-    if (obtenerUsuarioActual().usuario?.uid === usuario.uid) mostrarMensaje("Cambios guardados.");
-  } catch (error) { mostrarMensaje(explicarErrorAcceso(error)); }
-  finally { guardando = false; guardar.disabled = false; }
+    await crearPerfilUsuario(usuario.uid, usuario.correo, nuevoNombre, nuevoTelefono);
+    await esperarEstadoSesion();
+    if (!mismaIdentidad(usuario.uid, revision)) return;
+    await guardarPerfilUsuario(usuario.uid, nuevoNombre, nuevoTelefono);
+    await esperarEstadoSesion();
+    if (mismaIdentidad(usuario.uid, revision)) {
+      perfilEditado = nombre.value !== nuevoNombre || telefono.value !== nuevoTelefono;
+      mostrarMensaje("Cambios guardados."); mostrarAviso("Perfil guardado.", "success");
+    }
+  } catch (error) { if (mismaIdentidad(usuario.uid, revision)) mostrarMensaje(explicarErrorAcceso(error)); }
+  finally { if (revision === revisionIdentidad) { guardando = false; guardar.disabled = false; } }
 });
 
 reenviar?.addEventListener("click", async () => {
   if (reenviar.disabled) return;
+  const uid = obtenerUsuarioActual().usuario?.uid;
+  if (!uid) return;
+  const revision = revisionIdentidad;
   reenviar.disabled = true;
   mostrarMensaje("Enviando correo de verificacion...");
   try {
     await enviarVerificacion();
-    mostrarMensaje("Correo enviado. Revisa tambien la carpeta de spam.");
-  } catch (error) { mostrarMensaje(explicarErrorVerificacion(error)); }
-  finally { reenviar.disabled = false; }
+    await esperarEstadoSesion();
+    if (mismaIdentidad(uid, revision)) mostrarMensaje("Correo enviado. Revisa tambien la carpeta de spam.");
+  } catch (error) { if (mismaIdentidad(uid, revision)) mostrarMensaje(explicarErrorVerificacion(error)); }
+  finally { if (revision === revisionIdentidad) reenviar.disabled = false; }
 });
 
 salir?.addEventListener("click", async () => {

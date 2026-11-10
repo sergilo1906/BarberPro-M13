@@ -10,4 +10,6 @@ for (const [nombre, valor] of Object.entries(valoresLocales)) {
 const { prepararCuentas, prepararAgenda } = await import("../tests/emuladores/datos-reservas.mjs");
 await prepararCuentas();
 await prepararAgenda();
+const { prepararDatosCliente } = await import("../tests/emuladores/datos-cliente.mjs");
+await prepararDatosCliente();
 console.log("Datos ficticios preparados. Se han reiniciado las reservas, locks, bloqueos y notificaciones de los emuladores demo locales.");

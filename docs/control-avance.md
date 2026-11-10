@@ -1,4 +1,12 @@
-# Control de avance — implementación de fase 5
+# Control de avance — implementación
+
+## Estado vigente — cierre de fase 6
+
+Área del cliente conectada: reserva, Mis citas con filtros/historia, cancelación, cambio recuperable, perfil y navegación. Son 12 vistas funcionales y 15 privadas de negocio reservadas, con 27 rutas conservadas y nueve exports backend de trece. `npm test` final: salida 0, check sin diagnósticos, 28 unitarias, 37 integraciones y 142 pruebas de navegador (34 visuales incluidas, ninguna omitida); build de 27 páginas. Los 94 hashes del original coinciden. No hay operaciones productivas ni servidores activos al cierre.
+
+El informe de [fase 6](fase-6-cliente.md) registra inventario, incidencias, cambios visuales justificados y avisos heredados de dependencias. La nueva instrucción del 10 de noviembre autoriza reanudar con fase 7, después de guardar este cierre documental. No se dan por implementadas fases 7–11 por haber recibido sus adjuntos.
+
+## Registro histórico de fase 5
 
 ## Estado vigente — fase 5
 

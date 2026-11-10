@@ -27,7 +27,7 @@ npm run emulators
 npm run datos:local
 ```
 
-El servidor solo escucha en loopback. Las seis páginas públicas funcionan sin Firebase. Login, registro, verificación y perfil están implementados; `/reservar` permite consultar disponibilidad, confirmar una reserva y descargar ICS. Las otras 16 vistas privadas conservan el aviso de indisponibilidad y sus permisos. La pantalla completa de Mis citas corresponde a fase 6; sus servicios de consulta, cancelación y reprogramación ya existen y se prueban contra el backend real.
+El servidor solo escucha en loopback. Las seis páginas públicas funcionan sin Firebase. Login, registro, verificación y perfil están implementados; `/reservar` permite consultar disponibilidad, confirmar y descargar ICS. `/mis-citas` muestra citas propias, filtros e historia y permite cancelar o cambiar con los servicios reales de fase 5. Las otras 15 vistas privadas conservan el aviso de indisponibilidad y sus permisos.
 
 ## Firebase
 
@@ -47,4 +47,6 @@ No se incluyen comandos de despliegue ni claves administrativas. Las escrituras 
 
 ## Estado y documentación
 
-Consultar [fase 5](docs/fase-5-reservas-disponibilidad.md), [cobertura actual](docs/control-cobertura.md), [avance](docs/control-avance.md) y los informes históricos de [fase 4](docs/fase-4-autenticacion-usuarios-roles.md) y [fase 3](docs/fase-3-implementacion.md). Mis citas, operativa profesional y administración general continúan en sus fases. No se avanza automáticamente a fase 6. Las versiones heredadas conservan avisos de seguridad de dependencias; ver el informe antes de plantear una publicación.
+Para explorar el listado hay cuentas ficticias verificadas `cliente-escritorio@example.test` y `cliente-movil@example.test`, con contraseña de fixture `Prueba123!`; incluyen ocho citas de diferentes estados, antiguas/futuras y datos legados. `cliente-vacio@example.test` comienza sin citas. Todas se preparan solo al ejecutar explícitamente `npm run datos:local`.
+
+Consultar [fase 6](docs/fase-6-cliente.md), [fase 5](docs/fase-5-reservas-disponibilidad.md), [cobertura](docs/control-cobertura.md), [avance](docs/control-avance.md) e informes históricos de fases 3–4. La operativa profesional y administración continúan en sus fases autorizadas. Las versiones heredadas conservan avisos de seguridad de dependencias; ver los informes antes de plantear una publicación.

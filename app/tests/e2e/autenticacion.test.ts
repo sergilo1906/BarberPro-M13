@@ -171,7 +171,7 @@ test("el cambio de rol actualiza una sesion abierta y retira el menu profesional
 test("sin JavaScript las paginas privadas no muestran contenido ni datos de usuario", async ({ browser }) => {
   const contexto = await browser.newContext({ javaScriptEnabled: false });
   const pagina = await contexto.newPage();
-  for (const ruta of ["/perfil", "/admin", "/reservar"]) {
+  for (const ruta of ["/perfil", "/admin", "/reservar", "/mis-citas"]) {
     await pagina.goto("http://127.0.0.1:4331" + ruta);
     await expect(pagina.locator("main")).toBeHidden();
     if (await pagina.locator("#perfil-email").count()) {

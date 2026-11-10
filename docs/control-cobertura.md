@@ -1,4 +1,23 @@
-# Control de cobertura — fase 5
+# Control de cobertura
+
+## Estado vigente — cierre de fase 6
+
+127 archivos propios versionables: 10 nuevos y 20 modificados respecto al cierre de fase 5. Existen 103 de los 132 destinos previstos (102 versionables y un .env.local demo ignorado); faltan 29. Hay 25 adiciones justificadas frente al plan. El 78,03 % de presencia física no es un porcentaje funcional ni de pruebas.
+
+| Elemento | Identificado/reorganizado/implementado | Probado y límite |
+|---|---|---|
+| Mis citas original | Mis-citas, cambiar-cita, estados compartidos y SDK existente | Consulta propia, ocho estados/datos representativos, filtros, orden, error y recarga. |
+| Historia y detalle | Lista única ascendente y detalle en tarjeta, como original | Pasadas/futuras/canceladas/terminales; sin inventar pantallas separadas. |
+| Cancelar/cambiar | Interfaz conectada a operaciones transaccionales de fase 5 | Recorrido completo, margen/roles, ocupación, reintento después del commit y recarga. |
+| Perfil | Controlador anterior revisado y protegido por identidad | Datos válidos/inválidos, persistencia, denegación y cambio de cuenta con escritura pendiente. |
+| Sesión y privacidad | Guard central, revisiones y limpieza | Consulta retenida durante cambio de identidad; lista/detalle/perfil ajenos y campos protegidos denegados. |
+| Visual | Original aislado y su render sin SDK | Ocho comparaciones nuevas; 34 en la suite completa. Modal largo permite scroll como corrección accesible. |
+| Nombres y contratos | Correspondencias en informe de fase 6 | Rutas/DOM/campos/exports conservados; no se afirma ejecución de 3.122 símbolos originales. |
+| Pendientes | Operativa profesional, administración y auxiliares | Fases 7–12; avisos heredados de dependencias y validación productiva pendientes. |
+
+Resultado completo ejecutado: check limpio, 28 unitarias, 37 integraciones, 142 pruebas de navegador y build de 27 páginas; salida 0, ninguna omitida. Original: 94 hashes iguales. Se conserva el historial anterior sin presentarlo como estado vigente. [Inventario y evidencias](fase-6-cliente.md).
+
+## Registro histórico de fase 5
 
 ## Estado vigente
 

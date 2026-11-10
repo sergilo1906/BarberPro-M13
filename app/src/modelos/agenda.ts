@@ -10,7 +10,12 @@ export interface SolicitudReserva {
 export interface ResultadoReserva { ok: boolean; bookingId: string; barberUid: string; status: EstadoCita; startAt: string; endAt: string; }
 export interface Cita {
   id: string; userId: string; userEmail: string; userName: string; userPhone: string;
-  barberUid: string; serviceId: string; serviceSnapshot: Omit<Servicio, "id">;
+  barberUid: string; serviceId: string; serviceSnapshot: Partial<Omit<Servicio, "id">> & { id?: string };
   durationMin: number; dateStr: string; timeStr: string; customerNotes: string; status: EstadoCita;
-  startAt: Timestamp; endAt: Timestamp; lockKeys: string[]; rescheduledFrom?: string; rescheduledTo?: string;
+  startAt?: Timestamp; endAt?: Timestamp; lockKeys: string[]; rescheduledFrom?: string; rescheduledTo?: string;
+  serviceName?: string; service?: string;
+}
+export interface SolicitudCambio {
+  bookingId: string; newDateStr: string; newTimeStr: string;
+  barberPreference: string | null; anyBarber: boolean; requestId: string;
 }

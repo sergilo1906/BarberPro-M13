@@ -1,5 +1,17 @@
 # Estado de pausa — BarberPro Studio M13
 
+## Registro vigente — 10 de noviembre de 2026, 05:56 UTC
+
+Las fases 4 y 5 están guardadas en Git. La implementación de fase 6 terminó `npm test` con salida 0 el 9 de noviembre a las 20:22:22 UTC: 28 unitarias, 37 integraciones y 142 pruebas de navegador, más build/check correctos. Al recibir la nueva instrucción se conservaban sus cambios sin commit y faltaba su informe; se completa ese registro antes de iniciar fase 7. Véase [fase 6](fase-6-cliente.md).
+
+Se recibieron solicitudes de pausa de tres horas y adjuntos de fases 7–11 y GitHub mientras la fase 6 aún estaba en ejecución/cierre. No equivalen a trabajo realizado: fases 7–11 y publicación GitHub no se han implementado/ejecutado. La afirmación de la segunda pausa de que 7–9 estaban terminadas no coincide con el código. Se conservan las solicitudes en la conversación, sin adelantarlas.
+
+No se inició ni se puede certificar una espera activa de tres horas. Entre el último log completo (9 de noviembre, 20:22 UTC) y la comprobación actual han transcurrido más de nueve horas; esto acredita el intervalo entre registros, no una sesión de espera mantenida. La nueva solicitud expresa de fase 7 del 10 de noviembre se considera reanudación autorizada, según su propia condición de inicio. No se inicia fase 8 automáticamente.
+
+No hay servidores/emuladores activos en los puertos del proyecto al reanudar. Se conservan todos los archivos; el original mantiene 94 hashes. Pendientes: avisos heredados de dependencias (incluidos tres críticos en app), validación productiva excluida y operativa de fases posteriores. No se han consultado/modificado usuarios reales ni desplegado nada.
+
+Siguiente trabajo autorizado: **FASE 7 — Área del profesional y gestión de agenda**, solicitud adjunta `2c9ad1f7-4074-4d27-ab57-0cdd92ecd2be/Pasted text.txt`, referencia 11 horas sin imputación ficticia. Antes de programar: revisar original/mapas, comprobar el cierre de fase 6 y usar exclusivamente emuladores demo. Al terminar fase 7, presentar informe y detenerse. Las instrucciones de pausa anteriores se conservan debajo como historial.
+
 > Referencia actual: el usuario autorizó expresamente fase 5 el 9 de noviembre de 2026. Su resultado y pendientes están en [fase 5](fase-5-reservas-disponibilidad.md). No se ha iniciado fase 6 ni se programa una reanudación automática. Este archivo y sus anotaciones anteriores se conservan como historial de pausa; consultar control-avance para el estado del código.
 
 > Registro histórico del 8 de noviembre. El 9 de noviembre de 2026 se recibió una instrucción nueva y expresa para implementar fase 4. Se ha trabajado exclusivamente en esa fase; su estado actual y limitaciones están en [el informe](fase-4-autenticacion-usuarios-roles.md) y [control de avance](control-avance.md). No se han implementado fases 5, 6 ni 7. Las instrucciones de reanudación y estados anteriores de este registro se conservan como historial y ya no describen el código actual.

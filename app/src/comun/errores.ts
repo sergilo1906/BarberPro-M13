@@ -39,3 +39,25 @@ export function explicarErrorReserva(error: unknown): string {
   if (codigo === "functions/failed-precondition") return "La seleccion ya no es valida. Revisa los datos y actualiza la disponibilidad.";
   return "No se pudo confirmar la respuesta. Comprueba la reserva antes de volver a enviarla.";
 }
+
+export function esRespuestaReservaIncierta(error: unknown): boolean {
+  return !["functions/permission-denied", "functions/unauthenticated", "functions/not-found", "functions/already-exists", "functions/invalid-argument", "functions/failed-precondition", "functions/resource-exhausted"].includes(obtenerCodigoError(error));
+}
+
+export function explicarErrorCancelacion(error: unknown, margen: number): string {
+  const codigo = obtenerCodigoError(error);
+  if (codigo === "functions/permission-denied" || codigo === "functions/unauthenticated") return "Ahora mismo tu cuenta no puede cancelar esta cita.";
+  if (codigo === "functions/failed-precondition") return "La cita ya no admite cancelacion o no cumple el margen de " + margen + " h. Actualiza el listado.";
+  if (codigo === "functions/not-found") return "La reserva no existe. Actualiza el listado.";
+  return "No se pudo confirmar la cancelacion. Actualiza el listado antes de volver a intentarlo.";
+}
+
+export function explicarErrorCambioCita(error: unknown, margen: number): string {
+  const codigo = obtenerCodigoError(error);
+  if (codigo === "functions/permission-denied" || codigo === "functions/unauthenticated") return "Ahora mismo tu cuenta no puede cambiar esta cita.";
+  if (codigo === "functions/failed-precondition") return "La cita o la seleccion ya no admiten el cambio. Revisa el margen de " + margen + " h y actualiza el listado.";
+  if (codigo === "functions/already-exists") return "Ese hueco ya no esta libre.";
+  if (codigo === "functions/not-found") return "La reserva o el servicio ya no existen.";
+  if (codigo === "functions/invalid-argument") return "Revisa la nueva fecha y hora.";
+  return "No se pudo confirmar el cambio. Pulsa Comprobar cambio antes de iniciar otro.";
+}

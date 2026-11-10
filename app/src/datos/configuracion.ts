@@ -8,5 +8,7 @@ export async function obtenerConfiguracionAgenda() {
   const datos = documento.data() || {};
   const timezone = String(datos.timezone || datos.tz || "Europe/Madrid");
   new Intl.DateTimeFormat("es", { timeZone: timezone }).format();
-  return { timezone, cancelWindowHours: Number(datos.cancelWindowHours ?? 12) };
+  const cancelWindowHours = Number(datos.cancelWindowHours ?? 12);
+  if (!Number.isFinite(cancelWindowHours) || cancelWindowHours < 0) throw new Error("Margen de cancelacion no valido.");
+  return { timezone, cancelWindowHours };
 }

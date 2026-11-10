@@ -1,8 +1,8 @@
 {
   "name": "barberpro-m13",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
-  "description": "BarberPro Studio — reservas y disponibilidad locales de fase 5",
+  "description": "BarberPro Studio — area del cliente integrada de fase 6",
   "engines": {
     "node": ">=20.20.2",
     "npm": ">=10"
