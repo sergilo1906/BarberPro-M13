@@ -1,5 +1,21 @@
 # Publicación de la fuente en GitHub
 
+## Publicación posterior de la auditoría — 10 de noviembre de 2026
+
+El usuario ha autorizado expresamente «Subelo todo al github» después de recibir el resultado de la auditoría. Esta autorización posterior sustituye su prohibición de publicar automáticamente durante la revisión; no autoriza un despliegue de la aplicación ni operaciones productivas.
+
+Se publica la fuente auditada `5a7de04193e67e0f3a19372bc5a3e96a116541bb`, con 200 archivos, y se conservan los registros históricos siguientes. Los commits posteriores modifican documentación de publicación y regeneran su inventario; no cambian frontend, backend, reglas, dependencias ni pruebas validadas. Se mantiene la rama principal main sin reescribir historial.
+
+La descarga se prepara en https://github.com/sergilo1906/BarberPro-M13/releases/tag/auditoria-2026-11-10 como publicación preliminar del commit auditado. Incluye únicamente el candidato final BarberPro-M13-auditoria-2026-11-10-r1.zip, su .sha256 y validacion-auditoria-2026-11-10.md. SHA256 del ZIP: `297e6bc0be1bfc1b004d7cf7df07c95db2512d014024e2099f67e6fb1b357d11`. No se reconstruye ni se altera el paquete validado. Sus informes describen el cierre de auditoría previo a esta nueva autorización; este registro y las notas de publicación recogen el estado posterior.
+
+Evidencia ya ejecutada en la auditoría: checker sin diagnósticos, build de 27 páginas, 44 unitarias, 69 integraciones y 284 navegador correctas, con 126 comparaciones visuales incluidas. El ZIP de ejecución superó instalación y pruebas aisladas; el candidato final r1 superó instalación con Node 22.23.4, checker, build, 44 unitarias y preview HTTP. Los límites y las pruebas no repetidas están distinguidos en los informes. No se vuelven a atribuir esas pruebas a los cambios exclusivamente documentales de esta publicación.
+
+La valoración académica continúa siendo OPCIÓN C — NO APTO TODAVÍA: la trazabilidad semántica individual y cierres globales siguen pendientes; npm registra 14 nodos moderados en raíz y nueve en Functions, ninguno alto/crítico, y cero alertas en app. La publicación remota resolverá AF-12 tras verificar sus referencias y descargas. La comprobación final de esta operación se registrará después de subir los archivos.
+
+Se excluyen dependencias instaladas, compilaciones, cachés, logs, datos de emuladores, configuración privada, archivos del original y paquetes intermedios. Los valores de fixtures son públicos y ficticios. Se revisan secretos en el contenido exacto a publicar y el historial, sin mostrar valores privados.
+
+## Registro histórico de las publicaciones anteriores
+
 Fecha: 10 de noviembre de 2026, UTC. Autorización vigente: «subelo todo al github» y «Continua», junto con la solicitud anterior que especificaba repositorio público, propietario autenticado y rama main. Esta instrucción posterior permite publicar la fuente comprobada aunque la reconstrucción de las fases 9–12 todavía esté pendiente; no se presenta como entrega final ni despliegue de la aplicación.
 
 ## Actualización — conservación de todos los cambios disponibles

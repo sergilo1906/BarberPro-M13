@@ -1,5 +1,7 @@
 # Entrega, secretos y GitHub
 
+Actualización posterior al cierre de auditoría: el usuario autoriza «Subelo todo al github». La publicación de las correcciones y el candidato verificado se registra en [publicación GitHub](../fase-github-publicacion.md). Los apartados siguientes conservan el estado comprobado antes de esta autorización; los informes incluidos en el ZIP permanecen congelados y no se altera el paquete validado.
+
 ## Estado inicial y fuente
 
 No existía ZIP final de la reconstrucción al recibir la auditoría. El ZIP del directorio padre es el original y se conserva intacto. No se afirma haber validado una entrega de fase 12 inexistente.

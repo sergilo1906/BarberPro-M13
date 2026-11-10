@@ -7,7 +7,7 @@ Registro por archivo; no equivale a revision semantica completa. Los dos informe
 | .firebaserc | configuracion | 15 | 0 | 0 | Sin errores de parseo detectados |
 | .gitignore | configuracion | 25 | 0 | 0 | Sin errores de parseo detectados |
 | .nvmrc | configuracion | 2 | 0 | 0 | Sin errores de parseo detectados |
-| README.md | documentacion | 63 | 0 | 0 | Sin errores de parseo detectados |
+| README.md | documentacion | 65 | 0 | 0 | Sin errores de parseo detectados |
 | app/.env.example | configuracion | 12 | 0 | 0 | Sin errores de parseo detectados |
 | app/astro.config.mjs | configuracion | 9 | 0 | 1 | Sin errores de parseo detectados |
 | app/package-lock.json | configuracion | 6876 | 0 | 0 | Sin errores de parseo detectados |
@@ -131,8 +131,8 @@ Registro por archivo; no equivale a revision semantica completa. Los dos informe
 | docs/auditoria-final/05-revision-seguridad.md | documentacion | 27 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/06-pruebas-ejecutadas.md | documentacion | 44 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/07-errores-y-correcciones.md | documentacion | 25 | 0 | 0 | Sin errores de parseo detectados |
-| docs/auditoria-final/08-entrega-github.md | documentacion | 30 | 0 | 0 | Sin errores de parseo detectados |
-| docs/auditoria-final/09-informe-final.md | documentacion | 32 | 0 | 0 | Sin errores de parseo detectados |
+| docs/auditoria-final/08-entrega-github.md | documentacion | 32 | 0 | 0 | Sin errores de parseo detectados |
+| docs/auditoria-final/09-informe-final.md | documentacion | 34 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/control-total.md | documentacion | 31 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/correspondencias-archivos.json | documentacion | 1289 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/correspondencias-archivos.md | documentacion | 101 | 0 | 0 | Sin errores de parseo detectados |
@@ -149,7 +149,7 @@ Registro por archivo; no equivale a revision semantica completa. Los dos informe
 | docs/fase-7-profesional-agenda.md | documentacion | 204 | 0 | 0 | Sin errores de parseo detectados |
 | docs/fase-8-administracion.md | documentacion | 118 | 0 | 0 | Sin errores de parseo detectados |
 | docs/fase-9-estado-en-curso.md | documentacion | 40 | 0 | 0 | Sin errores de parseo detectados |
-| docs/fase-github-publicacion.md | documentacion | 61 | 0 | 0 | Sin errores de parseo detectados |
+| docs/fase-github-publicacion.md | documentacion | 77 | 0 | 0 | Sin errores de parseo detectados |
 | docs/funcionalidades.md | documentacion | 8 | 0 | 0 | Sin errores de parseo detectados |
 | docs/mapa-archivos.md | documentacion | 30 | 0 | 0 | Sin errores de parseo detectados |
 | docs/mapa-simbolos.md | documentacion | 29 | 0 | 0 | Sin errores de parseo detectados |
