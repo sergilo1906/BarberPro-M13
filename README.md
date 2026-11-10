@@ -4,6 +4,8 @@ Aplicación reconstruida con Astro estático, Firebase Auth, perfiles, cuatro ro
 
 **Reconstrucción en curso:** fases 3–8 implementadas y verificadas localmente; fases 9–12 pendientes. Publicar la fuente en GitHub no constituye un despliegue ni una entrega final. El desarrollo se ha realizado con asistencia de Codex; el registro académico debe completarse con las horas y revisiones reales.
 
+Fuente pública: [sergilo1906/BarberPro-M13](https://github.com/sergilo1906/BarberPro-M13). La [verificación de publicación](docs/fase-github-publicacion.md) registra el historial revisado y la instalación desde una clonación limpia.
+
 ## Instalación local
 
 Usar Node 20.20.2 (`.nvmrc`) y npm 10. Con Node ya disponible:

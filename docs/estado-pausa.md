@@ -6,7 +6,9 @@ El usuario ha autorizado ejecutar consecutivamente fases 8–12 mediante el prom
 
 Fase 8 completada localmente en la rama `fases-8-12-entrega`, partiendo de `0815d8d`. `npm test`: salida 0, 35 unitarias, 57 integraciones y 212 navegador (68 visuales), build de 27 páginas. La suite ha terminado y detenido sus emuladores/servidores. Los informes [fase 8](fase-8-administracion.md) y [ejecución](ejecucion-fases-8-12.md) distinguen lo probado de lo pendiente. El usuario ha autorizado posteriormente subir el proyecto a GitHub; se preparará una publicación de la fuente segura indicando las fases todavía pendientes.
 
-Siguiente paso: guardar el commit de fase 8, revisar fuente e historial y publicar la fuente autorizada; después continuar fase 9. Al cerrar fase 9, registrar hora fiable, conservar cambios y detener servicios antes de iniciar la pausa real si el entorno admite espera y reanudación. No empezar fase 10 sin verificar las tres horas; si la espera se interrumpe, conservar este registro y detenerse de forma segura. Los avisos de dependencias siguen pendientes de auditoría final. Original y datos productivos no se modifican.
+Fase 8 guardada en 0e9855c. La fuente está publicada en https://github.com/sergilo1906/BarberPro-M13, pública y con main, primer commit publicado e02d596. Fuente e historial revisados con Gitleaks sin fugas detectadas. Clonación e instalación limpia comprobadas: check, build de 27 páginas y 35 unitarias; preview HTTP 200 y detenido. Véase [publicación](fase-github-publicacion.md). La rama principal local actual es main y conserva las ramas de trabajo anteriores.
+
+Siguiente paso: continuar fase 9. Al cerrarla, registrar hora fiable, conservar cambios y detener servicios antes de iniciar la pausa real si el entorno admite espera y reanudación. No empezar fase 10 sin verificar las tres horas; si la espera se interrumpe, conservar este registro y detenerse de forma segura. Los avisos de dependencias siguen pendientes de auditoría final. Original y datos productivos no se modifican.
 
 ## Registro histórico del cierre de fase 7
 
