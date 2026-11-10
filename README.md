@@ -1,6 +1,6 @@
 # BarberPro Studio — M13
 
-Aplicación reconstruida con Astro estático, Firebase Auth, perfiles, cuatro roles, reservas y área profesional. Solo funciona contra emuladores locales. El original permanece intacto.
+Aplicación reconstruida con Astro estático, Firebase Auth, perfiles, cuatro roles, reservas, área profesional y administración. Solo funciona contra emuladores locales. El original permanece intacto.
 
 ## Instalación local
 
@@ -27,7 +27,7 @@ npm run emulators
 npm run datos:local
 ```
 
-El servidor solo escucha en loopback. Las seis páginas públicas funcionan sin Firebase. Login, registro, verificación y perfil están implementados; `/reservar` permite consultar disponibilidad, confirmar y descargar ICS. `/mis-citas` muestra citas propias, filtros e historia y permite cancelar o cambiar. El profesional dispone de `/panel-barbero`, `/agenda`, `/setup-barber` y `/bloqueos`, con semanas, publicación, copia, estados y bloques que afectan a disponibilidad. Las otras 11 vistas privadas conservan el aviso de indisponibilidad y sus permisos.
+El servidor solo escucha en loopback. Las seis páginas públicas funcionan sin Firebase. Login, registro, verificación y perfil están implementados; `/reservar` permite consultar disponibilidad, confirmar y descargar ICS. `/mis-citas` muestra citas propias, filtros e historia y permite cancelar o cambiar. El profesional dispone de `/panel-barbero`, `/agenda`, `/setup-barber` y `/bloqueos`, con semanas, publicación, copia, estados y bloques que afectan a disponibilidad. Administración incluye `/admin`, `/admin/usuarios`, `/equipo`, `/servicios`, `/branding`, `/horarios` e `/index-admin`. Las cuatro vistas `/panel`, `/kpis`, `/export` y `/debug` conservan su aviso hasta la fase 9.
 
 ## Firebase
 
@@ -41,9 +41,9 @@ Para explorar reservas con datos ficticios, con los emuladores ya arrancados eje
 
 El emulador imprime los enlaces de correo ficticios. Se pueden abrir localmente o consultar `http://127.0.0.1:9099/emulator/v1/projects/demo-barberpro-m13/oobCodes` y abrir `/verify?mode=verifyEmail&oobCode=CODIGO`. No se envían correos reales. Para las pruebas se crean cuentas públicas ficticias `fase4-{client,worker,manager,admin,pendiente}@example.test`; su contraseña de fixture consta en los tests. No representan usuarios reales. No se siembran cuentas al arrancar normalmente la aplicación.
 
-Las reglas permiten editar solo nombre/teléfono propios; los roles se asignan en backend. `setMyRole` deniega siempre el cambio. `adminSetClaims` requiere administrador verificado y permisos vigentes. Los scripts `functions/scripts/asignar-roles.mjs` y `normalizar-roles.mjs` exigen UID explícito y los dos emuladores; simulan por defecto, escriben solo con `--aplicar`. No existe pantalla de administración general en esta fase.
+Las reglas permiten editar solo nombre/teléfono propios; los roles se asignan en backend. `setMyRole` deniega siempre el cambio. `adminSetClaims` requiere administrador verificado y permisos vigentes. Los scripts `functions/scripts/asignar-roles.mjs` y `normalizar-roles.mjs` exigen UID explícito y los dos emuladores; simulan por defecto, escriben solo con `--aplicar`. La pantalla de Usuarios permite al administrador buscar correo exacto y cambiar roles; manager/admin gestionan equipo y servicios. Solo admin cambia reglas de agenda.
 
-No se incluyen comandos de despliegue ni claves administrativas. Las escrituras directas de citas/locks/notificaciones/semanas/bloques desde el navegador siguen denegadas. Las funciones de reservas y las tres operaciones nuevas `saveWeeklySchedule`, `createScheduleBlock` y `deleteScheduleBlock` validan en backend, con transacciones, revisión semanal y recuperación idempotente. Un bloqueo o recorte que perjudique una cita existente se rechaza. Servicios, equipo y administración general siguen pendientes; Storage continúa cerrado. El HTML estático no equivale a una sesión de servidor.
+No se incluyen comandos de despliegue ni claves administrativas. Las escrituras directas de negocio desde el navegador siguen denegadas. Reservas y operaciones de agenda validan en backend con transacciones y recuperación idempotente. `saveTeamProfile`, `saveService` y `saveAgendaSettings` añaden validación, comparación de versiones y reintentos sin duplicar altas. Un bloqueo, recorte o cambio de zona que perjudique una cita existente se rechaza. Cambiar un servicio conserva los snapshots de reservas anteriores. Storage continúa cerrado. El HTML estático no equivale a una sesión de servidor.
 
 ## Estado y documentación
 
@@ -51,4 +51,4 @@ Para explorar el listado hay cuentas ficticias verificadas `cliente-escritorio@e
 
 Las cuentas ficticias `profesional-escritorio@example.test` y `profesional-movil@example.test`, contraseña de fixture `Prueba123!`, tienen semanas y citas para explorar las cuatro pantallas. `profesional-otro@example.test` comienza sin citas. `reservas-manager@example.test` y `reservas-admin@example.test` permiten probar la selección autorizada de profesionales. Solo se preparan al ejecutar explícitamente `npm run datos:local`; nunca son usuarios reales.
 
-Consultar [fase 7](docs/fase-7-profesional-agenda.md), [fase 6](docs/fase-6-cliente.md), [fase 5](docs/fase-5-reservas-disponibilidad.md), [cobertura](docs/control-cobertura.md), [avance](docs/control-avance.md) e informes históricos de fases 3–4. No se avanza automáticamente a fase 8. Las versiones heredadas conservan avisos de seguridad de dependencias; ver los informes antes de plantear una publicación.
+Consultar [fase 8](docs/fase-8-administracion.md), [fase 7](docs/fase-7-profesional-agenda.md), [fase 6](docs/fase-6-cliente.md), [fase 5](docs/fase-5-reservas-disponibilidad.md), [cobertura](docs/control-cobertura.md), [avance](docs/control-avance.md) y [ejecución de fases restantes](docs/ejecucion-fases-8-12.md). El prompt maestro autoriza continuar a fase 9 después de verificar administración, con pausa obligatoria antes de fase 10. Las versiones heredadas conservan avisos de seguridad de dependencias que deben tratarse antes de la entrega.

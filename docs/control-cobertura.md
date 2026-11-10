@@ -1,5 +1,23 @@
 # Control de cobertura
 
+## Estado vigente — fase 8 completada en entorno local
+
+Administración: siete páginas reconstruidas y seis módulos administrativos previstos, más entrada del personal. Se conservan 27 URLs: 23 funcionales y cuatro reservadas para fase 9. Hay 162 archivos propios versionables, 17 nuevos y 29 modificados en fase 8. Existen físicamente 119/132 destinos planificados (118 versionables y .env.local demo ignorado); faltan 13 y hay 44 adiciones justificadas. El 90,15 % de presencia no es cobertura funcional ni de pruebas. Los mapas vigentes registran las correspondencias reales; la revisión completa del inventario histórico no se da por realizada todavía.
+
+| Identificado | Reorganizado/implementado | Probado / pendiente |
+|---|---|---|
+| Usuarios y roles | Usuarios, tarjeta-usuario, datos y callable existente | Búsqueda exacta, vacío, cambio autorizado y rechazo de escalada en backend; sin CRUD inventado. |
+| Equipo | Equipo y saveTeamProfile | Nombre/visibilidad, Enter/blur, recuperación y rechazo del formulario antiguo tras cambio de rol comprobados. |
+| Servicios | Servicios y saveService | Alta idempotente, edición, activación, precio/duración, snapshots y recuperación tras error definitivo comprobados. |
+| Branding | Reglas-agenda y saveAgendaSettings | Zona/margen/avisos, flags rechazados y conflicto de zona sin modificar citas. No hay editor de logo. |
+| Resumen / entrada | Resumen-horarios e inicio-equipo | Semana y navegación por rol; comparación original aislada en escritorio/móvil. |
+| Seguridad | Contexto autorizado y escrituras transaccionales | Matriz backend, SDK cerrado, versión y conservación de datos ajenos al DTO. |
+| Pendientes | Panel diario, KPIs, CSV, diagnóstico, recordatorios y demo | Fase 9; auditoría global, comparación final y entrega en fases posteriores. |
+
+Pase final `npm test`: salida 0, 35 unitarias, 57 integraciones y 212 pruebas de navegador correctas (68 visuales y 16 funcionales administrativas incluidas), ninguna omitida; build de 27 páginas. No se afirma cobertura global del 100 %. Los intentos anteriores, el mensaje auxiliar de herramientas y los límites constan en el [informe](fase-8-administracion.md).
+
+## Registro histórico del cierre de fase 7
+
 ## Estado vigente — fase 7
 
 Inventario: 145 archivos propios versionables; 18 creados y 35 modificados respecto a fase 6. De los 132 destinos planificados existen 111 (110 versionables y .env.local demo ignorado); faltan 21. Hay 35 adiciones justificadas. El 84,09 % de presencia física no indica porcentaje funcional ni cobertura de pruebas. Se preservan las 27 URLs, con 16 vistas funcionales y 11 privadas reservadas.

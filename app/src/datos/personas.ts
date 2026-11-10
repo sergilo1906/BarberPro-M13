@@ -1,6 +1,6 @@
-import { collection, getDocs, doc, getDoc, onSnapshot, runTransaction, serverTimestamp, updateDoc } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc, onSnapshot, runTransaction, serverTimestamp, updateDoc, query, where } from "firebase/firestore";
 import { obtenerServiciosFirebase } from "./firebase";
-import type { PerfilUsuario, Profesional } from "../modelos/cuentas";
+import type { PerfilUsuario, Profesional, FichaEquipo, UsuarioAdministrable } from "../modelos/cuentas";
 import type { HorarioSemanal } from "../modelos/agenda";
 
 export async function obtenerProfesionales(incluirInactivos = false): Promise<Profesional[]> {
@@ -63,4 +63,25 @@ export async function guardarPerfilUsuario(uid: string, nombre: string, telefono
   await updateDoc(referenciaPerfil(uid), {
     name: nombre.trim(), phone: telefono.trim(), updatedAt: serverTimestamp(),
   });
+}
+
+export async function buscarUsuariosPorCorreo(correo: string): Promise<UsuarioAdministrable[]> {
+  const servicios = obtenerServiciosFirebase();
+  if (!servicios) throw new Error("Firebase local desactivado.");
+  const documentos = await getDocs(query(collection(servicios.baseDatos, "users"), where("email", "==", correo.trim())));
+  return documentos.docs.map((documento) => ({ ...documento.data(), uid: documento.id } as UsuarioAdministrable));
+}
+
+export async function obtenerEquipo(): Promise<FichaEquipo[]> {
+  const servicios = obtenerServiciosFirebase();
+  if (!servicios) throw new Error("Firebase local desactivado.");
+  const documentos = await getDocs(collection(servicios.baseDatos, "barbers"));
+  const resultado: FichaEquipo[] = [];
+  for (const documento of documentos.docs) {
+    const datos = documento.data();
+    const perfil = !datos.name || !datos.email ? await obtenerPerfilUsuario(documento.id) : null;
+    resultado.push({ uid: documento.id, name: String(datos.name || perfil?.name || perfil?.email || "Profesional"), email: String(datos.email || perfil?.email || ""), order: Number(datos.order ?? 999), active: datos.active !== false && datos.isActive !== false, adminRevision: Number(datos.adminRevision || 0) });
+  }
+  resultado.sort((a, b) => a.order - b.order || a.name.localeCompare(b.name));
+  return resultado;
 }

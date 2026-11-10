@@ -1,8 +1,8 @@
 {
   "name": "barberpro-m13",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": true,
-  "description": "BarberPro Studio — agenda, horarios y bloqueos profesionales de fase 7",
+  "description": "BarberPro Studio ? administracion de usuarios, equipo, servicios y agenda",
   "engines": {
     "node": ">=20.20.2",
     "npm": ">=10"

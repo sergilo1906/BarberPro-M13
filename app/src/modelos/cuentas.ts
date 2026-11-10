@@ -2,6 +2,8 @@
 export type Rol = "client" | "worker" | "manager" | "admin";
 
 export interface Profesional { uid: string; name: string; order: number; active?: boolean; }
+export interface FichaEquipo extends Profesional { email: string; adminRevision: number; }
+export interface UsuarioAdministrable extends PerfilUsuario { uid: string; }
 
 export interface PerfilUsuario {
   name: string;

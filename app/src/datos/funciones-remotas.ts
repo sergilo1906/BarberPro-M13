@@ -23,8 +23,12 @@ export function actualizarEstadoReserva(bookingId: string, nextStatus: EstadoCit
 }
 
 export function ejecutarOperacionAgenda(operacion: OperacionAgenda) {
-  const nombre = operacion.tipo === "semana" ? "saveWeeklySchedule" : operacion.tipo === "crear-bloqueo" ? "createScheduleBlock" : "deleteScheduleBlock";
-  return llamarFuncion<typeof operacion.datos, { ok: boolean; blockId?: string; revision?: number; visible?: boolean }>(nombre, operacion.datos);
+  const nombres = { semana: "saveWeeklySchedule", "crear-bloqueo": "createScheduleBlock", "eliminar-bloqueo": "deleteScheduleBlock", equipo: "saveTeamProfile", servicio: "saveService", reglas: "saveAgendaSettings" };
+  return llamarFuncion<typeof operacion.datos, { ok: boolean; blockId?: string; id?: string; revision?: number; visible?: boolean }>(nombres[operacion.tipo], operacion.datos);
+}
+
+export function cambiarRolUsuario(uid: string, role: string) {
+  return llamarFuncion<{ uid: string; role: string }, { ok: boolean }>("adminSetClaims", { uid, role });
 }
 
 const operacionesAgenda = new Map<string, OperacionAgenda>();
@@ -39,7 +43,7 @@ export function recuperarOperacionAgenda(uid: string, area: string): OperacionAg
   try {
     const operacion = JSON.parse(sessionStorage.getItem(clave) || "null");
     if (!operacion) operacionesAgenda.delete(clave);
-    if (["semana", "crear-bloqueo", "eliminar-bloqueo"].includes(operacion?.tipo) && typeof operacion.datos?.requestId === "string") operacionesAgenda.set(clave, operacion);
+    if (["semana", "crear-bloqueo", "eliminar-bloqueo", "equipo", "servicio", "reglas"].includes(operacion?.tipo) && typeof operacion.datos?.requestId === "string") operacionesAgenda.set(clave, operacion);
   } catch { /* Se conserva la recuperación en memoria. */ }
   return operacionesAgenda.get(clave) || null;
 }

@@ -2,6 +2,7 @@ import type { Timestamp } from "firebase/firestore";
 
 export type EstadoCita = "pending" | "confirmed" | "cancelled" | "done" | "no_show" | "rescheduled";
 export interface Servicio { id: string; name: string; durationMin: number; price: number; }
+export interface ServicioAdministrable extends Servicio { active: boolean; adminRevision: number; }
 export interface HuecoDisponible { timeStr: string; barberUid: string; }
 export interface SolicitudReserva {
   dateStr: string; timeStr: string; serviceId: string; barberPreference: string | null;
@@ -33,4 +34,7 @@ export interface Bloqueo extends DatosBloqueo { id: string; createdBy?: string; 
 export type OperacionAgenda =
   | { tipo: "semana"; datos: SemanaProfesional & { barberUid: string; expectedRevision: number; requestId: string } }
   | { tipo: "crear-bloqueo"; datos: DatosBloqueo & { requestId: string } }
-  | { tipo: "eliminar-bloqueo"; datos: { blockId: string; requestId: string } };
+  | { tipo: "eliminar-bloqueo"; datos: { blockId: string; requestId: string } }
+  | { tipo: "equipo"; datos: { barberUid: string; name: string; active: boolean; expectedRevision: number; requestId: string } }
+  | { tipo: "servicio"; datos: Omit<ServicioAdministrable, "id" | "adminRevision"> & { serviceId?: string; expectedRevision: number; requestId: string } }
+  | { tipo: "reglas"; datos: { timezone: string; cancelWindowHours: number; reminderWindowsHours: number[]; expectedRevision: number; requestId: string } };

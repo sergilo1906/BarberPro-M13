@@ -44,6 +44,15 @@ export function esRespuestaReservaIncierta(error: unknown): boolean {
   return !["functions/permission-denied", "functions/unauthenticated", "functions/not-found", "functions/already-exists", "functions/invalid-argument", "functions/failed-precondition", "functions/resource-exhausted"].includes(obtenerCodigoError(error));
 }
 
+export function explicarErrorAdministracion(error: unknown): string {
+  const codigo = obtenerCodigoError(error);
+  if (codigo.includes("permission-denied") || codigo.includes("unauthenticated")) return "No tienes permiso para esta operacion. Revisa tu sesion.";
+  if (codigo.includes("invalid-argument")) return "Revisa los datos del formulario.";
+  if (codigo.includes("not-found")) return "El registro ya no existe. Vuelve a cargarlo.";
+  if (codigo.includes("failed-precondition")) return "Los datos han cambiado o el cambio afecta a citas existentes. Recarga y revisa la configuracion.";
+  return "No se pudo confirmar la operacion. Comprueba el resultado antes de repetirla.";
+}
+
 export function explicarErrorCancelacion(error: unknown, margen: number): string {
   const codigo = obtenerCodigoError(error);
   if (codigo === "functions/permission-denied" || codigo === "functions/unauthenticated") return "Ahora mismo tu cuenta no puede cancelar esta cita.";

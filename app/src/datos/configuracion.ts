@@ -10,5 +10,5 @@ export async function obtenerConfiguracionAgenda() {
   new Intl.DateTimeFormat("es", { timeZone: timezone }).format();
   const cancelWindowHours = Number(datos.cancelWindowHours ?? 12);
   if (!Number.isFinite(cancelWindowHours) || cancelWindowHours < 0) throw new Error("Margen de cancelacion no valido.");
-  return { timezone, cancelWindowHours };
+  return { timezone, cancelWindowHours, reminderWindowsHours: Array.isArray(datos.reminderWindowsHours) ? datos.reminderWindowsHours as number[] : [24, 2], adminRevision: Number(datos.adminRevision || 0) };
 }

@@ -43,6 +43,7 @@ async function sincronizarFichaProfesional(uid, rol, usuario) {
     if (rol !== "worker" && !perfil.exists) return;
     const cambios = {
       linkedUserId: uid, role: rol, active: rol === "worker", isActive: rol === "worker",
+      adminRevision: Number(perfil.get("adminRevision") || 0) + 1,
       updatedAt: FieldValue.serverTimestamp(),
     };
     if (rol === "worker") {

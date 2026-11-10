@@ -2,14 +2,45 @@
 import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
 ---
 
-<DisenoPrincipal title="Servicios" noindex>
-  <section class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg p-6 space-y-4" data-estado="no-disponible" data-fase-pendiente="8">
-    <h1 class="text-xl font-semibold text-gray-900">Servicios</h1>
-    <p role="status" class="text-sm text-gray-600">Esta seccion todavia no esta disponible.</p>
-    <p class="text-sm text-gray-600">No se han habilitado operaciones ni acceso a datos privados. Puedes volver al inicio o consultar la ayuda.</p>
-    <div class="flex flex-wrap gap-3 text-sm">
-      <a href="/" class="rounded border px-3 py-2 hover:bg-gray-50">Ir al inicio</a>
-      <a href="/ayuda" class="rounded bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">Ayuda</a>
+<DisenoPrincipal noindex title="Servicios">
+  <section class="max-w-5xl mx-auto space-y-4">
+    <div class="bg-white border rounded-lg p-4">
+      <h1 class="text-2xl font-semibold mb-2">Servicios</h1>
+      <p class="text-sm text-gray-600">Gestiona los servicios que ve el cliente al pedir cita.</p>
+    </div>
+
+    <div class="bg-white border rounded-lg p-4">
+      <h2 class="text-lg font-semibold mb-3">Crear servicio</h2>
+      <form id="service-create-form" class="grid md:grid-cols-4 gap-3 text-sm">
+        <label class="flex flex-col gap-1">
+          <span class="text-xs text-gray-600">Nombre</span>
+          <input id="service-name" required class="border rounded px-3 py-2" placeholder="Corte clasico" />
+        </label>
+        <label class="flex flex-col gap-1">
+          <span class="text-xs text-gray-600">Duracion (min)</span>
+          <input id="service-duration" type="number" min="5" step="5" required class="border rounded px-3 py-2" value="30" />
+        </label>
+        <label class="flex flex-col gap-1">
+          <span class="text-xs text-gray-600">Precio (EUR)</span>
+          <input id="service-price" type="number" min="0" step="0.5" required class="border rounded px-3 py-2" value="15" />
+        </label>
+        <label class="flex items-center gap-2 mt-6">
+          <input id="service-active" type="checkbox" checked class="rounded border-gray-300" />
+          <span>Activo</span>
+        </label>
+        <button class="md:col-span-4 bg-blue-600 text-white rounded px-4 py-2 text-sm font-medium hover:bg-blue-700" type="submit">Crear servicio</button>
+      </form>
+      <p id="service-create-msg" class="text-xs text-gray-600 mt-2"></p>
+    </div>
+
+    <div class="bg-white border rounded-lg p-4">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-lg font-semibold">Listado de servicios</h2>
+        <button id="services-refresh" class="text-sm border rounded px-3 py-1 hover:bg-gray-50">Recargar</button>
+      </div>
+      <p id="services-msg" class="text-xs text-gray-600 mb-2"></p>
+      <div id="services-list" class="space-y-3"></div>
     </div>
   </section>
+  <script>import "../modulos/administracion/servicios";</script>
 </DisenoPrincipal>

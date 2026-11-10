@@ -1,6 +1,6 @@
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, query, where, orderBy } from "firebase/firestore";
 import { obtenerServiciosFirebase } from "./firebase";
-import type { Servicio } from "../modelos/agenda";
+import type { Servicio, ServicioAdministrable } from "../modelos/agenda";
 
 export async function obtenerServicios(): Promise<Servicio[]> {
   const servicios = obtenerServiciosFirebase();
@@ -15,5 +15,17 @@ export async function obtenerServicios(): Promise<Servicio[]> {
     resultado.push({ id: documento.id, name: String(datos.name || "Servicio"), durationMin: duracion, price: precio });
   }
   resultado.sort((primero, segundo) => primero.name.localeCompare(segundo.name));
+  return resultado;
+}
+
+export async function obtenerCatalogoCompleto(): Promise<ServicioAdministrable[]> {
+  const servicios = obtenerServiciosFirebase();
+  if (!servicios) throw new Error("Firebase local desactivado.");
+  const documentos = await getDocs(query(collection(servicios.baseDatos, "services"), orderBy("name", "asc")));
+  const resultado: ServicioAdministrable[] = [];
+  for (const documento of documentos.docs) {
+    const datos = documento.data();
+    resultado.push({ id: documento.id, name: String(datos.name || ""), durationMin: Number(datos.durationMin ?? 30), price: Number(datos.price ?? 0), active: datos.active !== false, adminRevision: Number(datos.adminRevision || 0) });
+  }
   return resultado;
 }

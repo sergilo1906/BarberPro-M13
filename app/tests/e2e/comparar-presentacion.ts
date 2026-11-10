@@ -7,7 +7,7 @@ type MedidaPresentacion = Record<string, string | number>;
 // fuentes y geometría iguales. Textos y estilos se siguen exigiendo exactos.
 export const OPCIONES_IMAGEN = { maxDiffPixelRatio: 0.0003, threshold: 0.1 };
 
-export function compararPresentacion(nuevas: MedidaPresentacion[], originales: MedidaPresentacion[]): void {
+export function compararPresentacion(nuevas: MedidaPresentacion[], originales: MedidaPresentacion[], margenGeometrico = 1 / 16): void {
   expect(nuevas).toHaveLength(originales.length);
   for (let indice = 0; indice < nuevas.length; indice++) {
     const { x, y, ancho, alto, ...estiloNuevo } = nuevas[indice];
@@ -19,7 +19,7 @@ export function compararPresentacion(nuevas: MedidaPresentacion[], originales: M
       expect(typeof geometriaNueva[campo]).toBe("number");
       expect(typeof geometriaOriginal[campo]).toBe("number");
       // El reparto intrínseco varía 1/64 CSS px en Chromium/Windows.
-      expect(Math.abs(Number(geometriaNueva[campo]) - Number(geometriaOriginal[campo]))).toBeLessThanOrEqual(1 / 16);
+      expect(Math.abs(Number(geometriaNueva[campo]) - Number(geometriaOriginal[campo]))).toBeLessThanOrEqual(margenGeometrico);
     }
   }
 }

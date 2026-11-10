@@ -23,17 +23,21 @@ export interface ContextoProfesional { usuario: UsuarioSesion; esVigente: () => 
 // Un contexto por pantalla. No se reinicia un formulario editado por una renovación
 // transitoria del token; un cambio de identidad/rol o un error sí invalida sus respuestas.
 export function observarAreaProfesional(cargar: (contexto: ContextoProfesional) => void, limpiar: () => void): void {
+  observarAreaAutorizada(PERSONAL, cargar, limpiar);
+}
+
+export function observarAreaAutorizada(roles: readonly Rol[], cargar: (contexto: ContextoProfesional) => void, limpiar: () => void): void {
   let claveAnterior = "";
   let revision = 0;
   observarSesion((estado) => {
     if (estado.estado === "cargando") return;
     const usuario = estado.usuario;
-    const clave = comprobarPermiso(estado, PERSONAL) && usuario ? usuario.uid + ":" + usuario.rol + ":" + usuario.versionRol : "";
+    const clave = comprobarPermiso(estado, roles) && usuario ? usuario.uid + ":" + usuario.rol + ":" + usuario.versionRol : "";
     if (clave === claveAnterior) return;
     revision++; claveAnterior = clave; limpiar();
     if (!clave || !usuario) return;
     const actual = revision;
-    cargar({ usuario, esVigente: () => actual === revision && comprobarPermiso(obtenerUsuarioActual(), PERSONAL)
+    cargar({ usuario, esVigente: () => actual === revision && comprobarPermiso(obtenerUsuarioActual(), roles)
       && obtenerUsuarioActual().usuario?.uid === usuario.uid && obtenerUsuarioActual().usuario?.rol === usuario.rol });
   });
 }

@@ -1,5 +1,13 @@
 # Control de avance — implementación
 
+## Estado vigente — fase 8 completada en entorno local
+
+Administración implementada en siete rutas: portada, usuarios/roles, equipo, servicios, reglas de agenda, resumen semanal y entrada del personal. Son 23 vistas funcionales y cuatro reservadas para fase 9, conservando las 27 URLs y 18 guards. Se reutilizan los nueve exports originales reconstruidos y tres profesionales; se añaden tres escrituras administrativas protegidas. No se relajan reglas ni se despliega nada.
+
+El pase final `npm test` termina con salida 0: 35 unitarias, 57 integraciones y 212 pruebas de navegador correctas (68 visuales incluidas, ninguna omitida); build de 27 páginas. Checker sobre 96 archivos con cero diagnósticos y verificación backend correcta. La protección del formulario de Equipo tras cambio de rol y el error definitivo del alta están probados. El mensaje auxiliar de esbuild del arranque y las calibraciones de QA se registran en [fase 8](fase-8-administracion.md). La nueva solicitud autoriza continuar a fase 9, con pausa obligatoria posterior, y la indicación posterior autoriza subir la fuente comprobada a GitHub sin presentar las fases restantes como completas.
+
+## Registro histórico del cierre de fase 7
+
 ## Estado vigente — fase 7 completada en entorno local
 
 Área profesional implementada: panel, agenda diaria, estados, semanas/publicación/copia, bloqueos y vacaciones, con escrituras validadas y control de conflictos compartido con reservas. Se conservan 27 rutas: 16 vistas funcionales y 11 privadas de negocio reservadas; 18 guards. Hay nueve de los trece exports originales y tres adicionales de agenda; los cuatro originales restantes siguen pendientes.

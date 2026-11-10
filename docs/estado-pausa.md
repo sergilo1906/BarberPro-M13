@@ -1,5 +1,15 @@
 # Estado de pausa — BarberPro Studio M13
 
+## Estado vigente — ejecución del prompt maestro, fase 8
+
+El usuario ha autorizado ejecutar consecutivamente fases 8–12 mediante el prompt maestro `78c0d929-d83f-4035-9340-a30cdff98054`, sustituyendo las paradas entre fases de las solicitudes anteriores. La pausa obligatoria de tres horas corresponde al cierre de fase 9 y todavía no se ha iniciado.
+
+Fase 8 completada localmente en la rama `fases-8-12-entrega`, partiendo de `0815d8d`. `npm test`: salida 0, 35 unitarias, 57 integraciones y 212 navegador (68 visuales), build de 27 páginas. La suite ha terminado y detenido sus emuladores/servidores. Los informes [fase 8](fase-8-administracion.md) y [ejecución](ejecucion-fases-8-12.md) distinguen lo probado de lo pendiente. El usuario ha autorizado posteriormente subir el proyecto a GitHub; se preparará una publicación de la fuente segura indicando las fases todavía pendientes.
+
+Siguiente paso: guardar el commit de fase 8, revisar fuente e historial y publicar la fuente autorizada; después continuar fase 9. Al cerrar fase 9, registrar hora fiable, conservar cambios y detener servicios antes de iniciar la pausa real si el entorno admite espera y reanudación. No empezar fase 10 sin verificar las tres horas; si la espera se interrumpe, conservar este registro y detenerse de forma segura. Los avisos de dependencias siguen pendientes de auditoría final. Original y datos productivos no se modifican.
+
+## Registro histórico del cierre de fase 7
+
 ## Actualización vigente — fase 7, 10 de noviembre de 2026
 
 La fase 7 queda implementada y comprobada localmente, después de guardar el cierre de fase 6 en `ffa81bb`. Incluye panel/agenda/horarios/bloques y tres escrituras seguras, sin avanzar a administración. `npm test` final: salida 0, check sin diagnósticos, build de 27 páginas, 33 unitarias, 48 integraciones y 178 pruebas de navegador correctas (50 visuales incluidas). El estado real, inventario y pendientes figuran en [fase 7](fase-7-profesional-agenda.md) y [avance](control-avance.md). Cambios conservados en la rama local `fase-7-profesional`; consultar su último commit para reanudar.
