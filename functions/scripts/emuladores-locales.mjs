@@ -16,4 +16,5 @@ delete entorno.FIREBASE_TOKEN;
 delete entorno.DEBUG;
 const proceso = spawn(process.execPath, argumentos, { cwd: raiz, env: entorno, stdio: "inherit" });
 proceso.on("error", () => { process.exitCode = 1; });
-proceso.on("exit", (codigo) => { process.exitCode = codigo || 0; });
+// Un proceso interrumpido devuelve null: nunca debe presentarse como éxito.
+proceso.on("exit", (codigo) => { process.exitCode = typeof codigo === "number" ? codigo : 1; });

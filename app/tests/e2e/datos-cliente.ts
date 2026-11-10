@@ -24,6 +24,9 @@ export async function llamarCliente(request: APIRequestContext, sufijo: string, 
 }
 
 export async function cambiarCuentaPersistida(page: Page, request: APIRequestContext, sufijo: string): Promise<void> {
+  // La segunda pestaña debe terminar de restaurar Auth antes de simular otra
+  // sesión; su inicialización podría reescribir la persistencia del fixture.
+  await expect(page.locator("#btn-profile")).toBeVisible();
   const acceso = await request.post("http://127.0.0.1:9099/identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=demo-api-key", { data: { email: "cliente-" + sufijo + "@example.test", password: "Prueba123!", returnSecureToken: true } });
   expect(acceso.ok()).toBe(true);
   const identidad = await acceso.json();

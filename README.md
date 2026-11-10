@@ -8,7 +8,7 @@ Fuente pública: [sergilo1906/BarberPro-M13](https://github.com/sergilo1906/Barb
 
 ## Instalación local
 
-Usar Node 20.20.2 (`.nvmrc`) y npm 10. Con Node ya disponible:
+Usar Node 22.23.4 (`.nvmrc`) y npm 10 o posterior. Con Node ya disponible:
 
 ```powershell
 npm ci
@@ -37,13 +37,15 @@ El servidor solo escucha en loopback. Las seis páginas públicas funcionan sin 
 
 La integración está desactivada por defecto en un checkout nuevo. Copiar `app/.env.example` a `app/.env.local` y cambiar `PUBLIC_USE_FIREBASE_EMULATORS=1` y `PUBLIC_USE_FUNCTIONS_EMULATOR=1`. Los demás valores son ficticios. Este archivo se ignora en Git. Solo se admite `demo-barberpro-m13` desde localhost/127.0.0.1: Auth 9099, Firestore 8088 y Functions 5001.
 
-En una terminal ejecutar `npm run emulators` y en otra `npm run dev`. Los emuladores necesitan Java 21; los scripts npm usan Node 20.20.2 local. No requieren `firebase login`. La CLI utiliza una configuración vacía en `.verificacion/firebase-cli`, sin reutilizar credenciales globales. Las cuentas son efímeras y desaparecen al detener los emuladores.
+En una terminal ejecutar `npm run emulators` y en otra `npm run dev`. Los emuladores necesitan Java 21; los scripts npm usan Node 22.23.4 local. No requieren `firebase login`. La CLI utiliza una configuración vacía en `.verificacion/firebase-cli`, sin reutilizar credenciales globales. Las cuentas son efímeras y desaparecen al detener los emuladores.
 
 Para explorar reservas con datos ficticios, con los emuladores ya arrancados ejecutar **explícitamente** `npm run datos:local` antes de `npm run dev`. Este comando reinicia reservas, locks, bloqueos y notificaciones del proyecto demo local y prepara catálogo/profesionales/semanas de prueba; no debe usarse para conservar una sesión de pruebas anterior. Rechaza configuración productiva. La cuenta ficticia verificada `reservas-client@example.test` permite acceder a `/reservar`; sus credenciales de ejemplo están definidas en los fixtures de pruebas. No son credenciales de servicios reales. Las fechas se calculan en Europe/Madrid y cubren los próximos 30 días.
 
-`npm run test:emuladores` arranca los tres servicios, ejecuta las pruebas de reglas/Auth/Functions, compila con configuración demo, prueba navegador en escritorio/móvil y detiene los servicios. **Usar una instancia de emuladores desechable y los puertos libres**: las pruebas borran exclusivamente los datos ficticios de ese proyecto. El lanzador rechaza otro proyecto y otros hosts. La salida de una prueba fallida se conserva como fallo.
+`npm run test:emuladores` arranca los tres servicios, ejecuta las pruebas de reglas/Auth/Functions, compila con configuración demo, prueba navegador en escritorio/móvil y compara también en tableta. Restablece los fixtures antes de tableta y detiene los servicios al terminar. **Usar una instancia de emuladores desechable y los puertos libres**: las pruebas borran exclusivamente los datos ficticios de ese proyecto. El lanzador rechaza otro proyecto y otros hosts. La salida de una prueba fallida se conserva como fallo.
 
-En una máquina nueva, instalar antes Chromium para las pruebas con `npm --prefix app exec -- playwright install chromium`. El perfil móvil se emula en Chromium; no representa una prueba con Safari o un teléfono físico. Las comparaciones visuales con el original solo se ejecutan si existe su compilación de referencia en la ubicación local indicada por Playwright; al clonar únicamente este repositorio se omiten expresamente. El original no es necesario para instalar, compilar ni ejecutar la aplicación reconstruida. Consultar la [arquitectura](docs/arquitectura.md) para la organización de la fuente.
+En una máquina nueva, instalar antes Chromium para las pruebas con `npm --prefix app exec -- playwright install chromium`. Los perfiles móvil y tableta se emulan en Chromium; no representan pruebas con Safari o dispositivos físicos. Las comparaciones visuales con el original solo se ejecutan si existe su compilación de referencia en la ubicación local indicada por Playwright; al clonar únicamente este repositorio se omiten expresamente. El original no es necesario para instalar, compilar ni ejecutar la aplicación reconstruida. Consultar la [arquitectura](docs/arquitectura.md) para la organización de la fuente.
+
+La auditoría extra se registra en [docs/auditoria-final](docs/auditoria-final/00-estado-inicial.md). Sus cambios permanecen locales por instrucción del usuario. Astro y Vitest se actualizan por avisos críticos; se conserva Astro estático, Tailwind 3 y el SDK Firebase existente. Las sustituciones de undici y grpc-js quedan fijadas mediante overrides y se validan con los emuladores. Los informes históricos conservan las versiones y resultados de cada fase y no describen automáticamente el estado actual.
 
 El emulador imprime los enlaces de correo ficticios. Se pueden abrir localmente o consultar `http://127.0.0.1:9099/emulator/v1/projects/demo-barberpro-m13/oobCodes` y abrir `/verify?mode=verifyEmail&oobCode=CODIGO`. No se envían correos reales. Para las pruebas se crean cuentas públicas ficticias `fase4-{client,worker,manager,admin,pendiente}@example.test`; su contraseña de fixture consta en los tests. No representan usuarios reales. No se siembran cuentas al arrancar normalmente la aplicación.
 

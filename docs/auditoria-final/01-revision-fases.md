@@ -1,0 +1,20 @@
+# Revisión individual de las doce fases
+
+La premisa de doce fases cerradas no coincide con la base recibida. Los informes 3–8 existen, fase 9 tiene solo estado en curso y faltan cierres de 10–12. Las comprobaciones de esta auditoría se distinguen de la ejecución histórica de cada fase. No se inventan horas ni se certifica la pausa pendiente.
+
+| Fase | Estado contrastado | Evidencia y justificación |
+|---|---|---|
+| 1 — Auditoría original | COMPLETA CON LIMITACIONES | Se recuentan 94 archivos propios reales, 27 páginas y 13 exports backend; coinciden los originales del mapa. El código productivo se utiliza solo como referencia. No se certifica aquí cada afirmación histórica ni una ejecución productiva. |
+| 2 — Arquitectura | PARCIALMENTE COMPLETA | Separación y destinos coherentes; 94 correspondencias de archivos contrastadas. Falta certificar individualmente símbolos y ámbitos de toda la planificación. Presencia física no equivale a cobertura semántica. |
+| 3 — Base | COMPLETA CON LIMITACIONES | Layout, componentes, Tailwind, favicon, navegación, checker y build real. Se actualizan herramientas por seguridad. La revisión visual posterior registra diferencias del compilador y sus correcciones. |
+| 4 — Cuentas y permisos | COMPLETA CON LIMITACIONES | Auth/reglas/callables y recorridos de cuatro roles se ejercitan en emuladores. Se corrige la autorización del administrador revocado durante asignación. No se acredita firma de tokens, correo ni revocación SDK productivos. |
+| 5 — Reservas | COMPLETA CON LIMITACIONES | Integraciones de disponibilidad, duración, calendario, estados, concurrencia e idempotencia. Se verifica atomicidad y propiedad de locks; no es una prueba de carga real. |
+| 6 — Cliente | COMPLETA CON LIMITACIONES | Reserva, Mis citas, filtros, perfil, cancelar, mover, recuperación y permisos. CSV/ICS y fechas se revisan con datos ficticios. Sin importación manual en todas las aplicaciones de calendario. |
+| 7 — Profesional | COMPLETA CON LIMITACIONES | Agenda, estados, semanas, publicación, copia, descansos y bloques integrados. Se corrige conservación de ficha oculta/nombre al reasignar worker. Comparaciones y recorridos emulados, no dispositivos físicos. |
+| 8 — Administración | COMPLETA CON LIMITACIONES | Usuarios/roles, equipo, servicios, precios, duración, reglas y resumen; tests de operaciones y escrituras SDK denegadas. Branding no es editor de logo. No se alteran snapshots históricos. |
+| 9 — Restantes | PARCIALMENTE COMPLETA | Las cuatro páginas y cuatro exports pendientes existen; esta auditoría añade pruebas específicas funcionales y visuales. Sigue faltando el cierre global de inventario y el informe formal de fase; no se cambia retroactivamente el estado histórico a doce fases terminadas. |
+| 10 — Comparación | PARCIALMENTE COMPLETA | No existía cierre de fase 10 al iniciar. Se amplía la comparación durante esta auditoría a las vistas restantes y tableta. El resultado exacto se registra en 04 y 06; no se certifica ejecución histórica ni descanso de tres horas. |
+| 11 — Pruebas y limpieza | PARCIALMENTE COMPLETA | Existe una suite real y se amplía. Alertas críticas corregidas; quedan avisos moderados y trazabilidad semántica completa de símbolos sin certificar. No se borran pruebas para obtener verde. |
+| 12 — Entrega | PARCIALMENTE COMPLETA | No había ZIP final, pruebas-finales.md ni informe-final-m13.md. Esta auditoría revisa README y prepara un paquete candidato con su instalación aislada, descrita en 08. No se inventa cierre académico, autoría manual ni revisión del alumno/profesor. |
+
+Los estados de limitación no afirman ausencia universal de errores. Consultar los resultados finales antes de utilizar un paquete candidato para entrega. La autorización actual prohíbe push: GitHub conserva la versión publicada anterior aunque se guarden commits locales de auditoría.

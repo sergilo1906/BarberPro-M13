@@ -36,5 +36,6 @@ export default defineConfig({
   projects: [
     { name: "escritorio", use: { ...devices["Desktop Chrome"], viewport: { width: 1440, height: 1000 } } },
     { name: "movil", use: { ...devices["iPhone 13"], defaultBrowserType: "chromium" } },
+    { name: "tableta", testMatch: /.*visual\.test\.ts/, use: { ...devices["Desktop Chrome"], viewport: { width: 820, height: 1180 } } },
   ],
 });

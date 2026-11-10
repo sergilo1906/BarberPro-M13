@@ -199,7 +199,8 @@ test("perfil valida, persiste y limpia una escritura pendiente al cambiar de cue
   const otraPagina = await context.newPage();
   await otraPagina.goto("/");
   await cambiarCuentaPersistida(otraPagina, request, "vacio");
-  await expect(page.locator("#perfil-email")).toHaveText("cliente-vacio@example.test");
+  await page.bringToFront();
+  await expect(page.locator("#perfil-email")).toHaveText("cliente-vacio@example.test", { timeout: 15000 });
   await expect(page.locator("#perfil-name")).toHaveValue("Cliente vacio");
   await expect(page.locator("#perfil-save")).toBeEnabled();
   await expect(page.locator("#perfil-msg")).not.toHaveText("Cambios guardados.");

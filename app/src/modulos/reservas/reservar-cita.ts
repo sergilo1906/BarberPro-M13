@@ -27,6 +27,7 @@ const CLAVE_PENDIENTE = "barberpro-reserva-pendiente";
 let servicios: Servicio[] = [];
 let profesionales: Profesional[] = [];
 let revisionDisponibilidad = 0;
+let esperaDisponibilidad: number | undefined;
 let solicitudEnCurso = false;
 let pendiente: SolicitudReserva | null = null;
 let ultimoCalendario: DatosCalendario | null = null;
@@ -180,7 +181,15 @@ function enlazarEventosReserva(): void {
   for (const campo of [selectorServicio, selectorProfesional, selectorFecha, cualquierProfesional]) campo.addEventListener("change", () => {
     revisionDisponibilidad++;
     selectorProfesional.disabled = cualquierProfesional.checked;
-    void cargarDisponibilidad();
+    window.clearTimeout(esperaDisponibilidad);
+    contenedorHuecos.replaceChildren();
+    mostrarMensajeReserva("Calculando disponibilidad...");
+    // Agrupar una selección rápida evita abrir un proceso backend por cada campo.
+    // La revisión anterior ya está invalidada mientras esperamos la selección final.
+    esperaDisponibilidad = window.setTimeout(() => {
+      esperaDisponibilidad = undefined;
+      if (obtenerUsuarioActual().usuario?.uid === uidPagina && !solicitudEnCurso && !pendiente) void cargarDisponibilidad();
+    }, 250);
   });
   botonCalendario.addEventListener("click", () => { if (ultimoCalendario) descargarCalendario(ultimoCalendario); });
 }
@@ -189,6 +198,7 @@ observarSesion((estado) => {
   if (estado.estado === "cargando") return;
   if (estado.estado === "error") {
     sesionEnError = true;
+    window.clearTimeout(esperaDisponibilidad);
     revisionDisponibilidad++;
     cerrarModalActivo();
     return;
@@ -202,6 +212,7 @@ observarSesion((estado) => {
     return;
   }
   if (uidPagina) {
+    window.clearTimeout(esperaDisponibilidad);
     revisionDisponibilidad++;
     contenedorHuecos.replaceChildren();
     confirmacion.classList.add("hidden");

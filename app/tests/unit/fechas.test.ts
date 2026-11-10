@@ -3,6 +3,15 @@ import { formatearFechaNegocio, sumarDiasCalendario } from "../../src/comun/fech
 import { crearContenidoCalendario } from "../../src/exportaciones/calendario";
 
 describe("fechas del negocio y calendario", () => {
+  it("pliega texto UTF-8 largo a 75 octetos sin perder caracteres ni saltos escapados", () => {
+    const titulo = "ñ".repeat(90) + "💈";
+    const contenido = crearContenidoCalendario({ title: titulo, description: "Detalle\n" + titulo, startUtc: "2030-01-01T10:00:00Z", endUtc: "2030-01-01T10:30:00Z" });
+    for (const linea of contenido.split("\r\n")) expect(new TextEncoder().encode(linea).length).toBeLessThanOrEqual(75);
+    const desplegado = contenido.replace(/\r\n /g, "");
+    expect(desplegado).toContain("SUMMARY:" + titulo + "\r\n");
+    expect(desplegado).toContain("DESCRIPTION:Detalle\\n" + titulo + "\r\n");
+    expect(desplegado).not.toContain("�");
+  });
   it("usa Madrid aunque el mismo instante pertenezca al dia anterior en otro pais", () => {
     const instante = new Date("2026-11-09T23:30:00Z");
     expect(formatearFechaNegocio("Europe/Madrid", instante)).toBe("2026-11-10");

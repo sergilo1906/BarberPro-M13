@@ -6,7 +6,7 @@ import { getFirestore } from "firebase-admin/firestore";
 // Configuración del backend; no inicializa Admin ni consulta servicios remotos.
 setGlobalOptions({
   region: "europe-west1",
-  memoryMiB: 256,
+  memory: "256MiB",
   timeoutSeconds: 120,
 });
 

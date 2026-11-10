@@ -1,9 +1,9 @@
 import { FieldValue } from "firebase-admin/firestore";
 import { HttpsError, onCall } from "firebase-functions/v2/https";
 import { obtenerServiciosAdministrativos } from "./firebase.js";
-import { comprobarUid, comprobarAdministrador, comprobarSesion, normalizarRolEntrada } from "./permisos.js";
+import { comprobarUid, comprobarAdministrador, comprobarSesion, comprobarIdentidadTransaccion, normalizarRolEntrada } from "./permisos.js";
 
-export async function asignarRolAutorizado(uidRecibido, rolRecibido) {
+export async function asignarRolAutorizado(uidRecibido, rolRecibido, identidadAdministradora = null) {
   const uid = comprobarUid(uidRecibido);
   const rol = normalizarRolEntrada(rolRecibido);
   const { autenticacion, baseDatos } = obtenerServiciosAdministrativos();
@@ -14,6 +14,9 @@ export async function asignarRolAutorizado(uidRecibido, rolRecibido) {
   // Auth y Firestore no comparten transacción. Una versión discordante deniega el acceso;
   // nunca se conserva un permiso antiguo si una escritura intermedia falla.
   const version = await baseDatos.runTransaction(async (transaccion) => {
+    // El permiso del actor debe seguir vigente al confirmar el cambio de rol.
+    // Las herramientas CLI locales no reciben una sesión de navegador.
+    if (identidadAdministradora) await comprobarIdentidadTransaccion(transaccion, baseDatos, identidadAdministradora);
     const documento = await transaccion.get(referencia);
     const siguienteVersion = Math.max(documento.get("roleVersion") || 0, usuario.customClaims?.roleVersion || 0) + 1;
     const cambios = { role: rol, roleVersion: siguienteVersion, updatedAt: FieldValue.serverTimestamp() };
@@ -41,14 +44,16 @@ async function sincronizarFichaProfesional(uid, rol, usuario) {
     const cuenta = await transaccion.get(baseDatos.doc("users/" + uid));
     if (cuenta.get("role") !== rol) return;
     if (rol !== "worker" && !perfil.exists) return;
+    const eraProfesional = perfil.get("role") === "worker";
+    const visible = rol === "worker" && (!eraProfesional || (perfil.get("active") !== false && perfil.get("isActive") !== false));
     const cambios = {
-      linkedUserId: uid, role: rol, active: rol === "worker", isActive: rol === "worker",
+      linkedUserId: uid, role: rol, active: visible, isActive: visible,
       adminRevision: Number(perfil.get("adminRevision") || 0) + 1,
       updatedAt: FieldValue.serverTimestamp(),
     };
     if (rol === "worker") {
       Object.assign(cambios, {
-        name: cuenta.get("professionalName") || cuenta.get("name") || usuario.displayName || "Profesional " + uid.slice(0, 6).toUpperCase(),
+        name: cuenta.get("professionalName") || perfil.get("name") || cuenta.get("name") || usuario.displayName || "Profesional " + uid.slice(0, 6).toUpperCase(),
         email: usuario.email || "",
       });
       if (!perfil.exists) cambios.createdAt = FieldValue.serverTimestamp();
@@ -58,8 +63,8 @@ async function sincronizarFichaProfesional(uid, rol, usuario) {
 }
 
 export const adminSetClaims = onCall(async (peticion) => {
-  await comprobarAdministrador(peticion);
-  return asignarRolAutorizado(peticion.data?.uid, peticion.data?.role);
+  const identidad = await comprobarAdministrador(peticion);
+  return asignarRolAutorizado(peticion.data?.uid, peticion.data?.role, identidad);
 });
 
 // Se conserva el contrato público, pero no existe autoservicio de roles privilegiados.

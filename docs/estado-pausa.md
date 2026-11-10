@@ -1,5 +1,11 @@
 # Estado de pausa — BarberPro Studio M13
 
+## Solicitud vigente — auditoría extra integral
+
+Se recibe la fase extra de auditoría el 10 de noviembre de 2026, sobre 5b11204 y Git inicialmente limpio. Sus resultados y correcciones locales se registran en [auditoria-final](auditoria-final/00-estado-inicial.md). Esta solicitud prohíbe publicar automáticamente: no se hará push. No presupone que las doce fases estén terminadas ni certifica las pausas anteriores. La pausa posterior a fase 9 continúa sin iniciarse.
+
+Para reanudar, consultar primero auditoria-final/09-informe-final.md y control-total.md, comprobar Git y distinguir la fuente local corregida de GitHub y del paquete candidato. No utilizar resultados históricos como si fueran la última ejecución. Mantener el original y los datos productivos intactos.
+
 ## Estado vigente — fuente publicada, fase 9 en curso
 
 Actualización para la solicitud de subir todo a GitHub: se conservan y publican también los cambios parciales de fase 9. [Estado de fase 9](fase-9-estado-en-curso.md) distingue implementación, decisiones y validación todavía pendiente. Las cuatro vistas ya no contienen el aviso de reserva de fase; eso no acredita su validación completa. La pausa posterior a fase 9 sigue sin iniciarse. La referencia de publicación y sus comprobaciones están en [publicación GitHub](fase-github-publicacion.md).

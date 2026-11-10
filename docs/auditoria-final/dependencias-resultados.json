@@ -1,0 +1,26 @@
+{
+  "raiz": {
+    "info": 0,
+    "low": 0,
+    "moderate": 14,
+    "high": 0,
+    "critical": 0,
+    "total": 14
+  },
+  "app": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "functions": {
+    "info": 0,
+    "low": 0,
+    "moderate": 9,
+    "high": 0,
+    "critical": 0,
+    "total": 9
+  }
+}

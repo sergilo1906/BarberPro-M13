@@ -2,7 +2,8 @@ import { before, after, test } from "node:test";
 import assert from "node:assert/strict";
 import { randomUUID } from "node:crypto";
 import { doc, setDoc } from "firebase/firestore";
-import { baseDatos, conectarCuenta, fechaPrueba } from "./datos-reservas.mjs";
+import { baseDatos, autenticacion, conectarCuenta, fechaPrueba } from "./datos-reservas.mjs";
+import { asignarRolAutorizado } from "../../src/cuentas.js";
 import { prepararDatosAdministracion } from "./datos-administracion.mjs";
 import { prepararDatosProfesional } from "./datos-profesional.mjs";
 const ficha = "admin-destino-escritorio";
@@ -11,6 +12,40 @@ function equipo(cambios = {}) { return { barberUid: ficha, name: "Nombre fictici
 function reglas(cambios = {}) { return { timezone: "Europe/Madrid", cancelWindowHours: 12, reminderWindowsHours: [24, 2], expectedRevision: 0, requestId: randomUUID(), ...cambios }; }
 before(prepararDatosAdministracion);
 after(async () => { await prepararDatosAdministracion(); await prepararDatosProfesional(); await baseDatos.doc("config/app").set({ timezone: "Europe/Madrid", cancelWindowHours: 12, reminderWindowsHours: [24, 2] }, { merge: false }); });
+
+test("administrador revocado durante una asignacion no puede confirmar otro cambio de rol", async () => {
+  const usuario = await autenticacion.getUser("reservas-admin");
+  const identidadAnterior = { usuario, rol: "admin", version: usuario.customClaims?.roleVersion || 0 };
+  const destino = "admin-destino-escritorio";
+  const perfilAntes = (await baseDatos.doc("users/" + destino).get()).data();
+  const claimsAntes = (await autenticacion.getUser(destino)).customClaims;
+  try {
+    await asignarRolAutorizado(usuario.uid, "client");
+    await assert.rejects(asignarRolAutorizado(destino, "admin", identidadAnterior), { code: "permission-denied" });
+    assert.deepEqual((await baseDatos.doc("users/" + destino).get()).data(), perfilAntes);
+    assert.deepEqual((await autenticacion.getUser(destino)).customClaims, claimsAntes);
+  } finally {
+    await asignarRolAutorizado(usuario.uid, "admin");
+  }
+});
+
+test("reasignar worker conserva ocultacion y nombre administrados de la ficha existente", async () => {
+  const uid = "auditoria-ocultacion", email = uid + "@example.test";
+  const cuenta = await conectarCuenta("admin");
+  try {
+    await autenticacion.createUser({ uid, email, emailVerified: true });
+    await autenticacion.setCustomUserClaims(uid, { role: "worker", roleVersion: 0 });
+    await baseDatos.doc("users/" + uid).set({ role: "worker", roleVersion: 0, name: "Nombre de cuenta", email });
+    await baseDatos.doc("barbers/" + uid).set({ role: "worker", linkedUserId: uid, active: false, isActive: false, name: "Nombre administrado", adminRevision: 0 });
+    await cuenta.llamar("adminSetClaims", { uid, role: "worker" });
+    const ficha = (await baseDatos.doc("barbers/" + uid).get()).data();
+    assert.equal(ficha.active, false); assert.equal(ficha.isActive, false);
+    assert.equal(ficha.name, "Nombre administrado"); assert.equal(ficha.adminRevision, 1);
+  } finally {
+    await baseDatos.doc("users/" + uid).delete(); await baseDatos.doc("barbers/" + uid).delete();
+    await autenticacion.deleteUser(uid).catch(() => {}); await cuenta.cerrar();
+  }
+});
 
 test("matriz administrativa exige sesion, verificacion y rol; SDK directo sigue cerrado", async () => {
   for (const rol of [null, "client", "worker", "pendiente"]) {

@@ -4,18 +4,18 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=20.20.2"
+    "node": ">=22.23.4"
   },
   "scripts": {
     "dev": "astro dev --host 127.0.0.1",
     "check": "astro check && tsc --noEmit",
     "build": "astro build",
     "preview": "astro preview --host 127.0.0.1",
-    "test:unit": "vitest run tests/unit --maxWorkers=1 --minWorkers=1",
+    "test:unit": "vitest run tests/unit --maxWorkers=1 --no-file-parallelism",
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "astro": "4.16.19",
+    "astro": "7.4.8",
     "date-fns": "3.6.0",
     "date-fns-tz": "3.2.0",
     "firebase": "10.14.1"
@@ -24,9 +24,13 @@
     "@astrojs/check": "0.9.4",
     "@playwright/test": "1.58.2",
     "autoprefixer": "10.4.21",
-    "postcss": "8.5.6",
+    "postcss": "8.5.32",
     "tailwindcss": "3.4.18",
     "typescript": "5.9.3",
-    "vitest": "2.1.9"
+    "vitest": "5.1.0"
+  },
+  "overrides": {
+    "undici": "6.29.1",
+    "@grpc/grpc-js": "1.14.7"
   }
 }

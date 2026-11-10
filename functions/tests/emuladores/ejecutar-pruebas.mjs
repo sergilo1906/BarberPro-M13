@@ -1,5 +1,6 @@
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { readFileSync } from "node:fs";
 import { comprobarEntornoLocal } from "../../src/firebase.js";
 
 comprobarEntornoLocal();
@@ -22,5 +23,10 @@ ejecutar(["--test", "functions/tests/emuladores/profesional.test.mjs"]);
 ejecutar(["--test", "functions/tests/emuladores/administracion.test.mjs"]);
 ejecutar(["--test", "functions/tests/emuladores/restantes.test.mjs"]);
 const carpetaApp = fileURLToPath(new URL("../../../app/", import.meta.url));
-ejecutar(["node_modules/astro/astro.js", "build"], carpetaApp);
-ejecutar(["node_modules/@playwright/test/cli.js", "test"], carpetaApp);
+const paqueteAstro = JSON.parse(readFileSync(new URL("../../../app/node_modules/astro/package.json", import.meta.url), "utf8"));
+ejecutar(["node_modules/astro/" + paqueteAstro.bin.astro, "build"], carpetaApp);
+ejecutar(["node_modules/@playwright/test/cli.js", "test", "--project=escritorio", "--project=movil"], carpetaApp);
+// La comparación de tableta parte de fixtures restablecidos: los recorridos
+// funcionales anteriores modifican citas y semanas del escenario de escritorio.
+ejecutar(["functions/scripts/preparar-datos-reservas.mjs"]);
+ejecutar(["node_modules/@playwright/test/cli.js", "test", "--project=tableta"], carpetaApp);

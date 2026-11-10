@@ -4,13 +4,14 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": "20"
+    "node": "22"
   },
   "scripts": {
     "check": "node --check index.js && node --check src/firebase.js && node --check src/salud.js && node --check src/permisos.js && node --check src/cuentas.js && node --check src/fechas.js && node --check src/configuracion.js && node --check src/horarios.js && node --check src/disponibilidad.js && node --check src/persistencia-reservas.js && node --check src/reservas.js && node --check src/control-agenda.js && node --check src/persistencia-horarios.js && node --check src/administracion.js && node --check src/recordatorios.js && node --check src/demostracion.js && node --check scripts/asignar-roles.mjs && node --check scripts/normalizar-roles.mjs && node --check scripts/preparar-datos-reservas.mjs",
     "test:unit": "node --test tests/unit/salud.test.mjs tests/unit/cuentas.test.mjs tests/unit/disponibilidad.test.mjs tests/unit/horarios.test.mjs tests/unit/administracion.test.mjs tests/unit/recordatorios.test.mjs"
   },
   "dependencies": {
+    "barberpro-m13": "file:..",
     "date-fns": "3.6.0",
     "date-fns-tz": "3.2.0",
     "firebase-admin": "12.7.0",
@@ -19,5 +20,9 @@
   "devDependencies": {
     "@firebase/rules-unit-testing": "3.0.4",
     "firebase": "10.14.1"
+  },
+  "overrides": {
+    "undici": "6.29.1",
+    "@grpc/grpc-js": "1.14.7"
   }
 }

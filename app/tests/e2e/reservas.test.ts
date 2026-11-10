@@ -9,6 +9,25 @@ test.beforeEach(async ({ context }) => {
   });
 });
 
+test("cambios rapidos agrupan disponibilidad y consultan solo la seleccion final", async ({ page }) => {
+  await abrirReserva(page, fechaReserva(13));
+  let consultas = 0;
+  page.on("request", (peticion) => { if (peticion.url().endsWith("/getAvailability")) consultas++; });
+  await page.evaluate((fecha) => {
+    const servicio = document.querySelector<HTMLSelectElement>("#service-select")!;
+    const profesional = document.querySelector<HTMLSelectElement>("#barber-select")!;
+    const dia = document.querySelector<HTMLInputElement>("#date-select")!;
+    servicio.value = "svc_beard"; servicio.dispatchEvent(new Event("change", { bubbles: true }));
+    profesional.value = "demo_worker_2"; profesional.dispatchEvent(new Event("change", { bubbles: true }));
+    dia.value = fecha; dia.dispatchEvent(new Event("change", { bubbles: true }));
+  }, fechaReserva(12));
+  await expect(page.locator('.slot-btn[data-time="09:00"]')).toBeVisible();
+  expect(consultas).toBe(1);
+  await expect(page.locator("#date-select")).toHaveValue(fechaReserva(12));
+  await expect(page.locator("#service-select")).toHaveValue("svc_beard");
+  await expect(page.locator("#barber-select")).toHaveValue("demo_worker_2");
+});
+
 test("seleccion, calendario nativo, confirmacion unica, reserva real e ICS", async ({ page }, informacion) => {
   const fecha = fechaReserva(informacion.project.name === "escritorio" ? 7 : 8);
   await abrirReserva(page, fecha);

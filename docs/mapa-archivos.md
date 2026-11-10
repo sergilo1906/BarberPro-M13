@@ -1,5 +1,7 @@
 # Mapa vigente de archivos reconstruidos
 
+La auditoría extra incorpora una [tabla autocontenida de los 94 originales y sus destinos existentes](auditoria-final/correspondencias-archivos.md), incluidos los módulos fusionados. El [inventario de la fuente actual](auditoria-final/inventario-archivos.md) añade las nuevas herramientas y pruebas. Ambas evidencias distinguen existencia, responsabilidad y equivalencia funcional.
+
 Este mapa describe implementación real y complementa los informes de fases 3–8. El diseño histórico completo de 94 originales está en la planificación de fase 2, conservada sin modificaciones. No se confunde tener un destino creado con haber comprobado todas sus funciones. La revisión final de inventario y referencias corresponde a fases 9–12.
 
 ## Fases anteriores

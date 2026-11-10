@@ -57,13 +57,13 @@ const estados = ["admin", "usuarios-vacio", "usuarios-resultado", "equipo", "ser
 for (const estado of estados) test("administracion original " + estado, async ({ page, context, request }, informacion) => {
   test.skip(!existsSync(path.join(original, "dist/admin/index.html")), "No hay dist original local.");
   await context.route("**/*", async (ruta) => { const host = new URL(ruta.request().url()).hostname; if (["127.0.0.1", "localhost", "fonts.googleapis.com", "fonts.gstatic.com"].includes(host)) await ruta.continue(); else { await ruta.abort(); throw new Error("Conexion externa no permitida: " + host); } });
-  const cuenta = estado === "entrada-worker" ? "profesional-" + informacion.project.name : estado === "entrada-manager" ? "reservas-manager" : "reservas-admin";
+  const cuenta = estado === "entrada-worker" ? "profesional-" + (informacion.project.name === "tableta" ? "escritorio" : informacion.project.name) : estado === "entrada-manager" ? "reservas-manager" : "reservas-admin";
   const ruta = estado.startsWith("entrada") ? "/index-admin" : estado.startsWith("usuarios") ? "/admin/usuarios" : "/" + estado;
   await iniciarPersonal(page, cuenta); await page.goto(ruta);
   await expect(page.locator("html")).not.toHaveAttribute("data-auth-pending", "");
   await expect(page.locator("#link-setup")).toBeVisible();
   if (estado.startsWith("usuarios")) await expect(page.locator("#search-form")).toBeVisible();
-  if (estado === "usuarios-resultado") { await page.locator("#email").fill("admin-destino-" + informacion.project.name + "@example.test"); await page.getByRole("button", { name: "Buscar usuario", exact: true }).click(); await expect(page.locator("#results article")).toHaveCount(1); }
+  if (estado === "usuarios-resultado") { await page.locator("#email").fill("admin-destino-" + (informacion.project.name === "tableta" ? "escritorio" : informacion.project.name) + "@example.test"); await page.getByRole("button", { name: "Buscar usuario", exact: true }).click(); await expect(page.locator("#results article")).toHaveCount(1); }
   if (estado === "equipo") await expect(page.locator("#team-list article").first()).toBeVisible();
   if (estado === "servicios") await expect(page.locator("#services-msg")).toHaveText("Servicios cargados.");
   if (estado === "branding") await expect(page.locator("#cfg-msg")).toHaveText("Configuracion cargada.");
@@ -76,9 +76,9 @@ for (const estado of estados) test("administracion original " + estado, async ({
     if (estado.startsWith("entrada")) await referencia.evaluate((gestion) => { for (const elemento of document.querySelectorAll("[data-manager-only]")) { elemento.classList.toggle("hidden", !gestion); elemento.classList.toggle("flex", gestion); } }, estado === "entrada-manager");
     else if (estado !== "admin") {
       const pagina = estado.startsWith("usuarios") ? "admin-users" : estado === "servicios" ? "services" : estado;
-      const datos = await datosVisuales(request, "admin-destino-" + informacion.project.name);
+      const datos = await datosVisuales(request, "admin-destino-" + (informacion.project.name === "tableta" ? "escritorio" : informacion.project.name));
       await referencia.evaluate(presentarOriginal(pagina, datos, estado === "usuarios-resultado"));
-      if (estado === "usuarios-resultado") await referencia.locator("#email").fill("admin-destino-" + informacion.project.name + "@example.test");
+      if (estado === "usuarios-resultado") await referencia.locator("#email").fill("admin-destino-" + (informacion.project.name === "tableta" ? "escritorio" : informacion.project.name) + "@example.test");
     }
     for (const superficie of [referencia, page]) {
       await superficie.evaluate(async () => { await document.fonts.ready; for (const peso of [400, 500, 600, 700]) await document.fonts.load(peso + " 14px Manrope"); if (document.activeElement instanceof HTMLElement) document.activeElement.blur(); window.scrollTo({ top: 0, behavior: "instant" }); });

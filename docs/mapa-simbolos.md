@@ -1,5 +1,7 @@
 # Correspondencias vigentes de símbolos
 
+La auditoría extra confirma que la planificación de 3.122 registros no es una revisión semántica de la implementación. Véanse [revisión de código](auditoria-final/02-revision-codigo.md) e inventario.json para las declaraciones actuales, imports y límites. No se marca cada callback, variable o propiedad como verificado mediante una mera búsqueda de su nombre.
+
 Las propuestas de fase 2 son una referencia, no una certificación de nombres implementados. Los informes 3–7 registran las correspondencias ejecutadas de esos módulos. Este documento incorpora las decisiones reales de administración; la revisión global del inventario histórico de 3.122 registros sigue pendiente de la fase 11. No se declara ejecución de todos esos símbolos.
 
 | Original / ámbito | Implementación actual | Motivo |

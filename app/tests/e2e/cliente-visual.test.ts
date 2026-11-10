@@ -50,7 +50,7 @@ for (const estado of ["vacio", "listado", "cancelacion", "cambio"]) {
       else { await ruta.abort(); throw new Error("Conexion externa no permitida: " + host); }
     });
     if (estado === "cambio") await page.route("**/europe-west1/getAvailability", (ruta) => ruta.fulfill({ json: { result: { ok: true, slots: huecos } } }));
-    const sufijo = estado === "vacio" ? "vacio" : informacion.project.name;
+    const sufijo = estado === "vacio" ? "vacio" : (informacion.project.name === "tableta" ? "escritorio" : informacion.project.name);
     await abrirMisCitas(page, sufijo);
     await expect(page.locator("#my-list article")).toHaveCount(estado === "vacio" ? 0 : 8);
     const citas = await obtenerDatosReferencia(request, sufijo);

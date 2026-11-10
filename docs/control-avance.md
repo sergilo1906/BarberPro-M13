@@ -1,5 +1,9 @@
 # Control de avance — implementación
 
+## Auditoría extra vigente
+
+La revisión independiente se registra en [auditoria-final](auditoria-final/00-estado-inicial.md). Corrige problemas contrastados y vuelve a ejecutar pruebas. No afirma que las doce fases anteriores estuvieran cerradas; los resultados finales y límites se consultan en 09-informe-final.md y control-total.md de esa carpeta. Las correcciones permanecen locales por instrucción del usuario.
+
 ## Estado vigente — fase 9 en curso y publicación
 
 La publicación solicitada incluye la implementación parcial de panel, KPIs, CSV, diagnóstico, recordatorios y demo. Se conservan los cierres anteriores; no se marca fase 9 completada. Consultar [estado de fase 9](fase-9-estado-en-curso.md) y [publicación](fase-github-publicacion.md) para evidencia y pendientes. La pausa de tres horas posterior a fase 9 todavía no se ha iniciado.

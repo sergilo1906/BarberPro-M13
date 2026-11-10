@@ -44,7 +44,7 @@ const estados = ["agenda-vacia", "agenda-listado", "panel", "horario-worker", "h
 for (const estado of estados) test("profesional original " + estado, async ({ page, context, request }, informacion) => {
   test.skip(!hayReferencia, "Falta el dist original.");
   await context.route("**/*", async (ruta) => { const host = new URL(ruta.request().url()).hostname; if (["127.0.0.1", "localhost", "fonts.googleapis.com", "fonts.gstatic.com"].includes(host)) await ruta.continue(); else { await ruta.abort(); throw new Error("Conexion externa no permitida: " + host); } });
-  const uid = "profesional-" + informacion.project.name, gestion = estado === "horario-manager";
+  const uid = "profesional-" + (informacion.project.name === "tableta" ? "escritorio" : informacion.project.name), gestion = estado === "horario-manager";
   const cuenta = gestion ? "reservas-manager" : uid, rol = gestion ? "manager" : "worker";
   const pagina = estado.startsWith("agenda") ? "agenda" : estado.startsWith("horario") ? "setup-barber" : estado === "panel" ? "panel-barbero" : "bloqueos";
   let creado = "";
@@ -61,7 +61,7 @@ for (const estado of estados) test("profesional original " + estado, async ({ pa
     if (pagina === "setup-barber") await expect(page.locator("#save-config")).toBeEnabled();
     if (pagina === "bloqueos") { await expect(page.locator("#block-date")).toHaveValue(fechaReserva(0)); await expect(page.locator("#blocks-list")).not.toHaveText("Cargando bloqueos..."); if (estado === "bloqueos-vacaciones") await page.locator("#block-type").selectOption("vacation"); }
     const hoy = fechaReserva(0), fecha = pagina === "agenda" ? await page.locator("#agenda-date").inputValue() : hoy;
-    const nombre = informacion.project.name === "movil" ? "Profesional movil" : "Profesional escritorio";
+    const nombre = (informacion.project.name === "tableta" ? "escritorio" : informacion.project.name) === "movil" ? "Profesional movil" : "Profesional escritorio";
     let datos: object = [];
     if (pagina === "agenda" || pagina === "panel-barbero") datos = await obtenerDatos(request, cuenta, "bookings", uid);
     if (pagina === "setup-barber") datos = await obtenerDatos(request, cuenta, "", uid, "barbers/" + uid + "/weeklySchedules/" + await page.locator("#week-date").inputValue());

@@ -1,5 +1,9 @@
 # Control de cobertura
 
+## Auditoría extra vigente
+
+El recuento actual y los límites se registran en auditoria-final/control-total.md. Hay [94 correspondencias de archivo contrastadas](auditoria-final/correspondencias-archivos.md) y un inventario AST reproducible por archivo. Eso no certifica la equivalencia individual de todos los símbolos ni un porcentaje funcional global. Los resultados históricos siguientes se conservan con su alcance original.
+
 ## Estado vigente — fase 9 en curso
 
 Los módulos restantes ya tienen una implementación inicial, conservada en GitHub a petición del usuario. Las cuatro rutas antes reservadas contienen la nueva interfaz; falta cerrar su validación específica. No se actualiza artificialmente el porcentaje funcional ni se certifica el inventario global. Véase [estado provisional de fase 9](fase-9-estado-en-curso.md). Las cifras de fase 8 se conservan debajo como resultado histórico.
