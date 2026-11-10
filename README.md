@@ -1,6 +1,6 @@
 # BarberPro Studio — M13
 
-Aplicación reconstruida con Astro estático, Firebase Auth, perfiles, cuatro roles y núcleo de reservas. Solo funciona contra emuladores locales. El original permanece intacto.
+Aplicación reconstruida con Astro estático, Firebase Auth, perfiles, cuatro roles, reservas y área profesional. Solo funciona contra emuladores locales. El original permanece intacto.
 
 ## Instalación local
 
@@ -27,7 +27,7 @@ npm run emulators
 npm run datos:local
 ```
 
-El servidor solo escucha en loopback. Las seis páginas públicas funcionan sin Firebase. Login, registro, verificación y perfil están implementados; `/reservar` permite consultar disponibilidad, confirmar y descargar ICS. `/mis-citas` muestra citas propias, filtros e historia y permite cancelar o cambiar con los servicios reales de fase 5. Las otras 15 vistas privadas conservan el aviso de indisponibilidad y sus permisos.
+El servidor solo escucha en loopback. Las seis páginas públicas funcionan sin Firebase. Login, registro, verificación y perfil están implementados; `/reservar` permite consultar disponibilidad, confirmar y descargar ICS. `/mis-citas` muestra citas propias, filtros e historia y permite cancelar o cambiar. El profesional dispone de `/panel-barbero`, `/agenda`, `/setup-barber` y `/bloqueos`, con semanas, publicación, copia, estados y bloques que afectan a disponibilidad. Las otras 11 vistas privadas conservan el aviso de indisponibilidad y sus permisos.
 
 ## Firebase
 
@@ -43,10 +43,12 @@ El emulador imprime los enlaces de correo ficticios. Se pueden abrir localmente 
 
 Las reglas permiten editar solo nombre/teléfono propios; los roles se asignan en backend. `setMyRole` deniega siempre el cambio. `adminSetClaims` requiere administrador verificado y permisos vigentes. Los scripts `functions/scripts/asignar-roles.mjs` y `normalizar-roles.mjs` exigen UID explícito y los dos emuladores; simulan por defecto, escriben solo con `--aplicar`. No existe pantalla de administración general en esta fase.
 
-No se incluyen comandos de despliegue ni claves administrativas. Las escrituras directas de citas/locks/notificaciones desde el navegador siguen denegadas: las cinco funciones de reservas autorizan y validan en backend, con transacciones y reintentos idempotentes. Las escrituras de gestión de servicios, semanas y bloqueos siguen pendientes de sus fases; Storage continúa cerrado. La autenticación estática protege los datos mediante reglas/backend; el HTML no equivale a una sesión de servidor.
+No se incluyen comandos de despliegue ni claves administrativas. Las escrituras directas de citas/locks/notificaciones/semanas/bloques desde el navegador siguen denegadas. Las funciones de reservas y las tres operaciones nuevas `saveWeeklySchedule`, `createScheduleBlock` y `deleteScheduleBlock` validan en backend, con transacciones, revisión semanal y recuperación idempotente. Un bloqueo o recorte que perjudique una cita existente se rechaza. Servicios, equipo y administración general siguen pendientes; Storage continúa cerrado. El HTML estático no equivale a una sesión de servidor.
 
 ## Estado y documentación
 
 Para explorar el listado hay cuentas ficticias verificadas `cliente-escritorio@example.test` y `cliente-movil@example.test`, con contraseña de fixture `Prueba123!`; incluyen ocho citas de diferentes estados, antiguas/futuras y datos legados. `cliente-vacio@example.test` comienza sin citas. Todas se preparan solo al ejecutar explícitamente `npm run datos:local`.
 
-Consultar [fase 6](docs/fase-6-cliente.md), [fase 5](docs/fase-5-reservas-disponibilidad.md), [cobertura](docs/control-cobertura.md), [avance](docs/control-avance.md) e informes históricos de fases 3–4. La operativa profesional y administración continúan en sus fases autorizadas. Las versiones heredadas conservan avisos de seguridad de dependencias; ver los informes antes de plantear una publicación.
+Las cuentas ficticias `profesional-escritorio@example.test` y `profesional-movil@example.test`, contraseña de fixture `Prueba123!`, tienen semanas y citas para explorar las cuatro pantallas. `profesional-otro@example.test` comienza sin citas. `reservas-manager@example.test` y `reservas-admin@example.test` permiten probar la selección autorizada de profesionales. Solo se preparan al ejecutar explícitamente `npm run datos:local`; nunca son usuarios reales.
+
+Consultar [fase 7](docs/fase-7-profesional-agenda.md), [fase 6](docs/fase-6-cliente.md), [fase 5](docs/fase-5-reservas-disponibilidad.md), [cobertura](docs/control-cobertura.md), [avance](docs/control-avance.md) e informes históricos de fases 3–4. No se avanza automáticamente a fase 8. Las versiones heredadas conservan avisos de seguridad de dependencias; ver los informes antes de plantear una publicación.

@@ -1,4 +1,5 @@
 import { expect, test, type APIRequestContext } from "@playwright/test";
+import { compararPresentacion, OPCIONES_IMAGEN } from "./comparar-presentacion";
 import { readFileSync, existsSync, mkdirSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -80,11 +81,11 @@ for (const estado of ["vacio", "listado", "cancelacion", "cambio"]) {
       const caja = elemento.getBoundingClientRect(), estilo = getComputedStyle(elemento);
       return { tag: elemento.tagName, x: caja.x, ancho: caja.width, alto: caja.height, fuente: estilo.fontFamily, tamano: estilo.fontSize, color: estilo.color, fondo: estilo.backgroundColor };
     });
-    expect(await page.evaluate(medir)).toEqual(await referencia.evaluate(medir));
+    compararPresentacion(await page.evaluate(medir), await referencia.evaluate(medir));
     const destino = informacion.snapshotPath("original.png"); mkdirSync(path.dirname(destino), { recursive: true });
     await referencia.bringToFront(); await referencia.screenshot({ path: destino, fullPage: true, animations: "disabled" });
     await page.bringToFront();
-    await expect(page).toHaveScreenshot("original.png", { fullPage: true, animations: "disabled", scale: "device", maxDiffPixelRatio: 0.0001, threshold: 0.1 });
+    await expect(page).toHaveScreenshot("original.png", { fullPage: true, animations: "disabled", scale: "device", ...OPCIONES_IMAGEN });
     await page.screenshot({ path: informacion.snapshotPath("reconstruida.png"), fullPage: true, animations: "disabled" });
     await referencia.close();
   });

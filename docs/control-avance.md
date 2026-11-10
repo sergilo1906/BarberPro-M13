@@ -1,5 +1,13 @@
 # Control de avance — implementación
 
+## Estado vigente — fase 7 completada en entorno local
+
+Área profesional implementada: panel, agenda diaria, estados, semanas/publicación/copia, bloqueos y vacaciones, con escrituras validadas y control de conflictos compartido con reservas. Se conservan 27 rutas: 16 vistas funcionales y 11 privadas de negocio reservadas; 18 guards. Hay nueve de los trece exports originales y tres adicionales de agenda; los cuatro originales restantes siguen pendientes.
+
+La base de fase 6 se repitió correctamente. `npm test` final termina con salida 0: Astro/TypeScript y backend sin diagnósticos, 33 unitarias, 48 integraciones, build de 27 páginas y 178 pruebas de navegador correctas (50 visuales incluidas, ninguna omitida). Incluye 20 recorridos funcionales profesionales y 16 comparaciones visuales nuevas. Los intentos fallidos, sus correcciones y la precisión visual de QA están registrados en [fase 7](fase-7-profesional-agenda.md). Original: 94 hashes coincidentes. Servicios detenidos y cambios guardados en la rama local `fase-7-profesional`. No se opera sobre producción y no se inicia fase 8.
+
+## Registro histórico del cierre de fase 6
+
 ## Estado vigente — cierre de fase 6
 
 Área del cliente conectada: reserva, Mis citas con filtros/historia, cancelación, cambio recuperable, perfil y navegación. Son 12 vistas funcionales y 15 privadas de negocio reservadas, con 27 rutas conservadas y nueve exports backend de trece. `npm test` final: salida 0, check sin diagnósticos, 28 unitarias, 37 integraciones y 142 pruebas de navegador (34 visuales incluidas, ninguna omitida); build de 27 páginas. Los 94 hashes del original coinciden. No hay operaciones productivas ni servidores activos al cierre.

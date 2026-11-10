@@ -36,3 +36,19 @@ export function sumarDiasCalendario(fecha: string, dias: number): string {
   instante.setUTCDate(instante.getUTCDate() + dias);
   return instante.toISOString().slice(0, 10);
 }
+
+export function obtenerLunesSemana(fecha: string): string {
+  if (!esFechaCalendarioValida(fecha)) return "";
+  const dia = new Date(fecha + "T00:00:00Z").getUTCDay();
+  return sumarDiasCalendario(fecha, -((dia + 6) % 7));
+}
+
+export function obtenerRangoPeriodo(periodo: string, zona: string): { desde: string; hasta: string } {
+  const hoy = formatearFechaNegocio(zona);
+  if (periodo === "day") return { desde: hoy, hasta: hoy };
+  if (periodo === "week") return { desde: sumarDiasCalendario(hoy, -6), hasta: hoy };
+  const inicio = hoy.slice(0, 7) + "-01";
+  const siguiente = new Date(inicio + "T00:00:00Z");
+  siguiente.setUTCMonth(siguiente.getUTCMonth() + 1);
+  return { desde: inicio, hasta: sumarDiasCalendario(siguiente.toISOString().slice(0, 10), -1) };
+}

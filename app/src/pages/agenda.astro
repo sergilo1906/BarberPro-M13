@@ -1,15 +1,41 @@
----
+﻿---
 import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
 ---
 
-<DisenoPrincipal title="Agenda diaria" noindex>
-  <section class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg p-6 space-y-4" data-estado="no-disponible" data-fase-pendiente="7">
-    <h1 class="text-xl font-semibold text-gray-900">Agenda diaria</h1>
-    <p role="status" class="text-sm text-gray-600">Esta seccion todavia no esta disponible.</p>
-    <p class="text-sm text-gray-600">No se han habilitado operaciones ni acceso a datos privados. Puedes volver al inicio o consultar la ayuda.</p>
-    <div class="flex flex-wrap gap-3 text-sm">
-      <a href="/" class="rounded border px-3 py-2 hover:bg-gray-50">Ir al inicio</a>
-      <a href="/ayuda" class="rounded bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">Ayuda</a>
+<DisenoPrincipal title="Agenda diaria">
+  <section class="max-w-4xl mx-auto">
+    <div class="bg-white p-4 rounded shadow flex flex-col space-y-4">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h2 class="font-semibold text-lg">Agenda diaria</h2>
+          <p class="text-xs text-gray-600">Gestiona las citas del dia con filtros claros y cambios sencillos de estado.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600">
+          <label class="flex items-center gap-2">
+            <span>Fecha</span>
+            <input id="agenda-date" type="date" class="border rounded px-2 py-1 text-sm" />
+          </label>
+          <label class="flex items-center gap-2">
+            <span>Estado</span>
+            <select id="agenda-status" class="border rounded px-2 py-1 text-sm">
+              <option value="all">Todos</option>
+              <option value="pending">Pendiente</option>
+              <option value="confirmed">Confirmada</option>
+              <option value="done">Hecha</option>
+              <option value="no_show">No show</option>
+              <option value="cancelled">Cancelada</option>
+              <option value="rescheduled">Reprogramada</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <p id="agenda-msg" class="text-xs text-gray-600 min-h-[1.5rem] leading-tight"></p>
+
+      <div id="agenda-list" class="divide-y divide-gray-200 text-sm rounded border border-gray-200"></div>
     </div>
   </section>
+
+  <script>import "../modulos/profesionales/agenda-diaria";</script>
 </DisenoPrincipal>

@@ -58,3 +58,11 @@ export async function comprobarAdministrador(peticion) {
   if (identidad.rol !== "admin") throw new HttpsError("permission-denied", "Acceso denegado.");
   return identidad;
 }
+
+export async function comprobarIdentidadTransaccion(transaccion, baseDatos, identidad) {
+  const perfil = await transaccion.get(baseDatos.doc("users/" + identidad.usuario.uid));
+  if ((perfil.exists && (perfil.get("role") !== identidad.rol || (perfil.get("roleVersion") || 0) !== identidad.version)) || (!perfil.exists && identidad.rol !== "client")) {
+    throw new HttpsError("permission-denied", "Tus permisos han cambiado. Actualiza la sesion.");
+  }
+  return perfil.data() || {};
+}

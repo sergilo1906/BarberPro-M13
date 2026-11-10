@@ -47,3 +47,15 @@ export function aplicarFiltrosCitas(citas: Cita[], fecha: string, estado: string
   }
   return resultado;
 }
+
+export function obtenerEtiquetaEstadoAgenda(estado = "pending"): string {
+  return estado === "rescheduled" ? "Reprogramada" : obtenerEtiquetaEstadoCliente(estado);
+}
+export function obtenerClasesEstadoAgenda(estado = "pending"): string {
+  return estado === "rescheduled" ? "bg-purple-100 text-purple-700 border-purple-300" : obtenerClasesEstadoCliente(estado);
+}
+export function obtenerEstadosSiguientes(estado: string): import("../modelos/agenda").EstadoCita[] {
+  if (estado === "pending") return ["confirmed", "cancelled"];
+  if (estado === "confirmed") return ["done", "no_show", "cancelled"];
+  return [];
+}

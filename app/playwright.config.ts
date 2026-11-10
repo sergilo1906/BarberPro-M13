@@ -17,6 +17,9 @@ export default defineConfig({
     baseURL: "http://127.0.0.1:4331",
     trace: "retain-on-failure",
     colorScheme: "light",
+    // Fijar el render tipográfico de QA evita diferencias de subpíxel/ClearType
+    // entre superficies Windows. Se aplica igual al original y a la reconstrucción.
+    launchOptions: { args: ["--disable-lcd-text", "--disable-font-subpixel-positioning"] },
   },
   webServer: [
     {

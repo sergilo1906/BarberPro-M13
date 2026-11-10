@@ -45,6 +45,22 @@ export function obtenerIndiceDia(fecha) {
   return new Date(validarFechaCalendario(fecha) + "T00:00:00Z").getUTCDay();
 }
 
+export function sumarDiasCalendario(fecha, dias) {
+  const instante = new Date(validarFechaCalendario(fecha) + "T00:00:00Z");
+  instante.setUTCDate(instante.getUTCDate() + dias);
+  return instante.toISOString().slice(0, 10);
+}
+export function enumerarDias(inicio, fin) {
+  validarFechaCalendario(inicio); validarFechaCalendario(fin);
+  if (inicio > fin) throw new HttpsError("invalid-argument", "Rango de fechas invertido.");
+  const fechas = [];
+  for (let fecha = inicio; fecha <= fin; fecha = sumarDiasCalendario(fecha, 1)) {
+    if (fechas.length >= 366) throw new HttpsError("resource-exhausted", "Maximo 366 dias por operacion.");
+    fechas.push(fecha);
+  }
+  return fechas;
+}
+
 export function seSolapanTramos(inicio, fin, otroInicio, otroFin) {
   return inicio < otroFin && otroInicio < fin;
 }

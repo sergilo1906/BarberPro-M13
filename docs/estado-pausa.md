@@ -1,5 +1,15 @@
 # Estado de pausa — BarberPro Studio M13
 
+## Actualización vigente — fase 7, 10 de noviembre de 2026
+
+La fase 7 queda implementada y comprobada localmente, después de guardar el cierre de fase 6 en `ffa81bb`. Incluye panel/agenda/horarios/bloques y tres escrituras seguras, sin avanzar a administración. `npm test` final: salida 0, check sin diagnósticos, build de 27 páginas, 33 unitarias, 48 integraciones y 178 pruebas de navegador correctas (50 visuales incluidas). El estado real, inventario y pendientes figuran en [fase 7](fase-7-profesional-agenda.md) y [avance](control-avance.md). Cambios conservados en la rama local `fase-7-profesional`; consultar su último commit para reanudar.
+
+Comprobación de cierre: 10 de noviembre de 2026, 07:29 UTC. Servidores de desarrollo/comparación y emuladores detenidos, sus puertos libres; ningún proceso crítico a medio ejecutar. Original intacto, con 94 hashes coincidentes. Documentos actualizados; no se han hecho operaciones sobre Firebase productivo ni publicación. Se detiene el trabajo al entregar el informe de fase 7, sin prometer reanudación automática ni una nueva espera activa de tres horas.
+
+Siguiente fase después de esta entrega: **FASE 8 — Panel de administración**, con instrucción de continuación. Sus adjuntos recibidos antes no se dan por ejecutados. No se inicia fase 8 automáticamente ni se publica en GitHub. Las pausas y el intervalo entre registros están documentados debajo; no se certifica una espera activa de tres horas.
+
+Para reanudar posteriormente: comprobar Git y el informe vigente, revisar los avisos de dependencias (incluidos tres críticos en app), mantener todos los datos en emuladores demo y consultar la solicitud de la fase correspondiente. No mezclar escritores antiguos con los controles transaccionales nuevos. El original se conserva intacto.
+
 ## Registro vigente — 10 de noviembre de 2026, 05:56 UTC
 
 Las fases 4 y 5 están guardadas en Git. La implementación de fase 6 terminó `npm test` con salida 0 el 9 de noviembre a las 20:22:22 UTC: 28 unitarias, 37 integraciones y 142 pruebas de navegador, más build/check correctos. Al recibir la nueva instrucción se conservaban sus cambios sin commit y faltaba su informe; se completa ese registro antes de iniciar fase 7. Véase [fase 6](fase-6-cliente.md).

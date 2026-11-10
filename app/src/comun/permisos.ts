@@ -1,5 +1,5 @@
 import { esperarEstadoSesion, observarSesion, obtenerUsuarioActual } from "../datos/sesion";
-import type { EstadoSesion, Rol } from "../modelos/cuentas";
+import type { EstadoSesion, Rol, UsuarioSesion } from "../modelos/cuentas";
 
 const TODOS: Rol[] = ["client", "worker", "manager", "admin"];
 const PERSONAL: Rol[] = ["worker", "manager", "admin"];
@@ -16,6 +16,26 @@ export const PERMISOS_RUTA: Record<string, Rol[]> = {
 
 export function esPersonal(rol: Rol): boolean {
   return PERSONAL.includes(rol);
+}
+
+export interface ContextoProfesional { usuario: UsuarioSesion; esVigente: () => boolean; }
+
+// Un contexto por pantalla. No se reinicia un formulario editado por una renovación
+// transitoria del token; un cambio de identidad/rol o un error sí invalida sus respuestas.
+export function observarAreaProfesional(cargar: (contexto: ContextoProfesional) => void, limpiar: () => void): void {
+  let claveAnterior = "";
+  let revision = 0;
+  observarSesion((estado) => {
+    if (estado.estado === "cargando") return;
+    const usuario = estado.usuario;
+    const clave = comprobarPermiso(estado, PERSONAL) && usuario ? usuario.uid + ":" + usuario.rol + ":" + usuario.versionRol : "";
+    if (clave === claveAnterior) return;
+    revision++; claveAnterior = clave; limpiar();
+    if (!clave || !usuario) return;
+    const actual = revision;
+    cargar({ usuario, esVigente: () => actual === revision && comprobarPermiso(obtenerUsuarioActual(), PERSONAL)
+      && obtenerUsuarioActual().usuario?.uid === usuario.uid && obtenerUsuarioActual().usuario?.rol === usuario.rol });
+  });
 }
 
 export function obtenerEtiquetaRol(rol: Rol): string {

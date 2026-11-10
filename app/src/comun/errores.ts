@@ -61,3 +61,14 @@ export function explicarErrorCambioCita(error: unknown, margen: number): string 
   if (codigo === "functions/invalid-argument") return "Revisa la nueva fecha y hora.";
   return "No se pudo confirmar el cambio. Pulsa Comprobar cambio antes de iniciar otro.";
 }
+
+export function explicarErrorAgenda(error: unknown): string {
+  const codigo = obtenerCodigoError(error);
+  if (codigo.includes("permission-denied") || codigo.includes("unauthenticated")) return "No tienes permiso para esta operacion. Revisa tu sesion.";
+  if (codigo.includes("already-exists")) return "Hay un conflicto con una cita o un bloqueo existente. Actualiza los datos y revisa el intervalo.";
+  if (codigo.includes("failed-precondition")) return "Los datos han cambiado o el horario no permite conservar las citas existentes. Recarga y revisa la semana.";
+  if (codigo.includes("invalid-argument")) return "Revisa las fechas, horas y campos del formulario.";
+  if (codigo.includes("not-found")) return "El profesional o bloqueo ya no existe. Actualiza el listado.";
+  if (codigo.includes("resource-exhausted")) return "El intervalo es demasiado grande para esta operacion. Reduce las fechas.";
+  return "No se pudo confirmar la respuesta. Comprueba la operacion antes de volver a enviarla.";
+}

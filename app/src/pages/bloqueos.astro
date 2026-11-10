@@ -2,14 +2,75 @@
 import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
 ---
 
-<DisenoPrincipal title="Bloqueos y excepciones" noindex>
-  <section class="max-w-xl mx-auto bg-white border border-gray-200 rounded-lg p-6 space-y-4" data-estado="no-disponible" data-fase-pendiente="7">
-    <h1 class="text-xl font-semibold text-gray-900">Bloqueos y excepciones</h1>
-    <p role="status" class="text-sm text-gray-600">Esta seccion todavia no esta disponible.</p>
-    <p class="text-sm text-gray-600">No se han habilitado operaciones ni acceso a datos privados. Puedes volver al inicio o consultar la ayuda.</p>
-    <div class="flex flex-wrap gap-3 text-sm">
-      <a href="/" class="rounded border px-3 py-2 hover:bg-gray-50">Ir al inicio</a>
-      <a href="/ayuda" class="rounded bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">Ayuda</a>
-    </div>
+<DisenoPrincipal title="Bloqueos y excepciones">
+  <section class="max-w-4xl mx-auto space-y-4">
+    <header>
+      <h1 class="text-xl font-semibold">Bloqueos y excepciones</h1>
+      <p class="text-sm text-gray-600">Gestiona pausas, cierres puntuales y vacaciones sin tocar los horarios base.</p>
+    </header>
+
+    <section class="bg-white border rounded p-4">
+      <h2 class="text-lg font-medium mb-3">Nuevo bloqueo</h2>
+      <form id="block-form" class="grid gap-3 sm:grid-cols-2">
+        <label class="text-sm">
+          Tipo
+          <select id="block-type" class="mt-1 w-full border rounded px-2 py-1">
+            <option value="exception">Excepcion</option>
+            <option value="break">Pausa</option>
+            <option value="internal">Interno</option>
+            <option value="vacation">Vacaciones</option>
+          </select>
+        </label>
+
+        <label class="text-sm">
+          Profesional
+          <select id="block-barber" class="mt-1 w-full border rounded px-2 py-1">
+            <option value="">Cargando profesionales...</option>
+          </select>
+        </label>
+
+        <label class="text-sm block-date-wrap">
+          Fecha
+          <input id="block-date" type="date" class="mt-1 w-full border rounded px-2 py-1" />
+        </label>
+
+        <label class="text-sm block-start-wrap">
+          Inicio
+          <input id="block-start" type="time" class="mt-1 w-full border rounded px-2 py-1" />
+        </label>
+
+        <label class="text-sm block-end-wrap">
+          Fin
+          <input id="block-end" type="time" class="mt-1 w-full border rounded px-2 py-1" />
+        </label>
+
+        <label class="text-sm vacation-start-wrap hidden">
+          Vacaciones desde
+          <input id="vacation-start" type="date" class="mt-1 w-full border rounded px-2 py-1" />
+        </label>
+
+        <label class="text-sm vacation-end-wrap hidden">
+          Vacaciones hasta
+          <input id="vacation-end" type="date" class="mt-1 w-full border rounded px-2 py-1" />
+        </label>
+
+        <label class="text-sm sm:col-span-2">
+          Motivo
+          <input id="block-reason" type="text" placeholder="Vacaciones, formacion, cierre anticipado..." class="mt-1 w-full border rounded px-2 py-1" />
+        </label>
+
+        <div class="sm:col-span-2 flex items-center gap-3">
+          <button type="submit" class="bg-blue-600 text-white text-sm px-3 py-2 rounded">Guardar bloqueo</button>
+          <p id="blocks-msg" class="text-sm text-gray-600"></p>
+        </div>
+      </form>
+    </section>
+
+    <section class="bg-white border rounded p-4">
+      <h2 class="text-lg font-medium mb-3">Bloqueos guardados</h2>
+      <div id="blocks-list" class="text-sm text-gray-600">Cargando bloqueos...</div>
+    </section>
   </section>
+
+  <script>import "../modulos/profesionales/bloqueos";</script>
 </DisenoPrincipal>

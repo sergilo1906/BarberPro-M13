@@ -12,4 +12,6 @@ await prepararCuentas();
 await prepararAgenda();
 const { prepararDatosCliente } = await import("../tests/emuladores/datos-cliente.mjs");
 await prepararDatosCliente();
+const { prepararDatosProfesional } = await import("../tests/emuladores/datos-profesional.mjs");
+await prepararDatosProfesional();
 console.log("Datos ficticios preparados. Se han reiniciado las reservas, locks, bloqueos y notificaciones de los emuladores demo locales.");

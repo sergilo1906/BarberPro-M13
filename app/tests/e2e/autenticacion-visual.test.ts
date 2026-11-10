@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { compararPresentacion, OPCIONES_IMAGEN } from "./comparar-presentacion";
 import { existsSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -61,7 +62,7 @@ for (const ruta of ["/login", "/registro", "/verify", "/perfil"]) {
       return medidas;
     };
     expect(await page.locator("main").innerText()).toBe(await referencia.locator("main").innerText());
-    expect(await page.evaluate(medir)).toEqual(await referencia.evaluate(medir));
+    compararPresentacion(await page.evaluate(medir), await referencia.evaluate(medir));
     expect(await referencia.locator("script").count()).toBe(0);
     const destino = informacion.snapshotPath("original.png");
     mkdirSync(path.dirname(destino), { recursive: true });
@@ -70,7 +71,7 @@ for (const ruta of ["/login", "/registro", "/verify", "/perfil"]) {
     await page.bringToFront();
     const captura = await page.locator("main").screenshot({ path: informacion.snapshotPath("reconstruida.png"), animations: "disabled" });
     await informacion.attach("autenticacion-reconstruida", { body: captura, contentType: "image/png" });
-    expect(captura).toMatchSnapshot("original.png", { maxDiffPixelRatio: 0.0001, threshold: 0.1 });
+    expect(captura).toMatchSnapshot("original.png", OPCIONES_IMAGEN);
     expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
     await referencia.close();
   });

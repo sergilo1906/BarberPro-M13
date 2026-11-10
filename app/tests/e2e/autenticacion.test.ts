@@ -107,7 +107,9 @@ for (const rol of ["client", "worker", "manager", "admin"]) {
       const permitido = rol === "admin" || (rutasPersonal.includes(ruta) && rol !== "client") || (rutasGestion.includes(ruta) && rol === "manager");
       await page.goto(ruta + "/");
       if (permitido) {
-        await expect(page.locator('[data-estado="no-disponible"]')).toBeVisible();
+        const titulos: Record<string, string> = { "/agenda": "Agenda diaria", "/panel-barbero": "Panel del profesional", "/setup-barber": "Horarios", "/bloqueos": "Bloqueos y excepciones" };
+        if (titulos[ruta]) await expect(page.getByRole("heading", { name: titulos[ruta], exact: true })).toBeVisible();
+        else await expect(page.locator('[data-estado="no-disponible"]')).toBeVisible();
       } else {
         await expect(page).toHaveURL(/\/\?acceso=denegado$/);
       }
@@ -171,7 +173,7 @@ test("el cambio de rol actualiza una sesion abierta y retira el menu profesional
 test("sin JavaScript las paginas privadas no muestran contenido ni datos de usuario", async ({ browser }) => {
   const contexto = await browser.newContext({ javaScriptEnabled: false });
   const pagina = await contexto.newPage();
-  for (const ruta of ["/perfil", "/admin", "/reservar", "/mis-citas"]) {
+  for (const ruta of ["/perfil", "/admin", "/reservar", "/mis-citas", "/agenda", "/panel-barbero", "/setup-barber", "/bloqueos"]) {
     await pagina.goto("http://127.0.0.1:4331" + ruta);
     await expect(pagina.locator("main")).toBeHidden();
     if (await pagina.locator("#perfil-email").count()) {

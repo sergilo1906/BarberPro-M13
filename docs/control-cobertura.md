@@ -1,5 +1,26 @@
 # Control de cobertura
 
+## Estado vigente — fase 7
+
+Inventario: 145 archivos propios versionables; 18 creados y 35 modificados respecto a fase 6. De los 132 destinos planificados existen 111 (110 versionables y .env.local demo ignorado); faltan 21. Hay 35 adiciones justificadas. El 84,09 % de presencia física no indica porcentaje funcional ni cobertura de pruebas. Se preservan las 27 URLs, con 16 vistas funcionales y 11 privadas reservadas.
+
+| Original identificado | Reorganizado/implementado | Probado / límite |
+|---|---|---|
+| agenda.astro/client | Agenda-diaria, tarjetas-citas, estados y datos compartidos | Propia/global por rol, orden, filtros, vacíos y transiciones reales. |
+| panel-barbero.* | Panel-profesional y consultas por periodo | Día/semana/mes; no sumar antiguas rescheduled; cinco citas de hoy como original. |
+| setup-barber.* / week | Editar-horario, formulario-horario, fechas y API validada | Dos tramos, día libre, solapes, copia sin guardar, publicación, revisión y espejo atómico; lectura fallida no reutiliza el formulario anterior. |
+| bloqueos.* / getBlocks | Bloqueos, formulario-bloqueo y API transaccional | Tipos horarios y vacaciones inclusivas, duplicación, eliminación y permisos. No existe edición en original. |
+| Disponibilidad y reservas | Mismo cálculo de fase 5 y controles diarios compartidos | Bloque/jornada contra creación y reprogramación concurrentes; no se cancelan citas automáticamente. |
+| Ficha y permisos | Sesión/rol vigentes, worker propio y gestión autorizada | Ficha ausente recuperada al guardar, oculta no reactivada, UID/manipulación y SDK directo denegados. |
+| Modelos/nombres/DOM | Siete módulos previstos, DTO y correspondencias del informe | Rutas/IDs/campos preservados; sin afirmar ejecución de todos los símbolos del inventario histórico. |
+| Visual | Original aislado y datos ficticios autorizados | Ocho estados × dos dispositivos; junto con 34 comparaciones anteriores. Calibración del render de QA documentada. |
+| Datos/Firebase | Tres endpoints adicionales; octavo índice local | Reglas no relajadas; sin despliegue ni certificación de índices de producción. |
+| Pendientes | Administración, auxiliares e integración final | Fases 8–12, datos legados fuera del editor y avisos heredados de dependencias. |
+
+Resultado final `npm test`: salida 0, check limpio, 33 unitarias, 48 integraciones y 178 pruebas de navegador correctas, ninguna omitida. Incluye 20 recorridos funcionales profesionales y 50 comparaciones visuales totales (16 nuevas). Build de 27 páginas y 94 hashes originales iguales. La calibración de QA, los intentos fallidos y los límites constan en [fase 7](fase-7-profesional-agenda.md). No se confunde código implementado con pruebas ejecutadas ni se declara cobertura global del 100 %.
+
+## Registro histórico del cierre de fase 6
+
 ## Estado vigente — cierre de fase 6
 
 127 archivos propios versionables: 10 nuevos y 20 modificados respecto al cierre de fase 5. Existen 103 de los 132 destinos previstos (102 versionables y un .env.local demo ignorado); faltan 29. Hay 25 adiciones justificadas frente al plan. El 78,03 % de presencia física no es un porcentaje funcional ni de pruebas.

@@ -20,6 +20,13 @@ export function comprobarContacto(nombre: string, telefono: string): string {
   return "";
 }
 
+export function comprobarTramoHorario(inicio: string, fin: string): string {
+  const hora = /^([01]\d|2[0-3]):[0-5]\d$/;
+  if (!hora.test(inicio) || !hora.test(fin)) return "Completa las horas con formato valido.";
+  if (inicio >= fin) return "La hora de fin debe ser mayor que la de inicio.";
+  return "";
+}
+
 export function bloquearFormulario(formulario: HTMLFormElement, bloqueado: boolean): void {
   formulario.classList.toggle("opacity-50", bloqueado);
   formulario.classList.toggle("pointer-events-none", bloqueado);

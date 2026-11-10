@@ -19,3 +19,18 @@ export interface SolicitudCambio {
   bookingId: string; newDateStr: string; newTimeStr: string;
   barberPreference: string | null; anyBarber: boolean; requestId: string;
 }
+
+export interface TramoHorario { start: string; end: string; }
+export interface DiaHorario { active: boolean; ranges: TramoHorario[]; start?: string; end?: string; breaks?: TramoHorario[]; }
+export interface HorarioSemanal { days: DiaHorario[]; slot: number; }
+export interface SemanaProfesional extends HorarioSemanal { weekStart: string; published: boolean; revision?: number; }
+export type TipoBloqueo = "exception" | "break" | "internal" | "vacation";
+export interface DatosBloqueo {
+  barberUid: string; type: TipoBloqueo; reason: string;
+  dateStr?: string; start?: string; end?: string; startDate?: string; endDate?: string;
+}
+export interface Bloqueo extends DatosBloqueo { id: string; createdBy?: string; }
+export type OperacionAgenda =
+  | { tipo: "semana"; datos: SemanaProfesional & { barberUid: string; expectedRevision: number; requestId: string } }
+  | { tipo: "crear-bloqueo"; datos: DatosBloqueo & { requestId: string } }
+  | { tipo: "eliminar-bloqueo"; datos: { blockId: string; requestId: string } };

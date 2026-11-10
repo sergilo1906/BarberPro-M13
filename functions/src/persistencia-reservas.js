@@ -5,6 +5,8 @@ import { obtenerServiciosAdministrativos } from "./firebase.js";
 import { obtenerConfiguracionAgenda } from "./configuracion.js";
 import { validarFechaCalendario, validarHora, convertirHoraAMinutos, convertirMinutosAHora, comprobarAnticipacion, comprobarFechaFutura, obtenerIntervaloUtc } from "./fechas.js";
 import { calcularDisponibilidadProfesional, cargarProfesionalesActivos, ordenarProfesionalesCandidatos, cargarServicio, validarIdentificador, normalizarSeleccionProfesional } from "./disponibilidad.js";
+import { comprobarIdentidadTransaccion } from "./permisos.js";
+import { referenciaControl, actualizarControl } from "./control-agenda.js";
 
 const TRANSICIONES = { pending: ["confirmed", "cancelled"], confirmed: ["done", "no_show", "cancelled"], cancelled: [], done: [], no_show: [], rescheduled: [] };
 
@@ -29,23 +31,11 @@ export function leerTextoLimitado(valor, maximo) {
   return valor.trim();
 }
 
-function referenciaControl(baseDatos, uid, fecha) {
-  return baseDatos.doc("bookingLocks/control_" + uid + "_" + fecha);
-}
-
 function obtenerOperacion(baseDatos, identidad, solicitud, tipo) {
   if (!solicitud.requestId) return null;
   const clave = createHash("sha256").update(JSON.stringify([identidad.usuario.uid, solicitud.requestId])).digest("hex");
   const huella = createHash("sha256").update(JSON.stringify({ ...solicitud, tipo })).digest("hex");
   return { referencia: baseDatos.doc("bookingLocks/operacion_" + clave), huella };
-}
-
-async function comprobarIdentidadTransaccion(transaccion, baseDatos, identidad) {
-  const perfil = await transaccion.get(baseDatos.doc("users/" + identidad.usuario.uid));
-  if ((perfil.exists && (perfil.get("role") !== identidad.rol || (perfil.get("roleVersion") || 0) !== identidad.version)) || (!perfil.exists && identidad.rol !== "client")) {
-    throw new HttpsError("permission-denied", "Tus permisos han cambiado. Actualiza la sesion.");
-  }
-  return perfil.data() || {};
 }
 
 function comprobarGestionReserva(identidad, cita, configuracion) {
@@ -82,10 +72,6 @@ export function liberarBloqueosReserva(transaccion, bloqueos, idReserva, conserv
   for (const [clave, documento] of bloqueos) {
     if (!conservar.has(clave) && documento.exists && documento.get("bookingId") === idReserva) transaccion.delete(documento.ref);
   }
-}
-
-function actualizarControl(transaccion, referencia, documento) {
-  transaccion.set(referencia, { kind: "day_guard", revision: Number(documento.get("revision") || 0) + 1, updatedAt: FieldValue.serverTimestamp() }, { merge: true });
 }
 
 async function prepararDestino(transaccion, baseDatos, solicitud, servicio, configuracion, citaAnterior) {

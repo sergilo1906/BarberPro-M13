@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { compararPresentacion, OPCIONES_IMAGEN } from "./comparar-presentacion";
 import { existsSync, mkdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
@@ -91,7 +92,7 @@ for (const estado of ["disponible", "vacio", "confirmacion"]) {
       const estilo = getComputedStyle(elemento);
       return { etiqueta: elemento.tagName, ancho: caja.width, alto: caja.height, x: caja.x, fuente: estilo.fontFamily, tamano: estilo.fontSize, color: estilo.color, fondo: estilo.backgroundColor };
     });
-    expect(await page.evaluate(medir)).toEqual(await referencia.evaluate(medir));
+    compararPresentacion(await page.evaluate(medir), await referencia.evaluate(medir));
     expect((await page.locator("main").innerText()).replace(/\s+/g, " ")).toBe((await referencia.locator("main").innerText()).replace(/\s+/g, " "));
     const destino = informacion.snapshotPath("original.png");
     mkdirSync(path.dirname(destino), { recursive: true });
@@ -103,7 +104,7 @@ for (const estado of ["disponible", "vacio", "confirmacion"]) {
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
     await page.evaluate(() => { if (document.activeElement instanceof HTMLElement) document.activeElement.blur(); });
     const imagen = await page.screenshot({ path: informacion.snapshotPath("reconstruida.png"), fullPage: true, animations: "disabled" });
-    expect(imagen).toMatchSnapshot("original.png", { maxDiffPixelRatio: 0.0001, threshold: 0.1 });
+    expect(imagen).toMatchSnapshot("original.png", OPCIONES_IMAGEN);
     await referencia.close();
   });
 }
