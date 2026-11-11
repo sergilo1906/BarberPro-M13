@@ -1,7 +1,7 @@
 {
   "limites": "AST de JS/TS y frontmatter Astro; scripts Astro, plantillas, estilos y contratos requieren contraste funcional/manual. No es cobertura semantica ni de tests.",
   "resumen": {
-    "archivos": 198,
+    "archivos": 214,
     "paginas": 27,
     "enlacesLocales": 369,
     "importsSinResolver": [],
@@ -9,21 +9,21 @@
     "erroresSintaxis": [],
     "categorias": {
       "configuracion": 20,
-      "documentacion": 33,
+      "documentacion": 48,
       "recurso": 1,
       "componente": 3,
       "codigo": 63,
       "pagina": 27,
       "pruebas": 45,
-      "herramienta": 6
+      "herramienta": 7
     },
     "simbolos": {
-      "constante": 1713,
+      "constante": 1759,
       "interfaz": 29,
-      "variable": 225,
-      "funcion": 374,
-      "parametro": 987,
-      "funcion flecha": 694,
+      "variable": 227,
+      "funcion": 382,
+      "parametro": 1014,
+      "funcion flecha": 709,
       "tipo": 7,
       "metodo": 3
     }
@@ -71,9 +71,9 @@
     {
       "ruta": "README.md",
       "categoria": "documentacion",
-      "bytes": 9291,
-      "lineas": 65,
-      "sha256": "7046646e652468da71bee825f99dc2a6a58195dac2583841eeaf7c387d6b3c47",
+      "bytes": 9658,
+      "lineas": 67,
+      "sha256": "3f126334f49dec6bff4df35158dc4c036db34568b4e51473d67f66a447f9bae4",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -4299,9 +4299,9 @@
     {
       "ruta": "app/src/modulos/administracion/servicios.ts",
       "categoria": "codigo",
-      "bytes": 8496,
-      "lineas": 62,
-      "sha256": "b0b4f580aec773eb4fa938254f7721a9e4288bd05839ba8f1ee54774c49b3a32",
+      "bytes": 8586,
+      "lineas": 63,
+      "sha256": "f49aa37f968c948f987b35e30b87dd83f96d312ccc69a7546a13a8d21db4e7b2",
       "simbolos": [
         {
           "tipo": "constante",
@@ -4463,7 +4463,7 @@
           "tipo": "funcion",
           "nombre": "crearTarjetaServicio",
           "linea": 38,
-          "lineas": 10
+          "lineas": 11
         },
         {
           "tipo": "parametro",
@@ -4510,42 +4510,36 @@
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 45,
+          "linea": 46,
           "lineas": 1
         },
         {
           "tipo": "funcion",
           "nombre": "cargarServicios",
-          "linea": 48,
+          "linea": 49,
           "lineas": 11
         },
         {
           "tipo": "constante",
           "nombre": "actual",
-          "linea": 49,
+          "linea": 50,
           "lineas": 1
         },
         {
           "tipo": "constante",
           "nombre": "servicios",
-          "linea": 52,
+          "linea": 53,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 59,
+          "linea": 60,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "evento",
-          "linea": 59,
-          "lineas": 1
-        },
-        {
-          "tipo": "funcion flecha",
-          "nombre": "anonimo",
           "linea": 60,
           "lineas": 1
         },
@@ -4556,15 +4550,21 @@
           "lineas": 1
         },
         {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 62,
+          "lineas": 1
+        },
+        {
           "tipo": "parametro",
           "nombre": "actual",
-          "linea": 61,
+          "linea": 62,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 61,
+          "linea": 62,
           "lineas": 1
         }
       ],
@@ -11496,9 +11496,9 @@
     {
       "ruta": "app/tests/e2e/administracion.test.ts",
       "categoria": "pruebas",
-      "bytes": 11017,
-      "lineas": 94,
-      "sha256": "76a10cf6e6b0dd5f177c1e923c4850608f5f78073b3f19ca26b3c4f3b1185db6",
+      "bytes": 11744,
+      "lineas": 103,
+      "sha256": "5d8253095ad8bb0b4232e280cba89a4ae9418e19b91605230309815df8158a83",
       "simbolos": [
         {
           "tipo": "funcion flecha",
@@ -11618,7 +11618,7 @@
           "tipo": "funcion flecha",
           "nombre": "anonimo",
           "linea": 37,
-          "lineas": 17
+          "lineas": 26
         },
         {
           "tipo": "parametro",
@@ -11725,247 +11725,247 @@
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 54,
+          "linea": 63,
           "lineas": 7
         },
         {
           "tipo": "parametro",
           "nombre": "{ page }",
-          "linea": 54,
+          "linea": 63,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 61,
+          "linea": 70,
           "lineas": 10
         },
         {
           "tipo": "parametro",
           "nombre": "{ page }",
-          "linea": 61,
+          "linea": 70,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "informacion",
-          "linea": 61,
+          "linea": 70,
           "lineas": 1
         },
         {
           "tipo": "constante",
           "nombre": "nombre",
-          "linea": 62,
+          "linea": 71,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 65,
+          "linea": 74,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "ruta",
-          "linea": 65,
+          "linea": 74,
           "lineas": 1
         },
         {
           "tipo": "constante",
           "nombre": "datos",
-          "linea": 65,
+          "linea": 74,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 71,
+          "linea": 80,
           "lineas": 10
         },
         {
           "tipo": "parametro",
           "nombre": "{ page }",
-          "linea": 71,
+          "linea": 80,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "informacion",
-          "linea": 71,
+          "linea": 80,
           "lineas": 1
         },
         {
           "tipo": "constante",
           "nombre": "nombre",
-          "linea": 72,
+          "linea": 81,
           "lineas": 1
         },
         {
           "tipo": "variable",
           "nombre": "peticiones",
-          "linea": 75,
+          "linea": 84,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 76,
+          "linea": 85,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "ruta",
-          "linea": 76,
+          "linea": 85,
           "lineas": 1
         },
         {
           "tipo": "constante",
           "nombre": "respuesta",
-          "linea": 76,
+          "linea": 85,
           "lineas": 1
         },
         {
           "tipo": "constante",
           "nombre": "nombres",
-          "linea": 79,
+          "linea": 88,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 79,
+          "linea": 88,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "campos",
-          "linea": 79,
+          "linea": 88,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 79,
+          "linea": 88,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "campo",
-          "linea": 79,
+          "linea": 88,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 79,
+          "linea": 88,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "valor",
-          "linea": 79,
+          "linea": 88,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 81,
+          "linea": 90,
           "lineas": 13
         },
         {
           "tipo": "parametro",
           "nombre": "{ page, context, request }",
-          "linea": 81,
+          "linea": 90,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "informacion",
-          "linea": 81,
+          "linea": 90,
           "lineas": 1
         },
         {
           "tipo": "variable",
           "nombre": "avisar",
-          "linea": 84,
+          "linea": 93,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 84,
+          "linea": 93,
           "lineas": 1
         },
         {
           "tipo": "variable",
           "nombre": "liberar",
-          "linea": 84,
+          "linea": 93,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 84,
+          "linea": 93,
           "lineas": 1
         },
         {
           "tipo": "constante",
           "nombre": "guardada",
-          "linea": 85,
+          "linea": 94,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 85,
+          "linea": 94,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "resolver",
-          "linea": 85,
+          "linea": 94,
           "lineas": 1
         },
         {
           "tipo": "constante",
           "nombre": "permiso",
-          "linea": 85,
+          "linea": 94,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 85,
+          "linea": 94,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "resolver",
-          "linea": 85,
+          "linea": 94,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 86,
+          "linea": 95,
           "lineas": 1
         },
         {
           "tipo": "parametro",
           "nombre": "ruta",
-          "linea": 86,
+          "linea": 95,
           "lineas": 1
         },
         {
           "tipo": "constante",
           "nombre": "respuesta",
-          "linea": 86,
+          "linea": 95,
           "lineas": 1
         },
         {
           "tipo": "constante",
           "nombre": "otra",
-          "linea": 87,
+          "linea": 96,
           "lineas": 1
         }
       ],
@@ -11982,9 +11982,9 @@
     {
       "ruta": "app/tests/e2e/autenticacion-visual.test.ts",
       "categoria": "pruebas",
-      "bytes": 4809,
-      "lineas": 79,
-      "sha256": "629c022a8d7bc01bbc121e0c2b1325f2648d701d6d569af61dd30e53158db141",
+      "bytes": 4897,
+      "lineas": 80,
+      "sha256": "a1e54e19ea34b0c4e17684eabad07288bf58819fc31c755b0d0b19c9db4f2d4f",
       "simbolos": [
         {
           "tipo": "constante",
@@ -12002,7 +12002,7 @@
           "tipo": "funcion flecha",
           "nombre": "anonimo",
           "linea": 10,
-          "lineas": 68
+          "lineas": 69
         },
         {
           "tipo": "parametro",
@@ -12037,32 +12037,26 @@
         {
           "tipo": "constante",
           "nombre": "referencia",
-          "linea": 25,
+          "linea": 26,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 32,
+          "linea": 33,
           "lineas": 3
         },
         {
           "tipo": "parametro",
           "nombre": "elemento",
-          "linea": 32,
+          "linea": 33,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 39,
-          "lineas": 11
-        },
-        {
-          "tipo": "constante",
-          "nombre": "id",
           "linea": 40,
-          "lineas": 1
+          "lineas": 11
         },
         {
           "tipo": "constante",
@@ -12072,14 +12066,14 @@
         },
         {
           "tipo": "constante",
-          "nombre": "verificacion",
-          "linea": 45,
+          "nombre": "id",
+          "linea": 42,
           "lineas": 1
         },
         {
-          "tipo": "funcion flecha",
-          "nombre": "anonimo",
-          "linea": 51,
+          "tipo": "constante",
+          "nombre": "verificacion",
+          "linea": 46,
           "lineas": 1
         },
         {
@@ -12089,63 +12083,69 @@
           "lineas": 1
         },
         {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 53,
+          "lineas": 1
+        },
+        {
           "tipo": "constante",
           "nombre": "medir",
-          "linea": 53,
+          "linea": 54,
           "lineas": 11
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 53,
+          "linea": 54,
           "lineas": 11
         },
         {
           "tipo": "constante",
           "nombre": "elementos",
-          "linea": 54,
-          "lineas": 1
-        },
-        {
-          "tipo": "constante",
-          "nombre": "medidas",
           "linea": 55,
           "lineas": 1
         },
         {
           "tipo": "constante",
-          "nombre": "elemento",
+          "nombre": "medidas",
           "linea": 56,
           "lineas": 1
         },
         {
           "tipo": "constante",
-          "nombre": "caja",
+          "nombre": "elemento",
           "linea": 57,
           "lineas": 1
         },
         {
           "tipo": "constante",
-          "nombre": "estilo",
+          "nombre": "caja",
           "linea": 58,
           "lineas": 1
         },
         {
           "tipo": "constante",
+          "nombre": "estilo",
+          "linea": 59,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
           "nombre": "destino",
-          "linea": 67,
+          "linea": 68,
           "lineas": 1
         },
         {
           "tipo": "constante",
           "nombre": "captura",
-          "linea": 72,
+          "linea": 73,
           "lineas": 1
         },
         {
           "tipo": "funcion flecha",
           "nombre": "anonimo",
-          "linea": 75,
+          "linea": 76,
           "lineas": 1
         }
       ],
@@ -18100,9 +18100,9 @@
     {
       "ruta": "docs/auditoria-final/01-revision-fases.md",
       "categoria": "documentacion",
-      "bytes": 3969,
-      "lineas": 21,
-      "sha256": "645d9d6d976d34b420aed2d38616a03579b61cc4415fade10483d96b6584732e",
+      "bytes": 4606,
+      "lineas": 23,
+      "sha256": "2b83724b92ab6dbdc6de53229b17c2c021dc215d7515af825dafd90c0c141564",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18165,9 +18165,9 @@
     {
       "ruta": "docs/auditoria-final/06-pruebas-ejecutadas.md",
       "categoria": "documentacion",
-      "bytes": 6472,
-      "lineas": 44,
-      "sha256": "5218c15aef9d2b4a846b2ebb6f44c77b91df33771622291437207e1301b0cdc3",
+      "bytes": 6911,
+      "lineas": 46,
+      "sha256": "c741d087a079cc6d15a4fc184460f51572e04e9cbe9571b87edd46e1abfa172d",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18178,9 +18178,9 @@
     {
       "ruta": "docs/auditoria-final/07-errores-y-correcciones.md",
       "categoria": "documentacion",
-      "bytes": 6881,
-      "lineas": 27,
-      "sha256": "3139e317f64e2727133647389472bccbc739e1f2d789cdfd7a829a3d4bbf0b3f",
+      "bytes": 7366,
+      "lineas": 29,
+      "sha256": "fd7d7937fbe6ce179fdbaf93deeff362061a626cd8b3cb9c1c454c0a4088109b",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18191,9 +18191,9 @@
     {
       "ruta": "docs/auditoria-final/08-entrega-github.md",
       "categoria": "documentacion",
-      "bytes": 5184,
-      "lineas": 32,
-      "sha256": "a355f20205adb80a19b44eb7d7f84badfc5d10b1a60b01cb3b0adc7d74fa171b",
+      "bytes": 5576,
+      "lineas": 34,
+      "sha256": "93c02489148a5739ce161b9028a8c14fb16c17c926c2f1a6615ee19f3082ca9a",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18204,9 +18204,9 @@
     {
       "ruta": "docs/auditoria-final/09-informe-final.md",
       "categoria": "documentacion",
-      "bytes": 5093,
-      "lineas": 34,
-      "sha256": "44cf5a4d9270cead37068173bf5a07541de35e325f5bead7a286ea9c1a107e02",
+      "bytes": 5830,
+      "lineas": 38,
+      "sha256": "e984dc8bffe8a1e344160ee3ce9ac0af19049f9482d8aab7e8173f07096379f0",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18217,9 +18217,9 @@
     {
       "ruta": "docs/auditoria-final/control-total.md",
       "categoria": "documentacion",
-      "bytes": 6011,
-      "lineas": 31,
-      "sha256": "80618c41f32b15c3987fd7d2ac8e05dc924fd4d3713ca8da86df75f0aec8497f",
+      "bytes": 6418,
+      "lineas": 33,
+      "sha256": "43161154821b927cc16b36abd296f19c099d0aa5e36a4246c70323b014692709",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18282,9 +18282,9 @@
     {
       "ruta": "docs/control-avance.md",
       "categoria": "documentacion",
-      "bytes": 22860,
-      "lineas": 264,
-      "sha256": "b6477a1d4383747b591ac5fa72ab08db58979d41ebc662d3eaa980dd436b3d44",
+      "bytes": 24004,
+      "lineas": 272,
+      "sha256": "b27a649a03eefa215e6dd1091dd4657b638370f0bbd989579d2009bfd9d2e59f",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18295,9 +18295,22 @@
     {
       "ruta": "docs/control-cobertura.md",
       "categoria": "documentacion",
-      "bytes": 16291,
-      "lineas": 122,
-      "sha256": "5b9b088e70d08217b75de97d99435f5c25eaa16d1aa0efde4908f9d3a40c8121",
+      "bytes": 17386,
+      "lineas": 128,
+      "sha256": "1b756bf5ef63012a7f719c329a2cc2d6580acbdb4663582af6cf57668dee09a8",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/decisiones-tecnicas.md",
+      "categoria": "documentacion",
+      "bytes": 3222,
+      "lineas": 23,
+      "sha256": "11885341562486b55b7448052d6330bf4562f4694dca2a701873c2abe11991dd",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18319,11 +18332,50 @@
       "erroresSintaxis": []
     },
     {
+      "ruta": "docs/entrega-profesor.md",
+      "categoria": "documentacion",
+      "bytes": 4746,
+      "lineas": 73,
+      "sha256": "abc2a29035099b5df18f2fdc9543007f7e1b0ef13b7a0aed11db5d4d76636570",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
       "ruta": "docs/estado-pausa.md",
       "categoria": "documentacion",
-      "bytes": 15707,
-      "lineas": 122,
-      "sha256": "404d9233917a99ddfc3713eb282c006fb09d15b8e9e3d0ac682ee32a3747007a",
+      "bytes": 17166,
+      "lineas": 132,
+      "sha256": "e4fcdbae1541b4b8f0ccc1ae902351c258c1ee1a2198eb3b5a9e7959aa523817",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/estructura.md",
+      "categoria": "documentacion",
+      "bytes": 2723,
+      "lineas": 29,
+      "sha256": "0c26d80642719552b0b21f8bcb39346716b0d15dc76dbb4c507b2ac6487b858b",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/fase-10-comparacion-visual.md",
+      "categoria": "documentacion",
+      "bytes": 2878,
+      "lineas": 16,
+      "sha256": "49863d8fa1819458597addf85467543d06ff7b1e3facd5e99a06a4efbae19863",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18412,9 +18464,22 @@
     {
       "ruta": "docs/fase-9-estado-en-curso.md",
       "categoria": "documentacion",
-      "bytes": 5138,
-      "lineas": 40,
-      "sha256": "86d303dd3f2efe17d416ef0d5809575cee7687c23f2a8d12106513a2012dbfdc",
+      "bytes": 6114,
+      "lineas": 44,
+      "sha256": "c56289f0e54a3f87bdcedb857f1d05944d61373faa00a44a2d2a56300dc43526",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/fase-9-funcionalidades-restantes.md",
+      "categoria": "documentacion",
+      "bytes": 3136,
+      "lineas": 22,
+      "sha256": "2162667e13eadecd7a48a9529071ef8c1fa1a9b89b8e9ce37a9722b3d223481e",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18425,9 +18490,22 @@
     {
       "ruta": "docs/fase-github-publicacion.md",
       "categoria": "documentacion",
-      "bytes": 13002,
-      "lineas": 91,
-      "sha256": "d42b8954a07787f8542e59bc309c39189925fa16eb5d0ce9bd224ee1c74f4a9f",
+      "bytes": 14177,
+      "lineas": 97,
+      "sha256": "e6f344cf6f18c459e89a0dd332a72893638dc44045881a6f470a7861e7deb620",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/funcionalidades-finales.md",
+      "categoria": "documentacion",
+      "bytes": 3468,
+      "lineas": 24,
+      "sha256": "305d12b89f472daaffdad78397e7dbd3419a1cb22e2857b0fc4fa02b78b1283f",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18438,9 +18516,22 @@
     {
       "ruta": "docs/funcionalidades.md",
       "categoria": "documentacion",
-      "bytes": 1244,
+      "bytes": 1280,
       "lineas": 8,
-      "sha256": "19307467bb2cfa9309ec8afa8d11506596e6fcd2e00b5576fd0e754e5085c969",
+      "sha256": "9d04618ddc2c90dd5016bc08a9360560a41e54084bcc1a542c19bd7ce7b4708d",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/informe-final-m13.md",
+      "categoria": "documentacion",
+      "bytes": 4904,
+      "lineas": 46,
+      "sha256": "3ecd1902bc65ff085580ba0b4c4d9bc67452b159834434f078e49374baa23a62",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18464,9 +18555,61 @@
     {
       "ruta": "docs/mapa-simbolos.md",
       "categoria": "documentacion",
-      "bytes": 3883,
+      "bytes": 4253,
       "lineas": 29,
-      "sha256": "3d1e97bf3d90f1da4d4574c16cecb0094c62df1f52a9bf7a64bad20195b31f71",
+      "sha256": "54914b27a59b3b053c8cb115a2bec4ba534fb1a3bb1b9874cf3b2716c9e83c92",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/matriz-requisitos.md",
+      "categoria": "documentacion",
+      "bytes": 6422,
+      "lineas": 49,
+      "sha256": "02980217dcc90a5b5185cf046effe497d855e22fa5246dca213eae9dd769f763",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/pruebas-finales.md",
+      "categoria": "documentacion",
+      "bytes": 3816,
+      "lineas": 42,
+      "sha256": "5ed10d4612d6664095ec3b629b0678f91f8e24fda1f8c1b5d961916523a6f91d",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/registro-academico.md",
+      "categoria": "documentacion",
+      "bytes": 2828,
+      "lineas": 29,
+      "sha256": "450e37e7c0983cbb3d610ab12694db84621dc8f907c92e522d75734d7ae3efac",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/revision-total-2026-11-10.md",
+      "categoria": "documentacion",
+      "bytes": 17729,
+      "lineas": 121,
+      "sha256": "487489f130cea1bba29f9737394e1231fd3a221f1325517f7322b2d98547f393",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18480,6 +18623,58 @@
       "bytes": 1994,
       "lineas": 34,
       "sha256": "8caf0cac12b20dc31318e72a37ff24adbc9e69ff13ed60a40c7ded0999b57cc7",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/trazabilidad/resoluciones-funciones.json",
+      "categoria": "documentacion",
+      "bytes": 26631,
+      "lineas": 795,
+      "sha256": "cca811eaf04c08e9f3bfb8cba4bc1f835cb392a1f7a71b08b361dfb64d3a8a4e",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/trazabilidad/simbolos-actuales.json",
+      "categoria": "documentacion",
+      "bytes": 5326566,
+      "lineas": 141630,
+      "sha256": "7f6730b386b1ee4f1bb1cd7a25618ab5c3d8618ded4fe258a0c2c1f74abc3891",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/trazabilidad/simbolos-actuales.md",
+      "categoria": "documentacion",
+      "bytes": 813415,
+      "lineas": 3140,
+      "sha256": "53394cab288d602f86f6b0b7620f21325d542edda9d4bd22a1479b0b0e0b0ecf",
+      "simbolos": [],
+      "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "docs/trazabilidad/simbolos-originales.json",
+      "categoria": "documentacion",
+      "bytes": 921857,
+      "lineas": 40941,
+      "sha256": "c4bd575dbccd1df2d2500d72e059771254f1a8a17102145c6462d980bedb3ebf",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18571,9 +18766,9 @@
     {
       "ruta": "functions/package-lock.json",
       "categoria": "configuracion",
-      "bytes": 132434,
-      "lineas": 3455,
-      "sha256": "50547fa0e1e0465f933348d8b72c5bf82b8a972c4b9fe39382458bec009c0d3b",
+      "bytes": 132042,
+      "lineas": 3438,
+      "sha256": "ed92051af4905806dfc548530d2f3947292e094f069d57afb30dc66acc1a6606",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18584,9 +18779,9 @@
     {
       "ruta": "functions/package.json",
       "categoria": "configuracion",
-      "bytes": 1464,
-      "lineas": 29,
-      "sha256": "08d4525914ff14cfcaef29838ad6dc34a8d0c786fb10a10ca57a846564e1abf9",
+      "bytes": 1431,
+      "lineas": 28,
+      "sha256": "40074229acb9c69673deb52ecda0142477e49ff0412318bbb1be14da3723d784",
       "simbolos": [],
       "imports": [],
       "exports": [],
@@ -18639,9 +18834,9 @@
     {
       "ruta": "functions/scripts/emuladores-locales.mjs",
       "categoria": "herramienta",
-      "bytes": 1304,
+      "bytes": 1305,
       "lineas": 21,
-      "sha256": "319362c8d99bf6431516251ff9b36ea1ffec08ad308a9a36b892d696748368c4",
+      "sha256": "83735b2c13f57415f45dc98cf011bd8ac4ee54935618a816fcb0e09f04da47a2",
       "simbolos": [
         {
           "tipo": "constante",
@@ -28082,6 +28277,614 @@
       "sha256": "45748d83fca366cb98b111f8018492882e420d069deef22c161d596ea5a951fb",
       "simbolos": [],
       "imports": [],
+      "exports": [],
+      "ids": [],
+      "eventos": [],
+      "erroresSintaxis": []
+    },
+    {
+      "ruta": "scripts/trazar-simbolos.mjs",
+      "categoria": "herramienta",
+      "bytes": 18293,
+      "lineas": 203,
+      "sha256": "0c300686420a8d23116ba89b3f2dd4bde6260331eed8f4ea5f1ef45603687ae6",
+      "simbolos": [
+        {
+          "tipo": "constante",
+          "nombre": "raiz",
+          "linea": 7,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "requerir",
+          "linea": 8,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "ts",
+          "linea": 9,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "carpeta",
+          "linea": 10,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "originales",
+          "linea": 11,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "resoluciones",
+          "linea": 12,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "mapa",
+          "linea": 13,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "destinosPorOrigen",
+          "linea": 14,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 14,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "fila",
+          "linea": 14,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 14,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "destino",
+          "linea": 14,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "indices",
+          "linea": 15,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "errores",
+          "linea": 16,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion",
+          "nombre": "criterioArchivo",
+          "linea": 18,
+          "lineas": 20
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "origen",
+          "linea": 18,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion",
+          "nombre": "rutaPermitida",
+          "linea": 39,
+          "lineas": 5
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "ruta",
+          "linea": 39,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "absoluta",
+          "linea": 40,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion",
+          "nombre": "indexar",
+          "linea": 45,
+          "lineas": 46
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "ruta",
+          "linea": 45,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "texto",
+          "linea": 48,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "indice",
+          "linea": 49,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion",
+          "nombre": "analizar",
+          "linea": 50,
+          "lineas": 25
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "fragmento",
+          "linea": 50,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "lineaBase",
+          "linea": 50,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "arbol",
+          "linea": 51,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion",
+          "nombre": "visitar",
+          "linea": 52,
+          "lineas": 21
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "nodo",
+          "linea": 52,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "ambito",
+          "linea": 52,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "linea",
+          "linea": 53,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 71,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "hijo",
+          "linea": 71,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "cabecera",
+          "linea": 76,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "coincidencia",
+          "linea": 78,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "inicio",
+          "linea": 79,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "coincidencia",
+          "linea": 84,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion",
+          "nombre": "referenciaModulo",
+          "linea": 92,
+          "lineas": 4
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "ruta",
+          "linea": 92,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "indice",
+          "linea": 93,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion",
+          "nombre": "buscarEnRutas",
+          "linea": 97,
+          "lineas": 11
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "rutas",
+          "linea": 97,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "nombres",
+          "linea": 97,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "declaraciones",
+          "linea": 97,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "resultado",
+          "linea": 98,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "ruta",
+          "linea": 99,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "indice",
+          "linea": 100,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "entrada",
+          "linea": 102,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion",
+          "nombre": "resolverManual",
+          "linea": 109,
+          "lineas": 8
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "registro",
+          "linea": 109,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "manual",
+          "linea": 110,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "referencia",
+          "linea": 112,
+          "lineas": 2
+        },
+        {
+          "tipo": "constante",
+          "nombre": "funcionesResueltas",
+          "linea": 118,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "registro",
+          "linea": 119,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 119,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "fila",
+          "linea": 119,
+          "lineas": 1
+        },
+        {
+          "tipo": "variable",
+          "nombre": "resolucion",
+          "linea": 120,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "rutas",
+          "linea": 122,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "referencias",
+          "linea": 123,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "resultado",
+          "linea": 134,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "registro",
+          "linea": 135,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "rutas",
+          "linea": 136,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 136,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "ruta",
+          "linea": 136,
+          "lineas": 1
+        },
+        {
+          "tipo": "variable",
+          "nombre": "resolucion",
+          "linea": 137,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "referencias",
+          "linea": 140,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "referencias",
+          "linea": 147,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "nombresAmbito",
+          "linea": 154,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 154,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "ambito",
+          "linea": 154,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "contenedor",
+          "linea": 155,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 155,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "nombre",
+          "linea": 155,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "referencias",
+          "linea": 163,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "criterio",
+          "linea": 173,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "evidencia",
+          "linea": 174,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 178,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "registro",
+          "linea": 178,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "niveles",
+          "linea": 183,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "registro",
+          "linea": 184,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "resumen",
+          "linea": 185,
+          "lineas": 4
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 185,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "registro",
+          "linea": 185,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 186,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "registro",
+          "linea": 186,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 187,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "registro",
+          "linea": 187,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "escapar",
+          "linea": 190,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 190,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "valor",
+          "linea": 190,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "filas",
+          "linea": 191,
+          "lineas": 2
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 191,
+          "lineas": 2
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "registro",
+          "linea": 191,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 192,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "referencia",
+          "linea": 192,
+          "lineas": 1
+        },
+        {
+          "tipo": "constante",
+          "nombre": "tablaNiveles",
+          "linea": 193,
+          "lineas": 1
+        },
+        {
+          "tipo": "funcion flecha",
+          "nombre": "anonimo",
+          "linea": 193,
+          "lineas": 1
+        },
+        {
+          "tipo": "parametro",
+          "nombre": "[nivel, cantidad]",
+          "linea": 193,
+          "lineas": 1
+        }
+      ],
+      "imports": [
+        "node:fs",
+        "node:path",
+        "node:crypto",
+        "node:module",
+        "node:url"
+      ],
       "exports": [],
       "ids": [],
       "eventos": [],

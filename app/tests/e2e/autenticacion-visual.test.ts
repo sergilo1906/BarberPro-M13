@@ -17,7 +17,8 @@ for (const ruta of ["/login", "/registro", "/verify", "/perfil"]) {
     if (ruta === "/perfil") {
       await page.goto("/login");
       await expect(page.locator("#login-email")).toBeEnabled();
-      await page.locator("#login-email").fill("fase4-client@example.test");
+      // Este fixture tambien existe al ejecutar solo las comparaciones visuales.
+      await page.locator("#login-email").fill("reservas-client@example.test");
       await page.locator("#login-password").fill("Prueba123!");
       await page.getByRole("button", { name: "Entrar", exact: true }).click();
       await expect(page).toHaveURL(/\/reservar\/?$/);
@@ -40,7 +41,7 @@ for (const ruta of ["/login", "/registro", "/verify", "/perfil"]) {
         for (const id of ["btn-login", "btn-register"]) document.getElementById(id)!.classList.add("hidden");
         for (const id of ["link-citas", "btn-profile", "btn-logout", "user-avatar"]) document.getElementById(id)!.classList.remove("hidden");
         document.getElementById("user-avatar")!.textContent = "P";
-        document.getElementById("perfil-email")!.textContent = "fase4-client@example.test";
+        document.getElementById("perfil-email")!.textContent = "reservas-client@example.test";
         document.getElementById("perfil-role")!.textContent = "Cliente";
         const verificacion = document.getElementById("perfil-verif")!;
         verificacion.textContent = "Verificado";

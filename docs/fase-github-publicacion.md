@@ -1,5 +1,11 @@
 # Publicación de la fuente en GitHub
 
+## Entrega actual para revisión del profesor — 11 de noviembre de 2026
+
+La solicitud de continuar hasta preparar la entrega consolida la fuente corregida, trazabilidad y documentos. Se conserva la autorización explícita anterior de subir todo a este repositorio público, sin crear otro, alterar visibilidad, reescribir historia o desplegar la aplicación. La entrega se identifica en [entrega-profesor-2026-11-11](https://github.com/sergilo1906/BarberPro-M13/releases/tag/entrega-profesor-2026-11-11): ZIP limpio, .sha256 e informe de validación adjunto. Este último registra el commit y la comprobación pública del artefacto concreto, después de su instalación/pruebas aisladas.
+
+La [guía del profesor](entrega-profesor.md), [informe M13](informe-final-m13.md) y [revisión de cierre](revision-total-2026-11-10.md) son las referencias actuales. Valoración B para la demo local, con límites explícitos de dependencias, entorno y evidencia. No se presenta esta publicación como envío al profesor ni como calificación académica. Los apartados siguientes son registros de publicaciones anteriores; se mantienen sus etiquetas, ZIP y hashes inmutables.
+
 ## Publicación posterior de la auditoría — 10 de noviembre de 2026
 
 El usuario ha autorizado expresamente «Subelo todo al github» después de recibir el resultado de la auditoría. Esta autorización posterior sustituye su prohibición de publicar automáticamente durante la revisión; no autoriza un despliegue de la aplicación ni operaciones productivas.

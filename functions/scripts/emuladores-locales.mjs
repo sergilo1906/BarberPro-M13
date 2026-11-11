@@ -8,7 +8,7 @@ const argumentos = [fileURLToPath(new URL("../../node_modules/firebase-tools/lib
 if (modoPruebas) argumentos.push('node functions/tests/emuladores/ejecutar-pruebas.mjs');
 const entorno = {
   ...process.env, XDG_CONFIG_HOME: fileURLToPath(new URL("../../.verificacion/firebase-cli/", import.meta.url)),
-  FUNCTION_DISCOVERY_TIMEOUT: "60", FIREBASE_CLI_DISABLE_UPDATE_CHECK: "true", CI: "true",
+  FUNCTIONS_DISCOVERY_TIMEOUT: "60", FIREBASE_CLI_DISABLE_UPDATE_CHECK: "true", CI: "true",
 };
 // La CLI local no reutiliza la sesión global ni credenciales de aplicaciones reales.
 delete entorno.GOOGLE_APPLICATION_CREDENTIALS;

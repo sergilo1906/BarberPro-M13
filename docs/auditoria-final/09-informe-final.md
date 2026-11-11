@@ -1,5 +1,9 @@
 # Informe crítico de auditoría
 
+**Dictamen histórico C de la primera auditoría.** La continuación completa los materiales y verificaciones descritos en [entrega para el profesor](../entrega-profesor.md) e [informe M13 actual](../informe-final-m13.md). El dictamen técnico actual es **B — APTO CON LIMITACIONES DOCUMENTADAS** para la demo local; no se borran los fallos y carencias que justificaron el C anterior.
+
+La [segunda revisión total](../revision-total-2026-11-10.md), solicitada después de publicar, contiene las comprobaciones y correcciones más recientes. Los resultados y recuentos siguientes se conservan como cierre de la primera auditoría; algunos documentos de entrega ausentes entonces se han creado después, con sus límites explícitos.
+
 Actualización posterior: el usuario ha autorizado publicar el resultado en GitHub. La fuente y los tres adjuntos están publicados y verificados sin autenticación, con referencias y SHA256 coincidentes; AF-12 queda resuelto. La evidencia se consulta en [publicación](../fase-github-publicacion.md). La valoración siguiente y los resultados corresponden al cierre de auditoría; resolver su diferencia remota no certifica los requisitos de trazabilidad y cierre todavía pendientes.
 
 La reconstrucción funciona en los flujos locales ejercitados, pero no se puede certificar que las doce fases estuvieran cerradas ni el 100 % de correspondencia semántica de los símbolos. La auditoría no acepta aquella premisa únicamente por aparecer en la solicitud.

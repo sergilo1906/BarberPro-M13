@@ -1,8 +1,8 @@
 # Correspondencias vigentes de símbolos
 
-La auditoría extra confirma que la planificación de 3.122 registros no es una revisión semántica de la implementación. Véanse [revisión de código](auditoria-final/02-revision-codigo.md) e inventario.json para las declaraciones actuales, imports y límites. No se marca cada callback, variable o propiedad como verificado mediante una mera búsqueda de su nombre.
+El cierre del 11 de noviembre incorpora una [tabla reproducible de los 3.122 registros](trazabilidad/simbolos-actuales.md) y su [detalle JSON](trazabilidad/simbolos-actuales.json). Son 2.827 entradas S/R y 295 bindings I, sin IDs duplicados ni registros sin destino o decisión. Se distinguen 1.055 declaraciones localizadas, 552 contratos referenciados, 132 decisiones manuales de funciones y 1.383 registros de ámbitos reestructurados. No se etiqueta una coincidencia de nombre como equivalencia semántica ni se afirma ejecución individual de cada variable.
 
-Las propuestas de fase 2 son una referencia, no una certificación de nombres implementados. Los informes 3–7 registran las correspondencias ejecutadas de esos módulos. Este documento incorpora las decisiones reales de administración; la revisión global del inventario histórico de 3.122 registros sigue pendiente de la fase 11. No se declara ejecución de todos esos símbolos.
+Las propuestas históricas y los nombres actuales ocupan columnas separadas. Las [resoluciones de funciones](trazabilidad/resoluciones-funciones.json) explican fusiones, reubicaciones y retiradas por seguridad; cada fila incorpora además el criterio del archivo y evidencias por área. El generador scripts/trazar-simbolos.mjs funciona sin el original ni planificación externos y comprueba sus anclas reales. Sus límites permanecen explícitos: trazabilidad y pruebas de comportamiento por áreas, sin biyección matemática ni porcentaje de líneas/rama.
 
 | Original / ámbito | Implementación actual | Motivo |
 |---|---|---|
@@ -25,4 +25,4 @@ Las propuestas de fase 2 son una referencia, no una certificación de nombres im
 
 No se crean clases artificiales. Los selectores e IDs originales siguen enlazando las mismas pantallas; los data-atributos nuevos solo sirven para asignar texto o localizar elementos, no para conceder permisos.
 
-Las correspondencias provisionales de estadísticas, exportación y herramientas backend de fase 9 están en [su registro en curso](fase-9-estado-en-curso.md). La revisión de los 3.122 registros históricos continúa pendiente y no se sustituye por esa tabla parcial.
+Las correspondencias de estadísticas, exportación y herramientas backend se consolidan en [fase 9](fase-9-funcionalidades-restantes.md). La tabla exhaustiva enlazada al inicio complementa estas decisiones por área y mantiene visibles sus distintos niveles de evidencia.

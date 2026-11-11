@@ -1,5 +1,15 @@
 # Estado de pausa — BarberPro Studio M13
 
+## Reanudación y cierre técnico — 11 de noviembre de 2026
+
+El usuario solicita continuar hasta dejarlo preparado para el profesor. Se comprueba que regresion-final.log terminó correctamente el 10 a las 22:15:30 UTC y que los servicios están detenidos. La reanudación se comprueba el 11 a las 05:55:06 UTC: intervalo de 7 h 39 min 36 s sin desarrollo del agente registrado en la conversación. No se ejecutó Start-Sleep durante tres horas ni se afirma sesión mantenida, cronología histórica o horas de trabajo del alumno.
+
+Se completa el cierre actual con límites expresos y nueva comparación 126/126. [Entrega](entrega-profesor.md) e [informe](informe-final-m13.md) identifican el paquete y la validación adjunta. No se inicia funcionalidad posterior, no se toca el original ni Firebase productivo. Para reanudar más adelante, comprobar Git/último commit y la validación del ZIP; los apartados inferiores son históricos.
+
+## Segunda revisión total posterior a publicar
+
+Se ejecuta la revisión solicitada después de subir a GitHub, en la rama local revision-total-2026-11-10, desde 3e5839b. La evidencia y los pasos para reanudar están en [revisión total](revision-total-2026-11-10.md). Las correcciones nuevas se distinguen de la publicación previa. No se ha iniciado ni certificado una pausa de tres horas y no se comienza otra fase de desarrollo por añadir informes de auditoría. Original y producción se conservan intactos.
+
 ## Estado vigente — auditoría publicada por autorización posterior
 
 La solicitud posterior «Subelo todo al github» autoriza publicar la fuente auditada y el candidato validado. El repositorio público y la publicación preliminar auditoria-2026-11-10 están verificados: main conserva las correcciones y documentación, la etiqueta apunta al commit auditado 5a7de04 y los tres adjuntos descargados sin autenticación coinciden por SHA256. Véase [publicación](fase-github-publicacion.md). No se modifica el original ni se despliega Firebase. La valoración C permanece; AF-12 se cierra y los pendientes académicos, de trazabilidad y dependencias moderadas siguen registrados. No se inicia otra fase ni se certifica una pausa de tres horas.

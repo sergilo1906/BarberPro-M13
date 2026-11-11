@@ -49,6 +49,15 @@ test("servicios valida, crea una vez, modifica y activa sin borrar", async ({ pa
   const fila = page.locator('article[data-id="' + id + '"]'); await expect(fila).toBeVisible();
   await fila.locator(".svc-duration").fill("45"); await fila.locator(".svc-price").fill("20"); await fila.locator(".svc-save").click(); await expect(page.locator("#services-msg")).toHaveText("Servicios cargados.");
   await page.reload(); await expect(fila.locator(".svc-duration")).toHaveValue("45"); await fila.locator(".svc-toggle").click(); await expect(fila.locator(".svc-active")).toBeChecked();
+  // Editar la casilla sin guardar no debe invertir la accion anunciada por el boton.
+  await expect(fila.locator(".svc-toggle")).toHaveText("Desactivar");
+  await fila.locator(".svc-active").uncheck(); await fila.locator(".svc-toggle").click();
+  await expect(page.locator("#services-msg")).toHaveText("Servicios cargados.");
+  await page.reload(); await expect(fila.locator(".svc-active")).not.toBeChecked();
+  await expect(fila.locator(".svc-toggle")).toHaveText("Activar");
+  await fila.locator(".svc-active").check(); await fila.locator(".svc-toggle").click();
+  await expect(page.locator("#services-msg")).toHaveText("Servicios cargados.");
+  await page.reload(); await expect(fila.locator(".svc-active")).toBeChecked();
   await fila.locator(".svc-toggle").click(); await expect(fila.locator(".svc-active")).not.toBeChecked();
 });
 test("reglas validan zona y avisos y persisten configuracion autorizada", async ({ page }) => {

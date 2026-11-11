@@ -1,5 +1,7 @@
 # Revisión individual de las doce fases
 
+**Diagnóstico histórico de la primera auditoría.** La [segunda revisión y cierre del 11 de noviembre](../revision-total-2026-11-10.md) consolida documentos, trazabilidad por registros y pruebas posteriores. Las fases actuales se consideran completas con limitaciones técnicas, sin afirmar aprobación académica, equivalencia universal, cronología u horas ficticias. La tabla siguiente se conserva como diagnóstico de la base anterior.
+
 La premisa de doce fases cerradas no coincide con la base recibida. Los informes 3–8 existen, fase 9 tiene solo estado en curso y faltan cierres de 10–12. Las comprobaciones de esta auditoría se distinguen de la ejecución histórica de cada fase. No se inventan horas ni se certifica la pausa pendiente.
 
 | Fase | Estado contrastado | Evidencia y justificación |
@@ -17,4 +19,4 @@ La premisa de doce fases cerradas no coincide con la base recibida. Los informes
 | 11 — Pruebas y limpieza | PARCIALMENTE COMPLETA | Existe una suite real y se amplía. Alertas críticas corregidas; quedan avisos moderados y trazabilidad semántica completa de símbolos sin certificar. No se borran pruebas para obtener verde. |
 | 12 — Entrega | PARCIALMENTE COMPLETA | No había ZIP final, pruebas-finales.md ni informe-final-m13.md. Esta auditoría revisa README y prepara un paquete candidato con su instalación aislada, descrita en 08. No se inventa cierre académico, autoría manual ni revisión del alumno/profesor. |
 
-Los estados de limitación no afirman ausencia universal de errores. Consultar los resultados finales antes de utilizar un paquete candidato para entrega. La autorización actual prohíbe push: GitHub conserva la versión publicada anterior aunque se guarden commits locales de auditoría.
+Los estados de limitación no afirman ausencia universal de errores. Esta tabla corresponde al cierre de la primera auditoría. Después se autorizó y verificó su publicación en GitHub; la [segunda revisión total](../revision-total-2026-11-10.md) incorpora documentación exigida que faltaba y vuelve a comprobar el proyecto. Consultar sus resultados vigentes antes de entregar: crear informes no certifica retroactivamente cierres históricos, trazabilidad semántica o pausas.

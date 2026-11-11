@@ -2,11 +2,13 @@
 
 Aplicación reconstruida con Astro estático, Firebase Auth, perfiles, cuatro roles, reservas, área profesional y administración. Solo funciona contra emuladores locales. El original permanece intacto.
 
-**Reconstrucción en curso:** fases 3–8 implementadas y verificadas localmente; fase 9 en curso y fases 10–12 pendientes. Se conserva también la implementación parcial de estadísticas, CSV, recordatorios y herramientas demo, con su [estado y pendientes](docs/fase-9-estado-en-curso.md). Publicar la fuente en GitHub no constituye un despliegue ni una entrega final. El desarrollo se ha realizado con asistencia de Codex; el registro académico debe completarse con las horas y revisiones reales.
+**Entrega técnica para revisión académica:** cuentas, cuatro roles, reservas, cliente, agenda, administración, estadísticas, exportaciones y cola de recordatorios están implementados y comprobados en el entorno demo. La [guía para el profesor](docs/entrega-profesor.md) reúne instalación, cuentas ficticias, recorridos y evidencias. Se conserva la asistencia de Codex declarada; no se inventan horas ni revisión personal del alumno.
+
+La [segunda revisión y su cierre](docs/revision-total-2026-11-10.md) distinguen ejecuciones, correcciones y límites. Hay [40 grupos funcionales contrastados](docs/matriz-requisitos.md), [94 correspondencias de archivos](docs/auditoria-final/correspondencias-archivos.md) y [3.122 registros trazados](docs/trazabilidad/simbolos-actuales.md), con evidencia de declaración, contrato, decisión manual o ámbito reestructurado. Eso no equivale a una prueba formal de cada variable ni a cobertura de ejecución del 100 %. La valoración es **APTO CON LIMITACIONES DOCUMENTADAS** para revisar esta demo local.
 
 Fuente pública: [sergilo1906/BarberPro-M13](https://github.com/sergilo1906/BarberPro-M13). La [verificación de publicación](docs/fase-github-publicacion.md) registra el historial revisado y la instalación desde una clonación limpia.
 
-La solicitud posterior «Subelo todo al github» autoriza publicar las correcciones y documentación de la auditoría. La fuente auditada corresponde a `5a7de04`; el [ZIP verificado, checksum y validación](https://github.com/sergilo1906/BarberPro-M13/releases/tag/auditoria-2026-11-10) se distribuyen como publicación preliminar. Los commits posteriores registran esta publicación, sin modificar el código de la aplicación validada. El [informe de auditoría](docs/auditoria-final/09-informe-final.md) mantiene **OPCIÓN C — NO APTO TODAVÍA** y sus pendientes; publicar no certifica el cierre de las doce fases ni despliega Firebase.
+El paquete actual es [entrega-profesor-2026-11-11](https://github.com/sergilo1906/BarberPro-M13/releases/tag/entrega-profesor-2026-11-11), acompañado de checksum e informe de validación del artefacto concreto. El candidato r1 de 5a7de04 y el dictamen C de la primera auditoría se conservan como historial; no incluyen estas correcciones posteriores. La publicación de fuente previamente autorizada no despliega Firebase ni envía el proyecto al profesor.
 
 ## Instalación local
 
@@ -33,7 +35,7 @@ npm run emulators
 npm run datos:local
 ```
 
-El servidor solo escucha en loopback. Las seis páginas públicas funcionan sin Firebase. Login, registro, verificación y perfil están implementados; `/reservar` permite consultar disponibilidad, confirmar y descargar ICS. `/mis-citas` muestra citas propias, filtros e historia y permite cancelar o cambiar. El profesional dispone de `/panel-barbero`, `/agenda`, `/setup-barber` y `/bloqueos`, con semanas, publicación, copia, estados y bloques que afectan a disponibilidad. Administración incluye `/admin`, `/admin/usuarios`, `/equipo`, `/servicios`, `/branding`, `/horarios` e `/index-admin`. Las cuatro vistas `/panel`, `/kpis`, `/export` y `/debug` ya incorporan la implementación de fase 9, todavía pendiente de completar su validación funcional y visual específica. `/debug` conserva el contenido informativo original y no añade controles de mantenimiento.
+El servidor solo escucha en loopback. Las seis páginas públicas funcionan sin Firebase. Login, registro, verificación y perfil están implementados; `/reservar` permite consultar disponibilidad, confirmar y descargar ICS. `/mis-citas` muestra citas propias, filtros e historia y permite cancelar o cambiar. El profesional dispone de `/panel-barbero`, `/agenda`, `/setup-barber` y `/bloqueos`, con semanas, publicación, copia, estados y bloques que afectan a disponibilidad. Administración incluye `/admin`, `/admin/usuarios`, `/equipo`, `/servicios`, `/branding`, `/horarios` e `/index-admin`. Las cuatro vistas `/panel`, `/kpis`, `/export` y `/debug` ya incorporan la implementación de fase 9, con pruebas funcionales y visuales específicas y cierre técnico documentado. `/debug` conserva el contenido informativo original y no añade controles de mantenimiento.
 
 ## Firebase
 

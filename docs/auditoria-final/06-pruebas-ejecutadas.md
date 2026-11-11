@@ -1,5 +1,7 @@
 # Pruebas ejecutadas y resultados
 
+Continuación posterior: la [segunda revisión y cierre](../revision-total-2026-11-10.md) conserva pasadas nuevas, el fallo de arranque tras reinstalar y las correcciones de variable y fixture independiente. Regresión final 0 y comparación de cierre 126/126. Las cifras siguientes son de la primera auditoría; el ZIP definitivo acredita instalación y pruebas mediante su validación adjunta, sin trasladar resultados entre versiones.
+
 Auditoría iniciada el 10 de noviembre de 2026 sobre 5b11204. No se presentan los resultados históricos de fases como una ejecución nueva. Los logs completos y trazas quedan en .verificacion/auditoria-final, excluidos del código y del paquete por contener resultados temporales de emuladores.
 
 ## Regresión real

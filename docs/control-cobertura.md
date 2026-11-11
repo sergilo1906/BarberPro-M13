@@ -1,6 +1,12 @@
 # Control de cobertura
 
+## Cierre vigente — 11 de noviembre de 2026
+
+27 rutas y 94 correspondencias sin destinos ausentes; 40 grupos funcionales con decisión; 3.122 registros con evidencia de declaración, contrato, resolución manual o ámbito reestructurado, sin filas sin destino. [Tabla exhaustiva](trazabilidad/simbolos-actuales.md) y [matriz funcional](matriz-requisitos.md). No se convierte el recuento en equivalencia semántica ni cobertura de líneas del 100 %. Regresión 44 unitarias, 69 integraciones y 284 navegador; comparación de cierre 126/126. La validación del ZIP se adjunta separadamente. Los porcentajes/pendientes inferiores son históricos.
+
 ## Auditoría extra vigente
+
+La [segunda revisión total](revision-total-2026-11-10.md) vuelve a contrastar fuente, original, pruebas y descarga pública. Hay pruebas específicas funcionales y visuales de las cuatro vistas restantes; no deben tratarse como pendientes por los registros históricos inferiores. La equivalencia individual de símbolos continúa sin certificar. Consultar ese informe para cantidades finales y correcciones posteriores al candidato publicado.
 
 El recuento actual y los límites se registran en auditoria-final/control-total.md. Hay [94 correspondencias de archivo contrastadas](auditoria-final/correspondencias-archivos.md) y un inventario AST reproducible por archivo. Eso no certifica la equivalencia individual de todos los símbolos ni un porcentaje funcional global. Los resultados históricos siguientes se conservan con su alcance original.
 

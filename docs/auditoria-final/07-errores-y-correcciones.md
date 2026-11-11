@@ -1,5 +1,7 @@
 # Hallazgos y correcciones
 
+La [continuación hasta entrega](../revision-total-2026-11-10.md) registra seis grupos RT corregidos/documentados: estado documental, botón de servicios, dependencia innecesaria, documentos exigidos, variable de arranque y fixture visual dependiente de otra suite. Trazabilidad y entrega se completan con límites explícitos; valoración actual B para la demo local. Los dieciséis grupos AF y sus recuentos inferiores son históricos, no la lista vigente de defectos del producto.
+
 Actualización posterior al cierre: AF-12 queda resuelto tras la autorización expresa de publicar y la comprobación pública de main, etiqueta y tres descargas idénticas por SHA256 el 10 de noviembre de 2026 a las 21:34 UTC. Véase [publicación](../fase-github-publicacion.md). El balance pasa a trece grupos corregidos, AF-10 parcial y AF-09/AF-11 abiertos. La tabla siguiente conserva el diagnóstico y la autorización del cierre de auditoría; la valoración C permanece.
 
 Los IDs representan grupos de hallazgos, no números de CVE ni de casos fallidos. Un fallo visual repetido en dos dispositivos no cuenta como dos defectos de producto.

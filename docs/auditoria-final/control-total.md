@@ -1,5 +1,7 @@
 # Control total y límites de cobertura
 
+El [cierre del 11 de noviembre](../revision-total-2026-11-10.md) consolida 216 archivos preparados (214 en el inventario y dos informes excluidos de su propia medición), 94 correspondencias, 27 rutas, 40 grupos y 3.122 registros con evidencia diferenciada. Los recuentos inferiores corresponden al cierre histórico de 200 archivos. No se declara biyección semántica ni ejecución individual del 100 %.
+
 No se inventan porcentajes. Inventariado, implementado y probado son conceptos distintos. El inventario por archivo se genera con scripts/auditar-proyecto.mjs; no verifica de forma individual todos los escenarios de cada declaración. Los resultados se completan con pruebas reales en 06.
 
 Recuento de cierre: 198 archivos analizados automáticamente y dos informes de inventario autogenerados, 200 archivos propios empaquetables en total. La base recibida contenía 177: se corrigen 33 existentes y se crean 23; no se elimina ninguno. Hay 31 carpetas con archivos propios en la reconstrucción, frente a 13 en el original. El resultado AST actual registra 225 declaraciones de variable y 1.713 constantes, 374 funciones nombradas, 694 flechas, tres métodos, 29 interfaces y siete alias de tipo; incluye pruebas/herramientas y no mide equivalencia ni cobertura de ejecución por símbolo.

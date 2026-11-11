@@ -1,5 +1,13 @@
 # Control de avance — implementación
 
+## Cierre técnico vigente — entrega para revisión del profesor, 11 de noviembre de 2026
+
+Las doce fases quedan documentadas como completas con limitaciones en su alcance técnico actual. Hay 27 rutas, 19 exports backend, cuatro roles, matriz de 40 grupos y 3.122 registros trazados con niveles de evidencia. La regresión corregida termina 0 y la comparación nueva pasa 126/126. La [guía de entrega](entrega-profesor.md), [informe M13](informe-final-m13.md) y validación adjunta del ZIP son las referencias vigentes. No se retrofechan fases, horas o revisión personal. Los estados en curso/parcial inferiores son históricos y conservan sus cifras originales.
+
+## Segunda revisión total vigente
+
+La revisión posterior a publicar se registra en [revision-total-2026-11-10.md](revision-total-2026-11-10.md). Incorpora comprobaciones nuevas, correcciones locales y los documentos académicos exigidos que faltaban. No declara terminadas las doce fases ni certifica horas o pausa. Las referencias públicas del cierre anterior permanecen identificadas en el informe; los resultados nuevos no se atribuyen automáticamente a ese ZIP.
+
 ## Auditoría extra vigente
 
 La revisión independiente se registra en [auditoria-final](auditoria-final/00-estado-inicial.md). Corrige problemas contrastados y vuelve a ejecutar pruebas. No afirma que las doce fases anteriores estuvieran cerradas; los resultados finales y límites se consultan en 09-informe-final.md y control-total.md de esa carpeta. Tras la autorización posterior «Subelo todo al github», las correcciones y el candidato verificado están publicados; [publicación](fase-github-publicacion.md) recoge la comprobación pública y el cierre de AF-12. La valoración C y los demás pendientes siguen vigentes.

@@ -1,0 +1,794 @@
+{
+  "S00037": {
+    "file": "app/src/datos/sesion.ts",
+    "anchor": "obtenerUrlVerificacion",
+    "decision": "sustituido",
+    "reason": "La URL usa window.location.origin; no necesita quitar la barra de una URL configurable externa."
+  },
+  "S00039": {
+    "file": "app/src/datos/sesion.ts",
+    "anchor": "obtenerUrlVerificacion",
+    "decision": "sustituido",
+    "reason": "Origen local validado por la fabrica Firebase, sin aceptar una URL de continuacion externa."
+  },
+  "S00086": {
+    "file": "functions/src/persistencia-reservas.js",
+    "anchor": "TRANSICIONES",
+    "decision": "integrado",
+    "reason": "La tabla y cambiarEstadoReserva comprueban transiciones en el servidor."
+  },
+  "S00134": {
+    "file": "app/src/exportaciones/calendario.ts",
+    "anchor": "formatearInstante",
+    "decision": "renombrado",
+    "reason": "Fecha UTC del evento ICS."
+  },
+  "S00148": {
+    "file": "app/src/datos/sesion.ts",
+    "anchor": "normalizarRol",
+    "decision": "reubicado",
+    "reason": "Normalizacion de rol al cargar el token, no en el modulo de navegacion."
+  },
+  "S00164": {
+    "file": "app/src/comun/avisos.ts",
+    "anchor": "mostrarAviso",
+    "decision": "integrado",
+    "reason": "Creacion idempotente del contenedor dentro de la operacion de aviso."
+  },
+  "S00166": {
+    "file": "app/src/comun/avisos.ts",
+    "anchor": "mostrarAviso",
+    "decision": "integrado",
+    "reason": "Seleccion de colores mediante condiciones dentro de mostrarAviso."
+  },
+  "S00174": {
+    "file": "app/src/comun/avisos.ts",
+    "anchor": "mostrarAviso",
+    "decision": "integrado",
+    "reason": "Retirada del aviso mediante temporizadores de su propia creacion."
+  },
+  "S00184": {
+    "file": "app/src/comun/avisos.ts",
+    "anchor": "cerrar",
+    "decision": "renombrado",
+    "reason": "Cierre con limpieza de listener, modal y restauracion del foco."
+  },
+  "S00186": {
+    "file": "app/src/comun/avisos.ts",
+    "anchor": "manejarTecla",
+    "decision": "renombrado",
+    "reason": "Escape y foco Tab dentro del modal."
+  },
+  "S00207": {
+    "file": "app/src/comun/avisos.ts",
+    "anchor": "pedirConfirmacion",
+    "decision": "integrado",
+    "reason": "La promesa se resuelve al confirmar/cancelar y al cerrar."
+  },
+  "S00220": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "sumarDiasCalendario",
+    "decision": "sustituido",
+    "reason": "Se opera con dias de calendario UTC, evitando depender de la zona del navegador."
+  },
+  "S00226": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "formatearFechaNegocio",
+    "decision": "sustituido",
+    "reason": "La representacion usa la zona IANA del negocio."
+  },
+  "S00236": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "sumarDiasCalendario",
+    "decision": "sustituido",
+    "reason": "Suma de dias de calendario, sin arrastrar horas de DST."
+  },
+  "S00297": {
+    "file": "app/src/modulos/administracion/tarjeta-usuario.ts",
+    "anchor": "crearTarjetaUsuario",
+    "decision": "integrado",
+    "reason": "Las opciones canonicas se crean dentro de la tarjeta."
+  },
+  "S00310": {
+    "file": "app/src/modulos/administracion/usuarios.ts",
+    "anchor": "buscarUsuarios",
+    "decision": "integrado",
+    "reason": "Semana calculada con configuracion y helpers de calendario."
+  },
+  "S00312": {
+    "file": "app/src/modulos/administracion/tarjeta-usuario.ts",
+    "anchor": "obtenerEstadoOperativo",
+    "decision": "renombrado",
+    "reason": "Ficha y semana para el estado operativo del usuario."
+  },
+  "S00347": {
+    "file": "app/src/modulos/administracion/tarjeta-usuario.ts",
+    "anchor": "clasesEstadoOperativo",
+    "decision": "renombrado",
+    "reason": "Clases del estado operativo compartidas."
+  },
+  "S00349": {
+    "file": "app/src/modulos/administracion/usuarios.ts",
+    "anchor": "buscarUsuarios",
+    "decision": "integrado",
+    "reason": "El listener de guardar se enlaza a cada tarjeta creada."
+  },
+  "S00403": {
+    "file": "app/src/comun/permisos.ts",
+    "anchor": "observarAreaProfesional",
+    "decision": "sustituido",
+    "reason": "Un contexto autorizado invalida respuestas y limpia el area."
+  },
+  "S00406": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "formatearFechaNegocio",
+    "decision": "sustituido",
+    "reason": "Fecha de la barberia en lugar de fecha local implicita."
+  },
+  "S00411": {
+    "file": "app/src/datos/agenda.ts",
+    "anchor": "consultarCitas",
+    "decision": "sustituido",
+    "reason": "Orden cronologico por fecha y HH:mm; no requiere convertir horas para ese orden."
+  },
+  "S00417": {
+    "file": "app/src/modulos/profesionales/tarjetas-citas.ts",
+    "anchor": "mostrarTarjetasAgenda",
+    "decision": "integrado",
+    "reason": "Nombre del profesional resuelto desde el mapa al crear la tarjeta."
+  },
+  "S00419": {
+    "file": "app/src/modulos/profesionales/agenda-diaria.ts",
+    "anchor": "cambiarEstadoCita",
+    "decision": "integrado",
+    "reason": "Pide confirmacion para los estados que la requieren."
+  },
+  "S00423": {
+    "file": "app/src/modulos/profesionales/agenda-diaria.ts",
+    "anchor": "mostrarAgenda",
+    "decision": "integrado",
+    "reason": "El filtro se aplica antes de mostrar tarjetas."
+  },
+  "S00428": {
+    "file": "app/src/modulos/profesionales/tarjetas-citas.ts",
+    "anchor": "mostrarTarjetasAgenda",
+    "decision": "integrado",
+    "reason": "Acciones por transiciones permitidas de la cita."
+  },
+  "S00444": {
+    "file": "app/src/datos/personas.ts",
+    "anchor": "obtenerProfesionales",
+    "decision": "reubicado",
+    "reason": "Consulta compartida de profesionales."
+  },
+  "S00512": {
+    "file": "app/src/modulos/profesionales/bloqueos.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "Seleccion de profesional al iniciar el area; worker queda limitado a si mismo."
+  },
+  "S00513": {
+    "file": "app/src/modulos/profesionales/bloqueos.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "Evento del selector actualiza la URL del profesional."
+  },
+  "S00516": {
+    "file": "app/src/comun/permisos.ts",
+    "anchor": "observarAreaProfesional",
+    "decision": "sustituido",
+    "reason": "Guard y contexto comun, con controles efectivos tambien en servidor."
+  },
+  "S00519": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "formatearFechaNegocio",
+    "decision": "sustituido",
+    "reason": "Fecha por zona del negocio."
+  },
+  "S00524": {
+    "file": "app/src/comun/formularios.ts",
+    "anchor": "comprobarTramoHorario",
+    "decision": "sustituido",
+    "reason": "Comprobacion estricta de HH:mm y orden del tramo."
+  },
+  "S00531": {
+    "file": "app/src/modulos/profesionales/bloqueos.ts",
+    "anchor": "mostrarBloqueos",
+    "decision": "integrado",
+    "reason": "Nombre desde el mapa de profesionales dentro de la fila."
+  },
+  "S00533": {
+    "file": "app/src/modulos/profesionales/bloqueos.ts",
+    "anchor": "uidObjetivo",
+    "decision": "renombrado",
+    "reason": "UID propio para worker o seleccion para gestion."
+  },
+  "S00540": {
+    "file": "app/src/datos/personas.ts",
+    "anchor": "obtenerProfesionales",
+    "decision": "reubicado",
+    "reason": "Consulta compartida de profesionales."
+  },
+  "S00597": {
+    "file": "app/src/modulos/profesionales/formulario-bloqueo.ts",
+    "anchor": "leerFormularioBloqueo",
+    "decision": "integrado",
+    "reason": "Valida fechas reales, orden y limite de vacaciones."
+  },
+  "S00600": {
+    "file": "app/src/comun/formularios.ts",
+    "anchor": "comprobarTramoHorario",
+    "decision": "sustituido",
+    "reason": "Validacion de hora y tramo compartida."
+  },
+  "S00649": {
+    "file": "app/src/modulos/administracion/reglas-agenda.ts",
+    "anchor": "guardarConfiguracion",
+    "decision": "integrado",
+    "reason": "Parsea y valida todas las ventanas antes de enviarlas."
+  },
+  "S00689": {
+    "file": "app/src/modulos/administracion/equipo.ts",
+    "anchor": "bloquear",
+    "decision": "sustituido",
+    "reason": "Bloqueo de controles coordinado con una operacion pendiente recuperable."
+  },
+  "S00726": {
+    "file": "app/src/modulos/administracion/equipo.ts",
+    "anchor": "cargarEquipo",
+    "decision": "integrado",
+    "reason": "Enlaza Enter, blur y cambio de visibilidad por tarjeta."
+  },
+  "S00754": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "formatearFechaNegocio",
+    "decision": "sustituido",
+    "reason": "Fechas de la exportacion en la zona del negocio."
+  },
+  "S00762": {
+    "file": "app/src/modulos/estadisticas/listado-citas.ts",
+    "anchor": "rangoValido",
+    "decision": "renombrado",
+    "reason": "Fechas reales y rango no invertido."
+  },
+  "S00767": {
+    "file": "app/src/datos/personas.ts",
+    "anchor": "obtenerProfesionales",
+    "decision": "reubicado",
+    "reason": "Datos compartidos; el listado construye su mapa de nombres."
+  },
+  "S00820": {
+    "file": "app/src/datos/sesion.ts",
+    "anchor": "esperarEstadoSesion",
+    "decision": "sustituido",
+    "reason": "Un observador central y espera del estado resuelto."
+  },
+  "S00828": {
+    "file": "app/src/comun/permisos.ts",
+    "anchor": "protegerRutaActual",
+    "decision": "sustituido",
+    "reason": "Matriz central, correo verificado y denegacion segura."
+  },
+  "S00866": {
+    "file": "app/src/modulos/administracion/resumen-horarios.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "Mensaje del resumen actualizado por el contexto autorizado."
+  },
+  "S00869": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "obtenerLunesSemana",
+    "decision": "reubicado",
+    "reason": "Helper compartido de calendario de negocio."
+  },
+  "S00871": {
+    "file": "app/src/modulos/administracion/resumen-horarios.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "La carga se ejecuta al recibir el contexto autorizado."
+  },
+  "S00906": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "formatearFechaNegocio",
+    "decision": "sustituido",
+    "reason": "Zona del negocio."
+  },
+  "S00911": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "obtenerRangoPeriodo",
+    "decision": "reubicado",
+    "reason": "Rango diario, siete dias o mes."
+  },
+  "S00918": {
+    "file": "app/src/modulos/estadisticas/indicadores.ts",
+    "anchor": "cargarIndicadores",
+    "decision": "integrado",
+    "reason": "Carga, error y periodo actualizan el mensaje de la consulta vigente."
+  },
+  "S00920": {
+    "file": "app/src/datos/personas.ts",
+    "anchor": "obtenerProfesionales",
+    "decision": "reubicado",
+    "reason": "Consulta compartida; mapa local del periodo."
+  },
+  "S00958": {
+    "file": "app/src/modulos/estadisticas/calculos.ts",
+    "anchor": "contarServicios",
+    "decision": "sustituido",
+    "reason": "Conteo separado del DOM; mostrarClasificacion presenta sus resultados."
+  },
+  "S00971": {
+    "file": "app/src/modulos/estadisticas/calculos.ts",
+    "anchor": "contarProfesionales",
+    "decision": "sustituido",
+    "reason": "Conteo separado del DOM, manteniendo agrupacion visible por nombre."
+  },
+  "S01006": {
+    "file": "app/src/modulos/cuentas/iniciar-sesion.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "Los parametros de acceso/verificacion se tratan en navegacion y verificacion."
+  },
+  "S01020": {
+    "file": "app/src/comun/errores.ts",
+    "anchor": "explicarErrorAcceso",
+    "decision": "reubicado",
+    "reason": "Mensajes comunes de autenticacion."
+  },
+  "S01050": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "obtenerInicioCita",
+    "decision": "sustituido",
+    "reason": "Timestamp o conversion valida en zona de negocio."
+  },
+  "S01054": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "formatearFechaNegocio",
+    "decision": "sustituido",
+    "reason": "Representacion de fecha de negocio."
+  },
+  "S01063": {
+    "file": "app/src/comun/estados-cita.ts",
+    "anchor": "obtenerServicioCita",
+    "decision": "reubicado",
+    "reason": "Compatibilidad de identificador de servicio legado."
+  },
+  "S01067": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "obtenerInicioCita",
+    "decision": "sustituido",
+    "reason": "Conversion central, sin reinterpretar fechas en la zona del navegador."
+  },
+  "S01069": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "obtenerInicioCita",
+    "decision": "reubicado",
+    "reason": "Timestamp o fecha local del negocio validada."
+  },
+  "S01072": {
+    "file": "app/src/comun/estados-cita.ts",
+    "anchor": "calcularHorasHastaCita",
+    "decision": "reubicado",
+    "reason": "Margen calculado desde el instante de la cita."
+  },
+  "S01074": {
+    "file": "app/src/comun/estados-cita.ts",
+    "anchor": "puedeGestionarCita",
+    "decision": "reubicado",
+    "reason": "Estados y margen de acciones del cliente."
+  },
+  "S01077": {
+    "file": "app/src/comun/estados-cita.ts",
+    "anchor": "obtenerAvisoGestion",
+    "decision": "reubicado",
+    "reason": "Explica el margen o estado que impide gestionar."
+  },
+  "S01080": {
+    "file": "app/src/comun/estados-cita.ts",
+    "anchor": "aplicarFiltrosCitas",
+    "decision": "renombrado",
+    "reason": "Filtros de fecha y estado."
+  },
+  "S01111": {
+    "file": "app/src/datos/personas.ts",
+    "anchor": "obtenerProfesionales",
+    "decision": "reubicado",
+    "reason": "Consulta comun de nombres."
+  },
+  "S01117": {
+    "file": "app/src/modulos/reservas/mis-citas.ts",
+    "anchor": "cargarMisCitas",
+    "decision": "integrado",
+    "reason": "Configuracion compartida cargada con las citas y el equipo."
+  },
+  "S01132": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "esFechaCalendarioValida",
+    "decision": "reubicado",
+    "reason": "Calendario real."
+  },
+  "S01134": {
+    "file": "app/src/comun/errores.ts",
+    "anchor": "explicarErrorCambioCita",
+    "decision": "reubicado",
+    "reason": "Errores especificos del cambio."
+  },
+  "S01137": {
+    "file": "app/src/comun/errores.ts",
+    "anchor": "explicarErrorCancelacion",
+    "decision": "reubicado",
+    "reason": "Errores especificos de la cancelacion."
+  },
+  "S01235": {
+    "file": "app/src/modulos/navegacion/barra-navegacion.ts",
+    "anchor": "mostrarElemento",
+    "decision": "renombrado",
+    "reason": "Alterna la visibilidad de los controles."
+  },
+  "S01238": {
+    "file": "app/src/modulos/navegacion/barra-navegacion.ts",
+    "anchor": "actualizarNavegacion",
+    "decision": "renombrado",
+    "reason": "Menus y tarjeta de inicio segun sesion."
+  },
+  "S01271": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "formatearFechaNegocio",
+    "decision": "sustituido",
+    "reason": "Zona del negocio."
+  },
+  "S01276": {
+    "file": "app/src/modulos/profesionales/panel-profesional.ts",
+    "anchor": "resumirCitasProfesional",
+    "decision": "sustituido",
+    "reason": "La duracion persistida/snapshot determina minutos, sin restar horas de texto."
+  },
+  "S01280": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "obtenerRangoPeriodo",
+    "decision": "reubicado",
+    "reason": "Rangos compartidos."
+  },
+  "S01297": {
+    "file": "app/src/modulos/profesionales/tarjetas-citas.ts",
+    "anchor": "mostrarCitasDelDia",
+    "decision": "reubicado",
+    "reason": "Tarjetas reutilizadas para las siguientes citas."
+  },
+  "S01314": {
+    "file": "app/src/datos/personas.ts",
+    "anchor": "obtenerProfesionales",
+    "decision": "reubicado",
+    "reason": "Consulta compartida."
+  },
+  "S01320": {
+    "file": "app/src/modulos/profesionales/panel-profesional.ts",
+    "anchor": "cargarResumen",
+    "decision": "renombrado",
+    "reason": "Consulta y presentacion del periodo vigente."
+  },
+  "S01354": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "formatearFechaNegocio",
+    "decision": "sustituido",
+    "reason": "Zona del negocio."
+  },
+  "S01359": {
+    "file": "app/src/modulos/estadisticas/calculos.ts",
+    "anchor": "obtenerDuracionEstadistica",
+    "decision": "sustituido",
+    "reason": "Minutos desde duracion o snapshot con datos legados invalidos controlados."
+  },
+  "S01363": {
+    "file": "app/src/modulos/estadisticas/resumen-diario.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "Calcula y asigna indicadores dentro de la consulta autorizada."
+  },
+  "S01378": {
+    "file": "app/src/modulos/profesionales/tarjetas-citas.ts",
+    "anchor": "mostrarCitasDelDia",
+    "decision": "reubicado",
+    "reason": "Lista de citas compartida."
+  },
+  "S01392": {
+    "file": "app/src/datos/personas.ts",
+    "anchor": "obtenerProfesionales",
+    "decision": "reubicado",
+    "reason": "Consulta compartida."
+  },
+  "S01398": {
+    "file": "app/src/modulos/estadisticas/resumen-diario.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "La consulta diaria se coordina con el contexto profesional vigente."
+  },
+  "S01474": {
+    "file": "app/src/comun/formularios.ts",
+    "anchor": "bloquearFormulario",
+    "decision": "reubicado",
+    "reason": "Bloqueo de los campos y boton al enviar."
+  },
+  "S01475": {
+    "file": "app/src/comun/formularios.ts",
+    "anchor": "bloquearFormulario",
+    "decision": "integrado",
+    "reason": "El mismo helper recibe false para habilitar, sin una funcion inversa duplicada."
+  },
+  "S01552": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "formatearFechaNegocio",
+    "decision": "sustituido",
+    "reason": "Zona del negocio."
+  },
+  "S01557": {
+    "file": "app/src/modulos/reservas/reservar-cita.ts",
+    "anchor": "mostrarMensajeReserva",
+    "decision": "renombrado",
+    "reason": "Mensaje y estilo del estado de disponibilidad."
+  },
+  "S01687": {
+    "file": "app/src/comun/permisos.ts",
+    "anchor": "observarAreaAutorizada",
+    "decision": "sustituido",
+    "reason": "Permiso de gestion y limpieza del area; autorizacion efectiva en backend."
+  },
+  "S01705": {
+    "file": "app/src/modulos/administracion/servicios.ts",
+    "anchor": "crearTarjetaServicio",
+    "decision": "integrado",
+    "reason": "Los eventos se enlazan al crear cada tarjeta."
+  },
+  "S01765": {
+    "file": "app/src/modulos/profesionales/formulario-horario.ts",
+    "anchor": "obtenerCamposDia",
+    "decision": "sustituido",
+    "reason": "Referencias tipadas de cada fila del horario."
+  },
+  "S01812": {
+    "file": "app/src/modulos/profesionales/formulario-horario.ts",
+    "anchor": "alternarFilaHorario",
+    "decision": "renombrado",
+    "reason": "Habilitacion segun dia activo y guardado."
+  },
+  "S01819": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "mostrarError",
+    "decision": "renombrado",
+    "reason": "Mensaje de error del horario."
+  },
+  "S01821": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "mostrarCorrecto",
+    "decision": "renombrado",
+    "reason": "Confirmacion de guardado/copia."
+  },
+  "S01823": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "cargarHorarioSemanal",
+    "decision": "integrado",
+    "reason": "Descripcion de ficha y publicacion al completar la carga."
+  },
+  "S01826": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "formatearFechaNegocio",
+    "decision": "sustituido",
+    "reason": "Fecha en zona del negocio."
+  },
+  "S01830": {
+    "file": "app/src/comun/fechas.ts",
+    "anchor": "sumarDiasCalendario",
+    "decision": "sustituido",
+    "reason": "Suma de calendario."
+  },
+  "S01833": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "Seleccion inicial validada y limitada por el rol."
+  },
+  "S01834": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "cargarProfesionalSeleccionado",
+    "decision": "integrado",
+    "reason": "Sincroniza URL y UID al seleccionar."
+  },
+  "S01837": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "sincronizarSemana",
+    "decision": "renombrado",
+    "reason": "Fecha y etiqueta de semana."
+  },
+  "S01840": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "cargarHorarioSemanal",
+    "decision": "integrado",
+    "reason": "Semana seleccionada como estado del controlador."
+  },
+  "S01892": {
+    "file": "app/src/comun/formularios.ts",
+    "anchor": "comprobarTramoHorario",
+    "decision": "sustituido",
+    "reason": "Valida HH:mm y orden; backend vuelve a comprobarlo."
+  },
+  "S01929": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "cargarHorarioSemanal",
+    "decision": "integrado",
+    "reason": "Ayuda de ficha/semana en la carga autorizada."
+  },
+  "S01934": {
+    "file": "functions/src/persistencia-horarios.js",
+    "anchor": "guardarHorarioAtomico",
+    "decision": "reubicado",
+    "reason": "La ficha propia se crea en la transaccion backend, no desde el SDK cliente."
+  },
+  "S01945": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "cargarHorarioSemanal",
+    "decision": "integrado",
+    "reason": "Plantilla y semana se leen juntas antes de rellenar."
+  },
+  "S01975": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "Inicializacion del selector con profesionales autorizados."
+  },
+  "S02003": {
+    "file": "app/src/modulos/profesionales/formulario-horario.ts",
+    "anchor": "enlazarDiasHorario",
+    "decision": "renombrado",
+    "reason": "Eventos y etiquetas por dia."
+  },
+  "S02008": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "Eventos anterior, siguiente, copiar y fecha en el controlador."
+  },
+  "S02011": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "Cambio de fecha obtiene lunes y carga la semana."
+  },
+  "S02026": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "Evento del selector de profesional."
+  },
+  "S02029": {
+    "file": "app/src/modulos/profesionales/editar-horario.ts",
+    "anchor": "guardarHorario",
+    "decision": "integrado",
+    "reason": "Guardado recuperable con identidad/revision y backend."
+  },
+  "S02120": {
+    "file": "functions/src/permisos.js",
+    "anchor": "comprobarSesion",
+    "decision": "sustituido",
+    "reason": "No confiar solo en role del token; contrasta Auth y espejo vigente."
+  },
+  "S02126": {
+    "file": "functions/src/cuentas.js",
+    "anchor": "sincronizarFichaProfesional",
+    "decision": "sustituido",
+    "reason": "Se preserva el nombre administrado sin forzar capitalizacion."
+  },
+  "S02130": {
+    "file": "functions/src/cuentas.js",
+    "anchor": "sincronizarFichaProfesional",
+    "decision": "integrado",
+    "reason": "Prioridad de nombre profesional, ficha, cuenta y fallback."
+  },
+  "S02171": {
+    "file": "functions/src/permisos.js",
+    "anchor": "comprobarSesion",
+    "decision": "sustituido",
+    "reason": "Sesion y rol actuales; cada operacion limita su rol/objetivo."
+  },
+  "S02188": {
+    "file": "functions/src/fechas.js",
+    "anchor": "formatearFechaZona",
+    "decision": "sustituido",
+    "reason": "Zona IANA explicita."
+  },
+  "S02201": {
+    "file": "functions/src/configuracion.js",
+    "anchor": "obtenerConfiguracionAgenda",
+    "decision": "renombrado",
+    "reason": "Configuracion validada y disponible dentro de transacciones."
+  },
+  "S02219": {
+    "file": "functions/src/horarios.js",
+    "anchor": "normalizarTramos",
+    "decision": "sustituido",
+    "reason": "Misma normalizacion estricta para tramos y descansos."
+  },
+  "S02268": {
+    "file": "functions/src/disponibilidad.js",
+    "anchor": "cargarServicio",
+    "decision": "renombrado",
+    "reason": "Servicio activo con duracion y precio validos."
+  },
+  "S02362": {
+    "file": "functions/src/disponibilidad.js",
+    "anchor": "estaBloqueadoElHueco",
+    "decision": "sustituido",
+    "reason": "Solapamientos compartidos entre citas, locks y bloqueos."
+  },
+  "S02563": {
+    "file": "functions/src/fechas.js",
+    "anchor": "comprobarFechaFutura",
+    "decision": "sustituido",
+    "reason": "Instante real validado en zona IANA antes de reservar."
+  },
+  "S02930": {
+    "file": "functions/src/permisos.js",
+    "anchor": "normalizarRolEntrada",
+    "decision": "reubicado",
+    "reason": "Normalizador comun para CLI y backend."
+  },
+  "S02933": {
+    "file": "functions/scripts/normalizar-roles.mjs",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "CLI superior exige UID explicito y simula por defecto."
+  },
+  "S02967": {
+    "file": "functions/src/firebase.js",
+    "anchor": "comprobarEntornoLocal",
+    "decision": "sustituido",
+    "reason": "Entorno exacto de emuladores; no configuracion administrativa productiva."
+  },
+  "S02969": {
+    "file": "functions/src/firebase.js",
+    "anchor": "comprobarEntornoLocal",
+    "decision": "retirado-seguridad",
+    "reason": "No se carga service account ni credencial privada; solo Admin en emuladores."
+  },
+  "S02983": {
+    "file": "functions/src/permisos.js",
+    "anchor": "normalizarRolEntrada",
+    "decision": "reubicado",
+    "reason": "Roles canonicos y aliases compatibles."
+  },
+  "S02986": {
+    "file": "functions/scripts/asignar-roles.mjs",
+    "anchor": "@modulo",
+    "decision": "sustituido",
+    "reason": "UID explicito obligatorio; no eleccion implicita del usuario a modificar."
+  },
+  "S02990": {
+    "file": "functions/src/cuentas.js",
+    "anchor": "asignarRolAutorizado",
+    "decision": "reubicado",
+    "reason": "Rol/version y ficha se coordinan con denegacion ante estados discordantes."
+  },
+  "S03002": {
+    "file": "functions/scripts/asignar-roles.mjs",
+    "anchor": "@modulo",
+    "decision": "integrado",
+    "reason": "CLI superior, simulacion por defecto y --aplicar explicito."
+  },
+  "S03024": {
+    "file": "functions/tests/emuladores/datos-reservas.mjs",
+    "anchor": "@modulo",
+    "decision": "sustituido",
+    "reason": "Fixtures restablecen solo colecciones del proyecto demo."
+  },
+  "S03030": {
+    "file": "functions/tests/emuladores/reservas-concurrencia.test.mjs",
+    "anchor": "@modulo",
+    "decision": "sustituido-prueba",
+    "reason": "Carreras reales contra createBooking y cambios, en lugar de solo adquirir un lock aislado."
+  },
+  "S03064": {
+    "file": "functions/tests/emuladores/ejecutar-pruebas.mjs",
+    "anchor": "@modulo",
+    "decision": "retirado-prueba",
+    "reason": "Puertos demo fijos documentados; un puerto ocupado provoca fallo, no se oculta cambiando destino."
+  }
+}

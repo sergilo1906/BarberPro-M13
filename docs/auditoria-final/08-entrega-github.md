@@ -1,5 +1,7 @@
 # Entrega, secretos y GitHub
 
+La [entrega del 11 de noviembre](../entrega-profesor.md) y su [revisión de cierre](../revision-total-2026-11-10.md) identifican el paquete posterior, código corregido y trazabilidad. El r1 y las verificaciones inferiores son históricos e inmutables. La validación del ZIP actual se adjunta fuera del propio paquete, con commit, SHA256 y resultados de extracción/instalación concretos.
+
 Actualización posterior al cierre de auditoría: el usuario autoriza «Subelo todo al github». La publicación de las correcciones y el candidato verificado se registra en [publicación GitHub](../fase-github-publicacion.md). Los apartados siguientes conservan el estado comprobado antes de esta autorización; los informes incluidos en el ZIP permanecen congelados y no se altera el paquete validado.
 
 ## Estado inicial y fuente

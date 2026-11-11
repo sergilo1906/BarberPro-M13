@@ -1,5 +1,9 @@
 # Fase 9 — estado en curso conservado en GitHub
 
+**Registro histórico.** El [cierre técnico de fase 9](fase-9-funcionalidades-restantes.md) y la [entrega del 11 de noviembre](entrega-profesor.md) sustituyen los pendientes de implementación/validación de este documento. Se conserva el texto para no borrar el avance y las limitaciones conocidos en cada momento.
+
+Estado posterior: las pruebas específicas y las comparaciones de las cuatro vistas se ejecutaron en la auditoría extra, con resultados detallados allí. La [revisión de funcionalidades restantes](fase-9-funcionalidades-restantes.md) y la [segunda revisión total](revision-total-2026-11-10.md) recogen la evidencia actual. App registra cero alertas en el nuevo npm audit y no quedan altas/críticas conocidas en los tres árboles auditados; permanecen moderadas en raíz y Functions. El cierre global de fase y la pausa siguen pendientes. Los apartados siguientes conservan el estado de la publicación anterior, no la lista vigente de pruebas ausentes.
+
 Registro de la publicación solicitada el 10 de noviembre de 2026. Esta fase no se da por cerrada. El usuario ha pedido subir todo el proyecto reconstruido y continuar la operación: se conserva la implementación disponible con sus límites explícitos, además del cierre ya verificado de fase 8.
 
 ## Implementación disponible

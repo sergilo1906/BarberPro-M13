@@ -42,7 +42,8 @@ function crearTarjetaServicio(servicio: ServicioAdministrable): HTMLElement {
   nombre.value = servicio.name; nombre.maxLength = 100; duracion.value = String(servicio.durationMin); precio.value = String(servicio.price); activo.checked = servicio.active;
   tarjeta.querySelector("span")!.textContent = servicio.active ? "Activo" : "Inactivo"; tarjeta.querySelector(".svc-toggle")!.textContent = servicio.active ? "Desactivar" : "Activar";
   tarjeta.querySelector(".svc-save")!.addEventListener("click", () => prepararGuardado({ name: nombre.value.trim(), durationMin: Number(duracion.value), price: precio.value === "" ? NaN : Number(precio.value), active: activo.checked, serviceId: servicio.id, expectedRevision: servicio.adminRevision }));
-  tarjeta.querySelector(".svc-toggle")!.addEventListener("click", () => prepararGuardado({ name: servicio.name, durationMin: servicio.durationMin, price: servicio.price, active: !activo.checked, serviceId: servicio.id, expectedRevision: servicio.adminRevision }));
+  // Activar/Desactivar describe el estado cargado, incluso con una casilla sin guardar.
+  tarjeta.querySelector(".svc-toggle")!.addEventListener("click", () => prepararGuardado({ name: servicio.name, durationMin: servicio.durationMin, price: servicio.price, active: !servicio.active, serviceId: servicio.id, expectedRevision: servicio.adminRevision }));
   return tarjeta;
 }
 async function cargarServicios(): Promise<void> {
