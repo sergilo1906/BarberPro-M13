@@ -5,9 +5,10 @@ Registro por archivo; no equivale a revision semantica completa. Los dos informe
 | Archivo | Categoria | Lineas | Declaraciones AST | Imports | Analisis limitado |
 |---|---|---:|---:|---:|---|
 | .firebaserc | configuracion | 15 | 0 | 0 | Sin errores de parseo detectados |
+| .github/workflows/comprobacion.yml | configuracion | 38 | 0 | 0 | Sin errores de parseo detectados |
 | .gitignore | configuracion | 25 | 0 | 0 | Sin errores de parseo detectados |
 | .nvmrc | configuracion | 2 | 0 | 0 | Sin errores de parseo detectados |
-| README.md | documentacion | 67 | 0 | 0 | Sin errores de parseo detectados |
+| README.md | documentacion | 69 | 0 | 0 | Sin errores de parseo detectados |
 | app/.env.example | configuracion | 12 | 0 | 0 | Sin errores de parseo detectados |
 | app/astro.config.mjs | configuracion | 9 | 0 | 1 | Sin errores de parseo detectados |
 | app/package-lock.json | configuracion | 6876 | 0 | 0 | Sin errores de parseo detectados |
@@ -122,6 +123,10 @@ Registro por archivo; no equivale a revision semantica completa. Los dos informe
 | app/tests/unit/profesional.test.ts | pruebas | 47 | 17 | 4 | Sin errores de parseo detectados |
 | app/tests/unit/sesion.test.ts | pruebas | 97 | 34 | 1 | Sin errores de parseo detectados |
 | app/tsconfig.json | configuracion | 20 | 0 | 0 | Sin errores de parseo detectados |
+| docs/ENTREGA-LEER-PRIMERO.md | documentacion | 93 | 0 | 0 | Sin errores de parseo detectados |
+| docs/GUIA-DEFENSA-M13.md | documentacion | 85 | 0 | 0 | Sin errores de parseo detectados |
+| docs/MENSAJE-PROFESOR-CAT.md | documentacion | 16 | 0 | 0 | Sin errores de parseo detectados |
+| docs/MENSAJE-PROFESOR-ES.md | documentacion | 16 | 0 | 0 | Sin errores de parseo detectados |
 | docs/arquitectura.md | documentacion | 25 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/00-estado-inicial.md | documentacion | 14 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/01-revision-fases.md | documentacion | 23 | 0 | 0 | Sin errores de parseo detectados |
@@ -133,19 +138,23 @@ Registro por archivo; no equivale a revision semantica completa. Los dos informe
 | docs/auditoria-final/07-errores-y-correcciones.md | documentacion | 29 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/08-entrega-github.md | documentacion | 34 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/09-informe-final.md | documentacion | 38 | 0 | 0 | Sin errores de parseo detectados |
-| docs/auditoria-final/control-total.md | documentacion | 33 | 0 | 0 | Sin errores de parseo detectados |
+| docs/auditoria-final/control-total.md | documentacion | 35 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/correspondencias-archivos.json | documentacion | 1289 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/correspondencias-archivos.md | documentacion | 101 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/dependencias-resultados.json | documentacion | 27 | 0 | 0 | Sin errores de parseo detectados |
 | docs/auditoria-final/original-recuento-ast.json | documentacion | 22 | 0 | 0 | Sin errores de parseo detectados |
+| docs/cierre-definitivo/dependencias.md | documentacion | 19 | 0 | 0 | Sin errores de parseo detectados |
+| docs/cierre-definitivo/estado-reanudacion.md | documentacion | 12 | 0 | 0 | Sin errores de parseo detectados |
+| docs/cierre-definitivo/pendientes.md | documentacion | 19 | 0 | 0 | Sin errores de parseo detectados |
+| docs/cierre-definitivo/resultado-final.md | documentacion | 67 | 0 | 0 | Sin errores de parseo detectados |
 | docs/control-avance.md | documentacion | 272 | 0 | 0 | Sin errores de parseo detectados |
 | docs/control-cobertura.md | documentacion | 128 | 0 | 0 | Sin errores de parseo detectados |
 | docs/decisiones-tecnicas.md | documentacion | 23 | 0 | 0 | Sin errores de parseo detectados |
 | docs/ejecucion-fases-8-12.md | documentacion | 21 | 0 | 0 | Sin errores de parseo detectados |
-| docs/entrega-profesor.md | documentacion | 73 | 0 | 0 | Sin errores de parseo detectados |
+| docs/entrega-profesor.md | documentacion | 75 | 0 | 0 | Sin errores de parseo detectados |
 | docs/estado-pausa.md | documentacion | 132 | 0 | 0 | Sin errores de parseo detectados |
 | docs/estructura.md | documentacion | 29 | 0 | 0 | Sin errores de parseo detectados |
-| docs/fase-10-comparacion-visual.md | documentacion | 16 | 0 | 0 | Sin errores de parseo detectados |
+| docs/fase-10-comparacion-visual.md | documentacion | 18 | 0 | 0 | Sin errores de parseo detectados |
 | docs/fase-3-implementacion.md | documentacion | 293 | 0 | 0 | Sin errores de parseo detectados |
 | docs/fase-4-autenticacion-usuarios-roles.md | documentacion | 179 | 0 | 0 | Sin errores de parseo detectados |
 | docs/fase-5-reservas-disponibilidad.md | documentacion | 229 | 0 | 0 | Sin errores de parseo detectados |
@@ -154,14 +163,14 @@ Registro por archivo; no equivale a revision semantica completa. Los dos informe
 | docs/fase-8-administracion.md | documentacion | 118 | 0 | 0 | Sin errores de parseo detectados |
 | docs/fase-9-estado-en-curso.md | documentacion | 44 | 0 | 0 | Sin errores de parseo detectados |
 | docs/fase-9-funcionalidades-restantes.md | documentacion | 22 | 0 | 0 | Sin errores de parseo detectados |
-| docs/fase-github-publicacion.md | documentacion | 97 | 0 | 0 | Sin errores de parseo detectados |
+| docs/fase-github-publicacion.md | documentacion | 101 | 0 | 0 | Sin errores de parseo detectados |
 | docs/funcionalidades-finales.md | documentacion | 24 | 0 | 0 | Sin errores de parseo detectados |
 | docs/funcionalidades.md | documentacion | 8 | 0 | 0 | Sin errores de parseo detectados |
-| docs/informe-final-m13.md | documentacion | 46 | 0 | 0 | Sin errores de parseo detectados |
+| docs/informe-final-m13.md | documentacion | 48 | 0 | 0 | Sin errores de parseo detectados |
 | docs/mapa-archivos.md | documentacion | 30 | 0 | 0 | Sin errores de parseo detectados |
 | docs/mapa-simbolos.md | documentacion | 29 | 0 | 0 | Sin errores de parseo detectados |
 | docs/matriz-requisitos.md | documentacion | 49 | 0 | 0 | Sin errores de parseo detectados |
-| docs/pruebas-finales.md | documentacion | 42 | 0 | 0 | Sin errores de parseo detectados |
+| docs/pruebas-finales.md | documentacion | 44 | 0 | 0 | Sin errores de parseo detectados |
 | docs/registro-academico.md | documentacion | 29 | 0 | 0 | Sin errores de parseo detectados |
 | docs/revision-total-2026-11-10.md | documentacion | 121 | 0 | 0 | Sin errores de parseo detectados |
 | docs/rutas-y-roles.md | documentacion | 34 | 0 | 0 | Sin errores de parseo detectados |

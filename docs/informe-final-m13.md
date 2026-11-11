@@ -1,5 +1,7 @@
 # Informe final M13 — estado para revisión
 
+El [cierre definitivo](cierre-definitivo/resultado-final.md) registra la nueva comprobación y la entrega final. Empezar por [leer primero](ENTREGA-LEER-PRIMERO.md); la [guía de defensa](GUIA-DEFENSA-M13.md) acompaña el material técnico. Los datos exactos del nuevo ZIP y del commit se identifican en su validación externa.
+
 Informe técnico de cierre del 11 de noviembre de 2026 para preparar la defensa. Las doce fases quedan documentadas como completas con limitaciones en su alcance técnico actual; no se inventa una cronología histórica, horas del alumno ni revisión personal. La [guía de entrega](entrega-profesor.md), [revisión total](revision-total-2026-11-10.md) y validación adjunta del paquete identifican resultados y límites.
 
 ## A. Proyecto
@@ -40,6 +42,6 @@ La trazabilidad conserva sus niveles de evidencia; no es una prueba matemática 
 
 ## J. Entrega
 
-Fuente pública: https://github.com/sergilo1906/BarberPro-M13. La [entrega actual](https://github.com/sergilo1906/BarberPro-M13/releases/tag/entrega-profesor-2026-11-11) adjunta BarberPro-M13-entrega-profesor-2026-11-11.zip, checksum y validación del artefacto concreto. El candidato r1 del 10 de noviembre se conserva como historial y no representa estas correcciones. El informe de validación externo identifica commit, hash, instalación y pruebas sobre la extracción, evitando autorreferencias. La publicación de fuente autorizada no despliega la aplicación; el alumno revisa y envía personalmente la entrega.
+Fuente pública: https://github.com/sergilo1906/BarberPro-M13. La [entrega definitiva](https://github.com/sergilo1906/BarberPro-M13/releases/tag/cierre-definitivo-2026-11-11) adjunta BarberPro-M13-cierre-definitivo-2026-11-11.zip, checksum y validación con lista de contenido. Las entregas anteriores se conservan como historial. El informe externo identifica commit, hash, instalación y pruebas sobre la extracción, evitando autorreferencias. La publicación de fuente autorizada no despliega la aplicación; el alumno revisa y envía personalmente la entrega.
 
 **OPCIÓN B — APTO CON LIMITACIONES DOCUMENTADAS** para entregar esta demo local a revisión académica. No se certifican producción, equivalencia universal ni aceptación o calificación del profesor.

@@ -1,5 +1,9 @@
 # Publicación de la fuente en GitHub
 
+## Cierre definitivo — 11 de noviembre de 2026
+
+La [release de cierre](https://github.com/sergilo1906/BarberPro-M13/releases/tag/cierre-definitivo-2026-11-11) identifica la nueva fuente con instrucciones breves, defensa, mensajes sin enviar y CI mínimo. Adjunta ZIP nuevo, checksum y validación externa con commit, instalación/pruebas del paquete exacto, lista de contenido, CI y comprobación de descargas públicas. No se sobrescriben las publicaciones anteriores ni se despliega la web. La entrada actual es [ENTREGA-LEER-PRIMERO](ENTREGA-LEER-PRIMERO.md); los apartados siguientes son historial de entregas anteriores.
+
 ## Entrega actual para revisión del profesor — 11 de noviembre de 2026
 
 La solicitud de continuar hasta preparar la entrega consolida la fuente corregida, trazabilidad y documentos. Se conserva la autorización explícita anterior de subir todo a este repositorio público, sin crear otro, alterar visibilidad, reescribir historia o desplegar la aplicación. La entrega se identifica en [entrega-profesor-2026-11-11](https://github.com/sergilo1906/BarberPro-M13/releases/tag/entrega-profesor-2026-11-11): ZIP limpio, .sha256 e informe de validación adjunto. Este último registra el commit y la comprobación pública del artefacto concreto, después de su instalación/pruebas aisladas.

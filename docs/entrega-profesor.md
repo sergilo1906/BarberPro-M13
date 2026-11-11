@@ -1,5 +1,7 @@
 # Entrega de BarberPro Studio M13
 
+La entrada breve única es [ENTREGA-LEER-PRIMERO](ENTREGA-LEER-PRIMERO.md). Para estudiar el proyecto: [guía de defensa](GUIA-DEFENSA-M13.md); para evaluar el cierre: [resultado final](cierre-definitivo/resultado-final.md). Este documento conserva la guía técnica complementaria.
+
 Entrega para revisión académica como **demo local con Firebase Emulator Suite**. No es una aplicación desplegada para clientes reales. La reconstrucción y la documentación han contado con asistencia de Codex, declarada en el [registro académico](registro-academico.md).
 
 ## Lectura recomendada
@@ -65,7 +67,7 @@ La suite crea sus datos ficticios y detiene los servicios al terminar. Las compa
 
 ## Contenido y límites de la entrega
 
-El paquete de esta revisión se denomina BarberPro-M13-entrega-profesor-2026-11-11.zip. Su checksum .sha256 y el informe de validación se entregan como adjuntos separados para evitar un hash autorreferencial. Esa validación identifica el commit, el contenido y las pruebas ejecutadas sobre la extracción concreta. No utilizar el candidato r1 del 10 de noviembre como si incorporara estas correcciones posteriores.
+El paquete definitivo se denomina BarberPro-M13-cierre-definitivo-2026-11-11.zip y se publica en la release cierre-definitivo-2026-11-11. Su checksum .sha256 y el informe de validación con lista de contenido se entregan como adjuntos separados para evitar un hash autorreferencial. Esa validación identifica el commit, el contenido y las pruebas ejecutadas sobre la extracción concreta. La entrega preliminar y el candidato r1 se conservan como historial, sin los materiales de este cierre.
 
 La tabla de símbolos distingue declaración localizada, contrato referenciado, decisión manual y ámbito reestructurado. Tener 3.122 decisiones no significa demostrar equivalencia matemática o ejecutar cada variable. Se conservan los límites de los emuladores, el correo no enviado, la ausencia de despliegue, navegadores físicos no certificados y avisos moderados de herramientas/SDK. No hay errores altos/críticos conocidos en el npm audit ejecutado. Las horas y la revisión personal del alumno deben reflejar sus datos reales; no se han inventado.
 

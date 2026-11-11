@@ -1,5 +1,7 @@
 # Pruebas finales y alcance
 
+**Regresión nueva del cierre definitivo, 11/11/2026 20:10:44–20:22:24 UTC: código 0.** Se vuelven a ejecutar checker (106 archivos, sin diagnósticos), 44 unitarias, 69 integraciones y 284 casos de navegador, incluidos 126 visuales, sin omisiones; build de 27 páginas. Los casos visuales no se suman dos veces. El [resultado definitivo](cierre-definitivo/resultado-final.md) y la validación externa del nuevo ZIP identifican sus pruebas, instalación y CI; las pasadas siguientes son el historial anterior.
+
 Los resultados vigentes y los intentos de esta segunda revisión se consolidan en [revisión total](revision-total-2026-11-10.md). Este documento no convierte una fase parcial en cerrada ni afirma cobertura de ejecución del 100 %.
 
 **Cierre técnico del 11 de noviembre: COMPLETA CON LIMITACIONES.** La regresión corregida completa termina 0: checker de 106 archivos sin diagnósticos, 44 unitarias, 69 integraciones y 284 navegador, incluidas 126 visuales, sin omisiones; build de 27 páginas. La nueva comparación visual de cierre pasa 126/126 en tres formatos. Se conservan los intentos fallidos y sus correcciones RT-02/RT-05/RT-06. No se suman las pasadas como si fueran casos distintos. La instalación/pruebas del ZIP exacto se acreditan separadamente en el informe de validación adjunto.

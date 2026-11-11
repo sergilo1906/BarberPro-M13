@@ -1,5 +1,7 @@
 # Fase 10 — evidencia de comparación recogida en auditoría
 
+**Repetición en el cierre definitivo, 11/11/2026:** la nueva regresión completa termina 0 a las 20:22:24 UTC, con 126 comparaciones visuales incluidas en los 284 casos de navegador y ninguna omitida. El original seguro seguía disponible; se conservan aserciones, tolerancias, diseño y formatos. Evidencia nueva: `.verificacion/cierre-definitivo-2026-11-11/regresion-workspace.log` y [resultado final](cierre-definitivo/resultado-final.md). Los apartados siguientes conservan resultados históricos, sin atribuirlos al ZIP independiente.
+
 **Cierre técnico del 11 de noviembre de 2026: COMPLETA CON LIMITACIONES.** La comparación de cierre iniciada a las 06:25:00 UTC pasa 126/126 casos, sin omisiones, tras reanudar el trabajo. Se conserva el intento previo de 123 aprobados y tres fallos de fixture de Perfil: se corrige la cuenta usada por la prueba, no el aspecto, las tolerancias o las aserciones. Esto no retrofecha ni certifica el orden histórico de las fases anteriores. Evidencia: .verificacion/cierre-profesor-2026-11-11/visual-corregida.log y [revisión total](revision-total-2026-11-10.md).
 
 Se conservan 27 rutas. Hay 42 estados comparados por formato, incluyendo públicos, acceso, perfil, reserva, cliente, profesional, administración, resumen, KPIs, exportación y diagnóstico. Los formatos son escritorio 1440×1000, móvil iPhone 13 emulado en Chromium y tableta 820×1180. Los estados y la correspondencia por ruta se detallan en la auditoría visual; no se suman estados como si fueran páginas adicionales.

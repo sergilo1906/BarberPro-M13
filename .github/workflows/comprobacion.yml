@@ -1,0 +1,37 @@
+name: Comprobacion M13
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CI: true
+    steps:
+      - name: Descargar fuente
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Preparar Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: 22.23.4
+      - name: Instalar dependencias fijadas
+        run: |
+          npm ci
+          npm --prefix app ci
+          npm --prefix functions ci
+      - name: Comprobar tipos y sintaxis
+        run: npm run check
+      - name: Compilar las paginas
+        run: npm run build
+      - name: Ejecutar pruebas unitarias
+        run: npm run test:unit
