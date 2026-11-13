@@ -15,7 +15,7 @@ export function normalizarRol(valor: unknown): Rol | null {
     if (valor === undefined) {
         return "client";
     }
-    if (valor === "client" || valor === "worker" || valor === "manager" || valor === "admin") {
+    if (valor === "client" || valor === "admin") {
         return valor;
     }
     return null;
@@ -47,7 +47,7 @@ function limpiarDatosTemporalesSesion(): void {
 function exigirServicios() {
     const servicios = obtenerServiciosFirebase();
     if (!servicios) {
-        throw new Error("Firebase local desactivado.");
+        throw new Error("Firebase no configurado.");
     }
     return servicios;
 }
@@ -73,7 +73,6 @@ async function cargarUsuario(usuario: User | null): Promise<void> {
         const usuarioSesion = {
             uid: usuario.uid, correo: usuario.email || "", correoVerificado: usuario.emailVerified,
             nombre: usuario.displayName || "", rol, versionRol: Number(token.claims.roleVersion || 0),
-            plan: typeof token.claims.plan === "string" ? token.claims.plan : "free",
         };
         // Solo existe un listener del perfil actual; la revisión descarta respuestas de otra sesión.
         cancelarPerfil = observarPerfilUsuario(usuario.uid, (perfil) => {
@@ -126,7 +125,7 @@ function iniciarObservacion(): void {
     try {
         const servicios = obtenerServiciosFirebase();
         if (!servicios) {
-            publicarEstado(estadoVacio("desactivado", "La autenticacion local esta desactivada. Consulta la configuracion de emuladores en README."));
+            publicarEstado(estadoVacio("desactivado", "La autenticacion esta desactivada. Consulta la configuracion en README."));
             return;
         }
         onIdTokenChanged(servicios.autenticacion, (usuario) => {
@@ -147,7 +146,7 @@ function iniciarObservacion(): void {
         });
     }
     catch {
-        publicarEstado(estadoVacio("error", "No se pudo preparar la autenticacion local. Revisa la configuracion."));
+        publicarEstado(estadoVacio("error", "No se pudo preparar la autenticacion. Revisa la configuracion."));
     }
 }
 export function observarSesion(recibir: (estado: EstadoSesion) => void): () => void {
@@ -253,3 +252,4 @@ export async function aplicarVerificacion(codigo: string): Promise<void> {
     await applyActionCode(exigirServicios().autenticacion, codigo);
     await actualizarUsuarioSesion();
 }
+

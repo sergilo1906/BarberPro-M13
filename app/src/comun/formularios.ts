@@ -47,8 +47,9 @@ export function bloquearFormulario(formulario: HTMLFormElement, bloqueado: boole
     formulario.classList.toggle("opacity-50", bloqueado);
     formulario.classList.toggle("pointer-events-none", bloqueado);
     formulario.setAttribute("aria-busy", String(bloqueado));
-    const controles = formulario.querySelectorAll<HTMLInputElement | HTMLButtonElement>("input, button");
+    const controles = formulario.querySelectorAll<HTMLInputElement | HTMLButtonElement | HTMLSelectElement | HTMLTextAreaElement>("input, button, select, textarea");
     for (let indice = 0; indice < controles.length; indice++) {
         controles[indice].disabled = bloqueado;
     }
 }
+

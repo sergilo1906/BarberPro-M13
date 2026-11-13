@@ -30,7 +30,7 @@ function actualizarNavegacion(estado: EstadoSesion): void {
     }
     const tarjeta = document.querySelector<HTMLAnchorElement>("#admin-card");
     if (tarjeta) {
-        const permitido = comprobarPermiso(estado, ["worker", "manager", "admin"]);
+        const permitido = comprobarPermiso(estado, ["admin"]);
         tarjeta.classList.toggle("hidden", !permitido);
         tarjeta.classList.toggle("flex", permitido);
         if (usuario) {
@@ -71,3 +71,4 @@ if (new URLSearchParams(location.search).get("acceso") === "denegado") {
         aviso.hidden = false;
     }
 }
+

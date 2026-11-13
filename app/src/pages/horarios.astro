@@ -1,25 +1,33 @@
 ---
 import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
 ---
+<DisenoPrincipal title="Horario habitual y dias cerrados" noindex>
+<section class="bg-white border rounded-lg p-4 max-w-4xl mx-auto space-y-4">
+<h1 class="text-2xl font-semibold">Horario habitual y dias cerrados</h1>
 
-<DisenoPrincipal noindex title="Resumen de horarios">
-  <section class="max-w-5xl mx-auto space-y-4">
-    <header class="bg-white border rounded-lg p-6 space-y-2">
-      <h1 class="text-2xl font-semibold">Resumen de horarios</h1>
-      <p class="text-sm text-gray-600">Vista rapida para saber quien tiene la semana lista y quien necesita repasar horarios.</p>
-    </header>
+<p class="text-sm text-gray-600">Se repite cada semana. Hasta dos tramos por dia, en intervalos de 30 minutos. Deja el segundo tramo vacio si no lo necesitas.</p>
+<form id="schedule-form" class="space-y-4">
+<label>Zona horaria<input id="schedule-zone" value="Europe/Madrid" required class="w-full border rounded px-3 py-2" /></label>
+<div class="grid gap-3 sm:grid-cols-2"><fieldset data-day="0" class="border rounded p-3 space-y-2"><legend>Domingo</legend><label class="flex gap-2"><input type="checkbox" data-active /> Abierto</label><div class="grid grid-cols-2 gap-2"><label>Inicio 1<input type="time" step="1800" data-start="0" class="w-full border rounded px-3 py-2" /></label><label>Fin 1<input type="time" step="1800" data-end="0" class="w-full border rounded px-3 py-2" /></label></div><div class="grid grid-cols-2 gap-2"><label>Inicio 2<input type="time" step="1800" data-start="1" class="w-full border rounded px-3 py-2" /></label><label>Fin 2<input type="time" step="1800" data-end="1" class="w-full border rounded px-3 py-2" /></label></div></fieldset>
+<fieldset data-day="1" class="border rounded p-3 space-y-2"><legend>Lunes</legend><label class="flex gap-2"><input type="checkbox" data-active /> Abierto</label><div class="grid grid-cols-2 gap-2"><label>Inicio 1<input type="time" step="1800" data-start="0" class="w-full border rounded px-3 py-2" /></label><label>Fin 1<input type="time" step="1800" data-end="0" class="w-full border rounded px-3 py-2" /></label></div><div class="grid grid-cols-2 gap-2"><label>Inicio 2<input type="time" step="1800" data-start="1" class="w-full border rounded px-3 py-2" /></label><label>Fin 2<input type="time" step="1800" data-end="1" class="w-full border rounded px-3 py-2" /></label></div></fieldset>
+<fieldset data-day="2" class="border rounded p-3 space-y-2"><legend>Martes</legend><label class="flex gap-2"><input type="checkbox" data-active /> Abierto</label><div class="grid grid-cols-2 gap-2"><label>Inicio 1<input type="time" step="1800" data-start="0" class="w-full border rounded px-3 py-2" /></label><label>Fin 1<input type="time" step="1800" data-end="0" class="w-full border rounded px-3 py-2" /></label></div><div class="grid grid-cols-2 gap-2"><label>Inicio 2<input type="time" step="1800" data-start="1" class="w-full border rounded px-3 py-2" /></label><label>Fin 2<input type="time" step="1800" data-end="1" class="w-full border rounded px-3 py-2" /></label></div></fieldset>
+<fieldset data-day="3" class="border rounded p-3 space-y-2"><legend>Miercoles</legend><label class="flex gap-2"><input type="checkbox" data-active /> Abierto</label><div class="grid grid-cols-2 gap-2"><label>Inicio 1<input type="time" step="1800" data-start="0" class="w-full border rounded px-3 py-2" /></label><label>Fin 1<input type="time" step="1800" data-end="0" class="w-full border rounded px-3 py-2" /></label></div><div class="grid grid-cols-2 gap-2"><label>Inicio 2<input type="time" step="1800" data-start="1" class="w-full border rounded px-3 py-2" /></label><label>Fin 2<input type="time" step="1800" data-end="1" class="w-full border rounded px-3 py-2" /></label></div></fieldset>
+<fieldset data-day="4" class="border rounded p-3 space-y-2"><legend>Jueves</legend><label class="flex gap-2"><input type="checkbox" data-active /> Abierto</label><div class="grid grid-cols-2 gap-2"><label>Inicio 1<input type="time" step="1800" data-start="0" class="w-full border rounded px-3 py-2" /></label><label>Fin 1<input type="time" step="1800" data-end="0" class="w-full border rounded px-3 py-2" /></label></div><div class="grid grid-cols-2 gap-2"><label>Inicio 2<input type="time" step="1800" data-start="1" class="w-full border rounded px-3 py-2" /></label><label>Fin 2<input type="time" step="1800" data-end="1" class="w-full border rounded px-3 py-2" /></label></div></fieldset>
+<fieldset data-day="5" class="border rounded p-3 space-y-2"><legend>Viernes</legend><label class="flex gap-2"><input type="checkbox" data-active /> Abierto</label><div class="grid grid-cols-2 gap-2"><label>Inicio 1<input type="time" step="1800" data-start="0" class="w-full border rounded px-3 py-2" /></label><label>Fin 1<input type="time" step="1800" data-end="0" class="w-full border rounded px-3 py-2" /></label></div><div class="grid grid-cols-2 gap-2"><label>Inicio 2<input type="time" step="1800" data-start="1" class="w-full border rounded px-3 py-2" /></label><label>Fin 2<input type="time" step="1800" data-end="1" class="w-full border rounded px-3 py-2" /></label></div></fieldset>
+<fieldset data-day="6" class="border rounded p-3 space-y-2"><legend>Sabado</legend><label class="flex gap-2"><input type="checkbox" data-active /> Abierto</label><div class="grid grid-cols-2 gap-2"><label>Inicio 1<input type="time" step="1800" data-start="0" class="w-full border rounded px-3 py-2" /></label><label>Fin 1<input type="time" step="1800" data-end="0" class="w-full border rounded px-3 py-2" /></label></div><div class="grid grid-cols-2 gap-2"><label>Inicio 2<input type="time" step="1800" data-start="1" class="w-full border rounded px-3 py-2" /></label><label>Fin 2<input type="time" step="1800" data-end="1" class="w-full border rounded px-3 py-2" /></label></div></fieldset></div>
+<button type="submit" class="bg-blue-600 text-white rounded px-4 py-2">Guardar horario</button>
+</form>
+<p id="hours-msg" role="status" class="text-sm text-gray-600"></p>
+<form id="closed-form" class="space-y-3 border-t pt-4">
+<h2 class="font-semibold">Cerrar o reabrir una fecha completa</h2>
+<label>Fecha<input id="closed-date" type="date" required class="w-full border rounded px-3 py-2" /></label>
+<label class="flex gap-2"><input id="closed-state" type="checkbox" checked /> Dia cerrado</label>
+<button type="submit" class="border rounded px-4 py-2">Aplicar a esta fecha</button>
+</form>
+<p id="closed-msg" role="status" class="text-sm text-gray-600"></p>
+<ul id="closed-list" class="text-sm list-disc pl-5"></ul>
 
-    <section class="bg-white border rounded-lg p-4 space-y-4">
-      <div class="flex items-center justify-between gap-3">
-        <div>
-          <h2 class="text-lg font-semibold">Semana actual</h2>
-          <p class="text-sm text-gray-600">Comprueba quien ya aparece en reservas y entra directo a editar su semana.</p>
-        </div>
-        <a href="/setup-barber" class="rounded border px-3 py-2 text-sm hover:bg-gray-50">Abrir horarios</a>
-      </div>
-      <p id="hours-msg" class="text-sm text-gray-600"></p>
-      <div id="hours-list" class="grid gap-3"></div>
-    </section>
-  </section>
-  <script>import "../modulos/administracion/resumen-horarios";</script>
+</section>
+<script>import "../modulos/administracion/resumen-horarios";</script>
 </DisenoPrincipal>
+

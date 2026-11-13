@@ -2,8 +2,7 @@
 import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
 
 const preguntasFrecuentes = [
-  { pregunta: "No veo horas disponibles.", respuesta: "Comprueba que el servicio siga activo, que haya una semana publicada y que el hueco no este ocupado." },
-  { pregunta: "Un profesional no aparece en reservas.", respuesta: "Revisa que su cuenta este como Profesional, que se muestre en Equipo y que tenga una semana publicada." },
+  { pregunta: "No veo horas disponibles.", respuesta: "Comprueba que el servicio siga activo, que el horario habitual este abierto y la fecha no este cerrada y que el hueco no este ocupado." },
   { pregunta: "No puedo entrar a una ruta interna.", respuesta: "Si acabas de cambiar permisos, sal y vuelve a entrar para que la sesion cargue el cambio." },
 ];
 ---
@@ -13,21 +12,21 @@ const preguntasFrecuentes = [
     <header class="bg-white border rounded-lg p-6 space-y-2">
       <h1 class="text-2xl font-semibold">Ayuda</h1>
       <p class="text-sm text-gray-600">
-        Guia rapida para clientes, profesionales y gestion. Si algo no cuadra, cierra sesion y vuelve a entrar.
+        Guia rapida para clientes y administracion. Si algo no cuadra, cierra sesion y vuelve a entrar.
       </p>
     </header>
     <div class="grid gap-4 md:grid-cols-3">
       <article class="bg-white border rounded-lg p-4 space-y-2">
         <h2 class="font-semibold">Cliente</h2>
-        <p class="text-sm text-gray-600">Reserva desde <a href="/reservar" class="text-blue-700 underline">Reservar</a> y gestiona cambios desde <a href="/mis-citas" class="text-blue-700 underline">Mis citas</a>.</p>
+        <p class="text-sm text-gray-600">Reserva desde <a href="/reservar" class="text-blue-700 underline">Reservar</a> y cancela citas futuras desde <a href="/mis-citas" class="text-blue-700 underline">Mis citas</a>.</p>
       </article>
       <article class="bg-white border rounded-lg p-4 space-y-2">
-        <h2 class="font-semibold">Profesional</h2>
-        <p class="text-sm text-gray-600">Consulta el dia en <a href="/agenda" class="text-blue-700 underline">Agenda</a> y prepara la semana desde <a href="/setup-barber" class="text-blue-700 underline">Horarios</a>.</p>
+        <h2 class="font-semibold">Horario</h2>
+        <p class="text-sm text-gray-600">Consulta el dia en <a href="/agenda" class="text-blue-700 underline">Agenda</a> y edita el horario habitual desde <a href="/horarios" class="text-blue-700 underline">Horarios</a>.</p>
       </article>
       <article class="bg-white border rounded-lg p-4 space-y-2">
         <h2 class="font-semibold">Administracion</h2>
-        <p class="text-sm text-gray-600">Usa <a href="/admin" class="text-blue-700 underline">Administracion</a> para organizar el equipo, los servicios y las reglas basicas de la agenda.</p>
+        <p class="text-sm text-gray-600">Usa <a href="/admin" class="text-blue-700 underline">Administracion</a> para organizar los servicios y la agenda.</p>
       </article>
     </div>
     <section class="bg-white border rounded-lg p-6 space-y-4">
@@ -45,3 +44,4 @@ const preguntasFrecuentes = [
     </section>
   </section>
 </DisenoPrincipal>
+

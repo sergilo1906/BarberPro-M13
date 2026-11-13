@@ -8,7 +8,7 @@ interface Props {
 }
 
 const { title: titulo = "BarberPro Studio", noindex: noIndex = false } = Astro.props;
-const rutasPublicas = ["/", "/404", "/index-client", "/ayuda", "/legal", "/planes", "/login", "/registro", "/verify"];
+const rutasPublicas = ["/", "/404", "/ayuda", "/legal", "/login", "/registro", "/verify"];
 const ruta = Astro.url.pathname.replace(/\/+$/, "") || "/";
 const requiereSesion = !rutasPublicas.includes(ruta);
 ---
@@ -17,7 +17,7 @@ const requiereSesion = !rutasPublicas.includes(ruta);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' http://127.0.0.1:9099 http://127.0.0.1:8088 http://127.0.0.1:5001 ws://127.0.0.1:* ws://localhost:*; frame-src http://127.0.0.1:9099" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' http://127.0.0.1:9099 http://127.0.0.1:8088 http://127.0.0.1:5001 ws://127.0.0.1:* ws://localhost:* https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://firestore.googleapis.com https://*.cloudfunctions.net; frame-src http://127.0.0.1:9099" />
     <title>{titulo} - BarberPro Studio</title>
     {noIndex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -35,3 +35,4 @@ const requiereSesion = !rutasPublicas.includes(ruta);
     </footer>
   </body>
 </html>
+

@@ -1,64 +1,24 @@
 ---
 import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
-import LeyendaDisponibilidad from "../components/LeyendaDisponibilidad.astro";
 ---
-
 <DisenoPrincipal title="Reservar cita" noindex>
-  <section class="bg-white p-4 rounded shadow max-w-4xl mx-auto space-y-4">
-    <header class="space-y-1">
-      <h2 class="font-semibold text-lg">Reservar cita</h2>
-      <p class="text-sm text-gray-600">Paso a paso: servicio, profesional, fecha, hora y confirmacion.</p>
-      <p class="text-xs text-gray-500">Solo se muestran semanas que ya estan abiertas para reservar.</p>
-    </header>
+<section class="bg-white border rounded-lg p-4 max-w-4xl mx-auto space-y-4">
+<h1 class="text-2xl font-semibold">Reservar cita</h1>
 
-    <div class="grid md:grid-cols-3 gap-4 mb-4 text-sm">
-      <div class="space-y-2">
-        <label for="service-select" class="block text-xs text-gray-600 mb-1">1) Servicio</label>
-        <select id="service-select" class="w-full border rounded px-2 py-2 text-sm">
-          <option value="">Cargando servicios...</option>
-        </select>
-      </div>
+<p class="text-sm text-gray-600">Elige servicio, fecha y hora para reservar con nuestro profesional principal. La cita queda confirmada al guardarla.</p>
+<div class="grid gap-4 sm:grid-cols-2">
+  <label>Servicio<select id="service-select" class="w-full border rounded px-3 py-2"><option value="">Cargando servicios...</option></select></label>
+  <label>Fecha<input id="date-select" type="date" class="w-full border rounded px-3 py-2" /></label>
+</div>
+<p class="text-xs text-gray-600">Horas en la zona de la barberia: <span id="booking-zone"></span>. Reservas hasta 30 dias de antelacion.</p>
+<p id="slots-msg" role="status" aria-live="polite" class="text-sm text-gray-600"></p>
+<div id="slots-list" class="grid gap-2 sm:grid-cols-3"></div>
+<div id="booking-success" class="hidden rounded border border-green-300 bg-green-50 p-3 text-sm">
+  <p id="booking-summary"></p><a href="/mis-citas" class="text-blue-700 underline">Ver mis citas</a>
+</div>
+<button id="booking-retry" type="button" hidden class="border rounded px-3 py-2">Reintentar la misma solicitud</button>
 
-      <div class="space-y-2">
-        <label for="barber-select" class="block text-xs text-gray-600 mb-1">2) Profesional</label>
-        <select id="barber-select" class="w-full border rounded px-2 py-2 text-sm">
-          <option value="">Cargando profesionales...</option>
-        </select>
-        <label class="flex items-center gap-2 text-xs text-gray-600">
-          <input id="any-barber" type="checkbox" checked class="h-4 w-4 rounded border-gray-300" />
-          Cualquier profesional disponible
-        </label>
-      </div>
-
-      <div class="space-y-2">
-        <label for="date-select" class="block text-xs text-gray-600 mb-1">3) Fecha</label>
-        <input id="date-select" type="date" min="" class="w-full border rounded px-2 py-2 text-sm" />
-      </div>
-
-      <div class="space-y-2">
-        <label for="phone-input" class="block text-xs text-gray-600 mb-1">Telefono de contacto</label>
-        <input id="phone-input" type="tel" maxlength="30" placeholder="Opcional" class="w-full border rounded px-2 py-2 text-sm" />
-      </div>
-
-      <div class="space-y-2 md:col-span-2">
-        <label for="notes-input" class="block text-xs text-gray-600 mb-1">Notas para el profesional</label>
-        <textarea id="notes-input" rows="2" maxlength="2000" placeholder="Opcional" class="w-full border rounded px-2 py-2 text-sm"></textarea>
-      </div>
-    </div>
-
-    <LeyendaDisponibilidad />
-
-    <div id="slots-msg" role="status" aria-live="polite" class="text-sm text-gray-600 mt-4 min-h-[1.5rem]">Selecciona una fecha para ver horas disponibles...</div>
-    <div id="slots-list" class="mt-3 grid sm:grid-cols-2 lg:grid-cols-3 gap-2 text-sm"></div>
-
-    <div id="booking-success" class="hidden rounded border border-green-300 bg-green-50 p-3 text-sm">
-      <p class="font-medium text-green-800">Reserva creada</p>
-      <p id="booking-summary" class="text-green-700 mt-1"></p>
-      <button id="booking-ics" type="button" class="mt-2 rounded border border-green-700 px-3 py-1 text-xs font-medium text-green-800 hover:bg-green-100">
-        Anadir al calendario (ICS)
-      </button>
-    </div>
-  </section>
-
-  <script>import "../modulos/reservas/reservar-cita";</script>
+</section>
+<script>import "../modulos/reservas/reservar-cita";</script>
 </DisenoPrincipal>
+

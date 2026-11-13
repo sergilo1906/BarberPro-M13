@@ -1,6 +1,3 @@
-export interface ConfiguracionAgenda {
-  timezone: string;
-  cancelWindowHours: number;
-  reminderWindowsHours: number[];
-  adminRevision: number;
-}
+import type { DiaHorario } from "./agenda";
+export interface ConfiguracionAgenda { timezone: string; days: DiaHorario[] }
+

@@ -9,11 +9,9 @@ interface EnlacePersonal {
 }
 
 const enlacesPersonal: EnlacePersonal[] = [
-  { id: "link-panel", ruta: "/panel-barbero", texto: "Panel", roles: ["worker", "manager", "admin"] },
-  { id: "link-agenda", ruta: "/agenda", texto: "Agenda", roles: ["worker", "manager", "admin"] },
-  { id: "link-setup", ruta: "/setup-barber", texto: "Horarios", roles: ["worker", "manager", "admin"] },
-  { id: "link-bloqueos", ruta: "/bloqueos", texto: "Bloqueos", roles: ["worker", "manager", "admin"] },
-  { id: "link-servicios", ruta: "/servicios", texto: "Servicios", roles: ["manager", "admin"] },
+  { id: "link-agenda", ruta: "/agenda", texto: "Agenda", roles: ["admin"] },
+  { id: "link-setup", ruta: "/horarios", texto: "Horarios", roles: ["admin"] },
+  { id: "link-servicios", ruta: "/servicios", texto: "Servicios", roles: ["admin"] },
   { id: "link-admin", ruta: "/admin", texto: "Gestion", roles: ["admin"] },
 ];
 ---
@@ -43,3 +41,4 @@ const enlacesPersonal: EnlacePersonal[] = [
 </nav>
 
 <script>import "../modulos/navegacion/barra-navegacion";</script>
+
