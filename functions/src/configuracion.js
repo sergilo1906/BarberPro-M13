@@ -1,5 +1,7 @@
 import { HttpsError } from "firebase-functions/v2/https";
 import { obtenerServiciosAdministrativos } from "./firebase.js";
+// Identifica el recurso de la barbería; no es el UID de una persona.
+export const UID_PROFESIONAL = "principal";
 export function validarVentanasRecordatorio(valores, codigo = "failed-precondition") {
     if (!Array.isArray(valores) || !valores.length || valores.length > 20) {
         throw new HttpsError(codigo, "Avisos previos no validos.");

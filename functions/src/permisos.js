@@ -1,6 +1,6 @@
 import { HttpsError } from "firebase-functions/v2/https";
 import { obtenerServiciosAdministrativos } from "./firebase.js";
-export const ROLES = ["client", "worker", "manager", "admin"];
+export const ROLES = ["client", "admin"];
 export function normalizarRolEntrada(valor) {
     if (typeof valor !== "string") {
         throw new HttpsError("invalid-argument", "Rol no valido.");
@@ -8,9 +8,6 @@ export function normalizarRolEntrada(valor) {
     const rol = valor.trim().toLowerCase();
     if (rol === "cliente") {
         return "client";
-    }
-    if (rol === "barber" || rol === "barbero") {
-        return "worker";
     }
     if (!ROLES.includes(rol)) {
         throw new HttpsError("invalid-argument", "Rol no valido.");
