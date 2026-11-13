@@ -41,26 +41,38 @@ function mostrarMensajeReserva(texto: string, esError = false): void {
 }
 
 function marcarReservaOcupada(ocupada: boolean): void {
-  for (const campo of [selectorServicio, selectorProfesional, cualquierProfesional, selectorFecha, telefono, notas]) campo.disabled = ocupada;
+  for (const campo of [selectorServicio, selectorProfesional, cualquierProfesional, selectorFecha, telefono, notas]) {
+    campo.disabled = ocupada;
+  }
   if (!ocupada) selectorProfesional.disabled = cualquierProfesional.checked;
   const botones = contenedorHuecos.querySelectorAll<HTMLButtonElement>("button");
-  for (const boton of botones) boton.disabled = ocupada;
+  for (const boton of botones) {
+    boton.disabled = ocupada;
+  }
 }
 
-function obtenerNombreProfesional(uid: string): string { return profesionales.find((actual) => actual.uid === uid)?.name || "Profesional"; }
-function obtenerServicioSeleccionado(id = selectorServicio.value): Servicio | undefined { return servicios.find((actual) => actual.id === id); }
+function obtenerNombreProfesional(uid: string): string {
+  return profesionales.find((actual) => actual.uid === uid)?.name || "Profesional";
+}
+function obtenerServicioSeleccionado(id = selectorServicio.value): Servicio | undefined {
+  return servicios.find((actual) => actual.id === id);
+}
 
 async function cargarServicios(): Promise<void> {
   servicios = await obtenerServicios();
   selectorServicio.replaceChildren();
-  for (const servicio of servicios) selectorServicio.add(new Option(servicio.name + " - " + servicio.durationMin + " min - " + servicio.price.toFixed(2) + " EUR", servicio.id));
+  for (const servicio of servicios) {
+    selectorServicio.add(new Option(servicio.name + " - " + servicio.durationMin + " min - " + servicio.price.toFixed(2) + " EUR", servicio.id));
+  }
   if (!servicios.length) selectorServicio.add(new Option("Sin servicios activos", ""));
 }
 
 async function cargarProfesionales(): Promise<void> {
   profesionales = await obtenerProfesionales();
   selectorProfesional.replaceChildren();
-  for (const profesional of profesionales) selectorProfesional.add(new Option(profesional.name, profesional.uid));
+  for (const profesional of profesionales) {
+    selectorProfesional.add(new Option(profesional.name, profesional.uid));
+  }
   if (!profesionales.length) selectorProfesional.add(new Option("Sin profesionales activos", ""));
 }
 
@@ -69,22 +81,37 @@ async function prepararSelectorFecha(): Promise<void> {
   const hoy = formatearFechaNegocio(configuracion.timezone);
   selectorFecha.min = hoy;
   selectorFecha.max = sumarDiasCalendario(hoy, 30);
-  if (!selectorFecha.value) selectorFecha.value = hoy;
+  if (!selectorFecha.value) {
+    selectorFecha.value = hoy;
+  }
 }
 
 async function cargarDisponibilidad(): Promise<void> {
   const revision = ++revisionDisponibilidad;
   contenedorHuecos.replaceChildren();
-  if (!selectorServicio.value || !selectorFecha.value) { mostrarMensajeReserva("Selecciona servicio y fecha para ver horas disponibles."); return; }
-  if (!selectorFecha.checkValidity()) { mostrarMensajeReserva("Selecciona una fecha dentro de los proximos 30 dias.", true); return; }
-  const seleccion = { dateStr: selectorFecha.value, serviceId: selectorServicio.value, anyBarber: cualquierProfesional.checked, barberPreference: cualquierProfesional.checked ? null : selectorProfesional.value };
+  if (!selectorServicio.value || !selectorFecha.value) {
+    mostrarMensajeReserva("Selecciona servicio y fecha para ver horas disponibles.");
+    return;
+  }
+  if (!selectorFecha.checkValidity()) {
+    mostrarMensajeReserva("Selecciona una fecha dentro de los proximos 30 dias.", true);
+    return;
+  }
+  const seleccion = {
+    dateStr: selectorFecha.value,
+    serviceId: selectorServicio.value,
+    anyBarber: cualquierProfesional.checked,
+    barberPreference: cualquierProfesional.checked ? null : selectorProfesional.value,
+  };
   mostrarMensajeReserva("Calculando disponibilidad...");
   try {
     const respuesta = await consultarDisponibilidad(seleccion);
     const estado = await esperarEstadoSesion();
     if (revision !== revisionDisponibilidad || estado.usuario?.uid !== uidPagina) return;
     if (!respuesta.ok || !Array.isArray(respuesta.slots)) throw new Error("Respuesta no valida.");
-    mostrarHuecos(contenedorHuecos, respuesta.slots, profesionales, (hueco) => { void crearReserva(hueco); });
+    mostrarHuecos(contenedorHuecos, respuesta.slots, profesionales, (hueco) => {
+      void crearReserva(hueco);
+    });
     mostrarMensajeReserva(respuesta.slots.length ? "Selecciona una hora para confirmar tu reserva." : "Sin disponibilidad.");
   } catch (error) {
     if (revision !== revisionDisponibilidad) return;
@@ -99,12 +126,20 @@ async function cargarDisponibilidad(): Promise<void> {
 function guardarOperacion(solicitud: SolicitudReserva): void {
   pendiente = solicitud;
   // No almacena credenciales ni permisos. La identidad se vuelve a comprobar en el servidor.
-  try { sessionStorage.setItem(CLAVE_PENDIENTE, JSON.stringify({ uid: uidPagina, solicitud })); } catch { /* El reintento en memoria sigue disponible. */ }
+  try {
+    sessionStorage.setItem(CLAVE_PENDIENTE, JSON.stringify({ uid: uidPagina, solicitud }));
+  } catch {
+    // El reintento en memoria sigue disponible.
+  }
 }
 
 function limpiarOperacion(): void {
   pendiente = null;
-  try { sessionStorage.removeItem(CLAVE_PENDIENTE); } catch { /* El almacenamiento puede estar deshabilitado. */ }
+  try {
+    sessionStorage.removeItem(CLAVE_PENDIENTE);
+  } catch {
+    // El almacenamiento puede estar deshabilitado.
+  }
   botonComprobar?.remove();
   botonComprobar = null;
 }
@@ -118,7 +153,9 @@ function mostrarOperacionPendiente(): void {
     botonComprobar.type = "button";
     botonComprobar.className = "rounded border px-3 py-2 text-sm";
     botonComprobar.textContent = "Comprobar reserva";
-    botonComprobar.addEventListener("click", () => { if (pendiente) void enviarReserva(pendiente); });
+    botonComprobar.addEventListener("click", () => {
+      if (pendiente) void enviarReserva(pendiente);
+    });
     mensaje.after(botonComprobar);
   }
   botonComprobar.disabled = false;
@@ -128,7 +165,13 @@ function mostrarReservaCreada(solicitud: SolicitudReserva, resultado: ResultadoR
   const servicio = obtenerServicioSeleccionado(solicitud.serviceId);
   confirmacion.classList.remove("hidden");
   resumen.textContent = (servicio?.name || "Servicio") + " - " + solicitud.dateStr + " " + solicitud.timeStr + " - " + obtenerNombreProfesional(resultado.barberUid);
-  ultimoCalendario = { title: "Cita barberia - " + (servicio?.name || "Servicio"), startUtc: resultado.startAt, endUtc: resultado.endAt, description: "Reserva " + (servicio?.name || "Servicio") + " (" + (servicio?.durationMin || "") + " min).", location: "Barberia" };
+  ultimoCalendario = {
+    title: "Cita barberia - " + (servicio?.name || "Servicio"),
+    startUtc: resultado.startAt,
+    endUtc: resultado.endAt,
+    description: "Reserva " + (servicio?.name || "Servicio") + " (" + (servicio?.durationMin || "") + " min).",
+    location: "Barberia",
+  };
   botonCalendario.disabled = false;
   mostrarAviso("Reserva creada correctamente.", "success");
 }
@@ -156,7 +199,9 @@ async function enviarReserva(solicitud: SolicitudReserva): Promise<void> {
       limpiarOperacion();
       await cargarDisponibilidad();
       mostrarMensajeReserva(explicarErrorReserva(error), true);
-    } else { mostrarOperacionPendiente(); }
+    } else {
+      mostrarOperacionPendiente();
+    }
   } finally {
     solicitudEnCurso = false;
     if (!pendiente) marcarReservaOcupada(false);
@@ -168,17 +213,34 @@ async function crearReserva(hueco: HuecoDisponible): Promise<void> {
   const servicio = obtenerServicioSeleccionado();
   if (!servicio || obtenerUsuarioActual().usuario?.uid !== uidPagina) return;
   solicitudEnCurso = true;
-  const solicitud: SolicitudReserva = { dateStr: selectorFecha.value, timeStr: hueco.timeStr, serviceId: servicio.id,
-    barberPreference: hueco.barberUid, anyBarber: cualquierProfesional.checked,
-    customerPhone: telefono.value.trim(), customerNotes: notas.value.trim(), requestId: crypto.randomUUID() };
-  const confirmado = await pedirConfirmacion({ title: "Confirmar reserva", message: "Servicio: " + servicio.name + "\nFecha: " + solicitud.dateStr + "\nHora: " + solicitud.timeStr + "\nProfesional: " + obtenerNombreProfesional(hueco.barberUid), confirmText: "Confirmar reserva", cancelText: "Seguir eligiendo" });
+  const solicitud: SolicitudReserva = {
+    dateStr: selectorFecha.value,
+    timeStr: hueco.timeStr,
+    serviceId: servicio.id,
+    barberPreference: hueco.barberUid,
+    anyBarber: cualquierProfesional.checked,
+    customerPhone: telefono.value.trim(),
+    customerNotes: notas.value.trim(),
+    requestId: crypto.randomUUID(),
+  };
+  const confirmado = await pedirConfirmacion({
+    title: "Confirmar reserva",
+    message: "Servicio: " + servicio.name + "\nFecha: " + solicitud.dateStr + "\nHora: " + solicitud.timeStr
+      + "\nProfesional: " + obtenerNombreProfesional(hueco.barberUid),
+    confirmText: "Confirmar reserva",
+    cancelText: "Seguir eligiendo",
+  });
   solicitudEnCurso = false;
-  if (!confirmado || obtenerUsuarioActual().usuario?.uid !== uidPagina) { marcarReservaOcupada(false); return; }
+  if (!confirmado || obtenerUsuarioActual().usuario?.uid !== uidPagina) {
+    marcarReservaOcupada(false);
+    return;
+  }
   await enviarReserva(solicitud);
 }
 
 function enlazarEventosReserva(): void {
-  for (const campo of [selectorServicio, selectorProfesional, selectorFecha, cualquierProfesional]) campo.addEventListener("change", () => {
+  for (const campo of [selectorServicio, selectorProfesional, selectorFecha, cualquierProfesional]) {
+    campo.addEventListener("change", () => {
     revisionDisponibilidad++;
     selectorProfesional.disabled = cualquierProfesional.checked;
     window.clearTimeout(esperaDisponibilidad);
@@ -190,8 +252,11 @@ function enlazarEventosReserva(): void {
       esperaDisponibilidad = undefined;
       if (obtenerUsuarioActual().usuario?.uid === uidPagina && !solicitudEnCurso && !pendiente) void cargarDisponibilidad();
     }, 250);
+    });
+  }
+  botonCalendario.addEventListener("click", () => {
+    if (ultimoCalendario) descargarCalendario(ultimoCalendario);
   });
-  botonCalendario.addEventListener("click", () => { if (ultimoCalendario) descargarCalendario(ultimoCalendario); });
 }
 
 observarSesion((estado) => {

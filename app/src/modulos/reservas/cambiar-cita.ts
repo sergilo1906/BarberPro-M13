@@ -12,23 +12,37 @@ let cambioEnMemoria: { uid: string; solicitud: SolicitudCambio } | null = null;
 export function recuperarCambioPendiente(uid: string): SolicitudCambio | null {
   try {
     const guardado = JSON.parse(sessionStorage.getItem(CLAVE_CAMBIO) || "null");
-    if (guardado?.uid === uid && typeof guardado.solicitud?.bookingId === "string" && typeof guardado.solicitud?.requestId === "string") cambioEnMemoria = guardado;
+    if (guardado?.uid === uid
+      && typeof guardado.solicitud?.bookingId === "string"
+      && typeof guardado.solicitud?.requestId === "string") {
+      cambioEnMemoria = guardado;
+    }
   } catch { /* El reintento en memoria funciona incluso sin almacenamiento del navegador. */ }
   return cambioEnMemoria?.uid === uid ? cambioEnMemoria.solicitud : null;
 }
 
 export function limpiarCambioPendiente(): void {
   cambioEnMemoria = null;
-  try { sessionStorage.removeItem(CLAVE_CAMBIO); } catch { /* Almacenamiento deshabilitado. */ }
+  try {
+    sessionStorage.removeItem(CLAVE_CAMBIO);
+  } catch {
+    // El reintento en memoria sigue disponible.
+  }
 }
 
 function guardarCambioPendiente(uid: string, solicitud: SolicitudCambio): void {
   cambioEnMemoria = { uid, solicitud };
-  try { sessionStorage.setItem(CLAVE_CAMBIO, JSON.stringify(cambioEnMemoria)); } catch { /* Se conserva en memoria. */ }
+  try {
+    sessionStorage.setItem(CLAVE_CAMBIO, JSON.stringify(cambioEnMemoria));
+  } catch {
+    // Se conserva en memoria si sessionStorage está deshabilitado.
+  }
 }
 
 interface ContextoCambio {
-  uid: string; zona: string; margen: number;
+  uid: string;
+  zona: string;
+  margen: number;
   obtenerNombreProfesional: (uid: string) => string;
   sigueAutorizado: () => boolean;
   alTerminar: (cambiada: boolean) => void;
@@ -36,10 +50,36 @@ interface ContextoCambio {
 
 export function abrirCambioCita(cita: Cita, contexto: ContextoCambio, recuperada: SolicitudCambio | null = null): void {
   const servicio = obtenerServicioCita(cita);
-  if (!servicio && !recuperada) { mostrarAviso("Esta cita ya no se puede cambiar desde aqui.", "error"); return; }
+  if (!servicio && !recuperada) {
+    mostrarAviso("Esta cita ya no se puede cambiar desde aqui.", "error");
+    return;
+  }
   const contenido = document.createElement("div");
   contenido.className = "space-y-3";
-  contenido.innerHTML = '<h3 class="text-base font-semibold text-slate-900">Cambiar cita</h3><p data-field="hint" class="text-xs text-slate-600"></p><label class="block text-sm text-slate-700">Nuevo dia<input data-field="date" type="date" class="mt-1 w-full rounded border px-2 py-2 text-sm" /></label><label class="flex items-center gap-2 text-sm text-slate-700"><input data-field="any-barber" type="checkbox" class="h-4 w-4 rounded border-slate-300" />Buscar tambien con otro profesional</label><p data-field="slot-msg" role="status" aria-live="polite" class="text-xs text-slate-600">Buscando horas libres...</p><div data-field="slot-list" class="grid gap-2 sm:grid-cols-2"></div><p data-field="picked" class="text-xs text-slate-600"></p><div class="flex justify-end gap-2 pt-2"><button type="button" data-action="cancel" class="rounded border px-3 py-2 text-sm">Cancelar</button><button type="button" data-action="confirm" class="rounded bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700" disabled>Guardar cambio</button></div>';
+  contenido.innerHTML = [
+    "<h3 class=\"text-base font-semibold text-slate-900\">Cambiar cita",
+    "</h3>",
+    "<p data-field=\"hint\" class=\"text-xs text-slate-600\">",
+    "</p>",
+    "<label class=\"block text-sm text-slate-700\">Nuevo dia",
+    "<input data-field=\"date\" type=\"date\" class=\"mt-1 w-full rounded border px-2 py-2 text-sm\" />",
+    "</label>",
+    "<label class=\"flex items-center gap-2 text-sm text-slate-700\">",
+    "<input data-field=\"any-barber\" type=\"checkbox\" class=\"h-4 w-4 rounded border-slate-300\" />Buscar tambien con otro profesional",
+    "</label>",
+    "<p data-field=\"slot-msg\" role=\"status\" aria-live=\"polite\" class=\"text-xs text-slate-600\">Buscando horas libres...",
+    "</p>",
+    "<div data-field=\"slot-list\" class=\"grid gap-2 sm:grid-cols-2\">",
+    "</div>",
+    "<p data-field=\"picked\" class=\"text-xs text-slate-600\">",
+    "</p>",
+    "<div class=\"flex justify-end gap-2 pt-2\">",
+    "<button type=\"button\" data-action=\"cancel\" class=\"rounded border px-3 py-2 text-sm\">Cancelar",
+    "</button>",
+    "<button type=\"button\" data-action=\"confirm\" class=\"rounded bg-blue-600 px-3 py-2 text-sm font-medium text-white hover:bg-blue-700\" disabled>Guardar cambio",
+    "</button>",
+    "</div>"
+  ].join("");
   contenido.querySelector('[data-field="hint"]')!.textContent = "Elige un hueco libre. Los cambios solo se permiten con " + contexto.margen + " h de margen.";
   const fecha = contenido.querySelector<HTMLInputElement>('[data-field="date"]')!;
   const cualquiera = contenido.querySelector<HTMLInputElement>('[data-field="any-barber"]')!;
@@ -58,8 +98,14 @@ export function abrirCambioCita(cita: Cita, contexto: ContextoCambio, recuperada
   let cerrado = false;
   let cambiada = false;
   let revision = 0;
-  const cerrar = abrirModal(contenido, () => { cerrado = true; revision++; contexto.alTerminar(cambiada); }, () => !enviando);
-  function vigente(): boolean { return !cerrado && contexto.sigueAutorizado(); }
+  const cerrar = abrirModal(contenido, () => {
+    cerrado = true;
+    revision++;
+    contexto.alTerminar(cambiada);
+  }, () => !enviando);
+  function vigente(): boolean {
+    return !cerrado && contexto.sigueAutorizado();
+  }
   function mostrarHuecoElegido(): void {
     elegido.textContent = seleccion ? "Nuevo hueco: " + fecha.value + " a las " + seleccion.timeStr + " con " + contexto.obtenerNombreProfesional(seleccion.barberUid) + "." : "";
   }
@@ -69,7 +115,9 @@ export function abrirCambioCita(cita: Cita, contexto: ContextoCambio, recuperada
     cancelar.disabled = enviando;
     guardar.disabled = enviando || (!seleccion && !solicitud);
     guardar.textContent = enviando ? "Guardando..." : solicitud ? "Comprobar cambio" : "Guardar cambio";
-    for (const boton of lista.querySelectorAll<HTMLButtonElement>("button")) boton.disabled = enviando || !!solicitud;
+    for (const boton of lista.querySelectorAll<HTMLButtonElement>("button")) {
+      boton.disabled = enviando || !!solicitud;
+    }
   }
   function mostrarHuecos(huecos: HuecoDisponible[]): void {
     lista.replaceChildren();
@@ -82,7 +130,9 @@ export function abrirCambioCita(cita: Cita, contexto: ContextoCambio, recuperada
       return;
     }
     mensaje.textContent = "Elige una hora para guardar el cambio.";
-    for (const hueco of huecos) lista.append(crearBotonHueco(hueco, huecos));
+    for (const hueco of huecos) {
+      lista.append(crearBotonHueco(hueco, huecos));
+    }
   }
   function crearBotonHueco(hueco: HuecoDisponible, huecos: HuecoDisponible[]): HTMLButtonElement {
     const boton = document.createElement("button");
@@ -92,48 +142,97 @@ export function abrirCambioCita(cita: Cita, contexto: ContextoCambio, recuperada
     const marcado = seleccion?.timeStr === hueco.timeStr && seleccion?.barberUid === hueco.barberUid;
     boton.className = "slot-choice rounded border px-3 py-2 text-left text-sm " + (marcado ? "border-blue-600 bg-blue-50 text-blue-900" : "border-slate-200 bg-white text-slate-800 hover:bg-slate-50");
     boton.setAttribute("aria-pressed", String(marcado));
-    const hora = document.createElement("div"); hora.className = "font-medium"; hora.textContent = hueco.timeStr;
-    const profesional = document.createElement("div"); profesional.className = "text-xs text-slate-600"; profesional.textContent = contexto.obtenerNombreProfesional(hueco.barberUid);
+    const hora = document.createElement("div");
+    hora.className = "font-medium";
+    hora.textContent = hueco.timeStr;
+    const profesional = document.createElement("div");
+    profesional.className = "text-xs text-slate-600";
+    profesional.textContent = contexto.obtenerNombreProfesional(hueco.barberUid);
     boton.append(hora, profesional);
-    boton.addEventListener("click", () => { if (enviando || solicitud) return; seleccion = hueco; mostrarHuecoElegido(); mostrarHuecos(huecos); bloquearCampos(); });
+    boton.addEventListener("click", () => {
+      if (enviando || solicitud) return;
+      seleccion = hueco;
+      mostrarHuecoElegido();
+      mostrarHuecos(huecos);
+      bloquearCampos();
+    });
     return boton;
   }
   async function cargarHuecosCambio(): Promise<void> {
     const actual = ++revision;
-    seleccion = null; mostrarHuecoElegido(); bloquearCampos(); lista.replaceChildren();
-    if (!esFechaCalendarioValida(fecha.value) || !fecha.checkValidity()) { mensaje.textContent = "Elige una fecha valida dentro de los proximos 30 dias."; return; }
+    seleccion = null;
+    mostrarHuecoElegido();
+    bloquearCampos();
+    lista.replaceChildren();
+    if (!esFechaCalendarioValida(fecha.value) || !fecha.checkValidity()) {
+      mensaje.textContent = "Elige una fecha valida dentro de los proximos 30 dias.";
+      return;
+    }
     mensaje.textContent = "Buscando horas libres...";
     try {
       const respuesta = await consultarDisponibilidad({ dateStr: fecha.value, serviceId: servicio, barberPreference: cualquiera.checked ? null : cita.barberUid || null, anyBarber: cualquiera.checked });
       const estado = await esperarEstadoSesion();
       if (!vigente() || actual !== revision || estado.usuario?.uid !== contexto.uid) return;
       mostrarHuecos(respuesta.slots);
-    } catch { if (vigente() && actual === revision) mensaje.textContent = "No se pudieron cargar las horas libres. Cambia la fecha para volver a intentarlo."; }
+    } catch {
+      if (vigente() && actual === revision) {
+        mensaje.textContent = "No se pudieron cargar las horas libres. Cambia la fecha para volver a intentarlo.";
+      }
+    }
   }
   async function guardarCambio(): Promise<void> {
     if (enviando || !vigente() || (!seleccion && !solicitud)) return;
-    solicitud ||= { bookingId: cita.id, newDateStr: fecha.value, newTimeStr: seleccion!.timeStr, barberPreference: seleccion!.barberUid, anyBarber: false, requestId: crypto.randomUUID() };
+    solicitud ||= {
+      bookingId: cita.id,
+      newDateStr: fecha.value,
+      newTimeStr: seleccion!.timeStr,
+      barberPreference: seleccion!.barberUid,
+      anyBarber: false,
+      requestId: crypto.randomUUID(),
+    };
     guardarCambioPendiente(contexto.uid, solicitud);
-    enviando = true; bloquearCampos();
+    enviando = true;
+    bloquearCampos();
     try {
       const respuesta = await reprogramarReserva(solicitud);
       const estado = await esperarEstadoSesion();
       if (!vigente() || estado.usuario?.uid !== contexto.uid) return;
       if (!respuesta.ok) throw new Error("Respuesta no valida.");
       limpiarCambioPendiente();
-      cambiada = true; cerrar();
+      cambiada = true;
+      cerrar();
       mostrarAviso("Cita cambiada correctamente.", "success");
     } catch (error) {
       if (!vigente()) return;
-      if (!esRespuestaReservaIncierta(error)) { limpiarCambioPendiente(); solicitud = null; }
+      if (!esRespuestaReservaIncierta(error)) {
+        limpiarCambioPendiente();
+        solicitud = null;
+      }
       mensaje.textContent = explicarErrorCambioCita(error, contexto.margen);
-      if (!solicitud) { seleccion = null; lista.replaceChildren(); elegido.textContent = ""; }
-    } finally { enviando = false; if (vigente()) bloquearCampos(); }
+      if (!solicitud) {
+        seleccion = null;
+        lista.replaceChildren();
+        elegido.textContent = "";
+      }
+    } finally {
+      enviando = false;
+      if (vigente()) bloquearCampos();
+    }
   }
-  fecha.addEventListener("change", () => { if (!solicitud) void cargarHuecosCambio(); });
-  cualquiera.addEventListener("change", () => { if (!solicitud) void cargarHuecosCambio(); });
+  fecha.addEventListener("change", () => {
+    if (!solicitud) void cargarHuecosCambio();
+  });
+  cualquiera.addEventListener("change", () => {
+    if (!solicitud) void cargarHuecosCambio();
+  });
   cancelar.addEventListener("click", cerrar);
-  guardar.addEventListener("click", () => { void guardarCambio(); });
-  if (solicitud) { mensaje.textContent = "Hay un cambio pendiente de comprobar. Se utilizara la misma solicitud."; mostrarHuecoElegido(); bloquearCampos(); }
+  guardar.addEventListener("click", () => {
+    void guardarCambio();
+  });
+  if (solicitud) {
+    mensaje.textContent = "Hay un cambio pendiente de comprobar. Se utilizara la misma solicitud.";
+    mostrarHuecoElegido();
+    bloquearCampos();
+  }
   else void cargarHuecosCambio();
 }
