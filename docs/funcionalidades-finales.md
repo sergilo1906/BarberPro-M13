@@ -16,8 +16,8 @@ Documento de cierre técnico para la entrega, con límites expresos y sin certif
 | Estadísticas | Resumen diario y KPIs de día, semana y mes. | Excluye el historial rescheduled para evitar duplicados; canceladas no añaden tiempo reservado. |
 | CSV | Rango autorizado completo, vista previa de ocho filas, UTF-8/BOM, escape y protección de fórmulas de texto. | Descarga local; el rango vacío no produce archivo. |
 | ICS | Genera evento UTC, escapa texto y pliega líneas por bytes UTF-8. | Sin importación manual certificada en todas las aplicaciones de calendario. |
-| Recordatorios | Cola local por ventanas configuradas, simulación y prevención transaccional de duplicados. | queued no equivale a enviado; no hay proveedor de mensajería ni cron desplegado. |
+| Recordatorios | Cola local por ventanas configuradas, simulación y prevención transaccional de duplicados mediante ejecución manual. | queued no equivale a enviado; no hay proveedor de mensajería ni función programada. |
 | Herramientas demo | Siembra y reset protegidos para admin, simulación por defecto y confirmación explícita al escribir. | Solo emuladores desechables, sin otros escritores; el reset no es una transacción global. |
-| Auxiliares | Inicio, planes, ayuda, legal, diagnóstico informativo y 404. | Sin contratación de planes; diagnóstico no incorpora botones de borrado. |
+| Auxiliares | Inicio, perfiles de uso, ayuda, legal y 404. | Sin contratación de planes ni página de depuración. |
 
-Las 27 rutas y los trece exports backend originales se conservan. Se añaden seis operaciones protegidas para sustituir escrituras de negocio desde el navegador. La revisión de correspondencias por archivo y las pruebas por áreas no certifican equivalencia individual de todos los símbolos del inventario histórico.
+Esta variante tiene 26 páginas Astro y 18 funciones exportadas en el backend. Por decisión de alcance se han retirado la página de depuración, la comprobación inactiva de plan PRO y el job programado de recordatorios; se mantiene la ejecución manual `runReminders`. Estos cambios son posteriores a la release de cierre del 11/11/2026, cuyas pruebas históricas no validan automáticamente esta variante.

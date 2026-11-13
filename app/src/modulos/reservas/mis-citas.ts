@@ -30,7 +30,9 @@ function sigueAutorizado(uid = uidSesion, revision = revisionIdentidad): boolean
   const estado = obtenerUsuarioActual();
   return estado.estado === "autenticado" && estado.usuario?.correoVerificado === true && estado.usuario.uid === uid && revision === revisionIdentidad;
 }
-function mostrarMensaje(texto: string): void { mensaje.textContent = texto; }
+function mostrarMensaje(texto: string): void {
+  mensaje.textContent = texto;
+}
 function agregarBotonMensaje(texto: string, actuar: () => void): void {
   const boton = document.createElement("button");
   boton.type = "button";
@@ -49,7 +51,14 @@ function mostrarCitas(citas: Cita[]): void {
   if (!citas.length) {
     const vacio = document.createElement("div");
     vacio.className = "p-4 text-sm text-gray-600 space-y-1";
-    vacio.innerHTML = '<p class="font-medium text-gray-800">No hay citas para los filtros seleccionados.</p><p>Si aun no reservaste, puedes hacerlo desde <a href="/reservar" class="text-blue-700 underline">Reservar</a>.</p>';
+    vacio.innerHTML = [
+      "<p class=\"font-medium text-gray-800\">No hay citas para los filtros seleccionados.",
+      "</p>",
+      "<p>Si aun no reservaste, puedes hacerlo desde ",
+      "<a href=\"/reservar\" class=\"text-blue-700 underline\">Reservar",
+      "</a>.",
+      "</p>"
+    ].join("");
     contenedorListado.append(vacio);
     return;
   }
@@ -57,7 +66,22 @@ function mostrarCitas(citas: Cita[]): void {
     const articulo = document.createElement("article");
     articulo.className = "p-3";
     articulo.dataset.id = cita.id;
-    articulo.innerHTML = '<div class="flex flex-wrap items-start justify-between gap-3"><div class="space-y-1"><p data-cita="resumen" class="font-medium text-gray-900"></p><p data-cita="profesional" class="text-xs text-gray-600"></p><p data-cita="duracion" class="text-xs text-gray-500"></p></div><div data-cita="acciones" class="text-right space-y-2"><span class="inline-block rounded border px-2 py-1 text-xs font-medium"></span></div></div>';
+    articulo.innerHTML = [
+      "<div class=\"flex flex-wrap items-start justify-between gap-3\">",
+      "<div class=\"space-y-1\">",
+      "<p data-cita=\"resumen\" class=\"font-medium text-gray-900\">",
+      "</p>",
+      "<p data-cita=\"profesional\" class=\"text-xs text-gray-600\">",
+      "</p>",
+      "<p data-cita=\"duracion\" class=\"text-xs text-gray-500\">",
+      "</p>",
+      "</div>",
+      "<div data-cita=\"acciones\" class=\"text-right space-y-2\">",
+      "<span class=\"inline-block rounded border px-2 py-1 text-xs font-medium\">",
+      "</span>",
+      "</div>",
+      "</div>"
+    ].join("");
     articulo.querySelector('[data-cita="resumen"]')!.textContent = cita.dateStr + " " + cita.timeStr + " - " + (cita.serviceSnapshot?.name || cita.serviceName || cita.service || "Servicio");
     articulo.querySelector('[data-cita="profesional"]')!.textContent = "Profesional: " + obtenerNombreProfesional(cita.barberUid);
     articulo.querySelector('[data-cita="duracion"]')!.textContent = "Duracion: " + Number(cita.durationMin || cita.serviceSnapshot?.durationMin || 30) + " min";
@@ -66,27 +90,39 @@ function mostrarCitas(citas: Cita[]): void {
     estado.className += " " + obtenerClasesEstadoCliente(cita.status || "pending");
     const acciones = articulo.querySelector('[data-cita="acciones"]')!;
     if (puedeGestionarCita(cita, margenCancelacionHoras, zona)) {
-      const botones = document.createElement("div"); botones.className = "flex flex-col gap-1 items-end";
+      const botones = document.createElement("div");
+      botones.className = "flex flex-col gap-1 items-end";
       const cancelar = document.createElement("button");
-      cancelar.type = "button"; cancelar.dataset.id = cita.id;
+      cancelar.type = "button";
+      cancelar.dataset.id = cita.id;
       cancelar.className = "cancel-btn rounded border border-red-200 bg-red-50 px-2 py-1 text-xs text-red-800";
-      cancelar.textContent = "Cancelar"; botones.append(cancelar);
+      cancelar.textContent = "Cancelar";
+      botones.append(cancelar);
       if (obtenerServicioCita(cita)) {
         const cambiar = document.createElement("button");
-        cambiar.type = "button"; cambiar.dataset.id = cita.id;
+        cambiar.type = "button";
+        cambiar.dataset.id = cita.id;
         cambiar.className = "reschedule-btn rounded border border-blue-200 bg-blue-50 px-2 py-1 text-xs text-blue-800";
-        cambiar.textContent = "Cambiar cita"; botones.append(cambiar);
+        cambiar.textContent = "Cambiar cita";
+        botones.append(cambiar);
       }
       acciones.append(botones);
     } else {
       const aviso = obtenerAvisoGestion(cita, margenCancelacionHoras, zona);
-      if (aviso) { const texto = document.createElement("p"); texto.className = "max-w-[16rem] text-right text-[11px] text-amber-700"; texto.textContent = aviso; acciones.append(texto); }
+      if (aviso) {
+        const texto = document.createElement("p");
+        texto.className = "max-w-[16rem] text-right text-[11px] text-amber-700";
+        texto.textContent = aviso;
+        acciones.append(texto);
+      }
     }
     contenedorListado.append(articulo);
   }
   marcarAccion(accionEnCurso);
 }
-function actualizarListado(): void { mostrarCitas(aplicarFiltrosCitas(citasCargadas, filtroFecha.value, filtroEstado.value)); }
+function actualizarListado(): void {
+  mostrarCitas(aplicarFiltrosCitas(citasCargadas, filtroFecha.value, filtroEstado.value));
+}
 function mostrarComprobacionPendiente(): void {
   const pendiente = recuperarCambioPendiente(uidSesion);
   if (!pendiente) return;
@@ -114,10 +150,13 @@ async function cargarMisCitas(): Promise<void> {
     for (const profesional of profesionales) nombresProfesionales.set(profesional.uid, profesional.name);
     margenCancelacionHoras = configuracion.cancelWindowHours;
     zona = configuracion.timezone;
-    actualizarListado(); mostrarMensaje(""); mostrarComprobacionPendiente();
+    actualizarListado();
+    mostrarMensaje("");
+    mostrarComprobacionPendiente();
   } catch {
     if (!sigueAutorizado(uid, identidad) || revision !== revisionConsulta) return;
-    citasCargadas = []; contenedorListado.replaceChildren();
+    citasCargadas = [];
+    contenedorListado.replaceChildren();
     mostrarMensaje("No se pudieron cargar tus citas. Comprueba la conexion y tu sesion.");
     agregarBotonMensaje("Actualizar listado", () => { void cargarMisCitas(); });
   }
@@ -147,7 +186,9 @@ async function cancelarCita(cita: Cita): Promise<void> {
       mostrarMensaje(explicarErrorCancelacion(error, margenCancelacionHoras));
       agregarBotonMensaje("Actualizar listado", () => { void cargarMisCitas(); });
     }
-  } finally { if (uid === uidSesion && identidad === revisionIdentidad) marcarAccion(false); }
+  } finally {
+    if (uid === uidSesion && identidad === revisionIdentidad) marcarAccion(false);
+  }
 }
 function cambiarCita(cita: Cita, recuperar = false): void {
   if (accionEnCurso || !sigueAutorizado() || cita.userId !== uidSesion) return;
@@ -179,14 +220,24 @@ filtroFecha.addEventListener("change", actualizarListado);
 filtroEstado.addEventListener("change", actualizarListado);
 observarSesion((estado) => {
   if (estado.estado === "cargando") {
-    sesionCargando = true; revisionConsulta++; contenedorListado.replaceChildren(); return;
+    sesionCargando = true;
+    revisionConsulta++;
+    contenedorListado.replaceChildren();
+    return;
   }
   if (estado.estado !== "autenticado" || !estado.usuario?.correoVerificado || estado.usuario.uid !== uidSesion) {
-    revisionIdentidad++; revisionConsulta++;
-    cerrarModalActivo(); document.getElementById("toast-root")?.remove();
+    revisionIdentidad++;
+    revisionConsulta++;
+    cerrarModalActivo();
+    document.getElementById("toast-root")?.remove();
     if (estado.estado === "invitado" || (estado.usuario && uidSesion && estado.usuario.uid !== uidSesion)) limpiarCambioPendiente();
-    citasCargadas = []; nombresProfesionales.clear(); contenedorListado.replaceChildren(); mostrarMensaje("");
-    filtroFecha.value = ""; filtroEstado.value = "all"; accionEnCurso = false;
+    citasCargadas = [];
+    nombresProfesionales.clear();
+    contenedorListado.replaceChildren();
+    mostrarMensaje("");
+    filtroFecha.value = "";
+    filtroEstado.value = "all";
+    accionEnCurso = false;
     uidSesion = estado.estado === "autenticado" && estado.usuario?.correoVerificado ? estado.usuario.uid : "";
     if (uidSesion) { sesionCargando = false; void cargarMisCitas(); }
     return;

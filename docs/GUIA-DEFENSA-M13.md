@@ -14,7 +14,7 @@ Una parte central es evitar que dos peticiones confirmen el mismo intervalo. El 
 
 | Carpeta | Explicación y ejemplo |
 | --- | --- |
-| `app/src/pages` | 27 páginas Astro; `reservar.astro` contiene la pantalla de reserva. |
+| `app/src/pages` | 26 páginas Astro; `reservar.astro` contiene la pantalla de reserva. |
 | `app/src/modulos` | Controladores de cada área; `reservas/reservar-cita.ts` coordina la selección y confirmación. |
 | `app/src/datos` | Sesión, lecturas Firestore y llamadas remotas; `funciones-remotas.ts` conecta con Functions. |
 | `app/src/comun`, `modelos`, `exportaciones` | Fechas, permisos y formularios compartidos; interfaces y generación CSV/ICS. |
@@ -67,7 +67,7 @@ La demostración personal sigue pendiente hasta que el alumno la haga; las autom
 11. **¿Qué son los locks?** Documentos de ocupación asociados a una cita. Se coordinan con controles diarios; no sustituyen validar toda la duración ni justifican borrar locks de otra reserva.
 12. **¿Cómo se tratan los cambios horarios?** Se convierte fecha/hora con zona IANA y se comprueba la vuelta. Se rechazan horas inexistentes e intervalos que cruzan el salto; las repeticiones HH:mm tienen el límite documentado.
 13. **¿Por qué snapshots del servicio en la cita?** Conservan nombre, precio y duración del momento de reservar aunque el catálogo cambie después.
-14. **¿Qué hace el recordatorio?** Añade una notificación `queued` y marcas transaccionales para evitar duplicados. No envía correo ni hay un cron desplegado en esta entrega.
+14. **¿Qué hace el recordatorio?** Añade una notificación `queued` y marcas transaccionales para evitar duplicados. No envía correo y solo se ejecuta manualmente; se retiró el job programado.
 15. **¿Cómo evita CSV una fórmula maliciosa?** Neutraliza textos con prefijos interpretables por una hoja de cálculo y escapa comillas/separadores; el formato se prueba con datos hostiles.
 16. **¿Por qué UTC en ICS?** El evento representa un instante independiente del navegador. Se escapan textos y se pliegan líneas por bytes UTF-8; no se certifican todos los importadores externos.
 17. **¿Qué diferencia las pruebas?** Unitarias aíslan cálculos/validaciones; integración prueba reglas y operaciones reales en emuladores; E2E actúa en el navegador. Ninguna por sí sola demuestra todos los escenarios.

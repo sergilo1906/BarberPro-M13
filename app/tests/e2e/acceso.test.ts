@@ -5,7 +5,7 @@ const rutasPendientes = [
   "/perfil", "/reservar", "/mis-citas",
   "/agenda", "/panel-barbero", "/panel", "/index-admin", "/setup-barber",
   "/bloqueos", "/horarios", "/equipo", "/servicios", "/admin", "/admin/usuarios",
-  "/branding", "/kpis", "/export", "/debug",
+  "/branding", "/kpis", "/export",
 ];
 
 test.beforeEach(async ({ page }) => {

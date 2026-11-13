@@ -4,7 +4,7 @@ Describe el proyecto actual; no sustituye la planificación histórica ni acredi
 
 | Carpeta o archivo | Responsabilidad |
 |---|---|
-| app/src/pages | 27 páginas Astro, incluidas las rutas administrativas y 404. Conservan las URLs del original. |
+| app/src/pages | 26 páginas Astro, incluidas las rutas administrativas y 404. Se ha retirado la antigua ruta informativa de depuración. |
 | app/src/layouts y components | Diseño compartido, navegación y leyenda de disponibilidad. |
 | app/src/modulos | Controladores de cuentas, navegación, reservas, profesionales, administración y estadísticas. |
 | app/src/datos | Consultas Firebase, sesión y llamadas al backend. |

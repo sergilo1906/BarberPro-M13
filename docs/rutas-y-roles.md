@@ -1,6 +1,6 @@
 # Rutas y roles contrastados
 
-27 paginas reales; politica de comun/permisos.ts. La autorizacion de datos se exige tambien en reglas y backend. El perfil admite cuenta sin correo verificado; el resto de operativa requiere verificacion. Publica significa sin sesion, no un despliegue.
+26 paginas reales; politica de comun/permisos.ts. La autorizacion de datos se exige tambien en reglas y backend. El perfil admite cuenta sin correo verificado; el resto de operativa requiere verificacion. Publica significa sin sesion, no un despliegue.
 
 | Ruta | Archivo | Roles |
 |---|---|---|
@@ -11,7 +11,6 @@
 | /ayuda | app/src/pages/ayuda.astro | Publica |
 | /bloqueos | app/src/pages/bloqueos.astro | worker, manager, admin |
 | /branding | app/src/pages/branding.astro | admin |
-| /debug | app/src/pages/debug.astro | admin |
 | /equipo | app/src/pages/equipo.astro | manager, admin |
 | /export | app/src/pages/export.astro | manager, admin |
 | /horarios | app/src/pages/horarios.astro | manager, admin |

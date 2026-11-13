@@ -1,8 +1,6 @@
 import { createHash } from "node:crypto";
 import { Timestamp, FieldValue } from "firebase-admin/firestore";
 import { onCall, HttpsError } from "firebase-functions/v2/https";
-import { onSchedule } from "firebase-functions/v2/scheduler";
-import { logger } from "firebase-functions";
 import { obtenerServiciosAdministrativos } from "./firebase.js";
 import { comprobarSesion, comprobarIdentidadTransaccion } from "./permisos.js";
 import { validarVentanasRecordatorio } from "./configuracion.js";
@@ -60,11 +58,4 @@ export const runReminders = onCall(async (peticion) => {
   if (!["manager", "admin"].includes(identidad.rol)) throw new HttpsError("permission-denied", "Solo manager/admin.");
   if (peticion.data?.dryRun !== undefined && typeof peticion.data.dryRun !== "boolean") throw new HttpsError("invalid-argument", "Simulacion no valida.");
   return procesarRecordatorios(peticion.data?.dryRun !== false, new Date(), identidad);
-});
-// Se conserva el trigger público. Declararlo no crea un job en producción:
-// no se despliega y el acceso a datos continúa limitado al proyecto emulado.
-export const bookingRemindersJob = onSchedule("every 15 minutes", async () => {
-  const resultado = await procesarRecordatorios(false);
-  logger.info("Recordatorios en cola local; sin transporte de correo.", resultado);
-  return resultado;
 });

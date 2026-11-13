@@ -5,7 +5,7 @@ import { baseDatos, autenticacion, conectarCuenta, prepararCuentas, prepararAgen
 import { prepararDatosCliente } from "./datos-cliente.mjs";
 import { prepararDatosProfesional } from "./datos-profesional.mjs";
 import { prepararDatosAdministracion } from "./datos-administracion.mjs";
-import { procesarRecordatorios, bookingRemindersJob } from "../../src/recordatorios.js";
+import { procesarRecordatorios } from "../../src/recordatorios.js";
 const ahora = new Date("2035-03-25T01:00:00Z"), propietario = "recordatorio-ficticio";
 async function limpiarRecordatorios() {
   for (const nombre of ["bookings", "notifications"]) { const documentos = await baseDatos.collection(nombre).where("userId", "==", propietario).get(); for (const documento of documentos.docs) await documento.ref.delete(); }
@@ -72,9 +72,9 @@ test("callables de recordatorios y demo comprueban roles y verificacion reales",
   try { assert.equal((await gestion.llamar("runReminders")).dryRun, true); await assert.rejects(gestion.llamar("seedDemoData"), { code: "functions/permission-denied" }); await assert.rejects(gestion.llamar("resetDemoData"), { code: "functions/permission-denied" }); }
   finally { await gestion.cerrar(); }
 });
-test("handler programado se ejecuta manualmente en emulador sin instalar un job", async () => {
+test("procesamiento manual crea una notificacion en cola sin tarea programada", async () => {
   await crearCitaRecordatorio("recordatorio-job", 2, { startAt: Timestamp.fromMillis(Date.now() + 7200000) });
-  const resultado = await bookingRemindersJob.run({ scheduleTime: new Date().toISOString() });
+  const resultado = await procesarRecordatorios(false);
   assert.ok(resultado.processed >= 1); const avisos = await baseDatos.collection("notifications").where("bookingId", "==", "recordatorio-job").get(); assert.equal(avisos.size, 1); assert.equal(avisos.docs[0].get("status"), "queued");
 });
 test("demo simula por defecto sin escrituras y exige confirmacion del proyecto para aplicar", async () => {
