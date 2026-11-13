@@ -24,10 +24,6 @@ function actualizarNavegacion(estado: EstadoSesion): void {
         const permitido = autenticado && usuario?.correoVerificado === true && roles.includes(usuario.rol);
         enlaces[indice].classList.toggle("hidden", !permitido);
     }
-    const panel = document.querySelector<HTMLAnchorElement>("#link-panel");
-    if (panel && usuario) {
-        panel.href = obtenerDestinoInicial(usuario.rol);
-    }
     const tarjeta = document.querySelector<HTMLAnchorElement>("#admin-card");
     if (tarjeta) {
         const permitido = comprobarPermiso(estado, ["admin"]);
@@ -71,4 +67,3 @@ if (new URLSearchParams(location.search).get("acceso") === "denegado") {
         aviso.hidden = false;
     }
 }
-

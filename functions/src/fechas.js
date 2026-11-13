@@ -33,11 +33,6 @@ export function convertirHoraAMinutos(hora) {
 export function convertirMinutosAHora(minutos) {
     return String(Math.floor(minutos / 60)).padStart(2, "0") + ":" + String(minutos % 60).padStart(2, "0");
 }
-export function obtenerLunesSemanaUtc(fecha) {
-    const dia = new Date(validarFechaCalendario(fecha) + "T00:00:00Z");
-    dia.setUTCDate(dia.getUTCDate() - (dia.getUTCDay() + 6) % 7);
-    return dia.toISOString().slice(0, 10);
-}
 export function obtenerIndiceDia(fecha) {
     return new Date(validarFechaCalendario(fecha) + "T00:00:00Z").getUTCDay();
 }
@@ -45,21 +40,6 @@ export function sumarDiasCalendario(fecha, dias) {
     const instante = new Date(validarFechaCalendario(fecha) + "T00:00:00Z");
     instante.setUTCDate(instante.getUTCDate() + dias);
     return instante.toISOString().slice(0, 10);
-}
-export function enumerarDias(inicio, fin) {
-    validarFechaCalendario(inicio);
-    validarFechaCalendario(fin);
-    if (inicio > fin) {
-        throw new HttpsError("invalid-argument", "Rango de fechas invertido.");
-    }
-    const fechas = [];
-    for (let fecha = inicio; fecha <= fin; fecha = sumarDiasCalendario(fecha, 1)) {
-        if (fechas.length >= 366) {
-            throw new HttpsError("resource-exhausted", "Maximo 366 dias por operacion.");
-        }
-        fechas.push(fecha);
-    }
-    return fechas;
 }
 export function seSolapanTramos(inicio, fin, otroInicio, otroFin) {
     return inicio < otroFin && otroInicio < fin;
@@ -84,13 +64,6 @@ export function obtenerIntervaloUtc(fecha, hora, duracion, zona) {
         throw new HttpsError("failed-precondition", "El intervalo cruza un cambio de hora o de dia.");
     }
     return { inicio, fin };
-}
-export function comprobarFechaFutura(fecha, hora, zona, ahora = new Date()) {
-    const instante = convertirAFechaUtc(fecha, hora, zona);
-    if (instante <= ahora) {
-        throw new HttpsError("failed-precondition", "No puedes crear una reserva en fecha/hora pasada.");
-    }
-    return instante;
 }
 export function comprobarAnticipacion(fecha, zona, ahora = new Date()) {
     const hoy = formatearFechaZona(ahora, zona).slice(0, 10);

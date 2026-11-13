@@ -1,8 +1,8 @@
 import { esperarEstadoSesion, observarSesion, obtenerUsuarioActual } from "../datos/sesion";
 import type { EstadoSesion, Rol, UsuarioSesion } from "../modelos/cuentas";
 export const PERMISOS_RUTA: Record<string, Rol[]> = {
-  "/perfil": ["client", "admin"], "/reservar": ["client", "admin"], "/mis-citas": ["client", "admin"],
-  "/admin": ["admin"], "/agenda": ["admin"], "/servicios": ["admin"], "/horarios": ["admin"],
+    "/perfil": ["client", "admin"], "/reservar": ["client", "admin"], "/mis-citas": ["client", "admin"],
+    "/admin": ["admin"], "/agenda": ["admin"], "/servicios": ["admin"], "/horarios": ["admin"],
 };
 export interface ContextoAutorizado {
     usuario: UsuarioSesion;
@@ -10,6 +10,7 @@ export interface ContextoAutorizado {
 }
 // Un contexto por pantalla. No se reinicia un formulario editado por una renovación
 // transitoria del token; un cambio de identidad/rol o un error sí invalida sus respuestas.
+// Al cambiar de cuenta limpiamos la pantalla e invalidamos las respuestas anteriores.
 export function observarAreaAutorizada(roles: readonly Rol[], cargar: (contexto: ContextoAutorizado) => void, limpiar: () => void): void {
     let claveAnterior = "";
     let revision = 0;
@@ -33,8 +34,12 @@ export function observarAreaAutorizada(roles: readonly Rol[], cargar: (contexto:
                 && obtenerUsuarioActual().usuario?.uid === usuario.uid && obtenerUsuarioActual().usuario?.rol === usuario.rol });
     });
 }
-export function obtenerEtiquetaRol(rol: Rol): string { return rol === "admin" ? "Administrador" : "Cliente"; }
-export function obtenerDestinoInicial(rol: Rol): string { return rol === "admin" ? "/admin" : "/reservar"; }
+export function obtenerEtiquetaRol(rol: Rol): string {
+    return rol === "admin" ? "Administrador" : "Cliente";
+}
+export function obtenerDestinoInicial(rol: Rol): string {
+    return rol === "admin" ? "/admin" : "/reservar";
+}
 export function comprobarPermiso(estado: EstadoSesion, roles: readonly Rol[], correoObligatorio = true): boolean {
     if (estado.estado !== "autenticado" || !estado.usuario) {
         return false;
@@ -94,4 +99,3 @@ export function protegerRutaActual(): void {
         mostrarPaginaAutorizada();
     });
 }
-

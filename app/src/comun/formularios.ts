@@ -52,4 +52,3 @@ export function bloquearFormulario(formulario: HTMLFormElement, bloqueado: boole
         controles[indice].disabled = bloqueado;
     }
 }
-

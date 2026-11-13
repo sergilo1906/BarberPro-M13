@@ -252,4 +252,3 @@ export async function aplicarVerificacion(codigo: string): Promise<void> {
     await applyActionCode(exigirServicios().autenticacion, codigo);
     await actualizarUsuarioSesion();
 }
-

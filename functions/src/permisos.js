@@ -20,6 +20,7 @@ export function comprobarUid(uid) {
     }
     return uid;
 }
+// Contrastamos el token con la cuenta actual y el perfil para no aceptar permisos antiguos.
 export async function comprobarSesion(peticion, correoObligatorio = false) {
     if (!peticion.auth?.uid) {
         throw new HttpsError("unauthenticated", "Inicia sesion para continuar.");
@@ -60,6 +61,7 @@ export async function comprobarSesion(peticion, correoObligatorio = false) {
         usuario, rol, version
     };
 }
+// La gestion siempre exige administrador y correo verificado.
 export async function comprobarAdministrador(peticion) {
     const identidad = await comprobarSesion(peticion, true);
     if (identidad.rol !== "admin") {
@@ -67,6 +69,7 @@ export async function comprobarAdministrador(peticion) {
     }
     return identidad;
 }
+// Volvemos a leer el perfil dentro de la transaccion por si cambian los permisos.
 export async function comprobarIdentidadTransaccion(transaccion, baseDatos, identidad) {
     const perfil = await transaccion.get(baseDatos.doc("users/" + identidad.usuario.uid));
     if ((perfil.exists && (perfil.get("role") !== identidad.rol || (perfil.get("roleVersion") || 0) !== identidad.version)) || (!perfil.exists && identidad.rol !== "client")) {

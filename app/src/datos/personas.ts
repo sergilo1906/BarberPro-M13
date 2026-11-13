@@ -38,4 +38,3 @@ export async function guardarPerfilUsuario(uid: string, nombre: string, telefono
         name: nombre.trim(), phone: telefono.trim(), updatedAt: serverTimestamp(),
     });
 }
-

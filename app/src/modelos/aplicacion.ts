@@ -1,3 +1,5 @@
 import type { DiaHorario } from "./agenda";
-export interface ConfiguracionAgenda { timezone: string; days: DiaHorario[] }
-
+export interface ConfiguracionAgenda {
+    timezone: string;
+    days: DiaHorario[];
+}
