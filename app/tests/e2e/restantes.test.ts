@@ -103,10 +103,3 @@ test("cambiar a cliente durante una consulta CSV pendiente descarta su respuesta
   } finally { liberar(); await otraPagina.close(); }
 });
 
-test("diagnostico conserva su contenido informativo y acceso de vuelta sin mantenimiento destructivo", async ({ page }) => {
-  await iniciarPersonal(page, "reservas-admin"); await page.goto("/debug");
-  await expect(page.locator("html")).not.toHaveAttribute("data-auth-pending", "");
-  await expect(page.getByRole("heading", { name: "Mantenimiento interno", exact: true })).toBeVisible();
-  await expect(page.locator("main button")).toHaveCount(0);
-  await expect(page.locator("main")).not.toContainText("Restablecer datos");
-});

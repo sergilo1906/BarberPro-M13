@@ -36,7 +36,7 @@ function ejecutarPresentacion(pagina: string, datos: object, entrada: string): s
   const adaptadores = "const datosReferencia = " + JSON.stringify(datos) + "; const auth = {}, db = {};";
   return "(async () => {" + transpileModule(adaptadores + codigo + entrada, { compilerOptions: { target: ScriptTarget.ES2022, module: ModuleKind.None } }).outputText + "})()";
 }
-const estados = ["panel-worker", "panel-manager", "kpis-day", "kpis-week", "kpis-month", "export-listado", "export-vacio", "debug"];
+const estados = ["panel-worker", "panel-manager", "kpis-day", "kpis-week", "kpis-month", "export-listado", "export-vacio"];
 for (const estado of estados) test("restantes original " + estado, async ({ page, context, request }, informacion) => {
   test.skip(!existsSync(path.join(original, "dist/panel/index.html")), "Falta compilacion original local; no se fabrica referencia.");
   await context.route("**/*", async (ruta) => {
@@ -46,7 +46,7 @@ for (const estado of estados) test("restantes original " + estado, async ({ page
   });
   const escenario = informacion.project.name === "tableta" ? "escritorio" : informacion.project.name;
   const worker = estado === "panel-worker", uid = "profesional-" + escenario;
-  const ruta = estado.startsWith("panel") ? "/panel" : estado.startsWith("kpis") ? "/kpis" : estado.startsWith("export") ? "/export" : "/debug";
+  const ruta = estado.startsWith("panel") ? "/panel" : estado.startsWith("kpis") ? "/kpis" : "/export";
   await iniciarPersonal(page, worker ? uid : "reservas-admin"); await page.goto(ruta);
   await expect(page.locator("html")).not.toHaveAttribute("data-auth-pending", ""); await expect(page.locator("#link-setup")).toBeVisible();
   if (ruta === "/panel") await expect(page.locator("#stat-total-min")).not.toHaveText("0 min");

@@ -11,7 +11,7 @@ export const PERMISOS_RUTA: Record<string, Rol[]> = {
   "/index-admin": PERSONAL, "/setup-barber": PERSONAL, "/bloqueos": PERSONAL,
   "/horarios": GESTION, "/equipo": GESTION, "/servicios": GESTION,
   "/kpis": GESTION, "/export": GESTION,
-  "/admin": ["admin"], "/admin/usuarios": ["admin"], "/branding": ["admin"], "/debug": ["admin"],
+  "/admin": ["admin"], "/admin/usuarios": ["admin"], "/branding": ["admin"],
 };
 
 export function esPersonal(rol: Rol): boolean {
@@ -69,15 +69,6 @@ export async function exigirRol(roles: Rol[]): Promise<Rol | null> {
   const estado = await esperarEstadoSesion();
   if (comprobarPermiso(estado, roles)) return estado.usuario!.rol;
   return null;
-}
-
-// Capacidad original inactiva. No hay contratación ni páginas que exijan este plan.
-export async function exigirPlanPro(): Promise<boolean> {
-  const estado = await esperarEstadoSesion();
-  if (!comprobarPermiso(estado, TODOS)) return false;
-  if (estado.usuario?.plan === "pro" || estado.usuario?.rol === "admin") return true;
-  window.location.replace("/planes?upgrade=1");
-  return false;
 }
 
 export function mostrarPaginaAutorizada(): void {
