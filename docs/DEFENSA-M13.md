@@ -39,7 +39,7 @@ Al cambiar de identidad se descartan datos y respuestas pendientes de la sesión
 
 ## Demostración de diez minutos
 
-Preparar antes los emuladores, fixtures y web según [leer primero](ENTREGA-LEER-PRIMERO.md). No ejecutar `npm test` mientras esos servidores estén activos. Usar fechas futuras a más de 12 h y cerrar sesión entre cuentas.
+Preparar antes los emuladores, fixtures y web según [leer primero](INSTALACION.md). No ejecutar `npm test` mientras esos servidores estén activos. Usar fechas futuras a más de 12 h y cerrar sesión entre cuentas.
 
 | Minutos | Demostración |
 | --- | --- |

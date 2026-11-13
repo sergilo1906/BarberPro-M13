@@ -34,7 +34,7 @@ service cloud.firestore {
         && request.resource.data.updatedAt == request.time;
       allow delete: if false;
     }
-    // Lecturas legítimas; las escrituras de negocio requieren sus validaciones en fases posteriores.
+    // Las escrituras de negocio se realizan mediante las Functions autorizadas.
     match /services/{idServicio} { allow read: if operativaAutorizada(); allow write: if false; }
     match /barbers/{uidProfesional} {
       allow read: if operativaAutorizada(); allow write: if false;

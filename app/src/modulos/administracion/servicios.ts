@@ -120,11 +120,12 @@ function crearTarjetaServicio(servicio: ServicioAdministrable): HTMLElement {
   const duracion = tarjeta.querySelector<HTMLInputElement>(".svc-duration")!;
   const precio = tarjeta.querySelector<HTMLInputElement>(".svc-price")!;
   const activo = tarjeta.querySelector<HTMLInputElement>(".svc-active")!;
-  nombre.value = servicio.name;
+  // Los valores iniciales se reflejan también en el atributo nativo, como en el formulario original.
+  nombre.defaultValue = servicio.name;
   nombre.maxLength = 100;
-  duracion.value = String(servicio.durationMin);
-  precio.value = String(servicio.price);
-  activo.checked = servicio.active;
+  duracion.defaultValue = String(servicio.durationMin);
+  precio.defaultValue = String(servicio.price);
+  activo.defaultChecked = servicio.active;
   tarjeta.querySelector("span")!.textContent = servicio.active ? "Activo" : "Inactivo";
   tarjeta.querySelector(".svc-toggle")!.textContent = servicio.active ? "Desactivar" : "Activar";
   tarjeta.querySelector(".svc-save")!.addEventListener("click", () => prepararGuardado({ name: nombre.value.trim(), durationMin: Number(duracion.value), price: precio.value === "" ? NaN : Number(precio.value), active: activo.checked, serviceId: servicio.id, expectedRevision: servicio.adminRevision }));

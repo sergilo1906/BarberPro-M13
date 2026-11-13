@@ -91,7 +91,15 @@ export function abrirCambioCita(cita: Cita, contexto: ContextoCambio, recuperada
   fecha.min = formatearFechaNegocio(contexto.zona);
   fecha.max = sumarDiasCalendario(fecha.min, 30);
   const sugerida = esFechaCalendarioValida(cita.dateStr) ? sumarDiasCalendario(cita.dateStr, 1) : fecha.min;
-  fecha.value = recuperada?.newDateStr || (sugerida > fecha.max ? fecha.max : sugerida < fecha.min ? fecha.min : sugerida);
+  if (recuperada?.newDateStr) {
+    fecha.value = recuperada.newDateStr;
+  } else if (sugerida > fecha.max) {
+    fecha.value = fecha.max;
+  } else if (sugerida < fecha.min) {
+    fecha.value = fecha.min;
+  } else {
+    fecha.value = sugerida;
+  }
   let seleccion: HuecoDisponible | null = recuperada ? { timeStr: recuperada.newTimeStr, barberUid: recuperada.barberPreference || "" } : null;
   let solicitud = recuperada;
   let enviando = false;
@@ -114,7 +122,13 @@ export function abrirCambioCita(cita: Cita, contexto: ContextoCambio, recuperada
     cualquiera.disabled = enviando || !!solicitud;
     cancelar.disabled = enviando;
     guardar.disabled = enviando || (!seleccion && !solicitud);
-    guardar.textContent = enviando ? "Guardando..." : solicitud ? "Comprobar cambio" : "Guardar cambio";
+    if (enviando) {
+      guardar.textContent = "Guardando...";
+    } else if (solicitud) {
+      guardar.textContent = "Comprobar cambio";
+    } else {
+      guardar.textContent = "Guardar cambio";
+    }
     for (const boton of lista.querySelectorAll<HTMLButtonElement>("button")) {
       boton.disabled = enviando || !!solicitud;
     }

@@ -1,17 +1,17 @@
-# BarberPro Studio M13 — empezar aquí
+# Instalación de BarberPro Studio M13
 
-BarberPro gestiona reservas de una barbería con cuatro roles: cliente, profesional, responsable y administrador. Esta entrega es una **demo local**, reconstruida con Astro, TypeScript, Tailwind y Firebase Emulator Suite. Incluye fuente, reglas e índices, recursos, pruebas, documentación y [guía de defensa](GUIA-DEFENSA-M13.md). La asistencia de Codex se declara en el [registro académico](registro-academico.md).
+BarberPro gestiona reservas de una barbería con cuatro roles: cliente, profesional, responsable y administrador. Esta entrega es una **demo local**, reconstruida con Astro, TypeScript, Tailwind y Firebase Emulator Suite. Incluye fuente, reglas e índices, recursos, pruebas, documentación y [guía de defensa](DEFENSA-M13.md). La asistencia de Codex se declara en el [registro académico](REGISTRO-ACADEMICO.md).
 
 ## Qué descargar
 
-En la [release de cierre definitivo](https://github.com/sergilo1906/BarberPro-M13/releases/tag/cierre-definitivo-2026-11-11), descargar los tres adjuntos: `BarberPro-M13-cierre-definitivo-2026-11-11.zip`, su `.zip.sha256` y `validacion-cierre-definitivo-2026-11-11.md`. El informe identifica el commit y las pruebas del ZIP exacto e incluye su lista de contenido. No usar los ZIP históricos como si incluyeran este cierre.
+En la [release de evaluación](https://github.com/sergilo1906/BarberPro-M13/releases/tag/evaluacion-m13-2026-11-13), descargar los tres adjuntos: `BarberPro-M13-evaluacion-2026-11-13.zip`, su `.zip.sha256` y `validacion-evaluacion-2026-11-13.md`. El informe identifica el commit, el contenido y las pruebas del ZIP exacto. No usar los ZIP históricos como si incluyeran esta versión.
 
 Antes de extraer, desde la carpeta de descargas en PowerShell:
 
 ```powershell
-Get-FileHash -LiteralPath .\BarberPro-M13-cierre-definitivo-2026-11-11.zip -Algorithm SHA256
-Get-Content -LiteralPath .\BarberPro-M13-cierre-definitivo-2026-11-11.zip.sha256
-Expand-Archive -LiteralPath .\BarberPro-M13-cierre-definitivo-2026-11-11.zip -DestinationPath .\M13-demo
+Get-FileHash -LiteralPath .\BarberPro-M13-evaluacion-2026-11-13.zip -Algorithm SHA256
+Get-Content -LiteralPath .\BarberPro-M13-evaluacion-2026-11-13.zip.sha256
+Expand-Archive -LiteralPath .\BarberPro-M13-evaluacion-2026-11-13.zip -DestinationPath .\M13-demo
 Set-Location .\M13-demo\BarberPro-M13
 ```
 
@@ -83,10 +83,10 @@ node scripts/trazar-simbolos.mjs
 
 `npm test` comprueba tipos/sintaxis, ejecuta unitarias, arranca emuladores desechables, prueba integración, compila y ejecuta los recorridos de navegador. Crea sus propios fixtures y apaga los servicios al terminar. Para comprobaciones rápidas sin emuladores: `npm run check`, `npm run build`, `npm run test:unit`.
 
-En una extracción independiente se omiten expresamente las 126 comparaciones que necesitan la compilación original externa. No se cuentan como aprobadas ahí; el informe adjunto distingue la comparación realizada en el workspace. No copiar el original ni sus credenciales dentro del ZIP. La trazabilidad funciona sin `.git`; el inventario general requiere un checkout propio.
+En una extracción independiente se omiten expresamente las 126 comparaciones que necesitan la compilación original externa. No se cuentan como aprobadas ahí; el informe adjunto distingue la comparación realizada en el workspace. No copiar el original ni sus credenciales dentro del ZIP. La trazabilidad funciona sin `.git` ni inventarios externos.
 
 ## Alcance y lectura adicional
 
-No hay hosting público de la aplicación, correo real, cron desplegado ni configuración productiva habilitada. Los recordatorios generan una cola local `queued`; no son mensajes enviados. Una web accesible al profesor por enlace requeriría un despliegue separado, fuera de esta entrega. Móvil y tableta son perfiles de Chromium, sin certificación de Safari, dispositivos físicos o carga productiva. Persisten avisos moderados de dependencias, explicados en [pendientes](cierre-definitivo/pendientes.md).
+No hay hosting público de la aplicación, correo real, cron desplegado ni configuración productiva habilitada. Los recordatorios generan una cola local `queued`; no son mensajes enviados. Una web accesible al profesor por enlace requeriría un despliegue separado, fuera de esta entrega. Móvil y tableta son perfiles de Chromium, sin certificación de Safari, dispositivos físicos o carga productiva. Persisten avisos moderados de dependencias, explicados en [pendientes](SEGURIDAD-Y-LIMITACIONES.md).
 
-Para evaluar: [resultado del cierre](cierre-definitivo/resultado-final.md), [matriz de 40 grupos](matriz-requisitos.md), [pruebas](pruebas-finales.md) y el informe de validación adjunto. Los anexos técnicos se conservan sin que sea necesario leerlos todos para arrancar. Las horas reales y la revisión personal del alumno permanecen identificadas para completar; no se presume una rúbrica académica no facilitada.
+Para evaluar: [funcionamiento](FUNCIONAMIENTO.md), [pruebas](PRUEBAS.md), [defensa](DEFENSA-M13.md) y [registro académico](REGISTRO-ACADEMICO.md). Las horas y revisión personal no se inventan.

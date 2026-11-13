@@ -1,0 +1,11 @@
+# Seguridad y límites de la demo
+
+Proyecto limitado a demo-barberpro-m13 en localhost/127.0.0.1. Solo emuladores, sin Firebase productivo, hosting público, SMTP, cron desplegado o usuarios reales. No hace falta cuenta Firebase. queued significa en cola, no enviado. Una implantación comercial exigiría autorización y otra validación de infraestructura, IAM/secretos, reglas/índices, proveedor de correo, operaciones, copias/restauración, privacidad, carga y dispositivos reales.
+
+Auth, claims y versiones de permisos se contrastan con el perfil; el backend valida parámetros y propiedad, y revalida el actor en transacciones. No hay autoservicio de rol ni escrituras directas de negocio. Se conserva limpieza de sesión, textos seguros, CSV e ICS protegidos. El reset demo no es una transacción global y exige un entorno desechable sin escritores concurrentes. Storage está cerrado porque no había flujo de subida.
+
+Límites funcionales heredados: sin pagos/contratación, sin recuperación de contraseña original ni edición de logotipo; dos tramos por día en el editor; hasta 30 días de anticipación; HH:mm no distingue las dos repeticiones de una hora en otoño y se rechazan intervalos que cruzan cambios horarios. No se certifican todos los importadores ICS, Safari, dispositivos físicos, carga o tokens productivos. No se declara seguridad absoluta ni cobertura del 100 %.
+
+Dependencias fijadas sin cambios mayores. El análisis del 13/11/2026 registró raíz 14 nodos moderados, app 0 y Functions 9, sin altos/críticos. Los avisos subyacentes son [uuid](https://github.com/advisories/GHSA-w5hq-g745-h8pq), [minimatch](https://github.com/advisories/GHSA-g3hv-75wg-m249), [glob](https://github.com/advisories/GHSA-3g3m-2fjr-6pw4) y [OpenTelemetry](https://github.com/advisories/GHSA-8988-4f7v-96qf). No son 23 vulnerabilidades independientes ni se consideran resueltas por usar emuladores. La simulación histórica no encontró reparación dentro de los rangos fijados: no se fuerza un cambio mayor transitivo al cerrar la demo. Los resultados actuales van en la validación adjunta.
+
+Las contraseñas públicas Prueba123! y cuentas @example.test son fixtures de emuladores. No introducir datos o credenciales reales. [Pruebas](PRUEBAS.md) distingue lo ejecutado, omitido y no certificado.

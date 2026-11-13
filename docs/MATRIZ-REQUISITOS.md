@@ -1,6 +1,6 @@
 # Matriz de las 40 funcionalidades planificadas
 
-La planificación original contiene estos 40 grupos. Se contrastan con código y pruebas reales, sin convertir el número de grupos en un porcentaje de líneas ejecutadas. Los resultados están en [pruebas finales](pruebas-finales.md). Las limitaciones de emuladores, correo y navegadores forman parte de la entrega.
+La planificación original contiene estos 40 grupos. Se contrastan con código y pruebas reales, sin convertir el número de grupos en un porcentaje de líneas ejecutadas. Los resultados están en [pruebas finales](PRUEBAS.md). Las limitaciones de emuladores, correo y navegadores forman parte de la entrega.
 
 | # | Funcionalidad original | Implementación / contrato actual | Evidencia y límite |
 | ---: | --- | --- | --- |
@@ -30,7 +30,7 @@ La planificación original contiene estos 40 grupos. Se contrastan con código y
 | 24 | Panel profesional | panel-profesional y consultas de periodo | Día/semana/mes y siguientes citas; sin duplicar historial reprogramado. |
 | 25 | Usuarios y roles | usuarios, tarjeta-usuario y adminSetClaims | Búsqueda exacta; solo admin; identidad/versiones vigentes y actor revocado. |
 | 26 | Equipo | equipo y saveTeamProfile | Nombre/visibilidad, Enter/blur, respuesta perdida y cambio de identidad. |
-| 27 | Servicios | servicios y saveService | Alta/edición, precio/duración, revisión y recuperación; RT-02 comprueba el botón con casilla sin guardar. |
+| 27 | Servicios | servicios y saveService | Alta/edición, precio/duración, revisión y recuperación; La prueba comprueba el botón con casilla sin guardar. |
 | 28 | Resumen semanal | resumen-horarios | Estados de ficha/semana y navegación con UID autorizado. |
 | 29 | Reglas de agenda | reglas-agenda y saveAgendaSettings | Zona IANA, margen y avisos; rechazo de cambio de zona que perjudique citas. |
 | 30 | Resumen diario | estadisticas/resumen-diario | Datos propios/globales según rol; cantidades y minutos conocidos. |
@@ -45,4 +45,4 @@ La planificación original contiene estos 40 grupos. Se contrastan con código y
 | 39 | Plan PRO inactivo | /planes y exigirPlanPro conservado sin rutas que lo exijan | Revisión de código/contrato inactivo. No se afirma compra ni contratación probada. |
 | 40 | Pruebas y reproducibilidad | npm test, fixtures, inventario y trazabilidad | Ejecuciones reales y extracción aislada con alcance identificado; no cobertura de líneas del 100 %. |
 
-Los nombres de carpetas en esta tabla son relativos a app/src o functions/src según el área. Los archivos concretos de pruebas y los límites están enlazados desde [funcionalidades finales](funcionalidades-finales.md), [revisión total](revision-total-2026-11-10.md) y [trazabilidad](trazabilidad/simbolos-actuales.md). No hay una funcionalidad esencial original omitida sin decisión en esta matriz; eso no garantiza todas las combinaciones posibles de estado.
+Los nombres de carpetas en esta tabla son relativos a app/src o functions/src según el área. Los archivos concretos de pruebas y los límites están enlazados desde [funcionalidades finales](FUNCIONAMIENTO.md), [revisión total](PRUEBAS.md) y [trazabilidad](ANEXO-TRAZABILIDAD.md). No hay una funcionalidad esencial original omitida sin decisión en esta matriz; eso no garantiza todas las combinaciones posibles de estado.
