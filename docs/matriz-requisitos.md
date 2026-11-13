@@ -36,13 +36,13 @@ La planificación original contiene estos 40 grupos. Se contrastan con código y
 | 30 | Resumen diario | estadisticas/resumen-diario | Datos propios/globales según rol; cantidades y minutos conocidos. |
 | 31 | Indicadores | indicadores y calculos | Periodos, cancelación/reprogramación, vacíos y datos inválidos; agrupación por nombre conservada. |
 | 32 | Listado y CSV | listado-citas y csv | Rango, preview de ocho, descarga completa, BOM/CRLF, comillas/fórmulas, errores y limpieza. |
-| 33 | Recordatorios manuales y job | runReminders y bookingRemindersJob | Ventanas configuradas, dryRun y duplicados; handler manual en emulador, no cron desplegado. |
+| 33 | Recordatorios manuales | runReminders y procesarRecordatorios | Ventanas configuradas, dryRun y duplicados; job programado retirado deliberadamente. |
 | 34 | Notificaciones almacenadas | notifications de confirmación/recordatorio | Cola transaccional y queued; no se inventa bandeja visual ni envío real. |
 | 35 | Herramientas demo | resetDemoData y seedDemoData | Admin, confirmación explícita, simulación por defecto y conservación; entorno sin escritores concurrentes. |
-| 36 | Diagnóstico | /debug | Contenido informativo y solo admin; no se añaden controles destructivos. |
+| 36 | Diagnóstico | Retirado | La página informativa de depuración se elimina deliberadamente; la aplicación conserva el panel de administración. |
 | 37 | Scripts de roles | asignar-roles y normalizar-roles | UID explícito, simulación y emuladores; no usan credenciales productivas. |
 | 38 | Ayuda/legal/perfiles/404 | Páginas conservadas y controladores de perfil | Navegación, recursos, desconocida 404, perfil y comparación. |
-| 39 | Plan PRO inactivo | /planes y exigirPlanPro conservado sin rutas que lo exijan | Revisión de código/contrato inactivo. No se afirma compra ni contratación probada. |
+| 39 | Plan PRO inactivo | /planes muestra perfiles de uso | Se ha retirado la función inactiva de comprobación del plan; sin compras ni exigencia de plan. |
 | 40 | Pruebas y reproducibilidad | npm test, fixtures, inventario y trazabilidad | Ejecuciones reales y extracción aislada con alcance identificado; no cobertura de líneas del 100 %. |
 
-Los nombres de carpetas en esta tabla son relativos a app/src o functions/src según el área. Los archivos concretos de pruebas y los límites están enlazados desde [funcionalidades finales](funcionalidades-finales.md), [revisión total](revision-total-2026-11-10.md) y [trazabilidad](trazabilidad/simbolos-actuales.md). No hay una funcionalidad esencial original omitida sin decisión en esta matriz; eso no garantiza todas las combinaciones posibles de estado.
+Los nombres de carpetas en esta tabla son relativos a app/src o functions/src según el área. Los archivos concretos de pruebas y los límites están enlazados desde [funcionalidades finales](funcionalidades-finales.md), [revisión total](revision-total-2026-11-10.md) y [trazabilidad](trazabilidad/simbolos-actuales.md). Las retiradas opcionales de los grupos 33, 36 y 39 están documentadas como decisiones de alcance. Las pruebas históricas del 11/11/2026 corresponden a la versión anterior y no acreditan esta variante.

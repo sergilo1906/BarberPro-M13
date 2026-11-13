@@ -69,7 +69,7 @@ Todas las cuentas de esta tabla usan **`Prueba123!`**, contraseña pública de p
 | Responsable | reservas-manager@example.test | Equipo, servicios, resumen, KPIs por periodo y exportación CSV. No tiene permiso para asignar roles. |
 | Administrador | reservas-admin@example.test | Usuarios y roles, configuración de agenda y herramientas autorizadas. Para probar roles usar `admin-destino-escritorio@example.test`, sin quitar permisos a la propia cuenta administradora. |
 
-Las fechas se calculan en Europe/Madrid; escoger un día futuro con semana publicada y servicio/profesional activo. Los fixtures incluyen historia y estados terminales deliberadamente. Si no hay hueco, probar otro día o profesional. Las herramientas demo y los recordatorios se contrastan también mediante integración; `/debug` conserva una página informativa, no una consola de mantenimiento.
+Las fechas se calculan en Europe/Madrid; escoger un día futuro con semana publicada y servicio/profesional activo. Los fixtures incluyen historia y estados terminales deliberadamente. Si no hay hueco, probar otro día o profesional. Las herramientas demo y los recordatorios manuales se contrastan también mediante integración. La página de depuración informativa se ha retirado.
 
 ## Pruebas
 
