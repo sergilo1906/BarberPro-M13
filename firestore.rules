@@ -4,60 +4,37 @@ service cloud.firestore {
     function tieneSesion() { return request.auth != null; }
     function rolToken() { return request.auth.token.get('role', 'client'); }
     function versionToken() { return request.auth.token.get('roleVersion', 0); }
-    function correoVerificado() { return tieneSesion() && request.auth.token.email_verified == true; }
     function rolVigente() {
-      let rutaPerfil = /databases/$(database)/documents/users/$(request.auth.uid);
-      return rolToken() in ['client', 'worker', 'manager', 'admin'] && (
-        (!exists(rutaPerfil) && rolToken() == 'client' && versionToken() == 0) ||
-        (exists(rutaPerfil) && get(rutaPerfil).data.role == rolToken()
-          && get(rutaPerfil).data.get('roleVersion', 0) == versionToken())
+      let perfil = /databases/$(database)/documents/users/$(request.auth.uid);
+      return rolToken() in ['client', 'admin'] && (
+        (!exists(perfil) && rolToken() == 'client' && versionToken() == 0) ||
+        (exists(perfil) && get(perfil).data.role == rolToken() && get(perfil).data.get('roleVersion', 0) == versionToken())
       );
     }
-    function esGestion() { return correoVerificado() && rolVigente() && rolToken() in ['manager', 'admin']; }
-    function operativaAutorizada() { return correoVerificado() && rolVigente(); }
+    function operativo() { return tieneSesion() && request.auth.token.email_verified == true && rolVigente(); }
+    function administrador() { return operativo() && rolToken() == 'admin'; }
     function contactoValido() {
-      return request.resource.data.name is string && request.resource.data.name.size() > 0
-        && request.resource.data.name.size() <= 100
+      return request.resource.data.name is string && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 100
         && request.resource.data.phone is string && request.resource.data.phone.size() <= 30;
     }
-    match /users/{uidUsuario} {
-      allow get: if tieneSesion() && (request.auth.uid == uidUsuario || esGestion());
-      allow list: if esGestion();
-      allow create: if tieneSesion() && request.auth.uid == uidUsuario
-        && request.resource.data.keys().hasOnly(['name', 'phone', 'email', 'role', 'roleVersion', 'createdAt', 'updatedAt'])
+    match /users/{uid} {
+      allow get: if tieneSesion() && request.auth.uid == uid;
+      allow list, delete: if false;
+      allow create: if tieneSesion() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name','phone','email','role','roleVersion','createdAt','updatedAt'])
         && contactoValido() && request.resource.data.email == request.auth.token.email
         && request.resource.data.role == 'client' && rolToken() == 'client'
         && request.resource.data.roleVersion == 0 && versionToken() == 0
         && request.resource.data.createdAt == request.time && request.resource.data.updatedAt == request.time;
-      allow update: if tieneSesion() && request.auth.uid == uidUsuario && contactoValido()
-        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name', 'phone', 'updatedAt'])
+      allow update: if tieneSesion() && request.auth.uid == uid && contactoValido()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name','phone','updatedAt'])
         && request.resource.data.updatedAt == request.time;
-      allow delete: if false;
     }
-    // Lecturas legítimas; las escrituras de negocio requieren sus validaciones en fases posteriores.
-    match /services/{idServicio} { allow read: if operativaAutorizada(); allow write: if false; }
-    match /barbers/{uidProfesional} {
-      allow read: if operativaAutorizada(); allow write: if false;
-      match /weeklySchedules/{semana} {
-        allow read: if operativaAutorizada() && (resource.data.published == true || request.auth.uid == uidProfesional || esGestion());
-        allow write: if false;
-      }
-    }
-    match /bookings/{idCita} {
-      allow read: if operativaAutorizada() && (esGestion() || resource.data.userId == request.auth.uid
-        || (rolToken() == 'worker' && resource.data.barberUid == request.auth.uid));
-      allow write: if false;
-    }
-    match /blocks/{idBloqueo} {
-      allow read: if operativaAutorizada() && (esGestion() || (rolToken() == 'worker' && resource.data.barberUid == request.auth.uid));
-      allow write: if false;
-    }
-    match /bookingLocks/{idBloqueo} { allow read: if esGestion(); allow write: if false; }
-    match /notifications/{idNotificacion} {
-      allow read: if operativaAutorizada() && (esGestion() || resource.data.userId == request.auth.uid);
-      allow write: if false;
-    }
-    match /config/{idConfiguracion} { allow read: if operativaAutorizada(); allow write: if false; }
+    match /services/{id} { allow read: if operativo(); allow write: if false; }
+    match /config/{id} { allow read: if operativo(); allow write: if false; }
+    match /closedDays/{id} { allow read: if administrador(); allow write: if false; }
+    match /bookings/{id} { allow read: if operativo() && (administrador() || resource.data.userId == request.auth.uid); allow write: if false; }
     match /{documento=**} { allow read, write: if false; }
   }
 }
+

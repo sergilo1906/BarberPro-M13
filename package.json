@@ -2,7 +2,7 @@
   "name": "barberpro-m13",
   "version": "0.8.0",
   "private": true,
-  "description": "BarberPro Studio - administracion de usuarios, equipo, servicios y agenda",
+  "description": "BarberPro Studio - reservas para un profesional, cliente y administrador",
   "engines": {
     "node": ">=22.23.4",
     "npm": ">=10"

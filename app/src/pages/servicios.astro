@@ -18,7 +18,7 @@ import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
         </label>
         <label class="flex flex-col gap-1">
           <span class="text-xs text-gray-600">Duracion (min)</span>
-          <input id="service-duration" type="number" min="5" step="5" required class="border rounded px-3 py-2" value="30" />
+          <input id="service-duration" type="number" min="30" max="60" step="30" required class="border rounded px-3 py-2" value="30" />
         </label>
         <label class="flex flex-col gap-1">
           <span class="text-xs text-gray-600">Precio (EUR)</span>
@@ -44,3 +44,4 @@ import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
   </section>
   <script>import "../modulos/administracion/servicios";</script>
 </DisenoPrincipal>
+

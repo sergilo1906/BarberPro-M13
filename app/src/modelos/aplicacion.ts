@@ -1,6 +1,5 @@
+import type { DiaHorario } from "./agenda";
 export interface ConfiguracionAgenda {
-  timezone: string;
-  cancelWindowHours: number;
-  reminderWindowsHours: number[];
-  adminRevision: number;
+    timezone: string;
+    days: DiaHorario[];
 }

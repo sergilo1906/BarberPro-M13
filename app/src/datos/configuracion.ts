@@ -1,15 +1,25 @@
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { obtenerServiciosFirebase } from "./firebase";
 import type { ConfiguracionAgenda } from "../modelos/aplicacion";
-
+function baseDatos() {
+    const servicios = obtenerServiciosFirebase();
+    if (!servicios) {
+        throw new Error("Firebase no configurado.");
+    }
+    return servicios.baseDatos;
+}
 export async function obtenerConfiguracionAgenda(): Promise<ConfiguracionAgenda> {
-  const servicios = obtenerServiciosFirebase();
-  if (!servicios) throw new Error("Firebase local desactivado.");
-  const documento = await getDoc(doc(servicios.baseDatos, "config", "app"));
-  const datos = documento.data() || {};
-  const timezone = String(datos.timezone || datos.tz || "Europe/Madrid");
-  new Intl.DateTimeFormat("es", { timeZone: timezone }).format();
-  const cancelWindowHours = Number(datos.cancelWindowHours ?? 12);
-  if (!Number.isFinite(cancelWindowHours) || cancelWindowHours < 0) throw new Error("Margen de cancelacion no valido.");
-  return { timezone, cancelWindowHours, reminderWindowsHours: Array.isArray(datos.reminderWindowsHours) ? datos.reminderWindowsHours as number[] : [24, 2], adminRevision: Number(datos.adminRevision || 0) };
+    const documento = await getDoc(doc(baseDatos(), "config", "app"));
+    if (!documento.exists()) {
+        return { timezone: "Europe/Madrid", days: Array.from({ length: 7 }, () => ({ active: false, ranges: [] })) };
+    }
+    const datos = documento.data();
+    if (!Array.isArray(datos.days) || datos.days.length !== 7) {
+        throw new Error("El horario anterior requiere una revision del administrador.");
+    }
+    new Intl.DateTimeFormat("es", { timeZone: datos.timezone }).format();
+    return { timezone: datos.timezone, days: datos.days };
+}
+export async function obtenerDiasCerrados(): Promise<string[]> {
+    return (await getDocs(collection(baseDatos(), "closedDays"))).docs.map(d => d.id).sort();
 }

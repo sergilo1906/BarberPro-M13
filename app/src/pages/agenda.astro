@@ -1,4 +1,4 @@
-﻿---
+---
 import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
 ---
 
@@ -20,12 +20,9 @@ import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
             <span>Estado</span>
             <select id="agenda-status" class="border rounded px-2 py-1 text-sm">
               <option value="all">Todos</option>
-              <option value="pending">Pendiente</option>
               <option value="confirmed">Confirmada</option>
               <option value="done">Hecha</option>
-              <option value="no_show">No show</option>
               <option value="cancelled">Cancelada</option>
-              <option value="rescheduled">Reprogramada</option>
             </select>
           </label>
         </div>
@@ -37,5 +34,6 @@ import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
     </div>
   </section>
 
-  <script>import "../modulos/profesionales/agenda-diaria";</script>
+  <script>import "../modulos/administracion/agenda-diaria";</script>
 </DisenoPrincipal>
+

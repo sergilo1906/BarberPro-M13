@@ -3,23 +3,23 @@ import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
 
 const apartadosLegales = [
   {
-    titulo: "Reservas y cambios",
+    titulo: "Reservas y cancelaciones",
     parrafos: [
       "Las reservas se confirman con el horario y el profesional asignado en el momento de crear la cita.",
-      "Las cancelaciones y los cambios de hora se permiten solo mientras la cita siga abierta y quede margen suficiente.",
+      "El cliente puede cancelar una cita confirmada antes de su inicio. Para otra hora debe cancelar y crear una nueva reserva.",
     ],
   },
   {
     titulo: "Datos de contacto",
     parrafos: [
-      "Se guardan nombre, email y telefono para identificar la cuenta, localizar reservas y enviar avisos relacionados con la cita.",
+      "Se guardan nombre, email y telefono para identificar la cuenta, localizar reservas y mostrar la agenda al administrador.",
       "El usuario puede actualizar esos datos desde la pagina de Perfil.",
     ],
   },
   {
     titulo: "Accesos internos",
     parrafos: [
-      "Las pantallas de agenda, bloqueos, servicios y administracion solo estan disponibles para el equipo autorizado.",
+      "Las pantallas de agenda, horarios, servicios y administracion solo estan disponibles para el administrador autorizado.",
       "Si una cuenta cambia de tipo de acceso, puede ser necesario salir y volver a entrar.",
     ],
   },
@@ -46,3 +46,4 @@ const apartadosLegales = [
     </section>
   </section>
 </DisenoPrincipal>
+

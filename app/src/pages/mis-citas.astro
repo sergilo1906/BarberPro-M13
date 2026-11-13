@@ -8,7 +8,7 @@ import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
       <div class="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h2 class="font-semibold text-lg">Mis citas</h2>
-          <p class="text-xs text-gray-600">Revisa tus citas y, si todavia estas a tiempo, cancelalas o cambialas desde aqui.</p>
+          <p class="text-xs text-gray-600">Revisa tus citas y, si todavia estas a tiempo, puedes cancelarlas desde aqui.</p>
         </div>
       </div>
       <div class="grid gap-3 sm:grid-cols-2">
@@ -18,12 +18,9 @@ import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
         <label class="text-xs text-gray-600">Estado
           <select id="filter-status" class="mt-1 w-full rounded border px-2 py-2 text-sm">
             <option value="all">Todos</option>
-            <option value="pending">Pendiente</option>
             <option value="confirmed">Confirmada</option>
             <option value="done">Hecha</option>
-            <option value="no_show">No show</option>
             <option value="cancelled">Cancelada</option>
-            <option value="rescheduled">Reprogramada</option>
           </select>
         </label>
       </div>
@@ -33,3 +30,4 @@ import DisenoPrincipal from "../layouts/DisenoPrincipal.astro";
   </section>
   <script>import "../modulos/reservas/mis-citas";</script>
 </DisenoPrincipal>
+

@@ -1,79 +1,94 @@
 import { FieldValue } from "firebase-admin/firestore";
-import { onCall, HttpsError } from "firebase-functions/v2/https";
-import { formatInTimeZone } from "date-fns-tz";
+import { HttpsError, onCall } from "firebase-functions/v2/https";
 import { obtenerServiciosAdministrativos } from "./firebase.js";
-import { comprobarSesion, comprobarUid, comprobarIdentidadTransaccion } from "./permisos.js";
-import { obtenerConfiguracionAgenda, validarVentanasRecordatorio } from "./configuracion.js";
-import { ESTADOS_OCUPANTES } from "./disponibilidad.js";
-import { obtenerOperacionAgenda, leerResultadoOperacion, guardarResultadoOperacion } from "./control-agenda.js";
-
-function nombreValido(valor) {
-  if (typeof valor !== "string" || !valor.trim() || valor.trim().length > 100) throw new HttpsError("invalid-argument", "Escribe un nombre de hasta 100 caracteres.");
-  return valor.trim();
-}
-function comprobarRevision(datos) {
-  comprobarUid(datos?.requestId);
-  if (!Number.isInteger(datos.expectedRevision) || datos.expectedRevision < 0) throw new HttpsError("invalid-argument", "Revision no valida.");
-}
-export function validarServicio(datos) {
-  comprobarRevision(datos);
-  if (!Number.isInteger(datos.durationMin) || datos.durationMin < 5 || datos.durationMin > 1440 || datos.durationMin % 5 !== 0
-      || typeof datos.price !== "number" || !Number.isFinite(datos.price) || datos.price < 0 || typeof datos.active !== "boolean") throw new HttpsError("invalid-argument", "Revisa nombre, duracion y precio.");
-  return { name: nombreValido(datos.name), durationMin: datos.durationMin, price: datos.price, active: datos.active };
-}
-export function validarReglasAgenda(datos) {
-  comprobarRevision(datos);
-  if (typeof datos.timezone !== "string" || !datos.timezone.trim()) throw new HttpsError("invalid-argument", "Zona horaria no valida.");
-  const timezone = datos.timezone.trim();
-  try { new Intl.DateTimeFormat("es", { timeZone: timezone }).format(); } catch { throw new HttpsError("invalid-argument", "Zona horaria no valida."); }
-  if (typeof datos.cancelWindowHours !== "number" || !Number.isFinite(datos.cancelWindowHours) || datos.cancelWindowHours <= 0
-      || !Array.isArray(datos.reminderWindowsHours) || !datos.reminderWindowsHours.length || datos.reminderWindowsHours.length > 20) throw new HttpsError("invalid-argument", "Reglas de agenda no validas.");
-  return { timezone, cancelWindowHours: datos.cancelWindowHours, reminderWindowsHours: validarVentanasRecordatorio(datos.reminderWindowsHours, "invalid-argument") };
-}
-async function guardarAdministracion(identidad, tipo, entrada) {
-  if (!["manager", "admin"].includes(identidad.rol) || (tipo === "reglas" && identidad.rol !== "admin")) throw new HttpsError("permission-denied", "Acceso denegado.");
-  comprobarRevision(entrada);
-  let cambios;
-  if (tipo === "servicio") cambios = validarServicio(entrada);
-  else if (tipo === "reglas") cambios = validarReglasAgenda(entrada);
-  else {
-    if (typeof entrada.active !== "boolean") throw new HttpsError("invalid-argument", "Visibilidad no valida.");
-    cambios = { name: nombreValido(entrada.name), active: entrada.active, isActive: entrada.active };
-  }
-  const { baseDatos } = obtenerServiciosAdministrativos();
-  let referencia;
-  if (tipo === "equipo") referencia = baseDatos.doc("barbers/" + comprobarUid(entrada.barberUid));
-  else if (tipo === "reglas") referencia = baseDatos.doc("config/app");
-  else referencia = entrada.serviceId ? baseDatos.doc("services/" + comprobarUid(entrada.serviceId)) : baseDatos.collection("services").doc();
-  const operacion = obtenerOperacionAgenda(baseDatos, identidad.usuario.uid, tipo, entrada);
-  return baseDatos.runTransaction(async (transaccion) => {
-    await comprobarIdentidadTransaccion(transaccion, baseDatos, identidad);
-    const anterior = await leerResultadoOperacion(transaccion, operacion);
-    if (anterior) return anterior;
-    const documento = await transaccion.get(referencia);
-    if (!documento.exists && (tipo === "equipo" || (tipo === "servicio" && entrada.serviceId))) throw new HttpsError("not-found", "El registro no existe.");
-    if (Number(documento.get("adminRevision") || 0) !== entrada.expectedRevision) throw new HttpsError("failed-precondition", "Los datos han cambiado. Vuelve a cargarlos.");
-    if (tipo === "reglas") {
-      const configuracion = await obtenerConfiguracionAgenda(transaccion);
-      if (configuracion.timezone !== cambios.timezone) {
-        // Las citas guardan fecha local y timestamps. No se reinterpretan citas
-        // pendientes al cambiar de zona: requiere una migración explícita aparte.
-        const hoy = formatInTimeZone(new Date(), configuracion.timezone, "yyyy-MM-dd");
-        const citas = await transaccion.get(baseDatos.collection("bookings").where("dateStr", ">=", hoy));
-        if (citas.docs.some((cita) => ESTADOS_OCUPANTES.includes(cita.get("status") || "pending"))) throw new HttpsError("failed-precondition", "Hay citas existentes. No cambies su zona horaria sin una migracion.");
-      }
+import { comprobarAdministrador, comprobarIdentidadTransaccion, comprobarUid } from "./permisos.js";
+import { validarDuracion } from "./disponibilidad.js";
+import { validarHorario, cabeEnHorario } from "./horarios.js";
+import { validarZona, obtenerConfiguracionAgenda, actualizarControlAgenda } from "./configuracion.js";
+import { validarFechaCalendario, convertirHoraAMinutos, formatearFechaZona } from "./fechas.js";
+// Guardamos únicamente los campos del servicio; las citas conservan su snapshot anterior.
+export const saveService = onCall(async (peticion) => {
+    const identidad = await comprobarAdministrador(peticion);
+    const datos = peticion.data;
+    const id = comprobarUid(datos?.serviceId);
+    if (typeof datos.name !== "string" || !datos.name.trim() || datos.name.trim().length > 100 || typeof datos.price !== "number" || !Number.isFinite(datos.price) || datos.price < 0 || typeof datos.active !== "boolean") {
+        throw new HttpsError("invalid-argument", "Revisa nombre, precio y estado del servicio.");
     }
-    const revision = entrada.expectedRevision + 1;
-    const payload = { ...cambios, adminRevision: revision, updatedAt: FieldValue.serverTimestamp() };
-    if (!documento.exists && tipo === "servicio") payload.createdAt = FieldValue.serverTimestamp();
-    // Solo estos campos están permitidos: nunca se guardan roles, vínculos,
-    // horarios ni flags demo recibidos libremente desde el navegador.
-    transaccion.set(referencia, payload, { merge: true });
-    const resultado = { ok: true, id: referencia.id, revision };
-    guardarResultadoOperacion(transaccion, operacion, resultado);
-    return resultado;
-  });
-}
-export const saveTeamProfile = onCall(async (peticion) => guardarAdministracion(await comprobarSesion(peticion, true), "equipo", peticion.data));
-export const saveService = onCall(async (peticion) => guardarAdministracion(await comprobarSesion(peticion, true), "servicio", peticion.data));
-export const saveAgendaSettings = onCall(async (peticion) => guardarAdministracion(await comprobarSesion(peticion, true), "reglas", peticion.data));
+    const durationMin = validarDuracion(datos.durationMin);
+    const { baseDatos } = obtenerServiciosAdministrativos();
+    return baseDatos.runTransaction(async (transaccion) => {
+        await comprobarIdentidadTransaccion(transaccion, baseDatos, identidad);
+        const referencia = baseDatos.doc("services/" + id);
+        await transaccion.get(referencia);
+        transaccion.set(referencia, {
+            name: datos.name.trim(), price: datos.price, durationMin, active: datos.active, updatedAt: FieldValue.serverTimestamp()
+        });
+        return { ok: true, id };
+    });
+});
+// Antes de cambiar el horario revisamos las citas futuras. El control compartido detecta carreras.
+export const saveSchedule = onCall(async (peticion) => {
+    const identidad = await comprobarAdministrador(peticion);
+    const timezone = validarZona(peticion.data?.timezone);
+    const days = validarHorario(peticion.data?.days);
+    const { baseDatos } = obtenerServiciosAdministrativos();
+    return baseDatos.runTransaction(async (transaccion) => {
+        await comprobarIdentidadTransaccion(transaccion, baseDatos, identidad);
+        const referencia = baseDatos.doc("config/app");
+        const documento = await transaccion.get(referencia);
+        const zonaAnterior = documento.get("timezone") || timezone;
+        const hoy = formatearFechaZona(new Date(), zonaAnterior).slice(0, 10);
+        const citas = await transaccion.get(baseDatos.collection("bookings").where("dateStr", ">=", hoy));
+        for (const fila of citas.docs) {
+            const cita = fila.data();
+            if (cita.status === "cancelled" || cita.status === "done") {
+                continue;
+            }
+            if (cita.startAt?.toDate && cita.startAt.toDate() <= new Date()) {
+                continue;
+            }
+            if (zonaAnterior !== timezone) {
+                throw new HttpsError("failed-precondition", "Hay citas futuras: no cambies su zona horaria sin revisarlas.");
+            }
+            const duracion = validarDuracion(cita.durationMin ?? cita.serviceSnapshot?.durationMin);
+            const fecha = validarFechaCalendario(cita.dateStr);
+            if (!cabeEnHorario(days, fecha, convertirHoraAMinutos(cita.timeStr), duracion)) {
+                throw new HttpsError("failed-precondition", "El horario dejaria una cita existente fuera de jornada.");
+            }
+        }
+        transaccion.set(referencia, {
+            timezone, days, revision: Number(documento.get("revision") || 0) + 1
+        }, { merge: true });
+        return { ok: true };
+    });
+});
+// Un día cerrado es una fecha completa. No se cierra si quedan citas sin resolver.
+export const setClosedDay = onCall(async (peticion) => {
+    const identidad = await comprobarAdministrador(peticion);
+    const fecha = validarFechaCalendario(peticion.data?.dateStr);
+    if (typeof peticion.data?.closed !== "boolean") {
+        throw new HttpsError("invalid-argument", "Indica si el dia esta cerrado.");
+    }
+    const { baseDatos } = obtenerServiciosAdministrativos();
+    return baseDatos.runTransaction(async (transaccion) => {
+        await comprobarIdentidadTransaccion(transaccion, baseDatos, identidad);
+        const configuracion = await obtenerConfiguracionAgenda(transaccion);
+        if (peticion.data.closed) {
+            const citas = await transaccion.get(baseDatos.collection("bookings").where("dateStr", "==", fecha));
+            for (const cita of citas.docs) {
+                if (cita.get("status") !== "cancelled" && cita.get("status") !== "done") {
+                    throw new HttpsError("failed-precondition", "Resuelve las citas de ese dia antes de cerrarlo.");
+                }
+            }
+        }
+        const referencia = baseDatos.doc("closedDays/" + fecha);
+        if (peticion.data.closed) {
+            transaccion.set(referencia, { dateStr: fecha });
+        }
+        else {
+            transaccion.delete(referencia);
+        }
+        actualizarControlAgenda(transaccion, baseDatos, configuracion);
+        return { ok: true };
+    });
+});
