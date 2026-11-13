@@ -1,77 +1,44 @@
 import { HttpsError } from "firebase-functions/v2/https";
-import { obtenerServiciosAdministrativos } from "./firebase.js";
-import { convertirHoraAMinutos, obtenerLunesSemanaUtc, validarFechaCalendario } from "./fechas.js";
-export function normalizarTramos(tramos) {
-    if (!Array.isArray(tramos)) {
-        return [];
-    }
-    const resultado = [];
-    for (const tramo of tramos) {
+import { convertirHoraAMinutos, obtenerIndiceDia, seSolapanTramos } from "./fechas.js";
+
+export const INTERVALO_MINUTOS = 30;
+
+// Admitimos hasta dos tramos al día, siempre alineados con la cuadrícula de media hora.
+export function validarHorario(days) {
+  if (!Array.isArray(days) || days.length !== 7) throw new HttpsError("invalid-argument", "Indica los siete dias de la semana.");
+  const resultado = [];
+  for (const dia of days) {
+    if (!dia || typeof dia.active !== "boolean" || !Array.isArray(dia.ranges) || dia.ranges.length > 2) throw new HttpsError("invalid-argument", "Dia de trabajo no valido.");
+    const ranges = [];
+    if (dia.active && !dia.ranges.length) throw new HttpsError("invalid-argument", "Un dia abierto necesita un tramo.");
+    if (dia.active) {
+      for (const tramo of dia.ranges) {
         const inicio = convertirHoraAMinutos(tramo?.start);
         const fin = convertirHoraAMinutos(tramo?.end);
-        if (fin <= inicio) {
-            throw new HttpsError("failed-precondition", "Horario con un tramo invertido.");
-        }
-        resultado.push({ start: inicio, end: fin });
+        if (inicio >= fin || inicio % 30 !== 0 || fin % 30 !== 0) throw new HttpsError("invalid-argument", "Usa tramos ordenados de media hora.");
+        ranges.push({ start: tramo.start, end: tramo.end });
+      }
+      ranges.sort((primero, segundo) => primero.start.localeCompare(segundo.start));
+      if (ranges.length === 2 && ranges[0].end > ranges[1].start) throw new HttpsError("invalid-argument", "Los tramos no pueden solaparse.");
     }
-    resultado.sort((primero, segundo) => primero.start - segundo.start);
-    for (let indice = 1; indice < resultado.length; indice++) {
-        if (resultado[indice].start < resultado[indice - 1].end) {
-            throw new HttpsError("failed-precondition", "Horario con tramos solapados.");
-        }
-    }
-    return resultado;
+    resultado.push({ active: dia.active, ranges });
+  }
+  return resultado;
 }
-export function normalizarHorario(datos) {
-    const slotMin = Number(datos.slot ?? datos.slotMin ?? 30);
-    if (!Number.isInteger(slotMin) || slotMin < 5 || slotMin > 1440) {
-        throw new HttpsError("failed-precondition", "Intervalo de horario no valido.");
-    }
-    const dias = [];
-    for (let indice = 0; indice < 7; indice++) {
-        const dia = datos.days?.[indice] || {};
-        let tramos = [];
-        if (Array.isArray(dia.ranges) && dia.ranges.length) {
-            tramos = dia.ranges;
-        } else if (dia.start && dia.end) {
-            tramos = [{ start: dia.start, end: dia.end }];
-        }
-        dias.push({
-            active: dia.active === true,
-            ranges: dia.active === true ? normalizarTramos(tramos) : [],
-            breaks: dia.active === true ? normalizarTramos(dia.breaks || []) : []
-        });
-    }
-    return { slotMin, days: dias };
+
+// La duración completa debe caber dentro de un tramo; no saltamos la pausa del mediodía.
+export function cabeEnHorario(days, fecha, inicio, duracion) {
+  const dia = days[obtenerIndiceDia(fecha)];
+  if (!dia?.active || inicio % 30 !== 0) return false;
+  for (const tramo of dia.ranges) {
+    if (inicio >= convertirHoraAMinutos(tramo.start) && inicio + duracion <= convertirHoraAMinutos(tramo.end)) return true;
+  }
+  return false;
 }
-export async function cargarSemanaPublicada(uid, fecha, transaccion = null) {
-    const referencia = obtenerServiciosAdministrativos().baseDatos.doc("barbers/" + uid + "/weeklySchedules/" + obtenerLunesSemanaUtc(fecha));
-    const documento = transaccion ? await transaccion.get(referencia) : await referencia.get();
-    if (!documento.exists || documento.get("published") !== true) {
-        return null;
-    }
-    return normalizarHorario(documento.data());
-}
-export async function cargarBloqueosDia(uid, fecha, transaccion = null) {
-    const consulta = obtenerServiciosAdministrativos().baseDatos.collection("blocks").where("barberUid", "==", uid);
-    const documentos = transaccion ? await transaccion.get(consulta) : await consulta.get();
-    const bloqueos = [];
-    for (const documento of documentos.docs) {
-        const datos = documento.data();
-        if (datos.type === "vacation") {
-            validarFechaCalendario(datos.startDate);
-            validarFechaCalendario(datos.endDate);
-            if (datos.startDate > datos.endDate) {
-                throw new HttpsError("failed-precondition", "Vacaciones con fechas invertidas.");
-            }
-            if (fecha >= datos.startDate && fecha <= datos.endDate) {
-                bloqueos.push({ start: 0, end: 1440 });
-            }
-        }
-        else if (datos.dateStr === fecha) {
-            const tramo = normalizarTramos([{ start: datos.start, end: datos.end }]);
-            bloqueos.push(tramo[0]);
-        }
-    }
-    return bloqueos;
+
+export function estaOcupado(inicio, duracion, ocupacion) {
+  for (const cita of ocupacion) {
+    if (seSolapanTramos(inicio, inicio + duracion, cita.inicio, cita.fin)) return true;
+  }
+  return false;
 }
